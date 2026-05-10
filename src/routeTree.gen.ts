@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SavingRouteImport } from './routes/saving'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as RetirementRouteImport } from './routes/retirement'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as NewsletterRouteImport } from './routes/newsletter'
@@ -29,15 +31,26 @@ import { Route as ToolsEmergencyFundCalculatorRouteImport } from './routes/tools
 import { Route as ToolsCreditScoreEstimatorRouteImport } from './routes/tools.credit-score-estimator'
 import { Route as ToolsBudgetPlannerRouteImport } from './routes/tools.budget-planner'
 import { Route as BudgetingZeroBasedBudgetingRouteImport } from './routes/budgeting.zero-based-budgeting'
+import { Route as PillarPostRouteImport } from './routes/$pillar.$post'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SavingRoute = SavingRouteImport.update({
   id: '/saving',
   path: '/saving',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RetirementRoute = RetirementRouteImport.update({
@@ -134,6 +147,11 @@ const BudgetingZeroBasedBudgetingRoute =
     path: '/zero-based-budgeting',
     getParentRoute: () => BudgetingRoute,
   } as any)
+const PillarPostRoute = PillarPostRouteImport.update({
+  id: '/$pillar/$post',
+  path: '/$pillar/$post',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -148,8 +166,11 @@ export interface FileRoutesByFullPath {
   '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/retirement': typeof RetirementRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/saving': typeof SavingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/$pillar/$post': typeof PillarPostRoute
   '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
   '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
@@ -170,8 +191,11 @@ export interface FileRoutesByTo {
   '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/retirement': typeof RetirementRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/saving': typeof SavingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/$pillar/$post': typeof PillarPostRoute
   '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
   '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
@@ -193,8 +217,11 @@ export interface FileRoutesById {
   '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/retirement': typeof RetirementRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/saving': typeof SavingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/$pillar/$post': typeof PillarPostRoute
   '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
   '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
@@ -217,8 +244,11 @@ export interface FileRouteTypes {
     | '/newsletter'
     | '/privacy'
     | '/retirement'
+    | '/robots.txt'
     | '/saving'
+    | '/sitemap.xml'
     | '/terms'
+    | '/$pillar/$post'
     | '/budgeting/zero-based-budgeting'
     | '/tools/budget-planner'
     | '/tools/credit-score-estimator'
@@ -239,8 +269,11 @@ export interface FileRouteTypes {
     | '/newsletter'
     | '/privacy'
     | '/retirement'
+    | '/robots.txt'
     | '/saving'
+    | '/sitemap.xml'
     | '/terms'
+    | '/$pillar/$post'
     | '/budgeting/zero-based-budgeting'
     | '/tools/budget-planner'
     | '/tools/credit-score-estimator'
@@ -261,8 +294,11 @@ export interface FileRouteTypes {
     | '/newsletter'
     | '/privacy'
     | '/retirement'
+    | '/robots.txt'
     | '/saving'
+    | '/sitemap.xml'
     | '/terms'
+    | '/$pillar/$post'
     | '/budgeting/zero-based-budgeting'
     | '/tools/budget-planner'
     | '/tools/credit-score-estimator'
@@ -284,8 +320,11 @@ export interface RootRouteChildren {
   NewsletterRoute: typeof NewsletterRoute
   PrivacyRoute: typeof PrivacyRoute
   RetirementRoute: typeof RetirementRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   SavingRoute: typeof SavingRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  PillarPostRoute: typeof PillarPostRoute
   ToolsBudgetPlannerRoute: typeof ToolsBudgetPlannerRoute
   ToolsCreditScoreEstimatorRoute: typeof ToolsCreditScoreEstimatorRoute
   ToolsEmergencyFundCalculatorRoute: typeof ToolsEmergencyFundCalculatorRoute
@@ -302,11 +341,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/saving': {
       id: '/saving'
       path: '/saving'
       fullPath: '/saving'
       preLoaderRoute: typeof SavingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/retirement': {
@@ -435,6 +488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BudgetingZeroBasedBudgetingRouteImport
       parentRoute: typeof BudgetingRoute
     }
+    '/$pillar/$post': {
+      id: '/$pillar/$post'
+      path: '/$pillar/$post'
+      fullPath: '/$pillar/$post'
+      preLoaderRoute: typeof PillarPostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -463,8 +523,11 @@ const rootRouteChildren: RootRouteChildren = {
   NewsletterRoute: NewsletterRoute,
   PrivacyRoute: PrivacyRoute,
   RetirementRoute: RetirementRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   SavingRoute: SavingRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  PillarPostRoute: PillarPostRoute,
   ToolsBudgetPlannerRoute: ToolsBudgetPlannerRoute,
   ToolsCreditScoreEstimatorRoute: ToolsCreditScoreEstimatorRoute,
   ToolsEmergencyFundCalculatorRoute: ToolsEmergencyFundCalculatorRoute,
