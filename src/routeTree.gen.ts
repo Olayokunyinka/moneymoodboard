@@ -18,6 +18,7 @@ import { Route as BudgetingRouteImport } from './routes/budgeting'
 import { Route as BankingRouteImport } from './routes/banking'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsEmergencyFundCalculatorRouteImport } from './routes/tools.emergency-fund-calculator'
 import { Route as BudgetingZeroBasedBudgetingRouteImport } from './routes/budgeting.zero-based-budgeting'
 
 const SavingRoute = SavingRouteImport.update({
@@ -65,6 +66,12 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
   path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsEmergencyFundCalculatorRoute =
+  ToolsEmergencyFundCalculatorRouteImport.update({
+    id: '/tools/emergency-fund-calculator',
+    path: '/tools/emergency-fund-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BudgetingZeroBasedBudgetingRoute =
   BudgetingZeroBasedBudgetingRouteImport.update({
     id: '/zero-based-budgeting',
@@ -82,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/retirement': typeof RetirementRoute
   '/saving': typeof SavingRoute
   '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/tools/emergency-fund-calculator': typeof ToolsEmergencyFundCalculatorRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -94,6 +102,7 @@ export interface FileRoutesByTo {
   '/retirement': typeof RetirementRoute
   '/saving': typeof SavingRoute
   '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/tools/emergency-fund-calculator': typeof ToolsEmergencyFundCalculatorRoute
   '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
@@ -107,6 +116,7 @@ export interface FileRoutesById {
   '/retirement': typeof RetirementRoute
   '/saving': typeof SavingRoute
   '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/tools/emergency-fund-calculator': typeof ToolsEmergencyFundCalculatorRoute
   '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/retirement'
     | '/saving'
     | '/budgeting/zero-based-budgeting'
+    | '/tools/emergency-fund-calculator'
     | '/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/retirement'
     | '/saving'
     | '/budgeting/zero-based-budgeting'
+    | '/tools/emergency-fund-calculator'
     | '/tools'
   id:
     | '__root__'
@@ -145,6 +157,7 @@ export interface FileRouteTypes {
     | '/retirement'
     | '/saving'
     | '/budgeting/zero-based-budgeting'
+    | '/tools/emergency-fund-calculator'
     | '/tools/'
   fileRoutesById: FileRoutesById
 }
@@ -157,6 +170,7 @@ export interface RootRouteChildren {
   InvestingRoute: typeof InvestingRoute
   RetirementRoute: typeof RetirementRoute
   SavingRoute: typeof SavingRoute
+  ToolsEmergencyFundCalculatorRoute: typeof ToolsEmergencyFundCalculatorRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
@@ -225,6 +239,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/emergency-fund-calculator': {
+      id: '/tools/emergency-fund-calculator'
+      path: '/tools/emergency-fund-calculator'
+      fullPath: '/tools/emergency-fund-calculator'
+      preLoaderRoute: typeof ToolsEmergencyFundCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/budgeting/zero-based-budgeting': {
       id: '/budgeting/zero-based-budgeting'
       path: '/zero-based-budgeting'
@@ -256,6 +277,7 @@ const rootRouteChildren: RootRouteChildren = {
   InvestingRoute: InvestingRoute,
   RetirementRoute: RetirementRoute,
   SavingRoute: SavingRoute,
+  ToolsEmergencyFundCalculatorRoute: ToolsEmergencyFundCalculatorRoute,
   ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
