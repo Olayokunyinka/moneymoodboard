@@ -9,12 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SavingRouteImport } from './routes/saving'
+import { Route as RetirementRouteImport } from './routes/retirement'
+import { Route as InvestingRouteImport } from './routes/investing'
+import { Route as DebtTaxesInsuranceRouteImport } from './routes/debt-taxes-insurance'
+import { Route as CreditCardsRouteImport } from './routes/credit-cards'
 import { Route as BudgetingRouteImport } from './routes/budgeting'
+import { Route as BankingRouteImport } from './routes/banking'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as BudgetingZeroBasedBudgetingRouteImport } from './routes/budgeting.zero-based-budgeting'
 
+const SavingRoute = SavingRouteImport.update({
+  id: '/saving',
+  path: '/saving',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RetirementRoute = RetirementRouteImport.update({
+  id: '/retirement',
+  path: '/retirement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestingRoute = InvestingRouteImport.update({
+  id: '/investing',
+  path: '/investing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DebtTaxesInsuranceRoute = DebtTaxesInsuranceRouteImport.update({
+  id: '/debt-taxes-insurance',
+  path: '/debt-taxes-insurance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreditCardsRoute = CreditCardsRouteImport.update({
+  id: '/credit-cards',
+  path: '/credit-cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BudgetingRoute = BudgetingRouteImport.update({
   id: '/budgeting',
   path: '/budgeting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BankingRoute = BankingRouteImport.update({
+  id: '/banking',
+  path: '/banking',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,40 +60,155 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BudgetingZeroBasedBudgetingRoute =
+  BudgetingZeroBasedBudgetingRouteImport.update({
+    id: '/zero-based-budgeting',
+    path: '/zero-based-budgeting',
+    getParentRoute: () => BudgetingRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/budgeting': typeof BudgetingRoute
+  '/banking': typeof BankingRoute
+  '/budgeting': typeof BudgetingRouteWithChildren
+  '/credit-cards': typeof CreditCardsRoute
+  '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
+  '/investing': typeof InvestingRoute
+  '/retirement': typeof RetirementRoute
+  '/saving': typeof SavingRoute
+  '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/budgeting': typeof BudgetingRoute
+  '/banking': typeof BankingRoute
+  '/budgeting': typeof BudgetingRouteWithChildren
+  '/credit-cards': typeof CreditCardsRoute
+  '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
+  '/investing': typeof InvestingRoute
+  '/retirement': typeof RetirementRoute
+  '/saving': typeof SavingRoute
+  '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/budgeting': typeof BudgetingRoute
+  '/banking': typeof BankingRoute
+  '/budgeting': typeof BudgetingRouteWithChildren
+  '/credit-cards': typeof CreditCardsRoute
+  '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
+  '/investing': typeof InvestingRoute
+  '/retirement': typeof RetirementRoute
+  '/saving': typeof SavingRoute
+  '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/budgeting'
+  fullPaths:
+    | '/'
+    | '/banking'
+    | '/budgeting'
+    | '/credit-cards'
+    | '/debt-taxes-insurance'
+    | '/investing'
+    | '/retirement'
+    | '/saving'
+    | '/budgeting/zero-based-budgeting'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/budgeting'
-  id: '__root__' | '/' | '/budgeting'
+  to:
+    | '/'
+    | '/banking'
+    | '/budgeting'
+    | '/credit-cards'
+    | '/debt-taxes-insurance'
+    | '/investing'
+    | '/retirement'
+    | '/saving'
+    | '/budgeting/zero-based-budgeting'
+    | '/tools'
+  id:
+    | '__root__'
+    | '/'
+    | '/banking'
+    | '/budgeting'
+    | '/credit-cards'
+    | '/debt-taxes-insurance'
+    | '/investing'
+    | '/retirement'
+    | '/saving'
+    | '/budgeting/zero-based-budgeting'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BudgetingRoute: typeof BudgetingRoute
+  BankingRoute: typeof BankingRoute
+  BudgetingRoute: typeof BudgetingRouteWithChildren
+  CreditCardsRoute: typeof CreditCardsRoute
+  DebtTaxesInsuranceRoute: typeof DebtTaxesInsuranceRoute
+  InvestingRoute: typeof InvestingRoute
+  RetirementRoute: typeof RetirementRoute
+  SavingRoute: typeof SavingRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/saving': {
+      id: '/saving'
+      path: '/saving'
+      fullPath: '/saving'
+      preLoaderRoute: typeof SavingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/retirement': {
+      id: '/retirement'
+      path: '/retirement'
+      fullPath: '/retirement'
+      preLoaderRoute: typeof RetirementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investing': {
+      id: '/investing'
+      path: '/investing'
+      fullPath: '/investing'
+      preLoaderRoute: typeof InvestingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/debt-taxes-insurance': {
+      id: '/debt-taxes-insurance'
+      path: '/debt-taxes-insurance'
+      fullPath: '/debt-taxes-insurance'
+      preLoaderRoute: typeof DebtTaxesInsuranceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/credit-cards': {
+      id: '/credit-cards'
+      path: '/credit-cards'
+      fullPath: '/credit-cards'
+      preLoaderRoute: typeof CreditCardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/budgeting': {
       id: '/budgeting'
       path: '/budgeting'
       fullPath: '/budgeting'
       preLoaderRoute: typeof BudgetingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/banking': {
+      id: '/banking'
+      path: '/banking'
+      fullPath: '/banking'
+      preLoaderRoute: typeof BankingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -65,12 +218,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/budgeting/zero-based-budgeting': {
+      id: '/budgeting/zero-based-budgeting'
+      path: '/zero-based-budgeting'
+      fullPath: '/budgeting/zero-based-budgeting'
+      preLoaderRoute: typeof BudgetingZeroBasedBudgetingRouteImport
+      parentRoute: typeof BudgetingRoute
+    }
   }
 }
 
+interface BudgetingRouteChildren {
+  BudgetingZeroBasedBudgetingRoute: typeof BudgetingZeroBasedBudgetingRoute
+}
+
+const BudgetingRouteChildren: BudgetingRouteChildren = {
+  BudgetingZeroBasedBudgetingRoute: BudgetingZeroBasedBudgetingRoute,
+}
+
+const BudgetingRouteWithChildren = BudgetingRoute._addFileChildren(
+  BudgetingRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BudgetingRoute: BudgetingRoute,
+  BankingRoute: BankingRoute,
+  BudgetingRoute: BudgetingRouteWithChildren,
+  CreditCardsRoute: CreditCardsRoute,
+  DebtTaxesInsuranceRoute: DebtTaxesInsuranceRoute,
+  InvestingRoute: InvestingRoute,
+  RetirementRoute: RetirementRoute,
+  SavingRoute: SavingRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
