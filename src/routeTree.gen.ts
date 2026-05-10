@@ -31,6 +31,7 @@ import { Route as ToolsEmergencyFundCalculatorRouteImport } from './routes/tools
 import { Route as ToolsCreditScoreEstimatorRouteImport } from './routes/tools.credit-score-estimator'
 import { Route as ToolsBudgetPlannerRouteImport } from './routes/tools.budget-planner'
 import { Route as BudgetingZeroBasedBudgetingRouteImport } from './routes/budgeting.zero-based-budgeting'
+import { Route as PillarPostRouteImport } from './routes/$pillar.$post'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -146,6 +147,11 @@ const BudgetingZeroBasedBudgetingRoute =
     path: '/zero-based-budgeting',
     getParentRoute: () => BudgetingRoute,
   } as any)
+const PillarPostRoute = PillarPostRouteImport.update({
+  id: '/$pillar/$post',
+  path: '/$pillar/$post',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/saving': typeof SavingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/$pillar/$post': typeof PillarPostRoute
   '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
   '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
@@ -188,6 +195,7 @@ export interface FileRoutesByTo {
   '/saving': typeof SavingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/$pillar/$post': typeof PillarPostRoute
   '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
   '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
@@ -213,6 +221,7 @@ export interface FileRoutesById {
   '/saving': typeof SavingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/$pillar/$post': typeof PillarPostRoute
   '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
   '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/saving'
     | '/sitemap.xml'
     | '/terms'
+    | '/$pillar/$post'
     | '/budgeting/zero-based-budgeting'
     | '/tools/budget-planner'
     | '/tools/credit-score-estimator'
@@ -263,6 +273,7 @@ export interface FileRouteTypes {
     | '/saving'
     | '/sitemap.xml'
     | '/terms'
+    | '/$pillar/$post'
     | '/budgeting/zero-based-budgeting'
     | '/tools/budget-planner'
     | '/tools/credit-score-estimator'
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/saving'
     | '/sitemap.xml'
     | '/terms'
+    | '/$pillar/$post'
     | '/budgeting/zero-based-budgeting'
     | '/tools/budget-planner'
     | '/tools/credit-score-estimator'
@@ -312,6 +324,7 @@ export interface RootRouteChildren {
   SavingRoute: typeof SavingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  PillarPostRoute: typeof PillarPostRoute
   ToolsBudgetPlannerRoute: typeof ToolsBudgetPlannerRoute
   ToolsCreditScoreEstimatorRoute: typeof ToolsCreditScoreEstimatorRoute
   ToolsEmergencyFundCalculatorRoute: typeof ToolsEmergencyFundCalculatorRoute
@@ -475,6 +488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BudgetingZeroBasedBudgetingRouteImport
       parentRoute: typeof BudgetingRoute
     }
+    '/$pillar/$post': {
+      id: '/$pillar/$post'
+      path: '/$pillar/$post'
+      fullPath: '/$pillar/$post'
+      preLoaderRoute: typeof PillarPostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -507,6 +527,7 @@ const rootRouteChildren: RootRouteChildren = {
   SavingRoute: SavingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  PillarPostRoute: PillarPostRoute,
   ToolsBudgetPlannerRoute: ToolsBudgetPlannerRoute,
   ToolsCreditScoreEstimatorRoute: ToolsCreditScoreEstimatorRoute,
   ToolsEmergencyFundCalculatorRoute: ToolsEmergencyFundCalculatorRoute,

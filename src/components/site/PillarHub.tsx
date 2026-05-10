@@ -115,15 +115,37 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
       </div>
 
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: pillar.faqs.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }}
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: `${pillar.name}: The Complete Guide`,
+            description: pillar.whatIs,
+            url: `https://moneymoodboard.com/${pillar.slug}`,
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: `${pillar.name} Guides`,
+            itemListElement: pillar.clusters
+              .flatMap((c) => c.posts)
+              .map((post, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                url: `https://moneymoodboard.com/${pillar.slug}/${post.slug}`,
+                name: post.title,
+              })),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: pillar.faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          },
+        ]}
       />
     </div>
   );
