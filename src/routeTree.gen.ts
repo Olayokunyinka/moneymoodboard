@@ -9,38 +9,383 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SavingRouteImport } from './routes/saving'
+import { Route as RetirementRouteImport } from './routes/retirement'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as NewsletterRouteImport } from './routes/newsletter'
+import { Route as InvestingRouteImport } from './routes/investing'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as DebtTaxesInsuranceRouteImport } from './routes/debt-taxes-insurance'
+import { Route as CreditCardsRouteImport } from './routes/credit-cards'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BudgetingRouteImport } from './routes/budgeting'
+import { Route as BankingRouteImport } from './routes/banking'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsSavingsGoalCalculatorRouteImport } from './routes/tools.savings-goal-calculator'
+import { Route as ToolsEmergencyFundCalculatorRouteImport } from './routes/tools.emergency-fund-calculator'
+import { Route as ToolsCreditScoreEstimatorRouteImport } from './routes/tools.credit-score-estimator'
+import { Route as ToolsBudgetPlannerRouteImport } from './routes/tools.budget-planner'
+import { Route as BudgetingZeroBasedBudgetingRouteImport } from './routes/budgeting.zero-based-budgeting'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavingRoute = SavingRouteImport.update({
+  id: '/saving',
+  path: '/saving',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RetirementRoute = RetirementRouteImport.update({
+  id: '/retirement',
+  path: '/retirement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsletterRoute = NewsletterRouteImport.update({
+  id: '/newsletter',
+  path: '/newsletter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestingRoute = InvestingRouteImport.update({
+  id: '/investing',
+  path: '/investing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DebtTaxesInsuranceRoute = DebtTaxesInsuranceRouteImport.update({
+  id: '/debt-taxes-insurance',
+  path: '/debt-taxes-insurance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreditCardsRoute = CreditCardsRouteImport.update({
+  id: '/credit-cards',
+  path: '/credit-cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BudgetingRoute = BudgetingRouteImport.update({
+  id: '/budgeting',
+  path: '/budgeting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BankingRoute = BankingRouteImport.update({
+  id: '/banking',
+  path: '/banking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsSavingsGoalCalculatorRoute =
+  ToolsSavingsGoalCalculatorRouteImport.update({
+    id: '/tools/savings-goal-calculator',
+    path: '/tools/savings-goal-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsEmergencyFundCalculatorRoute =
+  ToolsEmergencyFundCalculatorRouteImport.update({
+    id: '/tools/emergency-fund-calculator',
+    path: '/tools/emergency-fund-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsCreditScoreEstimatorRoute =
+  ToolsCreditScoreEstimatorRouteImport.update({
+    id: '/tools/credit-score-estimator',
+    path: '/tools/credit-score-estimator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsBudgetPlannerRoute = ToolsBudgetPlannerRouteImport.update({
+  id: '/tools/budget-planner',
+  path: '/tools/budget-planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BudgetingZeroBasedBudgetingRoute =
+  BudgetingZeroBasedBudgetingRouteImport.update({
+    id: '/zero-based-budgeting',
+    path: '/zero-based-budgeting',
+    getParentRoute: () => BudgetingRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/banking': typeof BankingRoute
+  '/budgeting': typeof BudgetingRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/credit-cards': typeof CreditCardsRoute
+  '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/investing': typeof InvestingRoute
+  '/newsletter': typeof NewsletterRoute
+  '/privacy': typeof PrivacyRoute
+  '/retirement': typeof RetirementRoute
+  '/saving': typeof SavingRoute
+  '/terms': typeof TermsRoute
+  '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
+  '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
+  '/tools/emergency-fund-calculator': typeof ToolsEmergencyFundCalculatorRoute
+  '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/banking': typeof BankingRoute
+  '/budgeting': typeof BudgetingRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/credit-cards': typeof CreditCardsRoute
+  '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/investing': typeof InvestingRoute
+  '/newsletter': typeof NewsletterRoute
+  '/privacy': typeof PrivacyRoute
+  '/retirement': typeof RetirementRoute
+  '/saving': typeof SavingRoute
+  '/terms': typeof TermsRoute
+  '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
+  '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
+  '/tools/emergency-fund-calculator': typeof ToolsEmergencyFundCalculatorRoute
+  '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
+  '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/banking': typeof BankingRoute
+  '/budgeting': typeof BudgetingRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/credit-cards': typeof CreditCardsRoute
+  '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/investing': typeof InvestingRoute
+  '/newsletter': typeof NewsletterRoute
+  '/privacy': typeof PrivacyRoute
+  '/retirement': typeof RetirementRoute
+  '/saving': typeof SavingRoute
+  '/terms': typeof TermsRoute
+  '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
+  '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
+  '/tools/emergency-fund-calculator': typeof ToolsEmergencyFundCalculatorRoute
+  '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/banking'
+    | '/budgeting'
+    | '/contact'
+    | '/credit-cards'
+    | '/debt-taxes-insurance'
+    | '/disclaimer'
+    | '/investing'
+    | '/newsletter'
+    | '/privacy'
+    | '/retirement'
+    | '/saving'
+    | '/terms'
+    | '/budgeting/zero-based-budgeting'
+    | '/tools/budget-planner'
+    | '/tools/credit-score-estimator'
+    | '/tools/emergency-fund-calculator'
+    | '/tools/savings-goal-calculator'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/banking'
+    | '/budgeting'
+    | '/contact'
+    | '/credit-cards'
+    | '/debt-taxes-insurance'
+    | '/disclaimer'
+    | '/investing'
+    | '/newsletter'
+    | '/privacy'
+    | '/retirement'
+    | '/saving'
+    | '/terms'
+    | '/budgeting/zero-based-budgeting'
+    | '/tools/budget-planner'
+    | '/tools/credit-score-estimator'
+    | '/tools/emergency-fund-calculator'
+    | '/tools/savings-goal-calculator'
+    | '/tools'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/banking'
+    | '/budgeting'
+    | '/contact'
+    | '/credit-cards'
+    | '/debt-taxes-insurance'
+    | '/disclaimer'
+    | '/investing'
+    | '/newsletter'
+    | '/privacy'
+    | '/retirement'
+    | '/saving'
+    | '/terms'
+    | '/budgeting/zero-based-budgeting'
+    | '/tools/budget-planner'
+    | '/tools/credit-score-estimator'
+    | '/tools/emergency-fund-calculator'
+    | '/tools/savings-goal-calculator'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BankingRoute: typeof BankingRoute
+  BudgetingRoute: typeof BudgetingRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  CreditCardsRoute: typeof CreditCardsRoute
+  DebtTaxesInsuranceRoute: typeof DebtTaxesInsuranceRoute
+  DisclaimerRoute: typeof DisclaimerRoute
+  InvestingRoute: typeof InvestingRoute
+  NewsletterRoute: typeof NewsletterRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RetirementRoute: typeof RetirementRoute
+  SavingRoute: typeof SavingRoute
+  TermsRoute: typeof TermsRoute
+  ToolsBudgetPlannerRoute: typeof ToolsBudgetPlannerRoute
+  ToolsCreditScoreEstimatorRoute: typeof ToolsCreditScoreEstimatorRoute
+  ToolsEmergencyFundCalculatorRoute: typeof ToolsEmergencyFundCalculatorRoute
+  ToolsSavingsGoalCalculatorRoute: typeof ToolsSavingsGoalCalculatorRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saving': {
+      id: '/saving'
+      path: '/saving'
+      fullPath: '/saving'
+      preLoaderRoute: typeof SavingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/retirement': {
+      id: '/retirement'
+      path: '/retirement'
+      fullPath: '/retirement'
+      preLoaderRoute: typeof RetirementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/newsletter': {
+      id: '/newsletter'
+      path: '/newsletter'
+      fullPath: '/newsletter'
+      preLoaderRoute: typeof NewsletterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investing': {
+      id: '/investing'
+      path: '/investing'
+      fullPath: '/investing'
+      preLoaderRoute: typeof InvestingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/debt-taxes-insurance': {
+      id: '/debt-taxes-insurance'
+      path: '/debt-taxes-insurance'
+      fullPath: '/debt-taxes-insurance'
+      preLoaderRoute: typeof DebtTaxesInsuranceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/credit-cards': {
+      id: '/credit-cards'
+      path: '/credit-cards'
+      fullPath: '/credit-cards'
+      preLoaderRoute: typeof CreditCardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/budgeting': {
+      id: '/budgeting'
+      path: '/budgeting'
+      fullPath: '/budgeting'
+      preLoaderRoute: typeof BudgetingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/banking': {
+      id: '/banking'
+      path: '/banking'
+      fullPath: '/banking'
+      preLoaderRoute: typeof BankingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +393,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/savings-goal-calculator': {
+      id: '/tools/savings-goal-calculator'
+      path: '/tools/savings-goal-calculator'
+      fullPath: '/tools/savings-goal-calculator'
+      preLoaderRoute: typeof ToolsSavingsGoalCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/emergency-fund-calculator': {
+      id: '/tools/emergency-fund-calculator'
+      path: '/tools/emergency-fund-calculator'
+      fullPath: '/tools/emergency-fund-calculator'
+      preLoaderRoute: typeof ToolsEmergencyFundCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/credit-score-estimator': {
+      id: '/tools/credit-score-estimator'
+      path: '/tools/credit-score-estimator'
+      fullPath: '/tools/credit-score-estimator'
+      preLoaderRoute: typeof ToolsCreditScoreEstimatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/budget-planner': {
+      id: '/tools/budget-planner'
+      path: '/tools/budget-planner'
+      fullPath: '/tools/budget-planner'
+      preLoaderRoute: typeof ToolsBudgetPlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/budgeting/zero-based-budgeting': {
+      id: '/budgeting/zero-based-budgeting'
+      path: '/zero-based-budgeting'
+      fullPath: '/budgeting/zero-based-budgeting'
+      preLoaderRoute: typeof BudgetingZeroBasedBudgetingRouteImport
+      parentRoute: typeof BudgetingRoute
+    }
   }
 }
 
+interface BudgetingRouteChildren {
+  BudgetingZeroBasedBudgetingRoute: typeof BudgetingZeroBasedBudgetingRoute
+}
+
+const BudgetingRouteChildren: BudgetingRouteChildren = {
+  BudgetingZeroBasedBudgetingRoute: BudgetingZeroBasedBudgetingRoute,
+}
+
+const BudgetingRouteWithChildren = BudgetingRoute._addFileChildren(
+  BudgetingRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BankingRoute: BankingRoute,
+  BudgetingRoute: BudgetingRouteWithChildren,
+  ContactRoute: ContactRoute,
+  CreditCardsRoute: CreditCardsRoute,
+  DebtTaxesInsuranceRoute: DebtTaxesInsuranceRoute,
+  DisclaimerRoute: DisclaimerRoute,
+  InvestingRoute: InvestingRoute,
+  NewsletterRoute: NewsletterRoute,
+  PrivacyRoute: PrivacyRoute,
+  RetirementRoute: RetirementRoute,
+  SavingRoute: SavingRoute,
+  TermsRoute: TermsRoute,
+  ToolsBudgetPlannerRoute: ToolsBudgetPlannerRoute,
+  ToolsCreditScoreEstimatorRoute: ToolsCreditScoreEstimatorRoute,
+  ToolsEmergencyFundCalculatorRoute: ToolsEmergencyFundCalculatorRoute,
+  ToolsSavingsGoalCalculatorRoute: ToolsSavingsGoalCalculatorRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
