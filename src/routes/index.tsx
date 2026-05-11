@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Calculator, Wallet, Target, Gauge, BookOpen, TrendingUp, Sparkles } from "lucide-react";
+import { ArrowRight, Calculator, Wallet, Target, Gauge, BookOpen, TrendingUp, Sparkles, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { pillars } from "@/lib/pillars";
 import { PillarCard, ArticleCard, ToolCard } from "@/components/site/Cards";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
+import { JsonLd } from "@/components/site/JsonLd";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Honest, jargon-free money guides on budgeting, credit, investing, saving and more.",
+          "Plain-English guides on budgeting, credit cards, saving, investing, retirement, banking, and debt — plus free calculators that work without a signup.",
       },
     ],
   }),
@@ -56,7 +57,9 @@ function HomePage() {
             Your Complete Guide to Personal Finance — Built for Real Life
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Clear, honest money advice on budgeting, credit, investing and more. No jargon. No fluff.
+            Plain-English guides across seven money pillars — budgeting,
+            credit, saving, investing, retirement, banking, and debt — paired
+            with free calculators that give you a real answer in under a minute.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button asChild size="lg">
@@ -79,7 +82,7 @@ function HomePage() {
         <div className="flex items-end justify-between gap-4 flex-wrap">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-foreground">Everything You Need to Know About Money</h2>
-            <p className="mt-2 text-muted-foreground max-w-2xl">Seven pillars. Hundreds of guides. One honest voice.</p>
+            <p className="mt-2 text-muted-foreground max-w-2xl">Seven topic pillars covering every major decision you'll make with your money — each with deep-dive guides, glossaries and a matching free tool.</p>
           </div>
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -89,23 +92,31 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Featured */}
+      {/* Most Popular — visually distinct, manually curated */}
       <section className="mx-auto max-w-6xl px-4 md:px-6 py-8">
-        <div className="flex items-end justify-between gap-4 flex-wrap">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground">Most Popular Guides This Week</h2>
-          <Link to="/budgeting" className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1">
-            See all <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {featured.map(({ pillar, post }) => (
-            <ArticleCard
-              key={post.slug}
-              pillarSlug={pillar.slug}
-              post={post}
-              href={pillar.slug === "budgeting" ? `/budgeting/zero-based-budgeting` : `/${pillar.slug}`}
-            />
-          ))}
+        <div className="rounded-3xl border-2 border-primary/20 bg-gradient-to-br from-primary-soft/70 via-background to-background p-6 md:p-10">
+          <div className="flex items-end justify-between gap-4 flex-wrap">
+            <div>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+                <Flame className="h-3.5 w-3.5" /> Most Popular This Week
+              </span>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground">Reader Favorites</h2>
+              <p className="mt-2 text-muted-foreground max-w-2xl">Hand-picked by our editors — the guides readers shared, saved and came back to most this week.</p>
+            </div>
+            <Link to="/budgeting" className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1">
+              See all <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {featured.map(({ pillar, post }, i) => (
+              <div key={post.slug} className="relative">
+                <span className="absolute -top-3 -left-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-bold shadow-md">
+                  {i + 1}
+                </span>
+                <ArticleCard pillarSlug={pillar.slug} post={post} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -143,7 +154,6 @@ function HomePage() {
               key={`${p.slug}-${post.slug}`}
               pillarSlug={p.slug}
               post={post}
-              href={p.slug === "budgeting" ? `/budgeting/zero-based-budgeting` : `/${p.slug}`}
             />
           ))}
         </div>
@@ -153,9 +163,9 @@ function HomePage() {
       <section className="mx-auto max-w-6xl px-4 md:px-6 py-12">
         <div className="rounded-2xl border border-border bg-card p-8 md:p-10 grid md:grid-cols-3 gap-8">
           {[
-            { icon: BookOpen, title: "Guides not gimmicks", body: "Every article is written for someone who needs an answer, not a sales pitch." },
-            { icon: TrendingUp, title: "Updated continually", body: "We revisit our pillars monthly so the numbers stay current." },
-            { icon: Calculator, title: "Free, working tools", body: "Calculators that give you real numbers, not lead-gen forms." },
+            { icon: BookOpen, title: "Researched, not regurgitated", body: "Every guide cites primary sources — regulators, BLS, FRED, the IRS — not other blogs." },
+            { icon: TrendingUp, title: "Reviewed quarterly", body: "We revisit each pillar at least every 90 days so contribution limits, rates and rules stay current." },
+            { icon: Calculator, title: "Tools that actually compute", body: "Real calculators with the math shown — no email gates, no upsells, no lead-gen tricks." },
           ].map(({ icon: Icon, title, body }) => (
             <div key={title}>
               <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary-soft text-primary">
@@ -169,6 +179,36 @@ function HomePage() {
       </section>
 
       <NewsletterCTA />
+
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "MoneyMoodBoard",
+            url: "https://moneymoodboard.com",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://moneymoodboard.com/search?q={search_term_string}",
+              },
+              "query-input": "required name=search_term_string",
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "MoneyMoodBoard",
+            url: "https://moneymoodboard.com",
+            logo: "https://moneymoodboard.com/og-default.jpg",
+            sameAs: [
+              "https://twitter.com/moneymoodboard",
+              "https://www.linkedin.com/company/moneymoodboard",
+            ],
+          },
+        ]}
+      />
     </div>
   );
 }

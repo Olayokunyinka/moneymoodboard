@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Clock, type LucideIcon } from "lucide-react";
 import type { Pillar, ClusterPost, PillarSlug } from "@/lib/pillars";
+import { pillarHeroes, pillarHeroAlts } from "@/lib/pillar-extras";
+import { getArticleBody } from "@/lib/articles";
 import { PillarTag } from "./PillarTag";
 
 export function PillarCard({ pillar, count }: { pillar: Pillar; count?: number }) {
@@ -35,22 +37,37 @@ export function ArticleCard({
   href?: string;
 }) {
   const to = href ?? `/${pillarSlug}/${post.slug}`;
+  const body = getArticleBody(pillarSlug, post.slug);
+  const imageSrc = body?.featuredImage ?? pillarHeroes[pillarSlug];
+  const imageAlt = body?.featuredImageAlt ?? pillarHeroAlts[pillarSlug];
   return (
     <Link
       to={to as string}
-      className="group flex flex-col h-full rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/50"
+      className="group flex flex-col h-full overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/50"
     >
-      <div className="flex items-center gap-2">
-        <PillarTag slug={pillarSlug} asLink={false} />
-        <span className="text-xs text-muted-foreground">{post.type}</span>
+      <div className="aspect-[16/9] overflow-hidden bg-muted">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          loading="lazy"
+          width={800}
+          height={450}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
-      <h3 className="mt-3 text-base font-semibold leading-snug text-foreground group-hover:text-primary">
-        {post.title}
-      </h3>
-      <p className="mt-2 text-sm text-muted-foreground line-clamp-2 flex-1">{post.excerpt}</p>
-      <div className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
-        <Clock className="h-3.5 w-3.5" />
-        <span>{post.readMin} min read</span>
+      <div className="flex flex-1 flex-col p-5">
+        <div className="flex items-center gap-2">
+          <PillarTag slug={pillarSlug} asLink={false} />
+          <span className="text-xs text-muted-foreground">{post.type}</span>
+        </div>
+        <h3 className="mt-3 text-base font-semibold leading-snug text-foreground group-hover:text-primary">
+          {post.title}
+        </h3>
+        <p className="mt-2 text-sm text-muted-foreground line-clamp-2 flex-1">{post.excerpt}</p>
+        <div className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
+          <Clock className="h-3.5 w-3.5" />
+          <span>{post.readMin} min read</span>
+        </div>
       </div>
     </Link>
   );

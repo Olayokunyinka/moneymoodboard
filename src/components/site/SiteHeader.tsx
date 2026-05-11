@@ -5,15 +5,17 @@ import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { pillars } from "@/lib/pillars";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { SearchCommand } from "@/components/site/SearchCommand";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="MoneyMoodBoard home">
-          <img src={logo} alt="MoneyMoodBoard" className="h-9 w-auto" />
+          <img src={logo} alt="MoneyMoodBoard" width={144} height={36} className="h-9 w-auto" fetchPriority="high" decoding="async" />
         </Link>
 
         <nav aria-label="Main" className="hidden lg:flex items-center gap-1">
@@ -31,8 +33,18 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <button
+            aria-label="Search (press / or Cmd+K)"
+            onClick={() => setSearchOpen(true)}
+            className="hidden md:inline-flex items-center gap-2 h-9 rounded-md border border-border bg-background/60 pl-2.5 pr-1.5 text-sm text-muted-foreground hover:bg-muted transition-colors"
+          >
+            <Search className="h-4 w-4" />
+            <span className="hidden lg:inline">Search…</span>
+            <kbd className="ml-1 hidden lg:inline-flex h-5 items-center rounded border border-border bg-muted px-1.5 text-[10px] font-medium">⌘K</kbd>
+          </button>
+          <button
             aria-label="Search"
-            className="hidden md:inline-flex h-9 w-9 items-center justify-center rounded-md text-foreground/70 hover:bg-muted"
+            onClick={() => setSearchOpen(true)}
+            className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md text-foreground/70 hover:bg-muted"
           >
             <Search className="h-4 w-4" />
           </button>
@@ -90,6 +102,7 @@ export function SiteHeader() {
           </Sheet>
         </div>
       </div>
+      <SearchCommand open={searchOpen} onOpenChange={setSearchOpen} />
     </header>
   );
 }

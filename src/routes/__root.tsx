@@ -12,6 +12,7 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { JsonLd } from "@/components/site/JsonLd";
+import { AdSlot } from "@/components/site/AdSlot";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 
 const SITE_URL = "https://moneymoodboard.com";
@@ -73,6 +74,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
+const ADSENSE_CLIENT = import.meta.env.VITE_ADSENSE_CLIENT as string | undefined;
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -92,6 +96,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:image", content: `${SITE_URL}/og-default.jpg` },
+      ...(ADSENSE_CLIENT
+        ? [{ name: "google-adsense-account", content: ADSENSE_CLIENT }]
+        : []),
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -101,6 +108,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
       },
+    ],
+    scripts: [
+      ...(GA_ID
+        ? [
+            {
+              src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`,
+              async: true,
+            },
+            {
+              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`,
+            },
+          ]
+        : []),
+      ...(ADSENSE_CLIENT
+        ? [
+            {
+              src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`,
+              async: true,
+              crossOrigin: "anonymous" as const,
+            },
+          ]
+        : []),
     ],
   }),
   shellComponent: RootShell,
@@ -157,6 +186,9 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+      </div>
+      <div className="fixed inset-x-0 bottom-0 z-40 pointer-events-none">
+        <AdSlot location="anchor" className="mx-auto max-w-5xl" />
       </div>
       <SonnerToaster />
     </QueryClientProvider>

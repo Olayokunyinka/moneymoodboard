@@ -12,7 +12,8 @@ export function AdSlot({
     | "after-quick-answer"
     | "before-faq"
     | "after-author"
-    | "anchor";
+    | "anchor"
+    | "matched-content";
   className?: string;
 }) {
   const debug = import.meta.env.VITE_SHOW_AD_SLOTS === "true";

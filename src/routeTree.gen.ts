@@ -23,15 +23,21 @@ import { Route as CreditCardsRouteImport } from './routes/credit-cards'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BudgetingRouteImport } from './routes/budgeting'
 import { Route as BankingRouteImport } from './routes/banking'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as AboutIndexRouteImport } from './routes/about.index'
 import { Route as ToolsSavingsGoalCalculatorRouteImport } from './routes/tools.savings-goal-calculator'
+import { Route as ToolsRetirementSavingsCalculatorRouteImport } from './routes/tools.retirement-savings-calculator'
 import { Route as ToolsEmergencyFundCalculatorRouteImport } from './routes/tools.emergency-fund-calculator'
+import { Route as ToolsDebtPayoffCalculatorRouteImport } from './routes/tools.debt-payoff-calculator'
 import { Route as ToolsCreditScoreEstimatorRouteImport } from './routes/tools.credit-score-estimator'
+import { Route as ToolsCreditCardPayoffCalculatorRouteImport } from './routes/tools.credit-card-payoff-calculator'
+import { Route as ToolsCompoundInterestCalculatorRouteImport } from './routes/tools.compound-interest-calculator'
 import { Route as ToolsBudgetPlannerRouteImport } from './routes/tools.budget-planner'
-import { Route as BudgetingZeroBasedBudgetingRouteImport } from './routes/budgeting.zero-based-budgeting'
+import { Route as AboutYinkaOlayokunRouteImport } from './routes/about.yinka-olayokun'
 import { Route as PillarPostRouteImport } from './routes/$pillar.$post'
+import { Route as ApiPublicNewsletterRouteImport } from './routes/api/public/newsletter'
+import { Route as ApiPublicNewsletterCronRouteImport } from './routes/api/public/newsletter.cron'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -103,11 +109,6 @@ const BankingRoute = BankingRouteImport.update({
   path: '/banking',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -118,10 +119,21 @@ const ToolsIndexRoute = ToolsIndexRouteImport.update({
   path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/about/',
+  path: '/about/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ToolsSavingsGoalCalculatorRoute =
   ToolsSavingsGoalCalculatorRouteImport.update({
     id: '/tools/savings-goal-calculator',
     path: '/tools/savings-goal-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsRetirementSavingsCalculatorRoute =
+  ToolsRetirementSavingsCalculatorRouteImport.update({
+    id: '/tools/retirement-savings-calculator',
+    path: '/tools/retirement-savings-calculator',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ToolsEmergencyFundCalculatorRoute =
@@ -130,10 +142,28 @@ const ToolsEmergencyFundCalculatorRoute =
     path: '/tools/emergency-fund-calculator',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ToolsDebtPayoffCalculatorRoute =
+  ToolsDebtPayoffCalculatorRouteImport.update({
+    id: '/tools/debt-payoff-calculator',
+    path: '/tools/debt-payoff-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ToolsCreditScoreEstimatorRoute =
   ToolsCreditScoreEstimatorRouteImport.update({
     id: '/tools/credit-score-estimator',
     path: '/tools/credit-score-estimator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsCreditCardPayoffCalculatorRoute =
+  ToolsCreditCardPayoffCalculatorRouteImport.update({
+    id: '/tools/credit-card-payoff-calculator',
+    path: '/tools/credit-card-payoff-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ToolsCompoundInterestCalculatorRoute =
+  ToolsCompoundInterestCalculatorRouteImport.update({
+    id: '/tools/compound-interest-calculator',
+    path: '/tools/compound-interest-calculator',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ToolsBudgetPlannerRoute = ToolsBudgetPlannerRouteImport.update({
@@ -141,23 +171,31 @@ const ToolsBudgetPlannerRoute = ToolsBudgetPlannerRouteImport.update({
   path: '/tools/budget-planner',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BudgetingZeroBasedBudgetingRoute =
-  BudgetingZeroBasedBudgetingRouteImport.update({
-    id: '/zero-based-budgeting',
-    path: '/zero-based-budgeting',
-    getParentRoute: () => BudgetingRoute,
-  } as any)
+const AboutYinkaOlayokunRoute = AboutYinkaOlayokunRouteImport.update({
+  id: '/about/yinka-olayokun',
+  path: '/about/yinka-olayokun',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PillarPostRoute = PillarPostRouteImport.update({
   id: '/$pillar/$post',
   path: '/$pillar/$post',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicNewsletterRoute = ApiPublicNewsletterRouteImport.update({
+  id: '/api/public/newsletter',
+  path: '/api/public/newsletter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicNewsletterCronRoute = ApiPublicNewsletterCronRouteImport.update({
+  id: '/cron',
+  path: '/cron',
+  getParentRoute: () => ApiPublicNewsletterRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/banking': typeof BankingRoute
-  '/budgeting': typeof BudgetingRouteWithChildren
+  '/budgeting': typeof BudgetingRoute
   '/contact': typeof ContactRoute
   '/credit-cards': typeof CreditCardsRoute
   '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
@@ -171,18 +209,24 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/$pillar/$post': typeof PillarPostRoute
-  '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/about/yinka-olayokun': typeof AboutYinkaOlayokunRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
+  '/tools/compound-interest-calculator': typeof ToolsCompoundInterestCalculatorRoute
+  '/tools/credit-card-payoff-calculator': typeof ToolsCreditCardPayoffCalculatorRoute
   '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
+  '/tools/debt-payoff-calculator': typeof ToolsDebtPayoffCalculatorRoute
   '/tools/emergency-fund-calculator': typeof ToolsEmergencyFundCalculatorRoute
+  '/tools/retirement-savings-calculator': typeof ToolsRetirementSavingsCalculatorRoute
   '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
+  '/about/': typeof AboutIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/api/public/newsletter': typeof ApiPublicNewsletterRouteWithChildren
+  '/api/public/newsletter/cron': typeof ApiPublicNewsletterCronRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/banking': typeof BankingRoute
-  '/budgeting': typeof BudgetingRouteWithChildren
+  '/budgeting': typeof BudgetingRoute
   '/contact': typeof ContactRoute
   '/credit-cards': typeof CreditCardsRoute
   '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
@@ -196,19 +240,25 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/$pillar/$post': typeof PillarPostRoute
-  '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/about/yinka-olayokun': typeof AboutYinkaOlayokunRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
+  '/tools/compound-interest-calculator': typeof ToolsCompoundInterestCalculatorRoute
+  '/tools/credit-card-payoff-calculator': typeof ToolsCreditCardPayoffCalculatorRoute
   '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
+  '/tools/debt-payoff-calculator': typeof ToolsDebtPayoffCalculatorRoute
   '/tools/emergency-fund-calculator': typeof ToolsEmergencyFundCalculatorRoute
+  '/tools/retirement-savings-calculator': typeof ToolsRetirementSavingsCalculatorRoute
   '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
+  '/about': typeof AboutIndexRoute
   '/tools': typeof ToolsIndexRoute
+  '/api/public/newsletter': typeof ApiPublicNewsletterRouteWithChildren
+  '/api/public/newsletter/cron': typeof ApiPublicNewsletterCronRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/banking': typeof BankingRoute
-  '/budgeting': typeof BudgetingRouteWithChildren
+  '/budgeting': typeof BudgetingRoute
   '/contact': typeof ContactRoute
   '/credit-cards': typeof CreditCardsRoute
   '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
@@ -222,18 +272,24 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/$pillar/$post': typeof PillarPostRoute
-  '/budgeting/zero-based-budgeting': typeof BudgetingZeroBasedBudgetingRoute
+  '/about/yinka-olayokun': typeof AboutYinkaOlayokunRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
+  '/tools/compound-interest-calculator': typeof ToolsCompoundInterestCalculatorRoute
+  '/tools/credit-card-payoff-calculator': typeof ToolsCreditCardPayoffCalculatorRoute
   '/tools/credit-score-estimator': typeof ToolsCreditScoreEstimatorRoute
+  '/tools/debt-payoff-calculator': typeof ToolsDebtPayoffCalculatorRoute
   '/tools/emergency-fund-calculator': typeof ToolsEmergencyFundCalculatorRoute
+  '/tools/retirement-savings-calculator': typeof ToolsRetirementSavingsCalculatorRoute
   '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
+  '/about/': typeof AboutIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/api/public/newsletter': typeof ApiPublicNewsletterRouteWithChildren
+  '/api/public/newsletter/cron': typeof ApiPublicNewsletterCronRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
     | '/banking'
     | '/budgeting'
     | '/contact'
@@ -249,16 +305,22 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/$pillar/$post'
-    | '/budgeting/zero-based-budgeting'
+    | '/about/yinka-olayokun'
     | '/tools/budget-planner'
+    | '/tools/compound-interest-calculator'
+    | '/tools/credit-card-payoff-calculator'
     | '/tools/credit-score-estimator'
+    | '/tools/debt-payoff-calculator'
     | '/tools/emergency-fund-calculator'
+    | '/tools/retirement-savings-calculator'
     | '/tools/savings-goal-calculator'
+    | '/about/'
     | '/tools/'
+    | '/api/public/newsletter'
+    | '/api/public/newsletter/cron'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/banking'
     | '/budgeting'
     | '/contact'
@@ -274,16 +336,22 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/$pillar/$post'
-    | '/budgeting/zero-based-budgeting'
+    | '/about/yinka-olayokun'
     | '/tools/budget-planner'
+    | '/tools/compound-interest-calculator'
+    | '/tools/credit-card-payoff-calculator'
     | '/tools/credit-score-estimator'
+    | '/tools/debt-payoff-calculator'
     | '/tools/emergency-fund-calculator'
+    | '/tools/retirement-savings-calculator'
     | '/tools/savings-goal-calculator'
+    | '/about'
     | '/tools'
+    | '/api/public/newsletter'
+    | '/api/public/newsletter/cron'
   id:
     | '__root__'
     | '/'
-    | '/about'
     | '/banking'
     | '/budgeting'
     | '/contact'
@@ -299,19 +367,25 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/$pillar/$post'
-    | '/budgeting/zero-based-budgeting'
+    | '/about/yinka-olayokun'
     | '/tools/budget-planner'
+    | '/tools/compound-interest-calculator'
+    | '/tools/credit-card-payoff-calculator'
     | '/tools/credit-score-estimator'
+    | '/tools/debt-payoff-calculator'
     | '/tools/emergency-fund-calculator'
+    | '/tools/retirement-savings-calculator'
     | '/tools/savings-goal-calculator'
+    | '/about/'
     | '/tools/'
+    | '/api/public/newsletter'
+    | '/api/public/newsletter/cron'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
   BankingRoute: typeof BankingRoute
-  BudgetingRoute: typeof BudgetingRouteWithChildren
+  BudgetingRoute: typeof BudgetingRoute
   ContactRoute: typeof ContactRoute
   CreditCardsRoute: typeof CreditCardsRoute
   DebtTaxesInsuranceRoute: typeof DebtTaxesInsuranceRoute
@@ -325,11 +399,18 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   PillarPostRoute: typeof PillarPostRoute
+  AboutYinkaOlayokunRoute: typeof AboutYinkaOlayokunRoute
   ToolsBudgetPlannerRoute: typeof ToolsBudgetPlannerRoute
+  ToolsCompoundInterestCalculatorRoute: typeof ToolsCompoundInterestCalculatorRoute
+  ToolsCreditCardPayoffCalculatorRoute: typeof ToolsCreditCardPayoffCalculatorRoute
   ToolsCreditScoreEstimatorRoute: typeof ToolsCreditScoreEstimatorRoute
+  ToolsDebtPayoffCalculatorRoute: typeof ToolsDebtPayoffCalculatorRoute
   ToolsEmergencyFundCalculatorRoute: typeof ToolsEmergencyFundCalculatorRoute
+  ToolsRetirementSavingsCalculatorRoute: typeof ToolsRetirementSavingsCalculatorRoute
   ToolsSavingsGoalCalculatorRoute: typeof ToolsSavingsGoalCalculatorRoute
+  AboutIndexRoute: typeof AboutIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
+  ApiPublicNewsletterRoute: typeof ApiPublicNewsletterRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -432,13 +513,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BankingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -453,11 +527,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/': {
+      id: '/about/'
+      path: '/about'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/savings-goal-calculator': {
       id: '/tools/savings-goal-calculator'
       path: '/tools/savings-goal-calculator'
       fullPath: '/tools/savings-goal-calculator'
       preLoaderRoute: typeof ToolsSavingsGoalCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/retirement-savings-calculator': {
+      id: '/tools/retirement-savings-calculator'
+      path: '/tools/retirement-savings-calculator'
+      fullPath: '/tools/retirement-savings-calculator'
+      preLoaderRoute: typeof ToolsRetirementSavingsCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/emergency-fund-calculator': {
@@ -467,11 +555,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsEmergencyFundCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/debt-payoff-calculator': {
+      id: '/tools/debt-payoff-calculator'
+      path: '/tools/debt-payoff-calculator'
+      fullPath: '/tools/debt-payoff-calculator'
+      preLoaderRoute: typeof ToolsDebtPayoffCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tools/credit-score-estimator': {
       id: '/tools/credit-score-estimator'
       path: '/tools/credit-score-estimator'
       fullPath: '/tools/credit-score-estimator'
       preLoaderRoute: typeof ToolsCreditScoreEstimatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/credit-card-payoff-calculator': {
+      id: '/tools/credit-card-payoff-calculator'
+      path: '/tools/credit-card-payoff-calculator'
+      fullPath: '/tools/credit-card-payoff-calculator'
+      preLoaderRoute: typeof ToolsCreditCardPayoffCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/compound-interest-calculator': {
+      id: '/tools/compound-interest-calculator'
+      path: '/tools/compound-interest-calculator'
+      fullPath: '/tools/compound-interest-calculator'
+      preLoaderRoute: typeof ToolsCompoundInterestCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tools/budget-planner': {
@@ -481,12 +590,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsBudgetPlannerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/budgeting/zero-based-budgeting': {
-      id: '/budgeting/zero-based-budgeting'
-      path: '/zero-based-budgeting'
-      fullPath: '/budgeting/zero-based-budgeting'
-      preLoaderRoute: typeof BudgetingZeroBasedBudgetingRouteImport
-      parentRoute: typeof BudgetingRoute
+    '/about/yinka-olayokun': {
+      id: '/about/yinka-olayokun'
+      path: '/about/yinka-olayokun'
+      fullPath: '/about/yinka-olayokun'
+      preLoaderRoute: typeof AboutYinkaOlayokunRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/$pillar/$post': {
       id: '/$pillar/$post'
@@ -495,26 +604,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PillarPostRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/newsletter': {
+      id: '/api/public/newsletter'
+      path: '/api/public/newsletter'
+      fullPath: '/api/public/newsletter'
+      preLoaderRoute: typeof ApiPublicNewsletterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/newsletter/cron': {
+      id: '/api/public/newsletter/cron'
+      path: '/cron'
+      fullPath: '/api/public/newsletter/cron'
+      preLoaderRoute: typeof ApiPublicNewsletterCronRouteImport
+      parentRoute: typeof ApiPublicNewsletterRoute
+    }
   }
 }
 
-interface BudgetingRouteChildren {
-  BudgetingZeroBasedBudgetingRoute: typeof BudgetingZeroBasedBudgetingRoute
+interface ApiPublicNewsletterRouteChildren {
+  ApiPublicNewsletterCronRoute: typeof ApiPublicNewsletterCronRoute
 }
 
-const BudgetingRouteChildren: BudgetingRouteChildren = {
-  BudgetingZeroBasedBudgetingRoute: BudgetingZeroBasedBudgetingRoute,
+const ApiPublicNewsletterRouteChildren: ApiPublicNewsletterRouteChildren = {
+  ApiPublicNewsletterCronRoute: ApiPublicNewsletterCronRoute,
 }
 
-const BudgetingRouteWithChildren = BudgetingRoute._addFileChildren(
-  BudgetingRouteChildren,
-)
+const ApiPublicNewsletterRouteWithChildren =
+  ApiPublicNewsletterRoute._addFileChildren(ApiPublicNewsletterRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
   BankingRoute: BankingRoute,
-  BudgetingRoute: BudgetingRouteWithChildren,
+  BudgetingRoute: BudgetingRoute,
   ContactRoute: ContactRoute,
   CreditCardsRoute: CreditCardsRoute,
   DebtTaxesInsuranceRoute: DebtTaxesInsuranceRoute,
@@ -528,11 +649,18 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   PillarPostRoute: PillarPostRoute,
+  AboutYinkaOlayokunRoute: AboutYinkaOlayokunRoute,
   ToolsBudgetPlannerRoute: ToolsBudgetPlannerRoute,
+  ToolsCompoundInterestCalculatorRoute: ToolsCompoundInterestCalculatorRoute,
+  ToolsCreditCardPayoffCalculatorRoute: ToolsCreditCardPayoffCalculatorRoute,
   ToolsCreditScoreEstimatorRoute: ToolsCreditScoreEstimatorRoute,
+  ToolsDebtPayoffCalculatorRoute: ToolsDebtPayoffCalculatorRoute,
   ToolsEmergencyFundCalculatorRoute: ToolsEmergencyFundCalculatorRoute,
+  ToolsRetirementSavingsCalculatorRoute: ToolsRetirementSavingsCalculatorRoute,
   ToolsSavingsGoalCalculatorRoute: ToolsSavingsGoalCalculatorRoute,
+  AboutIndexRoute: AboutIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,
+  ApiPublicNewsletterRoute: ApiPublicNewsletterRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

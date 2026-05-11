@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Calculator, Wallet, Target, Gauge } from "lucide-react";
+import { Calculator, Wallet, Target, Gauge, TrendingDown, PiggyBank, CreditCard, LineChart } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { PageHero } from "@/components/site/PageHero";
 import { ToolCard } from "@/components/site/Cards";
@@ -22,6 +22,10 @@ const TOOLS = [
   { name: "Budget Planner", description: "Split your monthly income into a budget that actually works.", icon: Wallet, slug: "budget-planner" },
   { name: "Savings Goal Calculator", description: "See how long it'll take to hit any savings goal.", icon: Target, slug: "savings-goal-calculator" },
   { name: "Credit Score Estimator", description: "Estimate your FICO range from a few quick inputs.", icon: Gauge, slug: "credit-score-estimator" },
+  { name: "Debt Payoff Calculator", description: "Compare avalanche vs snowball and see your real payoff date.", icon: TrendingDown, slug: "debt-payoff-calculator" },
+  { name: "Retirement Savings Calculator", description: "Project your nest egg and find your monthly target.", icon: PiggyBank, slug: "retirement-savings-calculator" },
+  { name: "Credit Card Payoff Calculator", description: "See your real payoff date and the interest you save.", icon: CreditCard, slug: "credit-card-payoff-calculator" },
+  { name: "Compound Interest Calculator", description: "Project investment growth with monthly contributions.", icon: LineChart, slug: "compound-interest-calculator" },
 ];
 
 function ToolsHub() {

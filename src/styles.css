@@ -106,21 +106,22 @@
   --input: oklch(0.9 0.01 230);
   --ring: oklch(0.55 0.07 195);
 
-  /* Pillar tag colors (light bg + dark fg, all oklch) */
-  --pillar-budgeting: oklch(0.93 0.04 240);
-  --pillar-budgeting-fg: oklch(0.32 0.1 240);
-  --pillar-credit: oklch(0.93 0.05 25);
-  --pillar-credit-fg: oklch(0.4 0.13 25);
-  --pillar-investing: oklch(0.93 0.06 145);
-  --pillar-investing-fg: oklch(0.35 0.1 145);
-  --pillar-retirement: oklch(0.94 0.07 75);
-  --pillar-retirement-fg: oklch(0.42 0.12 70);
-  --pillar-saving: oklch(0.93 0.05 180);
-  --pillar-saving-fg: oklch(0.35 0.09 195);
-  --pillar-banking: oklch(0.93 0.05 305);
-  --pillar-banking-fg: oklch(0.38 0.12 305);
-  --pillar-debt: oklch(0.94 0.04 15);
-  --pillar-debt-fg: oklch(0.4 0.12 15);
+  /* Pillar tag colors — calibrated to brief hexes (#D6EAF8, #FADBD8, #D5E8D4,
+     #FDEBD0, #D1F2EB, #E8DAEF, #F9EBEA). Foreground darkened for AA contrast. */
+  --pillar-budgeting: oklch(0.93 0.03 240);   /* #D6EAF8 */
+  --pillar-budgeting-fg: oklch(0.36 0.11 245);
+  --pillar-credit: oklch(0.92 0.035 25);      /* #FADBD8 */
+  --pillar-credit-fg: oklch(0.42 0.14 25);
+  --pillar-investing: oklch(0.92 0.045 145);  /* #D5E8D4 */
+  --pillar-investing-fg: oklch(0.38 0.11 145);
+  --pillar-retirement: oklch(0.94 0.045 80);  /* #FDEBD0 */
+  --pillar-retirement-fg: oklch(0.44 0.12 70);
+  --pillar-saving: oklch(0.94 0.035 180);     /* #D1F2EB */
+  --pillar-saving-fg: oklch(0.38 0.09 195);
+  --pillar-banking: oklch(0.91 0.04 305);     /* #E8DAEF */
+  --pillar-banking-fg: oklch(0.4 0.12 305);
+  --pillar-debt: oklch(0.94 0.022 15);        /* #F9EBEA */
+  --pillar-debt-fg: oklch(0.42 0.13 15);
 
   --chart-1: oklch(0.55 0.07 195);
   --chart-2: oklch(0.6 0.118 184);

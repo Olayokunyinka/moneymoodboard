@@ -8,6 +8,10 @@ export function SiteFooter() {
     { name: "Budget Planner", slug: "budget-planner" },
     { name: "Savings Goal Calculator", slug: "savings-goal-calculator" },
     { name: "Credit Score Estimator", slug: "credit-score-estimator" },
+    { name: "Debt Payoff Calculator", slug: "debt-payoff-calculator" },
+    { name: "Retirement Savings Calculator", slug: "retirement-savings-calculator" },
+    { name: "Credit Card Payoff Calculator", slug: "credit-card-payoff-calculator" },
+    { name: "Compound Interest Calculator", slug: "compound-interest-calculator" },
   ];
 
   return (
@@ -17,8 +21,10 @@ export function SiteFooter() {
           <div className="md:col-span-2">
             <img src={logo} alt="MoneyMoodBoard" className="h-10 w-auto" />
             <p className="mt-4 text-sm text-muted-foreground max-w-sm">
-              Honest, jargon-free personal finance for people who want to take
-              control of their money without feeling overwhelmed.
+              Independent personal-finance guides and free calculators for
+              early earners, freelancers and first-time investors. Researched
+              against primary sources, reviewed quarterly, and written without
+              sales pitches.
             </p>
           </div>
 

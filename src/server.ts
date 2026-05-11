@@ -2,6 +2,34 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { getLegacyRedirect } from "./lib/legacy-redirects";
+
+function maybeLegacyRedirect(request: Request): Response | null {
+  const method = request.method.toUpperCase();
+  if (method !== "GET" && method !== "HEAD") return null;
+
+  const url = new URL(request.url);
+  const path = url.pathname;
+
+  // Skip API, assets, and anything that looks like a file (has extension).
+  if (path.startsWith("/api/") || path.startsWith("/assets/") || path.startsWith("/_build/")) {
+    return null;
+  }
+  const lastSeg = path.slice(path.lastIndexOf("/") + 1);
+  if (lastSeg.includes(".")) return null;
+
+  const target = getLegacyRedirect(path);
+  if (!target) return null;
+
+  const location = target + url.search;
+  return new Response(null, {
+    status: 301,
+    headers: {
+      Location: location,
+      "cache-control": "public, max-age=31536000",
+    },
+  });
+}
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -69,6 +97,8 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const redirect = maybeLegacyRedirect(request);
+      if (redirect) return redirect;
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
