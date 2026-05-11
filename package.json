@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "prebuild": "tsx scripts/generate-static.ts",
-    "build": "vite build && node scripts/build-vercel.mjs",
+    "build": "tsx scripts/generate-static.ts && vite build && node scripts/build-vercel.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
