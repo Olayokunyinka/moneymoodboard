@@ -14,6 +14,6 @@ export default defineConfig({
   ],
   tanstackStart: {
     type: "ssr",
-    providerEnvironmentName: "node",
+    providerEnvironmentName: "server",
   },
 });
