@@ -29,8 +29,8 @@ cpSync(resolve(dist, "client"), staticDir, { recursive: true });
 //    relative imports inside server.js still resolve)
 cpSync(resolve(dist, "server"), fnDir, { recursive: true });
 
-// Mark the function bundle as ESM so server.js (which uses import/export) loads correctly.
-writeFileSync(join(fnDir, "package.json"), JSON.stringify({ type: "module" }, null, 2));
+// Copy package.json for dependencies
+copyFileSync(resolve(root, "package.json"), join(fnDir, "package.json"));
 
 // 2b) Trace runtime dependencies of server.js using @vercel/nft and copy them
 //     into the function dir so externalized packages (h3-v2, etc.) resolve at runtime.
