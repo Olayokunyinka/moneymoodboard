@@ -26,15 +26,15 @@ mkdirSync(fnDir, { recursive: true });
 cpSync(resolve(dist, "client"), staticDir, { recursive: true });
 
 // 2) Copy server build into the function dir (preserve dist/server/* layout so
-//    relative imports inside index.js still resolve)
+//    relative imports inside server.js still resolve)
 cpSync(resolve(dist, "server"), fnDir, { recursive: true });
 
-// Copy package.json for dependencies
-copyFileSync(resolve(root, "package.json"), join(fnDir, "package.json"));
+// Mark the function bundle as ESM so server.js (which uses import/export) loads correctly.
+writeFileSync(join(fnDir, "package.json"), JSON.stringify({ type: "module" }, null, 2));
 
-// 3) Trace runtime dependencies of index.js using @vercel/nft and copy them
-//     into the function dir so externalized packages resolve at runtime.
-const serverEntry = resolve(fnDir, "index.js");
+// 2b) Trace runtime dependencies of server.js using @vercel/nft and copy them
+//     into the function dir so externalized packages (h3-v2, etc.) resolve at runtime.
+const serverEntry = resolve(fnDir, "server.js");
 const { fileList, warnings } = await nodeFileTrace([serverEntry], {
   base: root,
   processCwd: root,
