@@ -1,7 +1,10 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Calculator, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
+import { ToolExplainer } from "@/components/tools/ToolExplainer";
+import { toolContent } from "@/lib/tool-content";
 import { JsonLd } from "@/components/site/JsonLd";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { Button } from "@/components/ui/button";
@@ -19,6 +22,7 @@ export const Route = createFileRoute("/tools/compound-interest-calculator")({
       { property: "og:title", content: `${TITLE} — Free Investment Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Project your investment growth with compound interest, contributions, and inflation." },
     ],
+    links: [canonical("/tools/compound-interest-calculator"), ...hreflangLinks("/tools/compound-interest-calculator")],
   }),
   component: CompoundInterestCalculator,
 });
@@ -29,6 +33,8 @@ const fmt = (n: number) =>
   );
 
 function CompoundInterestCalculator() {
+  const tc = toolContent["compound-interest-calculator"];
+  const faqs = tc.faqs;
   const [principal, setPrincipal] = useState<number>(5000);
   const [monthly, setMonthly] = useState<number>(300);
   const [years, setYears] = useState<number>(30);
@@ -69,14 +75,6 @@ function CompoundInterestCalculator() {
     picks.add(r.length - 1);
     return Array.from(picks).sort((a, b) => a - b).map((i) => r[i]!);
   }, [result.rows]);
-
-  const faqs = [
-    { q: "What is compound interest, in plain English?", a: "Earning interest on your interest. Each period, the previous earnings join the principal and start earning their own interest. Over decades, this turns modest savings into life-changing sums — and it's why starting young is so much more powerful than saving more later." },
-    { q: "What return rate should I use?", a: "For long-term US stock investing, 7% real (after inflation) is a reasonable planning assumption. Bonds: 1–2% real. A balanced 60/40 portfolio: 4–5% real. Cash savings: usually negative real returns. Don't model 10%+ — that's the nominal long-term S&P average and ignores inflation." },
-    { q: "Why does the inflation-adjusted number matter?", a: "Because $1M in 30 years won't buy what $1M buys today. A 2.5% inflation rate cuts purchasing power roughly in half over 30 years. Always plan in 'real' (inflation-adjusted) dollars to know what your future money is actually worth." },
-    { q: "Monthly vs annual contributions — does it matter?", a: "Monthly contributions earn slightly more than the same total contributed once per year, because each dollar starts compounding sooner. The difference is small over short horizons but adds up over decades. Just contribute on the schedule you'll actually keep." },
-    { q: "What if I increase my contribution every year?", a: "Inflation-matching your contributions (raising them ~3% per year) keeps your real savings rate constant as your salary grows. This calculator uses a fixed monthly amount; in practice, every raise is a chance to raise your contribution." },
-  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 md:px-6 pt-6 pb-16">
@@ -250,6 +248,7 @@ function CompoundInterestCalculator() {
           Subtract any expected fees from your assumed return when modeling.
         </p>
       </article>
+      <ToolExplainer content={tc} />
 
       {/* FAQ */}
       <section className="mt-12 max-w-3xl">
@@ -299,6 +298,12 @@ function CompoundInterestCalculator() {
             applicationCategory: "FinanceApplication",
             operatingSystem: "Web",
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            url: "https://moneymoodboard.com/tools/compound-interest-calculator",
+            browserRequirements: "Requires JavaScript. Requires HTML5.",
+            isAccessibleForFree: true,
+            featureList: ["Compounding frequency options","Monthly contribution support","Long-term growth chart"],
+            inLanguage: "en-US",
+            publisher: { "@id": "https://moneymoodboard.com/#organization" },
           },
           {
             "@context": "https://schema.org",
@@ -309,6 +314,19 @@ function CompoundInterestCalculator() {
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
           },
+          ...(tc.howToSteps
+            ? [{
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                name: `How to use the ${TITLE}`,
+                step: tc.howToSteps.map((st, i) => ({
+                  "@type": "HowToStep",
+                  position: i + 1,
+                  name: st.name,
+                  text: st.text,
+                })),
+              }]
+            : []),
         ]}
       />
     </div>

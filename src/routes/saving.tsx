@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PillarHub } from "@/components/site/PillarHub";
 import { getPillar } from "@/lib/pillars";
 import { pillarHeroes } from "@/lib/pillar-extras";
-import { absUrl, canonical, ogImage } from "@/lib/seo";
+import { absUrl, canonical, ogImage , hreflangLinks } from "@/lib/seo";
 
 const pillar = getPillar("saving");
 const hero = pillarHeroes[pillar.slug];
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/saving")({
       { property: "og:url", content: absUrl(`/${pillar.slug}`) },
       ...ogImage(hero),
     ],
-    links: [canonical(`/${pillar.slug}`)],
+    links: [canonical(`/${pillar.slug}`), ...hreflangLinks(`/${pillar.slug}`)],
   }),
   component: () => <PillarHub pillar={pillar} />,
 });

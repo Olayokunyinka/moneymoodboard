@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { PageHero } from "@/components/site/PageHero";
 import { JsonLd } from "@/components/site/JsonLd";
 import { TableOfContents } from "@/components/site/TableOfContents";
-import { absUrl, canonical } from "@/lib/seo";
+import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
 const LAST_UPDATED = "May 11, 2026";
 const PATH = "/disclaimer";
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/disclaimer")({
       { property: "og:title", content: "Editorial Disclaimer | MoneyMoodBoard" },
       { property: "og:description", content: "Editorial standards, sources, and advertising/affiliate disclosures." },
     ],
-    links: [canonical(PATH)],
+    links: [canonical(PATH), ...hreflangLinks(PATH)],
   }),
   component: DisclaimerPage,
 });

@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { PageHero } from "@/components/site/PageHero";
 import { JsonLd } from "@/components/site/JsonLd";
 import { TableOfContents } from "@/components/site/TableOfContents";
-import { absUrl, canonical } from "@/lib/seo";
+import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
 const LAST_UPDATED = "May 11, 2026";
 const PATH = "/privacy";
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: "Privacy Policy | MoneyMoodBoard" },
       { property: "og:description", content: "Full privacy notice covering data collection, cookies, advertising, international transfers and your rights." },
     ],
-    links: [canonical(PATH)],
+    links: [canonical(PATH), ...hreflangLinks(PATH)],
   }),
   component: PrivacyPage,
 });

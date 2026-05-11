@@ -83,9 +83,9 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
             </Link>
             <span className="inline-flex items-center gap-1.5"><BookOpen className="h-4 w-4" />{totalGuides} guides</span>
             {published ? (
-              <span className="inline-flex items-center gap-1.5"><Calendar className="h-4 w-4" />Published {published}</span>
+              <span className="inline-flex items-center gap-1.5"><Calendar className="h-4 w-4" />Published <time dateTime={datePublishedIso}>{published}</time></span>
             ) : null}
-            <span className="inline-flex items-center gap-1.5"><CalendarCheck className="h-4 w-4" />Updated {updated}</span>
+            <span className="inline-flex items-center gap-1.5"><CalendarCheck className="h-4 w-4" />Updated <time dateTime={dateModifiedIso}>{updated}</time></span>
             <a href="#all-guides" className="text-primary font-medium hover:underline">Jump to all guides ↓</a>
           </div>
         }
@@ -314,25 +314,51 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
         data={[
           {
             "@context": "https://schema.org",
-            "@type": "Article",
-            headline: `${pillar.name}: The Complete Guide to Managing Your Money`,
+            "@type": "CollectionPage",
+            "@id": absUrl(`/${pillar.slug}#collection`),
+            name: `${pillar.name}: The Complete Guide to Managing Your Money`,
             description: pillar.whatIs,
-            image: absUrl(hero),
+            url: absUrl(`/${pillar.slug}`),
+            inLanguage: "en-US",
             datePublished: datePublishedIso,
             dateModified: dateModifiedIso,
-            inLanguage: "en-US",
+            primaryImageOfPage: {
+              "@type": "ImageObject",
+              url: absUrl(hero),
+              caption: heroAlt,
+              creditText: "MoneyMoodBoard",
+              creator: { "@id": absUrl("/#organization") },
+              license: "https://creativecommons.org/licenses/by-nc/4.0/",
+            },
+            isPartOf: { "@id": absUrl("/#website") },
+            about: {
+              "@type": "Thing",
+              name: pillar.name,
+            },
             author: {
               "@type": "Person",
+              "@id": absUrl("/about/yinka-olayokun#person"),
               name: "Yinka Olayokun",
-              jobTitle: "Founder & Editor",
               url: absUrl("/about/yinka-olayokun"),
             },
-            publisher: {
-              "@type": "Organization",
-              name: "MoneyMoodBoard",
-              logo: { "@type": "ImageObject", url: absUrl("/og-default.jpg") },
+            publisher: { "@id": absUrl("/#organization") },
+            speakable: {
+              "@type": "SpeakableSpecification",
+              cssSelector: ["#key-takeaways", "h1"],
             },
-            mainEntityOfPage: { "@type": "WebPage", "@id": absUrl(`/${pillar.slug}`) },
+            mainEntity: {
+              "@type": "ItemList",
+              name: `${pillar.name} Guides`,
+              numberOfItems: pillar.clusters.reduce((s, c) => s + c.posts.length, 0),
+              itemListElement: pillar.clusters
+                .flatMap((c) => c.posts)
+                .map((post, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  url: absUrl(`/${pillar.slug}/${post.slug}`),
+                  name: post.title,
+                })),
+            },
           },
           {
             "@context": "https://schema.org",
@@ -341,19 +367,6 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
               { "@type": "ListItem", position: 1, name: "Home", item: absUrl("/") },
               { "@type": "ListItem", position: 2, name: pillar.name, item: absUrl(`/${pillar.slug}`) },
             ],
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            name: `${pillar.name} Guides`,
-            itemListElement: pillar.clusters
-              .flatMap((c) => c.posts)
-              .map((post, i) => ({
-                "@type": "ListItem",
-                position: i + 1,
-                url: absUrl(`/${pillar.slug}/${post.slug}`),
-                name: post.title,
-              })),
           },
           {
             "@context": "https://schema.org",

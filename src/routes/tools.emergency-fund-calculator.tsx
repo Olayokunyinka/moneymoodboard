@@ -1,7 +1,10 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Calculator, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
+import { ToolExplainer } from "@/components/tools/ToolExplainer";
+import { toolContent } from "@/lib/tool-content";
 import { JsonLd } from "@/components/site/JsonLd";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { Button } from "@/components/ui/button";
@@ -21,6 +24,7 @@ export const Route = createFileRoute("/tools/emergency-fund-calculator")({
       { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Calculate exactly how much you should keep in your emergency fund based on your expenses and job stability." },
     ],
+    links: [canonical("/tools/emergency-fund-calculator"), ...hreflangLinks("/tools/emergency-fund-calculator")],
   }),
   component: EmergencyFundCalculator,
 });
@@ -33,6 +37,8 @@ const fmt = (n: number) =>
   );
 
 function EmergencyFundCalculator() {
+  const tc = toolContent["emergency-fund-calculator"];
+  const faqs = tc.faqs;
   const [expenses, setExpenses] = useState<number>(3500);
   const [savings, setSavings] = useState<number>(2000);
   const [monthsCoverage, setMonthsCoverage] = useState<number>(6);
@@ -48,13 +54,6 @@ function EmergencyFundCalculator() {
     const progress = target > 0 ? Math.min(100, (savings / target) * 100) : 0;
     return { target, gap, monthsToGoal, progress };
   }, [expenses, savings, monthsCoverage, contribution]);
-
-  const faqs = [
-    { q: "Should I include rent and utilities?", a: "Yes — only essentials. Include rent/mortgage, utilities, groceries, transportation, insurance and minimum debt payments. Exclude dining out, subscriptions, and entertainment." },
-    { q: "Where should I keep my emergency fund?", a: "A high-yield savings account at an FDIC-insured bank. You want safety, instant liquidity, and a competitive interest rate." },
-    { q: "What if I have debt?", a: "Build a small starter fund of $1,000 first, then aggressively pay off debt above ~7% APR, then return to fully funding the emergency fund." },
-    { q: "How fast should I build it?", a: "Aim to complete it within 12 months. If that's not feasible, prioritize the first one month of coverage as quickly as possible." },
-  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 md:px-6 pt-6 pb-16">
@@ -276,6 +275,7 @@ function EmergencyFundCalculator() {
           on the worst day of your year, exactly when you need it.
         </p>
       </article>
+      <ToolExplainer content={tc} />
 
       {/* FAQ */}
       <section className="mt-12 max-w-3xl">
@@ -329,6 +329,12 @@ function EmergencyFundCalculator() {
             applicationCategory: "FinanceApplication",
             operatingSystem: "Web",
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            url: "https://moneymoodboard.com/tools/emergency-fund-calculator",
+            browserRequirements: "Requires JavaScript. Requires HTML5.",
+            isAccessibleForFree: true,
+            featureList: ["Personalised target by job stability","Funding timeline projection","Monthly contribution plan"],
+            inLanguage: "en-US",
+            publisher: { "@id": "https://moneymoodboard.com/#organization" },
           },
           {
             "@context": "https://schema.org",
@@ -339,6 +345,19 @@ function EmergencyFundCalculator() {
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
           },
+          ...(tc.howToSteps
+            ? [{
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                name: `How to use the ${TITLE}`,
+                step: tc.howToSteps.map((st, i) => ({
+                  "@type": "HowToStep",
+                  position: i + 1,
+                  name: st.name,
+                  text: st.text,
+                })),
+              }]
+            : []),
         ]}
       />
     </div>

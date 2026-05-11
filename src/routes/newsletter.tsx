@@ -1,3 +1,4 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { CheckCircle2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
@@ -12,6 +13,7 @@ export const Route = createFileRoute("/newsletter")({
       { property: "og:title", content: "Free Weekly Newsletter | MoneyMoodBoard" },
       { property: "og:description", content: "Practical money tips, new guides and tool launches — delivered weekly. Free." },
     ],
+    links: [canonical("/newsletter"), ...hreflangLinks("/newsletter")],
   }),
   component: NewsletterPage,
 });

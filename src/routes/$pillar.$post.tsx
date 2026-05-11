@@ -13,7 +13,9 @@ import { RelatedReads } from "@/components/site/RelatedReads";
 import { findPost, type ClusterPost, type Pillar } from "@/lib/pillars";
 import { getArticleBody, type ArticleBody } from "@/lib/articles";
 import { pillarHeroes, pillarHeroAlts } from "@/lib/pillar-extras";
-import { absUrl, canonical, ogImage, toAbsUrl } from "@/lib/seo";
+import { absUrl, canonical, ogImage, toAbsUrl, hreflangLinks, localHeroFor } from "@/lib/seo";
+import { findEntitiesInText, entitySlug } from "@/lib/entities";
+import { buildPaa } from "@/lib/paa";
 
 export const Route = createFileRoute("/$pillar/$post")({
   loader: ({ params }) => {
@@ -28,7 +30,8 @@ export const Route = createFileRoute("/$pillar/$post")({
     const path = `/${pillar.slug}/${post.slug}`;
     const title = `${post.title} | MoneyMoodBoard`;
     const desc = (body?.summary ?? post.excerpt).slice(0, 158);
-    const heroImg = body?.featuredImage ?? pillarHeroes[pillar.slug];
+    const assets = localHeroFor(pillar.slug, post.slug);
+    const ogImg = assets.card;
     return {
       meta: [
         { title },
@@ -44,9 +47,19 @@ export const Route = createFileRoute("/$pillar/$post")({
               { property: "article:author", content: "Yinka Olayokun" },
             ]
           : []),
-        ...ogImage(heroImg),
+        ...ogImage(ogImg),
       ],
-      links: [canonical(path)],
+      links: [
+        canonical(path),
+        ...hreflangLinks(path),
+        {
+          rel: "preload",
+          as: "image",
+          href: assets.avif1600,
+          type: "image/avif",
+          fetchpriority: "high",
+        } as unknown as { rel: string; href: string },
+      ],
     };
   },
   component: ClusterPostPage,
@@ -82,8 +95,9 @@ function ClusterPostPage() {
     .filter((p) => p.slug !== post.slug)
     .slice(0, 3);
   const path = `/${pillar.slug}/${post.slug}`;
-  const heroImg = body?.featuredImage ?? pillarHeroes[pillar.slug];
   const heroAlt = body?.featuredImageAlt ?? pillarHeroAlts[pillar.slug];
+  const assets = localHeroFor(pillar.slug, post.slug);
+  const heroImg = assets.jpg1600;
 
   const autoFaqs = [
     {
@@ -92,8 +106,27 @@ function ClusterPostPage() {
     },
   ];
   const faqs = body?.faqs?.length ? body.faqs : autoFaqs;
+  const paaItems = buildPaa(pillar, post, body);
   const published = body ? formatDate(body.published) : null;
   const updated = body ? formatDate(body.updated) : "May 2026";
+  const reviewedIso = body?.reviewed ?? body?.updated;
+  const reviewed = reviewedIso ? formatDate(reviewedIso) : null;
+  const reviewedBy = body?.reviewedBy ?? "Yinka Olayokun";
+
+  // Build entity mentions for knowledge-graph linkage.
+  const bodyText = [
+    body?.summary ?? post.excerpt,
+    ...(body?.keyTakeaways ?? []),
+    ...(body?.sections ?? []).flatMap((s) => [
+      s.heading,
+      ...(s.paragraphs ?? []),
+      ...(s.bullets ?? []),
+      ...(s.orderedList ?? []),
+      s.callout?.body ?? "",
+    ]),
+    ...(body?.faqs ?? []).flatMap((f) => [f.q, f.a]),
+  ].join(" ");
+  const mentionedEntities = findEntitiesInText(bodyText);
 
   return (
     <div className="mx-auto max-w-6xl px-4 md:px-6 pt-6 pb-20">
@@ -124,15 +157,29 @@ function ClusterPostPage() {
           </Link>
           {published ? (
             <span className="inline-flex items-center gap-1.5">
-              <Calendar className="h-4 w-4" /> Published {published}
+              <Calendar className="h-4 w-4" /> Published{" "}
+              <time dateTime={body!.published}>{published}</time>
             </span>
           ) : null}
           <span className="inline-flex items-center gap-1.5">
-            <CalendarCheck className="h-4 w-4" /> Updated {updated}
+            <CalendarCheck className="h-4 w-4" /> Updated{" "}
+            <time dateTime={body?.updated ?? "2026-05-10"}>{updated}</time>
           </span>
           <span className="inline-flex items-center gap-1.5">
             <Clock className="h-4 w-4" /> {post.readMin} min read
           </span>
+          {reviewed && reviewedIso ? (
+            <span className="inline-flex items-center gap-1.5">
+              <CalendarCheck className="h-4 w-4" /> Reviewed{" "}
+              <time dateTime={reviewedIso}>{reviewed}</time> by{" "}
+              <Link
+                to="/about/yinka-olayokun"
+                className="font-medium text-foreground hover:text-primary hover:underline"
+              >
+                {reviewedBy}
+              </Link>
+            </span>
+          ) : null}
         </div>
         <div className="mt-4">
           <ShareButtons title={post.title} path={path} />
@@ -141,14 +188,30 @@ function ClusterPostPage() {
 
       {/* Featured image */}
       <figure className="mt-6 overflow-hidden rounded-2xl border border-border">
-        <img
-          src={heroImg}
-          alt={heroAlt}
-          width={1600}
-          height={896}
-          fetchPriority="high"
-          className="aspect-[16/9] w-full object-cover"
-        />
+        <picture>
+          <source
+            type="image/avif"
+            srcSet={`${assets.avif800} 800w, ${assets.avif1600} 1600w`}
+            sizes="(min-width: 768px) 768px, 100vw"
+          />
+          <source
+            type="image/webp"
+            srcSet={`${assets.webp800} 800w, ${assets.webp1600} 1600w`}
+            sizes="(min-width: 768px) 768px, 100vw"
+          />
+          <img
+            src={assets.jpg1600}
+            srcSet={`${assets.jpg800} 800w, ${assets.jpg1600} 1600w`}
+            sizes="(min-width: 768px) 768px, 100vw"
+            alt={heroAlt}
+            width={1600}
+            height={896}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            className="aspect-[16/9] w-full object-cover"
+          />
+        </picture>
       </figure>
 
       {body ? (
@@ -199,9 +262,21 @@ function ClusterPostPage() {
           ) : null}
 
           {/* Article body */}
-          <article className="mt-10 space-y-10">
+          <article
+            className="mt-10 space-y-10"
+            itemScope
+            itemType="https://schema.org/Article"
+          >
+            <meta itemProp="headline" content={post.title} />
+            <meta itemProp="datePublished" content={body.published} />
+            <meta itemProp="dateModified" content={body.updated} />
             {body.sections.map((s, idx) => (
-              <section key={s.heading} id={tocSlug(s.heading)} className="scroll-mt-20">
+              <section
+                key={s.heading}
+                id={tocSlug(s.heading)}
+                className="scroll-mt-20"
+                itemProp="articleSection"
+              >
                 <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
                   {s.heading}
                 </h2>
@@ -231,6 +306,35 @@ function ClusterPostPage() {
                     ))}
                   </ol>
                 ) : null}
+                {s.subSections?.length
+                  ? s.subSections.map((sub) => (
+                      <div key={sub.heading} className="mt-6">
+                        <h3
+                          id={tocSlug(`${s.heading}-${sub.heading}`)}
+                          className="text-xl font-semibold tracking-tight text-foreground scroll-mt-20"
+                        >
+                          {sub.heading}
+                        </h3>
+                        {sub.paragraphs?.map((p, i) => (
+                          <p
+                            key={i}
+                            className="mt-3 text-base leading-7 text-foreground/85"
+                          >
+                            {p}
+                          </p>
+                        ))}
+                        {sub.bullets?.length ? (
+                          <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/85">
+                            {sub.bullets.map((b, i) => (
+                              <li key={i} className="leading-7">
+                                {b}
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
+                      </div>
+                    ))
+                  : null}
                 {s.callout ? (
                   <aside className="mt-6 rounded-2xl border-l-4 border-primary bg-primary-soft/60 p-5">
                     {s.callout.title ? (
@@ -331,7 +435,32 @@ function ClusterPostPage() {
 
       <AdSlot location="before-faq" />
 
-      {/* FAQ */}
+      {/* People also ask — entity & sibling-derived */}
+      {paaItems.length ? (
+        <section className="mt-12">
+          <h2 className="text-2xl font-bold">People also ask</h2>
+          <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">
+            {paaItems.map((f, i) => (
+              <details
+                key={f.q}
+                className="group p-5 [&_summary::-webkit-details-marker]:hidden"
+                open={i === 0}
+              >
+                <summary className="flex cursor-pointer items-start justify-between gap-4 font-semibold text-foreground">
+                  <span>{f.q}</span>
+                  <span
+                    aria-hidden
+                    className="mt-1 inline-block h-2 w-2 shrink-0 rotate-45 border-r-2 border-b-2 border-primary transition-transform group-open:-rotate-135"
+                  />
+                </summary>
+                <p className="mt-3 text-muted-foreground leading-7">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {/* Manual / curated FAQ */}
       <section className="mt-12">
         <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
         <dl className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card">
@@ -357,8 +486,29 @@ function ClusterPostPage() {
         <NewsletterCTA />
       </div>
 
-      <JsonLd
-        data={[
+      {(() => {
+        const howToSection = body?.sections.find(
+          (s) => (s.orderedList?.length ?? 0) >= 3,
+        );
+        const howToSchema =
+          body && howToSection
+            ? {
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                name: howToSection.heading,
+                description: body.summary,
+                image: toAbsUrl(heroImg),
+                totalTime: `PT${Math.max(5, post.readMin)}M`,
+                step: howToSection.orderedList!.map((text, i) => ({
+                  "@type": "HowToStep",
+                  position: i + 1,
+                  name: `Step ${i + 1}`,
+                  text,
+                })),
+              }
+            : null;
+
+        const data: Record<string, unknown>[] = [
           {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
@@ -370,9 +520,25 @@ function ClusterPostPage() {
               width: 1600,
               height: 900,
               ...(body?.featuredImageAlt ? { caption: body.featuredImageAlt } : {}),
+              creditText: "MoneyMoodBoard",
+              creator: { "@id": absUrl("/#organization") },
+              copyrightHolder: { "@id": absUrl("/#organization") },
+              license: "https://creativecommons.org/licenses/by-nc/4.0/",
+              acquireLicensePage: absUrl("/contact"),
             },
             datePublished: body?.published ?? "2026-05-01",
             dateModified: body?.updated ?? "2026-05-10",
+            ...(reviewedIso
+              ? {
+                  dateReviewed: reviewedIso,
+                  reviewedBy: {
+                    "@type": "Person",
+                    "@id": absUrl("/about/yinka-olayokun#person"),
+                    name: reviewedBy,
+                  },
+                }
+              : {}),
+            isBasedOn: absUrl("/methodology"),
             inLanguage: "en-US",
             wordCount: body
               ? body.sections.reduce(
@@ -384,20 +550,27 @@ function ClusterPostPage() {
             keywords: [pillar.name, post.title].join(", "),
             author: {
               "@type": "Person",
+              "@id": absUrl("/about/yinka-olayokun#person"),
               name: "Yinka Olayokun",
               jobTitle: "Founder & Editor",
               url: absUrl("/about/yinka-olayokun"),
             },
-            publisher: {
-              "@type": "Organization",
-              name: "MoneyMoodBoard",
-              logo: {
-                "@type": "ImageObject",
-                url: absUrl("/og-default.jpg"),
-              },
-            },
+            publisher: { "@id": absUrl("/#organization") },
+            isPartOf: { "@id": absUrl("/#website") },
             mainEntityOfPage: { "@type": "WebPage", "@id": absUrl(path) },
             articleSection: pillar.name,
+            about: mentionedEntities.slice(0, 5).map((e) => ({
+              "@type": "Thing",
+              name: e.name,
+              sameAs: e.sameAs,
+            })),
+            mentions: mentionedEntities.map((e) => ({
+              "@type": "DefinedTerm",
+              "@id": absUrl(`/glossary#${entitySlug(e)}`),
+              name: e.name,
+              sameAs: e.sameAs,
+              inDefinedTermSet: { "@id": absUrl("/glossary#termset") },
+            })),
             speakable: {
               "@type": "SpeakableSpecification",
               cssSelector: ["#quick-answer", "#key-takeaways", "h1"],
@@ -420,14 +593,21 @@ function ClusterPostPage() {
           {
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: faqs.map((f) => ({
-              "@type": "Question",
-              name: f.q,
-              acceptedAnswer: { "@type": "Answer", text: f.a },
-            })),
+            mainEntity: [...paaItems, ...faqs]
+              .filter(
+                (f, i, arr) =>
+                  arr.findIndex((g) => g.q.toLowerCase() === f.q.toLowerCase()) === i,
+              )
+              .map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
           },
-        ]}
-      />
+        ];
+        if (howToSchema) data.push(howToSchema);
+        return <JsonLd data={data} />;
+      })()}
     </div>
   );
 }

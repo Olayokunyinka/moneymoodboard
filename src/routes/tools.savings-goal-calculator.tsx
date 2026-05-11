@@ -1,7 +1,10 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Target, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
+import { ToolExplainer } from "@/components/tools/ToolExplainer";
+import { toolContent } from "@/lib/tool-content";
 import { JsonLd } from "@/components/site/JsonLd";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { Button } from "@/components/ui/button";
@@ -20,6 +23,7 @@ export const Route = createFileRoute("/tools/savings-goal-calculator")({
       { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "See exactly how long your goal will take, with or without interest." },
     ],
+    links: [canonical("/tools/savings-goal-calculator"), ...hreflangLinks("/tools/savings-goal-calculator")],
   }),
   component: SavingsGoalCalculator,
 });
@@ -30,6 +34,8 @@ const fmt = (n: number) =>
   );
 
 function SavingsGoalCalculator() {
+  const tc = toolContent["savings-goal-calculator"];
+  const faqs = tc.faqs;
   const [goal, setGoal] = useState<number>(10000);
   const [starting, setStarting] = useState<number>(1000);
   const [monthly, setMonthly] = useState<number>(400);
@@ -60,13 +66,6 @@ function SavingsGoalCalculator() {
 
   const years = isFinite(result.months) ? Math.floor(result.months / 12) : 0;
   const remMonths = isFinite(result.months) ? result.months % 12 : 0;
-
-  const faqs = [
-    { q: "Does interest really matter for short-term goals?", a: "For goals under 2 years, interest adds maybe a few percent. For goals over 5 years, compounding becomes meaningful — a 5% APY can shave months off your timeline." },
-    { q: "Where should I park the money?", a: "For goals within 5 years, a high-yield savings account (4–5% APY at top online banks). For goals over 5 years, consider a brokerage account with a low-cost index fund — but only if you can stomach short-term volatility." },
-    { q: "What if I can't save the monthly amount every month?", a: "The calculator assumes a consistent contribution. If your income is variable, set the monthly amount to your worst-case minimum and treat anything extra as bonus progress." },
-    { q: "Should I include money I already have?", a: "Only count cash earmarked for this specific goal — not your emergency fund or money assigned to other priorities." },
-  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 md:px-6 pt-6 pb-16">
@@ -217,6 +216,7 @@ function SavingsGoalCalculator() {
           bank is FDIC-insured.
         </p>
       </article>
+      <ToolExplainer content={tc} />
 
       {/* FAQ */}
       <section className="mt-12 max-w-3xl">
@@ -266,6 +266,12 @@ function SavingsGoalCalculator() {
             applicationCategory: "FinanceApplication",
             operatingSystem: "Web",
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            url: "https://moneymoodboard.com/tools/savings-goal-calculator",
+            browserRequirements: "Requires JavaScript. Requires HTML5.",
+            isAccessibleForFree: true,
+            featureList: ["Goal-based monthly target","APY compounding projection","Timeline visualisation"],
+            inLanguage: "en-US",
+            publisher: { "@id": "https://moneymoodboard.com/#organization" },
           },
           {
             "@context": "https://schema.org",
@@ -276,6 +282,19 @@ function SavingsGoalCalculator() {
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
           },
+          ...(tc.howToSteps
+            ? [{
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                name: `How to use the ${TITLE}`,
+                step: tc.howToSteps.map((st, i) => ({
+                  "@type": "HowToStep",
+                  position: i + 1,
+                  name: st.name,
+                  text: st.text,
+                })),
+              }]
+            : []),
         ]}
       />
     </div>

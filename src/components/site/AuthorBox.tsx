@@ -58,6 +58,17 @@ export function AuthorBox({
           >
             Read author profile <ArrowRight className="h-3.5 w-3.5" />
           </Link>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Reviewed under our{" "}
+            <Link to="/editorial-policy" className="text-primary hover:underline">
+              editorial policy
+            </Link>{" "}
+            and{" "}
+            <Link to="/fact-checking-policy" className="text-primary hover:underline">
+              fact-checking standards
+            </Link>
+            .
+          </p>
         </div>
       </div>
     </aside>

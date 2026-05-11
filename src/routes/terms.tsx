@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { PageHero } from "@/components/site/PageHero";
 import { JsonLd } from "@/components/site/JsonLd";
 import { TableOfContents } from "@/components/site/TableOfContents";
-import { absUrl, canonical } from "@/lib/seo";
+import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
 const LAST_UPDATED = "May 11, 2026";
 const PATH = "/terms";
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/terms")({
       { property: "og:title", content: "Terms of Use | MoneyMoodBoard" },
       { property: "og:description", content: "Read the terms governing your use of MoneyMoodBoard." },
     ],
-    links: [canonical(PATH)],
+    links: [canonical(PATH), ...hreflangLinks(PATH)],
   }),
   component: TermsPage,
 });

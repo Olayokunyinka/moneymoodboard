@@ -1,3 +1,4 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact | MoneyMoodBoard" },
       { property: "og:description", content: "Get in touch with the MoneyMoodBoard editorial team." },
     ],
+    links: [canonical("/contact"), ...hreflangLinks("/contact")],
   }),
   component: ContactPage,
 });

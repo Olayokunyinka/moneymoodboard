@@ -1,7 +1,10 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Wallet, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
+import { ToolExplainer } from "@/components/tools/ToolExplainer";
+import { toolContent } from "@/lib/tool-content";
 import { JsonLd } from "@/components/site/JsonLd";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { Button } from "@/components/ui/button";
@@ -19,6 +22,7 @@ export const Route = createFileRoute("/tools/budget-planner")({
       { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Drop in your income and split it the smart way with the 50/30/20 rule." },
     ],
+    links: [canonical("/tools/budget-planner"), ...hreflangLinks("/tools/budget-planner")],
   }),
   component: BudgetPlanner,
 });
@@ -29,6 +33,8 @@ const fmt = (n: number) =>
   );
 
 function BudgetPlanner() {
+  const tc = toolContent["budget-planner"];
+  const faqs = tc.faqs;
   const [income, setIncome] = useState<number>(5000);
   const [needs, setNeeds] = useState<number>(50);
   const [wants, setWants] = useState<number>(30);
@@ -41,13 +47,6 @@ function BudgetPlanner() {
       savings: (income * savings) / 100,
     };
   }, [income, needs, wants, savings]);
-
-  const faqs = [
-    { q: "What is the 50/30/20 rule?", a: "It's a simple budgeting framework that splits after-tax income into 50% needs (rent, utilities, groceries, minimum debt), 30% wants (dining out, subscriptions, hobbies), and 20% savings and extra debt payoff." },
-    { q: "Should I use gross or net income?", a: "Use net (take-home) income — what actually lands in your account after taxes and benefits. The 50/30/20 split is calibrated for after-tax cash." },
-    { q: "What if my needs are more than 50%?", a: "In high cost-of-living cities this is common. Drop the wants share to 20% and keep saving at 20%, or aim to bring needs back under 50% over 12–24 months by changing housing or transportation." },
-    { q: "Where should the savings 20% go?", a: "First a starter emergency fund of $1,000, then high-interest debt above ~7% APR, then a full 3–6 month emergency fund, then retirement and long-term investing." },
-  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 md:px-6 pt-6 pb-16">
@@ -224,6 +223,7 @@ function BudgetPlanner() {
           killer of every high earner's wealth.
         </p>
       </article>
+      <ToolExplainer content={tc} />
 
       {/* FAQ */}
       <section className="mt-12 max-w-3xl">
@@ -277,6 +277,12 @@ function BudgetPlanner() {
             applicationCategory: "FinanceApplication",
             operatingSystem: "Web",
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            url: "https://moneymoodboard.com/tools/budget-planner",
+            browserRequirements: "Requires JavaScript. Requires HTML5.",
+            isAccessibleForFree: true,
+            featureList: ["50/30/20 split","Custom percentage allocations","Live monthly dollar breakdown"],
+            inLanguage: "en-US",
+            publisher: { "@id": "https://moneymoodboard.com/#organization" },
           },
           {
             "@context": "https://schema.org",
@@ -287,6 +293,19 @@ function BudgetPlanner() {
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
           },
+          ...(tc.howToSteps
+            ? [{
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                name: `How to use the ${TITLE}`,
+                step: tc.howToSteps.map((st, i) => ({
+                  "@type": "HowToStep",
+                  position: i + 1,
+                  name: st.name,
+                  text: st.text,
+                })),
+              }]
+            : []),
         ]}
       />
     </div>

@@ -12,6 +12,8 @@ export type SearchEntry = {
 const STATIC_PAGES: SearchEntry[] = [
   { title: "Home", url: "/", group: "Pages" },
   { title: "Free Money Tools", url: "/tools", group: "Pages", keywords: "calculator" },
+  { title: "Topical Map", url: "/topics", group: "Pages", keywords: "sitemap index map" },
+  { title: "Personal Finance Glossary", url: "/glossary", group: "Pages", keywords: "definitions terms dictionary" },
   { title: "About MoneyMoodBoard", url: "/about", group: "Pages" },
   { title: "About Yinka Olayokun", url: "/about/yinka-olayokun", group: "Pages", keywords: "author editor" },
   { title: "Free Newsletter", url: "/newsletter", group: "Pages" },

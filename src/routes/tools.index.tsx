@@ -1,3 +1,4 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { Calculator, Wallet, Target, Gauge, TrendingDown, PiggyBank, CreditCard, LineChart } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
@@ -13,6 +14,7 @@ export const Route = createFileRoute("/tools/")({
       { property: "og:title", content: "Free Money Tools & Calculators | MoneyMoodBoard" },
       { property: "og:description", content: "Free, no-signup calculators for emergency funds, budgeting, savings goals and credit scores." },
     ],
+    links: [canonical("/tools"), ...hreflangLinks("/tools")],
   }),
   component: ToolsHub,
 });

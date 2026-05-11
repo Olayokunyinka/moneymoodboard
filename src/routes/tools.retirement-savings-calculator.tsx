@@ -1,7 +1,10 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Calculator, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
+import { ToolExplainer } from "@/components/tools/ToolExplainer";
+import { toolContent } from "@/lib/tool-content";
 import { JsonLd } from "@/components/site/JsonLd";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { Button } from "@/components/ui/button";
@@ -19,6 +22,7 @@ export const Route = createFileRoute("/tools/retirement-savings-calculator")({
       { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Project your retirement nest egg and find your monthly savings target." },
     ],
+    links: [canonical("/tools/retirement-savings-calculator"), ...hreflangLinks("/tools/retirement-savings-calculator")],
   }),
   component: RetirementSavingsCalculator,
 });
@@ -29,6 +33,8 @@ const fmt = (n: number) =>
   );
 
 function RetirementSavingsCalculator() {
+  const tc = toolContent["retirement-savings-calculator"];
+  const faqs = tc.faqs;
   const [currentAge, setCurrentAge] = useState<number>(32);
   const [retireAge, setRetireAge] = useState<number>(65);
   const [currentSavings, setCurrentSavings] = useState<number>(25000);
@@ -62,14 +68,6 @@ function RetirementSavingsCalculator() {
   }, [currentAge, retireAge, currentSavings, monthly, returnRate, income, replacementPct, withdrawRate]);
 
   const onTrack = result.gap <= 0;
-
-  const faqs = [
-    { q: "What's the 4% rule?", a: "A long-running guideline that withdrawing 4% of your nest egg in year one of retirement, then adjusting that dollar amount for inflation each year, has historically had a very high probability of lasting 30 years. More recent research suggests 3.3–4% is safer for early retirees with longer horizons." },
-    { q: "Should I count Social Security?", a: "Yes, but conservatively. Estimate your benefit at ssa.gov, then reduce your replacement target by that monthly amount. For workers under 50, planning on 70–80% of the projected benefit is prudent." },
-    { q: "What return rate should I assume?", a: "Long-term US stock market returns have averaged ~10% nominal and ~7% real (after inflation). For a balanced 70/30 portfolio, 6–7% real is a reasonable planning assumption. Don't model 10%+ — you'll undersave." },
-    { q: "401(k), IRA, Roth — which first?", a: "1) 401(k) up to your employer match (free money). 2) High-interest debt. 3) Max a Roth IRA if eligible. 4) Back to 401(k) up to the annual limit. 5) HSA if available. 6) Taxable brokerage." },
-    { q: "What if I'm starting late?", a: "Catch-up contributions for ages 50+ let you put an extra $7,500 into a 401(k) and $1,000 into an IRA each year. Combine that with delaying Social Security to 70 (which boosts your benefit ~24%) and downsizing housing." },
-  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 md:px-6 pt-6 pb-16">
@@ -262,6 +260,7 @@ function RetirementSavingsCalculator() {
           Plan on 10% and you'll undersave by half.
         </p>
       </article>
+      <ToolExplainer content={tc} />
 
       {/* FAQ */}
       <section className="mt-12 max-w-3xl">
@@ -311,6 +310,12 @@ function RetirementSavingsCalculator() {
             applicationCategory: "FinanceApplication",
             operatingSystem: "Web",
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            url: "https://moneymoodboard.com/tools/retirement-savings-calculator",
+            browserRequirements: "Requires JavaScript. Requires HTML5.",
+            isAccessibleForFree: true,
+            featureList: ["Nest egg projection","Monthly contribution target","Retirement age planning"],
+            inLanguage: "en-US",
+            publisher: { "@id": "https://moneymoodboard.com/#organization" },
           },
           {
             "@context": "https://schema.org",
@@ -321,6 +326,19 @@ function RetirementSavingsCalculator() {
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
           },
+          ...(tc.howToSteps
+            ? [{
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                name: `How to use the ${TITLE}`,
+                step: tc.howToSteps.map((st, i) => ({
+                  "@type": "HowToStep",
+                  position: i + 1,
+                  name: st.name,
+                  text: st.text,
+                })),
+              }]
+            : []),
         ]}
       />
     </div>

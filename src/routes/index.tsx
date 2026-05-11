@@ -1,3 +1,4 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Calculator, Wallet, Target, Gauge, BookOpen, TrendingUp, Sparkles, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,19 +10,20 @@ import { JsonLd } from "@/components/site/JsonLd";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "MoneyMoodBoard — Personal Finance Guides, Tools & Tips" },
+      { title: "MoneyMoodBoard — Independent Personal-Finance Guides for U.S. Earners" },
       {
         name: "description",
         content:
-          "Free personal finance guides on budgeting, credit cards, investing, saving and retirement. Built for beginners and beyond.",
+          "Independent personal-finance publication: plain-English guides across budgeting, credit, saving, investing, retirement, banking and debt — paired with free no-signup calculators.",
       },
-      { property: "og:title", content: "MoneyMoodBoard — Personal Finance Guides, Tools & Tips" },
+      { property: "og:title", content: "MoneyMoodBoard — Independent Personal-Finance Guides for U.S. Earners" },
       {
         property: "og:description",
         content:
           "Plain-English guides on budgeting, credit cards, saving, investing, retirement, banking, and debt — plus free calculators that work without a signup.",
       },
     ],
+    links: [canonical("/"), ...hreflangLinks("/")],
   }),
   component: HomePage,
 });
@@ -181,33 +183,26 @@ function HomePage() {
       <NewsletterCTA />
 
       <JsonLd
-        data={[
-          {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            name: "MoneyMoodBoard",
-            url: "https://moneymoodboard.com",
-            potentialAction: {
-              "@type": "SearchAction",
-              target: {
-                "@type": "EntryPoint",
-                urlTemplate: "https://moneymoodboard.com/search?q={search_term_string}",
-              },
-              "query-input": "required name=search_term_string",
-            },
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "@id": "https://moneymoodboard.com/#homepage",
+          name: "MoneyMoodBoard — Independent Personal-Finance Guides for U.S. Earners",
+          url: "https://moneymoodboard.com/",
+          inLanguage: "en-US",
+          isPartOf: { "@id": "https://moneymoodboard.com/#website" },
+          about: pillars.map((p) => ({ "@type": "Thing", name: p.name })),
+          mainEntity: {
+            "@type": "ItemList",
+            name: "Personal Finance Pillars",
+            itemListElement: pillars.map((p, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              url: `https://moneymoodboard.com/${p.slug}`,
+              name: p.name,
+            })),
           },
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "MoneyMoodBoard",
-            url: "https://moneymoodboard.com",
-            logo: "https://moneymoodboard.com/og-default.jpg",
-            sameAs: [
-              "https://twitter.com/moneymoodboard",
-              "https://www.linkedin.com/company/moneymoodboard",
-            ],
-          },
-        ]}
+        }}
       />
     </div>
   );

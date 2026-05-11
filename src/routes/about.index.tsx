@@ -4,7 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { JsonLd } from "@/components/site/JsonLd";
 import yinkaPhoto from "@/assets/yinka-olayokun.jpg";
-import { absUrl } from "@/lib/seo";
+import { absUrl, canonical, hreflangLinks } from "@/lib/seo";
 
 export const Route = createFileRoute("/about/")({
   head: () => ({
@@ -14,6 +14,7 @@ export const Route = createFileRoute("/about/")({
       { property: "og:title", content: "About MoneyMoodBoard" },
       { property: "og:description", content: "Smarter money decisions for your real life — built by founder Yinka Olayokun." },
     ],
+    links: [canonical("/about"), ...hreflangLinks("/about")],
   }),
   component: AboutPage,
 });

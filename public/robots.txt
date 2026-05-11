@@ -7,7 +7,6 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /drafts/
 Disallow: /*?*utm_
-Crawl-delay: 1
 
 User-agent: GPTBot
 Allow: /
@@ -57,5 +56,5 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: https://moneymoodboard.com/sitemap.xml
+Sitemap: https://moneymoodboard.com/sitemap-index.xml
 Host: moneymoodboard.com

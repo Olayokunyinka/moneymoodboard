@@ -6,7 +6,7 @@ import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { JsonLd } from "@/components/site/JsonLd";
 import { ArticleCard } from "@/components/site/Cards";
 import yinkaPhoto from "@/assets/yinka-olayokun.jpg";
-import { absUrl, canonical, ogImage } from "@/lib/seo";
+import { absUrl, canonical, ogImage , hreflangLinks } from "@/lib/seo";
 import { articleBodies } from "@/lib/articles";
 import { findPost, type PillarSlug } from "@/lib/pillars";
 
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/about/yinka-olayokun")({
       { property: "og:url", content: absUrl("/about/yinka-olayokun") },
       ...ogImage(yinkaPhoto),
     ],
-    links: [canonical("/about/yinka-olayokun")],
+    links: [canonical("/about/yinka-olayokun"), ...hreflangLinks("/about/yinka-olayokun")],
   }),
   component: AuthorPage,
 });
@@ -206,28 +206,41 @@ function AuthorPage() {
           {
             "@context": "https://schema.org",
             "@type": "ProfilePage",
+            "@id": absUrl("/about/yinka-olayokun#profile"),
+            url: absUrl("/about/yinka-olayokun"),
+            inLanguage: "en-US",
+            isPartOf: { "@type": "WebSite", "@id": absUrl("/#website") },
             mainEntity: {
               "@type": "Person",
+              "@id": absUrl("/about/yinka-olayokun#person"),
               name: "Yinka Olayokun",
+              givenName: "Yinka",
+              familyName: "Olayokun",
               jobTitle: "Founder & Editor",
-              image: absUrl(yinkaPhoto),
+              image: {
+                "@type": "ImageObject",
+                url: absUrl(yinkaPhoto),
+                width: 800,
+                height: 800,
+              },
               email: "mailto:hello@moneymoodboard.com",
               url: absUrl("/about/yinka-olayokun"),
-              worksFor: {
-                "@type": "Organization",
-                name: "MoneyMoodBoard",
-                url: absUrl("/"),
-              },
+              worksFor: { "@id": absUrl("/#organization") },
               knowsAbout: [
                 "Personal finance",
                 "Credit building",
+                "Credit repair",
                 "Debt repayment",
                 "Budgeting",
                 "Index-fund investing",
+                "Roth IRA",
+                "401(k)",
                 "Retirement planning",
-                "Banking",
-                "Insurance basics",
+                "High-yield savings accounts",
+                "FDIC insurance",
+                "Money & mental health",
               ],
+              knowsLanguage: "English",
               description:
                 "Founder and editor of MoneyMoodBoard. Writes plain-English personal-finance guides on credit, debt, budgeting, investing, banking and retirement.",
             },

@@ -58,8 +58,17 @@ export function SiteFooter() {
             <h3 className="text-sm font-semibold text-foreground">Company</h3>
             <ul className="mt-3 space-y-2 text-sm">
               <li><Link to="/about" className="text-muted-foreground hover:text-primary">About</Link></li>
+              <li><Link to="/topics" className="text-muted-foreground hover:text-primary">Topical Map</Link></li>
+              <li><Link to="/glossary" className="text-muted-foreground hover:text-primary">Glossary</Link></li>
               <li><Link to="/contact" className="text-muted-foreground hover:text-primary">Contact</Link></li>
               <li><Link to="/newsletter" className="text-muted-foreground hover:text-primary">Newsletter</Link></li>
+            </ul>
+            <h3 className="mt-6 text-sm font-semibold text-foreground">Editorial</h3>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li><Link to="/editorial-policy" className="text-muted-foreground hover:text-primary">Editorial policy</Link></li>
+              <li><Link to="/fact-checking-policy" className="text-muted-foreground hover:text-primary">Fact-checking</Link></li>
+              <li><Link to="/corrections" className="text-muted-foreground hover:text-primary">Corrections</Link></li>
+              <li><Link to="/methodology" className="text-muted-foreground hover:text-primary">Methodology</Link></li>
             </ul>
             <h3 className="mt-6 text-sm font-semibold text-foreground">Legal</h3>
             <ul className="mt-3 space-y-2 text-sm">

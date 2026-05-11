@@ -1,7 +1,10 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Calculator, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
+import { ToolExplainer } from "@/components/tools/ToolExplainer";
+import { toolContent } from "@/lib/tool-content";
 import { JsonLd } from "@/components/site/JsonLd";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { Button } from "@/components/ui/button";
@@ -20,6 +23,7 @@ export const Route = createFileRoute("/tools/credit-card-payoff-calculator")({
       { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Find your real credit-card payoff date and the interest you'll save." },
     ],
+    links: [canonical("/tools/credit-card-payoff-calculator"), ...hreflangLinks("/tools/credit-card-payoff-calculator")],
   }),
   component: CreditCardPayoffCalculator,
 });
@@ -55,6 +59,8 @@ function paymentByMonths(balance: number, apr: number, months: number) {
 }
 
 function CreditCardPayoffCalculator() {
+  const tc = toolContent["credit-card-payoff-calculator"];
+  const faqs = tc.faqs;
   const [balance, setBalance] = useState<number>(5500);
   const [apr, setApr] = useState<number>(22);
   const [mode, setMode] = useState<Mode>("fixed");
@@ -78,14 +84,6 @@ function CreditCardPayoffCalculator() {
     const monthsSaved = Math.max(0, (isFinite(minPlan.months) ? minPlan.months : 600) - chosen.months);
     return { minPlan, chosen, minPayment, requiredPayment, interestSaved, monthsSaved };
   }, [balance, apr, mode, payment, months, minPercent]);
-
-  const faqs = [
-    { q: "Why does paying only the minimum take so long?", a: "Minimum payments are usually 1–3% of the balance, designed to keep you in debt for years. On a $5,000 balance at 22% APR with 2% minimums, you'll pay roughly 30+ years and over $10,000 in interest. Paying any flat amount above the minimum dramatically shortens that." },
-    { q: "Should I get a 0% balance transfer card?", a: "If your credit is good (670+) and you can realistically pay off the balance during the 12–21 month promo period, yes. Calculate the transfer fee (typically 3–5%) into the savings — it usually still wins versus 20%+ APR. Make a written payoff plan before you transfer." },
-    { q: "What's a credit card consolidation loan?", a: "A personal loan that pays off your cards and replaces them with one fixed monthly payment at a lower APR (typically 8–15% for good credit). It only works if you don't run the cards back up — most people who do are back in debt within two years." },
-    { q: "Will paying off my card boost my credit score?", a: "Yes, often by 20–50 points. Credit utilization (balance ÷ limit) is the second-largest factor in your FICO score. Dropping it from 50%+ to under 10% can move the needle quickly — usually within one statement cycle." },
-    { q: "Should I close the card after paying it off?", a: "Usually no. Keeping a paid-off card open preserves your available credit (good for utilization) and your average account age (good for length-of-credit-history). Close only if there's an annual fee you don't want to pay." },
-  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 md:px-6 pt-6 pb-16">
@@ -278,6 +276,7 @@ function CreditCardPayoffCalculator() {
           is straightforward; the discipline is the work.
         </p>
       </article>
+      <ToolExplainer content={tc} />
 
       {/* FAQ */}
       <section className="mt-12 max-w-3xl">
@@ -327,6 +326,12 @@ function CreditCardPayoffCalculator() {
             applicationCategory: "FinanceApplication",
             operatingSystem: "Web",
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            url: "https://moneymoodboard.com/tools/credit-card-payoff-calculator",
+            browserRequirements: "Requires JavaScript. Requires HTML5.",
+            isAccessibleForFree: true,
+            featureList: ["Payoff timeline","Interest cost forecast","Custom payment scenarios"],
+            inLanguage: "en-US",
+            publisher: { "@id": "https://moneymoodboard.com/#organization" },
           },
           {
             "@context": "https://schema.org",
@@ -337,6 +342,19 @@ function CreditCardPayoffCalculator() {
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
           },
+          ...(tc.howToSteps
+            ? [{
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                name: `How to use the ${TITLE}`,
+                step: tc.howToSteps.map((st, i) => ({
+                  "@type": "HowToStep",
+                  position: i + 1,
+                  name: st.name,
+                  text: st.text,
+                })),
+              }]
+            : []),
         ]}
       />
     </div>

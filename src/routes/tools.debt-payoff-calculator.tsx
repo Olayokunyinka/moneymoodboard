@@ -1,7 +1,10 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Calculator, ShieldCheck, Plus, Trash2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
+import { ToolExplainer } from "@/components/tools/ToolExplainer";
+import { toolContent } from "@/lib/tool-content";
 import { JsonLd } from "@/components/site/JsonLd";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { Button } from "@/components/ui/button";
@@ -19,6 +22,7 @@ export const Route = createFileRoute("/tools/debt-payoff-calculator")({
       { property: "og:title", content: `${TITLE} — Avalanche vs Snowball | MoneyMoodBoard` },
       { property: "og:description", content: "Compare avalanche vs snowball debt payoff methods side-by-side and see your real payoff date." },
     ],
+    links: [canonical("/tools/debt-payoff-calculator"), ...hreflangLinks("/tools/debt-payoff-calculator")],
   }),
   component: DebtPayoffCalculator,
 });
@@ -66,6 +70,8 @@ function simulate(debts: Debt[], extra: number, method: Method) {
 }
 
 function DebtPayoffCalculator() {
+  const tc = toolContent["debt-payoff-calculator"];
+  const faqs = tc.faqs;
   const [debts, setDebts] = useState<Debt[]>([
     { id: "1", name: "Credit Card", balance: 5500, apr: 22, minimum: 150 },
     { id: "2", name: "Car Loan", balance: 8200, apr: 6.5, minimum: 220 },
@@ -89,14 +95,6 @@ function DebtPayoffCalculator() {
     const totalBalance = valid.reduce((sum, d) => sum + d.balance, 0);
     return { a, s, chosen, totalBalance };
   }, [debts, extra, method]);
-
-  const faqs = [
-    { q: "What's the difference between avalanche and snowball?", a: "Avalanche pays off the highest-APR debt first to minimize interest. Snowball pays off the smallest balance first to build psychological momentum from quick wins. Avalanche saves more money; snowball usually wins on motivation." },
-    { q: "Which method is better?", a: "Mathematically, avalanche almost always saves more interest. Behaviorally, snowball has higher completion rates in studies. If you've abandoned debt plans before, choose snowball. If you're disciplined and the gap is large, choose avalanche." },
-    { q: "Should I pay off debt or invest?", a: "Pay anything above ~7–8% APR before investing — that's typically a higher guaranteed return than the stock market. Below that, run both in parallel." },
-    { q: "Does paying off debt help my credit score?", a: "Yes — lowering credit card balances drops your utilization, which is the second-largest factor in your FICO score. Loan payoffs help less but improve your debt-to-income for future applications." },
-    { q: "Should I close cards after paying them off?", a: "Usually no. Closing a card lowers your available credit and can hurt utilization. Keep them open with a small recurring charge unless they have an annual fee." },
-  ];
 
   return (
     <div className="mx-auto max-w-4xl px-4 md:px-6 pt-6 pb-16">
@@ -277,6 +275,7 @@ function DebtPayoffCalculator() {
           back the most.
         </p>
       </article>
+      <ToolExplainer content={tc} />
 
       {/* FAQ */}
       <section className="mt-12 max-w-3xl">
@@ -326,6 +325,12 @@ function DebtPayoffCalculator() {
             applicationCategory: "FinanceApplication",
             operatingSystem: "Web",
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            url: "https://moneymoodboard.com/tools/debt-payoff-calculator",
+            browserRequirements: "Requires JavaScript. Requires HTML5.",
+            isAccessibleForFree: true,
+            featureList: ["Avalanche vs snowball comparison","Payoff date forecast","Interest saved calculator"],
+            inLanguage: "en-US",
+            publisher: { "@id": "https://moneymoodboard.com/#organization" },
           },
           {
             "@context": "https://schema.org",
@@ -336,6 +341,19 @@ function DebtPayoffCalculator() {
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
           },
+          ...(tc.howToSteps
+            ? [{
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                name: `How to use the ${TITLE}`,
+                step: tc.howToSteps.map((st, i) => ({
+                  "@type": "HowToStep",
+                  position: i + 1,
+                  name: st.name,
+                  text: st.text,
+                })),
+              }]
+            : []),
         ]}
       />
     </div>

@@ -9,15 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TopicsRouteImport } from './routes/topics'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SavingRouteImport } from './routes/saving'
 import { Route as RetirementRouteImport } from './routes/retirement'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as NewsletterRouteImport } from './routes/newsletter'
+import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as InvestingRouteImport } from './routes/investing'
+import { Route as GlossaryRouteImport } from './routes/glossary'
+import { Route as FactCheckingPolicyRouteImport } from './routes/fact-checking-policy'
+import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as DebtTaxesInsuranceRouteImport } from './routes/debt-taxes-insurance'
 import { Route as CreditCardsRouteImport } from './routes/credit-cards'
+import { Route as CorrectionsRouteImport } from './routes/corrections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BudgetingRouteImport } from './routes/budgeting'
 import { Route as BankingRouteImport } from './routes/banking'
@@ -35,8 +41,15 @@ import { Route as ToolsBudgetPlannerRouteImport } from './routes/tools.budget-pl
 import { Route as AboutYinkaOlayokunRouteImport } from './routes/about.yinka-olayokun'
 import { Route as PillarPostRouteImport } from './routes/$pillar.$post'
 import { Route as ApiPublicNewsletterRouteImport } from './routes/api/public/newsletter'
+import { Route as PillarVsMatchupRouteImport } from './routes/$pillar.vs.$matchup'
+import { Route as PillarBestForPersonaRouteImport } from './routes/$pillar.best-for.$persona'
 import { Route as ApiPublicNewsletterCronRouteImport } from './routes/api/public/newsletter.cron'
 
+const TopicsRoute = TopicsRouteImport.update({
+  id: '/topics',
+  path: '/topics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -62,9 +75,29 @@ const NewsletterRoute = NewsletterRouteImport.update({
   path: '/newsletter',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MethodologyRoute = MethodologyRouteImport.update({
+  id: '/methodology',
+  path: '/methodology',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InvestingRoute = InvestingRouteImport.update({
   id: '/investing',
   path: '/investing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GlossaryRoute = GlossaryRouteImport.update({
+  id: '/glossary',
+  path: '/glossary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FactCheckingPolicyRoute = FactCheckingPolicyRouteImport.update({
+  id: '/fact-checking-policy',
+  path: '/fact-checking-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditorialPolicyRoute = EditorialPolicyRouteImport.update({
+  id: '/editorial-policy',
+  path: '/editorial-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DisclaimerRoute = DisclaimerRouteImport.update({
@@ -80,6 +113,11 @@ const DebtTaxesInsuranceRoute = DebtTaxesInsuranceRouteImport.update({
 const CreditCardsRoute = CreditCardsRouteImport.update({
   id: '/credit-cards',
   path: '/credit-cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorrectionsRoute = CorrectionsRouteImport.update({
+  id: '/corrections',
+  path: '/corrections',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -174,6 +212,16 @@ const ApiPublicNewsletterRoute = ApiPublicNewsletterRouteImport.update({
   path: '/api/public/newsletter',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PillarVsMatchupRoute = PillarVsMatchupRouteImport.update({
+  id: '/$pillar/vs/$matchup',
+  path: '/$pillar/vs/$matchup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PillarBestForPersonaRoute = PillarBestForPersonaRouteImport.update({
+  id: '/$pillar/best-for/$persona',
+  path: '/$pillar/best-for/$persona',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicNewsletterCronRoute = ApiPublicNewsletterCronRouteImport.update({
   id: '/cron',
   path: '/cron',
@@ -185,15 +233,21 @@ export interface FileRoutesByFullPath {
   '/banking': typeof BankingRoute
   '/budgeting': typeof BudgetingRoute
   '/contact': typeof ContactRoute
+  '/corrections': typeof CorrectionsRoute
   '/credit-cards': typeof CreditCardsRoute
   '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
+  '/fact-checking-policy': typeof FactCheckingPolicyRoute
+  '/glossary': typeof GlossaryRoute
   '/investing': typeof InvestingRoute
+  '/methodology': typeof MethodologyRoute
   '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/retirement': typeof RetirementRoute
   '/saving': typeof SavingRoute
   '/terms': typeof TermsRoute
+  '/topics': typeof TopicsRoute
   '/$pillar/$post': typeof PillarPostRoute
   '/about/yinka-olayokun': typeof AboutYinkaOlayokunRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
@@ -206,6 +260,8 @@ export interface FileRoutesByFullPath {
   '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
   '/about/': typeof AboutIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/$pillar/best-for/$persona': typeof PillarBestForPersonaRoute
+  '/$pillar/vs/$matchup': typeof PillarVsMatchupRoute
   '/api/public/newsletter': typeof ApiPublicNewsletterRouteWithChildren
   '/api/public/newsletter/cron': typeof ApiPublicNewsletterCronRoute
 }
@@ -214,15 +270,21 @@ export interface FileRoutesByTo {
   '/banking': typeof BankingRoute
   '/budgeting': typeof BudgetingRoute
   '/contact': typeof ContactRoute
+  '/corrections': typeof CorrectionsRoute
   '/credit-cards': typeof CreditCardsRoute
   '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
+  '/fact-checking-policy': typeof FactCheckingPolicyRoute
+  '/glossary': typeof GlossaryRoute
   '/investing': typeof InvestingRoute
+  '/methodology': typeof MethodologyRoute
   '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/retirement': typeof RetirementRoute
   '/saving': typeof SavingRoute
   '/terms': typeof TermsRoute
+  '/topics': typeof TopicsRoute
   '/$pillar/$post': typeof PillarPostRoute
   '/about/yinka-olayokun': typeof AboutYinkaOlayokunRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
@@ -235,6 +297,8 @@ export interface FileRoutesByTo {
   '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
   '/about': typeof AboutIndexRoute
   '/tools': typeof ToolsIndexRoute
+  '/$pillar/best-for/$persona': typeof PillarBestForPersonaRoute
+  '/$pillar/vs/$matchup': typeof PillarVsMatchupRoute
   '/api/public/newsletter': typeof ApiPublicNewsletterRouteWithChildren
   '/api/public/newsletter/cron': typeof ApiPublicNewsletterCronRoute
 }
@@ -244,15 +308,21 @@ export interface FileRoutesById {
   '/banking': typeof BankingRoute
   '/budgeting': typeof BudgetingRoute
   '/contact': typeof ContactRoute
+  '/corrections': typeof CorrectionsRoute
   '/credit-cards': typeof CreditCardsRoute
   '/debt-taxes-insurance': typeof DebtTaxesInsuranceRoute
   '/disclaimer': typeof DisclaimerRoute
+  '/editorial-policy': typeof EditorialPolicyRoute
+  '/fact-checking-policy': typeof FactCheckingPolicyRoute
+  '/glossary': typeof GlossaryRoute
   '/investing': typeof InvestingRoute
+  '/methodology': typeof MethodologyRoute
   '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/retirement': typeof RetirementRoute
   '/saving': typeof SavingRoute
   '/terms': typeof TermsRoute
+  '/topics': typeof TopicsRoute
   '/$pillar/$post': typeof PillarPostRoute
   '/about/yinka-olayokun': typeof AboutYinkaOlayokunRoute
   '/tools/budget-planner': typeof ToolsBudgetPlannerRoute
@@ -265,6 +335,8 @@ export interface FileRoutesById {
   '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
   '/about/': typeof AboutIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/$pillar/best-for/$persona': typeof PillarBestForPersonaRoute
+  '/$pillar/vs/$matchup': typeof PillarVsMatchupRoute
   '/api/public/newsletter': typeof ApiPublicNewsletterRouteWithChildren
   '/api/public/newsletter/cron': typeof ApiPublicNewsletterCronRoute
 }
@@ -275,15 +347,21 @@ export interface FileRouteTypes {
     | '/banking'
     | '/budgeting'
     | '/contact'
+    | '/corrections'
     | '/credit-cards'
     | '/debt-taxes-insurance'
     | '/disclaimer'
+    | '/editorial-policy'
+    | '/fact-checking-policy'
+    | '/glossary'
     | '/investing'
+    | '/methodology'
     | '/newsletter'
     | '/privacy'
     | '/retirement'
     | '/saving'
     | '/terms'
+    | '/topics'
     | '/$pillar/$post'
     | '/about/yinka-olayokun'
     | '/tools/budget-planner'
@@ -296,6 +374,8 @@ export interface FileRouteTypes {
     | '/tools/savings-goal-calculator'
     | '/about/'
     | '/tools/'
+    | '/$pillar/best-for/$persona'
+    | '/$pillar/vs/$matchup'
     | '/api/public/newsletter'
     | '/api/public/newsletter/cron'
   fileRoutesByTo: FileRoutesByTo
@@ -304,15 +384,21 @@ export interface FileRouteTypes {
     | '/banking'
     | '/budgeting'
     | '/contact'
+    | '/corrections'
     | '/credit-cards'
     | '/debt-taxes-insurance'
     | '/disclaimer'
+    | '/editorial-policy'
+    | '/fact-checking-policy'
+    | '/glossary'
     | '/investing'
+    | '/methodology'
     | '/newsletter'
     | '/privacy'
     | '/retirement'
     | '/saving'
     | '/terms'
+    | '/topics'
     | '/$pillar/$post'
     | '/about/yinka-olayokun'
     | '/tools/budget-planner'
@@ -325,6 +411,8 @@ export interface FileRouteTypes {
     | '/tools/savings-goal-calculator'
     | '/about'
     | '/tools'
+    | '/$pillar/best-for/$persona'
+    | '/$pillar/vs/$matchup'
     | '/api/public/newsletter'
     | '/api/public/newsletter/cron'
   id:
@@ -333,15 +421,21 @@ export interface FileRouteTypes {
     | '/banking'
     | '/budgeting'
     | '/contact'
+    | '/corrections'
     | '/credit-cards'
     | '/debt-taxes-insurance'
     | '/disclaimer'
+    | '/editorial-policy'
+    | '/fact-checking-policy'
+    | '/glossary'
     | '/investing'
+    | '/methodology'
     | '/newsletter'
     | '/privacy'
     | '/retirement'
     | '/saving'
     | '/terms'
+    | '/topics'
     | '/$pillar/$post'
     | '/about/yinka-olayokun'
     | '/tools/budget-planner'
@@ -354,6 +448,8 @@ export interface FileRouteTypes {
     | '/tools/savings-goal-calculator'
     | '/about/'
     | '/tools/'
+    | '/$pillar/best-for/$persona'
+    | '/$pillar/vs/$matchup'
     | '/api/public/newsletter'
     | '/api/public/newsletter/cron'
   fileRoutesById: FileRoutesById
@@ -363,15 +459,21 @@ export interface RootRouteChildren {
   BankingRoute: typeof BankingRoute
   BudgetingRoute: typeof BudgetingRoute
   ContactRoute: typeof ContactRoute
+  CorrectionsRoute: typeof CorrectionsRoute
   CreditCardsRoute: typeof CreditCardsRoute
   DebtTaxesInsuranceRoute: typeof DebtTaxesInsuranceRoute
   DisclaimerRoute: typeof DisclaimerRoute
+  EditorialPolicyRoute: typeof EditorialPolicyRoute
+  FactCheckingPolicyRoute: typeof FactCheckingPolicyRoute
+  GlossaryRoute: typeof GlossaryRoute
   InvestingRoute: typeof InvestingRoute
+  MethodologyRoute: typeof MethodologyRoute
   NewsletterRoute: typeof NewsletterRoute
   PrivacyRoute: typeof PrivacyRoute
   RetirementRoute: typeof RetirementRoute
   SavingRoute: typeof SavingRoute
   TermsRoute: typeof TermsRoute
+  TopicsRoute: typeof TopicsRoute
   PillarPostRoute: typeof PillarPostRoute
   AboutYinkaOlayokunRoute: typeof AboutYinkaOlayokunRoute
   ToolsBudgetPlannerRoute: typeof ToolsBudgetPlannerRoute
@@ -384,11 +486,20 @@ export interface RootRouteChildren {
   ToolsSavingsGoalCalculatorRoute: typeof ToolsSavingsGoalCalculatorRoute
   AboutIndexRoute: typeof AboutIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
+  PillarBestForPersonaRoute: typeof PillarBestForPersonaRoute
+  PillarVsMatchupRoute: typeof PillarVsMatchupRoute
   ApiPublicNewsletterRoute: typeof ApiPublicNewsletterRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/topics': {
+      id: '/topics'
+      path: '/topics'
+      fullPath: '/topics'
+      preLoaderRoute: typeof TopicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -424,11 +535,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsletterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/methodology': {
+      id: '/methodology'
+      path: '/methodology'
+      fullPath: '/methodology'
+      preLoaderRoute: typeof MethodologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/investing': {
       id: '/investing'
       path: '/investing'
       fullPath: '/investing'
       preLoaderRoute: typeof InvestingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/glossary': {
+      id: '/glossary'
+      path: '/glossary'
+      fullPath: '/glossary'
+      preLoaderRoute: typeof GlossaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fact-checking-policy': {
+      id: '/fact-checking-policy'
+      path: '/fact-checking-policy'
+      fullPath: '/fact-checking-policy'
+      preLoaderRoute: typeof FactCheckingPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/editorial-policy': {
+      id: '/editorial-policy'
+      path: '/editorial-policy'
+      fullPath: '/editorial-policy'
+      preLoaderRoute: typeof EditorialPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/disclaimer': {
@@ -450,6 +589,13 @@ declare module '@tanstack/react-router' {
       path: '/credit-cards'
       fullPath: '/credit-cards'
       preLoaderRoute: typeof CreditCardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corrections': {
+      id: '/corrections'
+      path: '/corrections'
+      fullPath: '/corrections'
+      preLoaderRoute: typeof CorrectionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -571,6 +717,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicNewsletterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$pillar/vs/$matchup': {
+      id: '/$pillar/vs/$matchup'
+      path: '/$pillar/vs/$matchup'
+      fullPath: '/$pillar/vs/$matchup'
+      preLoaderRoute: typeof PillarVsMatchupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$pillar/best-for/$persona': {
+      id: '/$pillar/best-for/$persona'
+      path: '/$pillar/best-for/$persona'
+      fullPath: '/$pillar/best-for/$persona'
+      preLoaderRoute: typeof PillarBestForPersonaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/newsletter/cron': {
       id: '/api/public/newsletter/cron'
       path: '/cron'
@@ -597,15 +757,21 @@ const rootRouteChildren: RootRouteChildren = {
   BankingRoute: BankingRoute,
   BudgetingRoute: BudgetingRoute,
   ContactRoute: ContactRoute,
+  CorrectionsRoute: CorrectionsRoute,
   CreditCardsRoute: CreditCardsRoute,
   DebtTaxesInsuranceRoute: DebtTaxesInsuranceRoute,
   DisclaimerRoute: DisclaimerRoute,
+  EditorialPolicyRoute: EditorialPolicyRoute,
+  FactCheckingPolicyRoute: FactCheckingPolicyRoute,
+  GlossaryRoute: GlossaryRoute,
   InvestingRoute: InvestingRoute,
+  MethodologyRoute: MethodologyRoute,
   NewsletterRoute: NewsletterRoute,
   PrivacyRoute: PrivacyRoute,
   RetirementRoute: RetirementRoute,
   SavingRoute: SavingRoute,
   TermsRoute: TermsRoute,
+  TopicsRoute: TopicsRoute,
   PillarPostRoute: PillarPostRoute,
   AboutYinkaOlayokunRoute: AboutYinkaOlayokunRoute,
   ToolsBudgetPlannerRoute: ToolsBudgetPlannerRoute,
@@ -618,18 +784,10 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsSavingsGoalCalculatorRoute: ToolsSavingsGoalCalculatorRoute,
   AboutIndexRoute: AboutIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,
+  PillarBestForPersonaRoute: PillarBestForPersonaRoute,
+  PillarVsMatchupRoute: PillarVsMatchupRoute,
   ApiPublicNewsletterRoute: ApiPublicNewsletterRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

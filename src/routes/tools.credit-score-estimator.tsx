@@ -1,7 +1,10 @@
+import { canonical, hreflangLinks } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Gauge, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
+import { ToolExplainer } from "@/components/tools/ToolExplainer";
+import { toolContent } from "@/lib/tool-content";
 import { JsonLd } from "@/components/site/JsonLd";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { Button } from "@/components/ui/button";
@@ -19,6 +22,7 @@ export const Route = createFileRoute("/tools/credit-score-estimator")({
       { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Estimate your credit score from five quick inputs — no signup, no credit pull." },
     ],
+    links: [canonical("/tools/credit-score-estimator"), ...hreflangLinks("/tools/credit-score-estimator")],
   }),
   component: CreditScoreEstimator,
 });
@@ -27,6 +31,8 @@ type Onesc = 0 | 1 | 2 | 3 | 4;
 const onesScore = (v: Onesc) => v / 4;
 
 function CreditScoreEstimator() {
+  const tc = toolContent["credit-score-estimator"];
+  const faqs = tc.faqs;
   // Five FICO factors with their official weights
   const [payment, setPayment] = useState<Onesc>(4); // 35%
   const [utilization, setUtilization] = useState<number>(20); // 30% — lower is better
@@ -60,13 +66,6 @@ function CreditScoreEstimator() {
         : { label: "Poor", color: "text-destructive" };
     return { score, band };
   }, [payment, utilization, historyYears, creditMix, newCredit]);
-
-  const faqs = [
-    { q: "How accurate is this estimate?", a: "It's a directional estimate based on the official FICO factor weights — payment history (35%), credit utilization (30%), length of credit history (15%), credit mix (10%), and new credit (10%). Real FICO scores also weigh specific events like collections and bankruptcies that this tool doesn't ask about." },
-    { q: "Will this hurt my credit?", a: "No. This tool runs entirely in your browser. Nothing is sent anywhere and there is no credit pull." },
-    { q: "What's the single fastest way to raise my score?", a: "Lowering credit utilization. Pay down balances on revolving cards so reported utilization is under 10% — the change usually lands within one statement cycle." },
-    { q: "What's a good credit score?", a: "FICO defines 670+ as good, 740+ as very good, and 800+ as exceptional. Below 580 is poor and will significantly raise the cost of any borrowing." },
-  ];
 
   const labelOptions = [
     { v: 0, label: "Multiple late payments" },
@@ -248,6 +247,7 @@ function CreditScoreEstimator() {
           score by a few points for about a year.
         </p>
       </article>
+      <ToolExplainer content={tc} />
 
       {/* FAQ */}
       <section className="mt-12 max-w-3xl">
@@ -297,6 +297,12 @@ function CreditScoreEstimator() {
             applicationCategory: "FinanceApplication",
             operatingSystem: "Web",
             offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            url: "https://moneymoodboard.com/tools/credit-score-estimator",
+            browserRequirements: "Requires JavaScript. Requires HTML5.",
+            isAccessibleForFree: true,
+            featureList: ["FICO range estimate","Utilization impact analysis","Payment history weighting"],
+            inLanguage: "en-US",
+            publisher: { "@id": "https://moneymoodboard.com/#organization" },
           },
           {
             "@context": "https://schema.org",
@@ -307,6 +313,19 @@ function CreditScoreEstimator() {
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
           },
+          ...(tc.howToSteps
+            ? [{
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                name: `How to use the ${TITLE}`,
+                step: tc.howToSteps.map((st, i) => ({
+                  "@type": "HowToStep",
+                  position: i + 1,
+                  name: st.name,
+                  text: st.text,
+                })),
+              }]
+            : []),
         ]}
       />
     </div>

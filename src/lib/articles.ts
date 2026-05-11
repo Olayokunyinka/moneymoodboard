@@ -11,6 +11,12 @@ export interface ArticleSection {
   orderedList?: string[];
   /** Optional pull-quote / callout block. */
   callout?: { title?: string; body: string };
+  /** Optional H3 sub-sections — micro-contextual hierarchy under the H2. */
+  subSections?: {
+    heading: string;
+    paragraphs?: string[];
+    bullets?: string[];
+  }[];
 }
 
 export type ArticleIntent = "informational" | "commercial" | "transactional";
@@ -25,6 +31,10 @@ export interface ArticleBody {
   summary: string;
   published: string; // ISO date
   updated: string; // ISO date
+  /** Last editorial fact-check date (ISO). Defaults to `updated` if absent. */
+  reviewed?: string;
+  /** Author/editor who performed the most recent fact-check. */
+  reviewedBy?: string;
   /** Main body, rendered in order. */
   sections: ArticleSection[];
   /** 4–8 statistics displayed in the KeyStatistics block. */
