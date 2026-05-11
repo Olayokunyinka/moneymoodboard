@@ -8,10 +8,11 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [
     TanStackRouterVite(),
-    tanStackStartVite({
-      type: "ssr",
-    }),
+    tanStackStartVite(),
     tsConfigPaths(),
     tailwindcss(),
   ],
+  tanstackStart: {
+    type: "ssr",
+  },
 });
