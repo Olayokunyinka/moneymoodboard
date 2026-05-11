@@ -58,17 +58,6 @@ for (const file of fileList) {
     console.warn("[nft] copy failed", file, e.message);
   }
 }
-
-// Create config.json for Vercel Build Output API v3
-writeFileSync(join(out, "config.json"), JSON.stringify({
-  version: 3,
-  routes: [
-    {
-      src: "/(.*)",
-      dest: "/api/ssr"
-    }
-  ]
-}, null, 2));
 console.log(`✓ Traced and copied ${copied} runtime dependency files`);
 
 // 3) Vercel function handler — adapts Node (req,res) ↔ Web fetch.
