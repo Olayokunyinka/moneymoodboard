@@ -3,17 +3,14 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, resolve } from "node:path";
-import { register } from "node:module";
+import { tsImport } from "tsx/esm/api";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const projectRoot = resolve(here, "..");
 
-// Use tsx loader so we can import .ts files directly.
-register("tsx/esm", pathToFileURL(projectRoot + "/"));
-
-const { pillars } = await import(pathToFileURL(resolve(projectRoot, "src/lib/pillars.ts")).href);
-const { articleBodies } = await import(pathToFileURL(resolve(projectRoot, "src/lib/articles.ts")).href);
-const { SITE_URL } = await import(pathToFileURL(resolve(projectRoot, "src/lib/seo.ts")).href);
+const { pillars } = await tsImport(pathToFileURL(resolve(projectRoot, "src/lib/pillars.ts")).href, import.meta.url);
+const { articleBodies } = await tsImport(pathToFileURL(resolve(projectRoot, "src/lib/articles.ts")).href, import.meta.url);
+const { SITE_URL } = await tsImport(pathToFileURL(resolve(projectRoot, "src/lib/seo.ts")).href, import.meta.url);
 
 const today = new Date().toISOString().slice(0, 10);
 
