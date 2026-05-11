@@ -10,9 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SavingRouteImport } from './routes/saving'
-import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as RetirementRouteImport } from './routes/retirement'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as NewsletterRouteImport } from './routes/newsletter'
@@ -44,19 +42,9 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SavingRoute = SavingRouteImport.update({
   id: '/saving',
   path: '/saving',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
-  id: '/robots.txt',
-  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RetirementRoute = RetirementRouteImport.update({
@@ -204,9 +192,7 @@ export interface FileRoutesByFullPath {
   '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/retirement': typeof RetirementRoute
-  '/robots.txt': typeof RobotsDottxtRoute
   '/saving': typeof SavingRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/$pillar/$post': typeof PillarPostRoute
   '/about/yinka-olayokun': typeof AboutYinkaOlayokunRoute
@@ -235,9 +221,7 @@ export interface FileRoutesByTo {
   '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/retirement': typeof RetirementRoute
-  '/robots.txt': typeof RobotsDottxtRoute
   '/saving': typeof SavingRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/$pillar/$post': typeof PillarPostRoute
   '/about/yinka-olayokun': typeof AboutYinkaOlayokunRoute
@@ -267,9 +251,7 @@ export interface FileRoutesById {
   '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
   '/retirement': typeof RetirementRoute
-  '/robots.txt': typeof RobotsDottxtRoute
   '/saving': typeof SavingRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/$pillar/$post': typeof PillarPostRoute
   '/about/yinka-olayokun': typeof AboutYinkaOlayokunRoute
@@ -300,9 +282,7 @@ export interface FileRouteTypes {
     | '/newsletter'
     | '/privacy'
     | '/retirement'
-    | '/robots.txt'
     | '/saving'
-    | '/sitemap.xml'
     | '/terms'
     | '/$pillar/$post'
     | '/about/yinka-olayokun'
@@ -331,9 +311,7 @@ export interface FileRouteTypes {
     | '/newsletter'
     | '/privacy'
     | '/retirement'
-    | '/robots.txt'
     | '/saving'
-    | '/sitemap.xml'
     | '/terms'
     | '/$pillar/$post'
     | '/about/yinka-olayokun'
@@ -362,9 +340,7 @@ export interface FileRouteTypes {
     | '/newsletter'
     | '/privacy'
     | '/retirement'
-    | '/robots.txt'
     | '/saving'
-    | '/sitemap.xml'
     | '/terms'
     | '/$pillar/$post'
     | '/about/yinka-olayokun'
@@ -394,9 +370,7 @@ export interface RootRouteChildren {
   NewsletterRoute: typeof NewsletterRoute
   PrivacyRoute: typeof PrivacyRoute
   RetirementRoute: typeof RetirementRoute
-  RobotsDottxtRoute: typeof RobotsDottxtRoute
   SavingRoute: typeof SavingRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   PillarPostRoute: typeof PillarPostRoute
   AboutYinkaOlayokunRoute: typeof AboutYinkaOlayokunRoute
@@ -422,25 +396,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/saving': {
       id: '/saving'
       path: '/saving'
       fullPath: '/saving'
       preLoaderRoute: typeof SavingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/robots.txt': {
-      id: '/robots.txt'
-      path: '/robots.txt'
-      fullPath: '/robots.txt'
-      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/retirement': {
@@ -644,9 +604,7 @@ const rootRouteChildren: RootRouteChildren = {
   NewsletterRoute: NewsletterRoute,
   PrivacyRoute: PrivacyRoute,
   RetirementRoute: RetirementRoute,
-  RobotsDottxtRoute: RobotsDottxtRoute,
   SavingRoute: SavingRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   PillarPostRoute: PillarPostRoute,
   AboutYinkaOlayokunRoute: AboutYinkaOlayokunRoute,
@@ -665,3 +623,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -1,122 +1,78 @@
 
-# MoneyMoodBoard — Gap Analysis & Implementation Plan
+# Eject to Vercel SSR
 
-## What's already built ✅
+## Why the 404 happens now
 
-**Architecture & brand**
-- Brand teal palette + 7 pillar tag colors, Inter font, 16 px / 1.7 line-height, `oklch` tokens.
-- Sticky header with logo, 7 pillar links, mobile sheet, "Free Newsletter" CTA.
-- Footer with logo, link grid (Topics / Tools / Company / Legal), AdSense disclaimer, copyright.
-- Global `Organization` + `WebSite` JSON-LD; `BreadcrumbList` per page.
+The current build targets **Cloudflare Workers** via `@lovable.dev/vite-tanstack-config` + `@cloudflare/vite-plugin`. The output in `dist/` is a Worker bundle (`_worker.js` + `wrangler.jsonc`). Vercel doesn't recognise it, so every URL → `404 NOT_FOUND`. Vercel needs either a static SPA or a Node/Edge serverless function output.
 
-**Pages**
-- Homepage with hero + trust signals, pillar grid, featured guides, tools band, latest grid, newsletter.
-- 7 pillar hubs (`/budgeting`, `/credit-cards`, `/investing`, `/retirement`, `/saving`, `/banking`, `/debt-taxes-insurance`).
-- One sample cluster post (`/budgeting/zero-based-budgeting`) with Quick Answer, definition body, comparison table, FAQ, JSON-LD.
-- Tools hub + working Emergency Fund Calculator + 3 "coming soon" stubs.
-- About, Newsletter, Contact, Privacy, Terms, Disclaimer.
+You picked **Full SSR on Vercel**, so we'll re-target the build at Vercel's serverless preset (Nitro `vercel`), keeping SSR + server routes (`sitemap.xml`, `robots.txt`, `/$pillar/$post`) working.
 
----
+## What this changes (and the trade-off you accepted)
 
-## Gaps vs briefs ❌
+- The Lovable preview and one-click Publish are wired to the Cloudflare preset. Once we eject, **the in-editor live preview may behave differently and the Lovable Publish button may stop producing a working build**. Vercel becomes the source of truth for hosting.
+- The Lovable GitHub sync still works for editing — only the runtime target moves.
 
-### A. SEO / technical infrastructure
-1. No `sitemap.xml` or `robots.txt`.
-2. No self-referencing canonical tags.
-3. No per-route `og:image` (1200×630) — sharing previews are blank.
-4. Pillar pages are missing `WebPage` + `ItemList` schema.
-5. Cluster post Quick Answer box has no `SpeakableSpecification` schema.
-6. No GA4 / AdSense script slots (even as placeholders).
-7. Header search icon is decorative — no search route.
+## Plan
 
-### B. Cluster post template (the highest-leverage gap)
-8. No "Key [Topic] Statistics" section — this is what LLMs and AI Overviews quote.
-9. No Author / Reviewer box at the bottom (E-E-A-T signal — critical for YMYL finance content).
-10. No social share buttons (Twitter/X, Facebook, Copy link).
-11. No featured image (1200×630, also serves as OG image).
-12. No in-article ad slot placeholders between H2s, after FAQ, anchor banner.
-13. No external links to authoritative sources (Federal Reserve, CFPB, Bankrate…).
-14. Sample post is ~700 words; brief calls for 1,200–3,000.
+### 1. Replace `vite.config.ts`
+Drop `@lovable.dev/vite-tanstack-config` (which silently injects the Cloudflare plugin) and write an explicit config:
 
-### C. Content reachability
-15. Pillar cluster cards link to URLs that don't exist as routes (every click except one → 404). Need a catch-all stub or generated stub posts so the topical map is navigable.
+```ts
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-### D. Pillar hub depth
-16. Missing dedicated "Free [Pillar] Tool" H2 wrapper around the tool CTA.
-17. Missing inline pillar-specific newsletter copy ("Get weekly budgeting tips…").
+export default defineConfig({
+  plugins: [
+    tsconfigPaths(),
+    tailwindcss(),
+    tanstackStart({ target: "vercel" }), // <- Nitro vercel preset
+    viteReact(),
+  ],
+  resolve: {
+    dedupe: ["react", "react-dom", "@tanstack/react-router", "@tanstack/react-start"],
+  },
+});
+```
 
-### E. Tools backlog (brief priority order)
-18. Budget Planner — currently a stub.
-19. Savings Goal Calculator — stub.
-20. Credit Score Estimator — stub.
-21. Debt Payoff Calculator (avalanche vs snowball) — not built.
-22. Retirement Savings Calculator — not built.
-23. Credit Card Payoff Calculator — not built.
-24. Investment Return / Compound Interest Calculator — not built.
+The `target: "vercel"` flag is the key change — Nitro emits a `.vercel/output/` directory in the v3 Build Output API format, which Vercel auto-detects.
 
-### F. Polish
-25. Refine pillar tag tones to match brief's exact pastel hexes.
-26. Site-wide reusable `AdSlot` component for AdSense readiness.
+### 2. Simplify `src/server.ts`
+The current file is a Cloudflare Worker `export default { fetch }` shim with custom error normalisation. On Vercel, Nitro generates the serverless entry; we don't need that shim. We will:
+- Delete `src/server.ts`, `src/lib/error-capture.ts`, `src/lib/error-page.ts` (Cloudflare-specific).
+- Keep the `errorComponent` on the root route (already present) so React-tree errors still get a branded fallback.
+- Move the legacy-redirect logic from `src/server.ts` into a tiny TanStack `beforeLoad` on the root route, or skip it (we don't actually have legacy URLs yet).
 
----
+### 3. Remove Cloudflare-only files
+- Delete `wrangler.jsonc`.
+- Remove `@cloudflare/vite-plugin` and `@lovable.dev/vite-tanstack-config` from `package.json`.
 
-## Implementation plan (phased, in priority order)
+### 4. Add `vercel.json` (minimal)
+Nitro's vercel preset usually self-configures, but pin the framework + node version to avoid auto-detection surprises:
 
-### Phase 1 — SEO & ad-readiness infrastructure (small, high-impact)
-- Add `src/routes/sitemap[.]xml.tsx` server route enumerating homepage, pillars, tools, sample post, legal pages.
-- Add `src/routes/robots[.]txt.tsx` server route.
-- Helper to emit a self-referencing `<link rel="canonical">` per route via `head().links`.
-- Generate a 1200×630 brand OG image (`src/assets/og-default.jpg`) and reference it from the root `head()`; allow each route to override.
-- `<AdSlot location="in-article" />` component — renders an empty container with `data-ad-slot` attributes. Hooks for AdSense / GA4 IDs read from env (no real IDs yet).
+```json
+{
+  "framework": null,
+  "buildCommand": "vite build",
+  "outputDirectory": ".vercel/output"
+}
+```
 
-### Phase 2 — Cluster post template upgrade
-- Convert the cluster post into a reusable `<ClusterPost>` component fed by structured data: title, summary, body sections, stats, FAQs, related, author.
-- Add new sub-components:
-  - `KeyStatistics` (cited stats with source links).
-  - `AuthorBox` (avatar + 2-sentence bio + "Reviewed by …" line).
-  - `ShareButtons` (Twitter/X, Facebook, Copy Link — no third-party SDKs).
-  - `FeaturedImage` slot (1200×630, lazy-loaded after fold).
-- Mark the Quick Answer container with `id="quick-answer"` and emit `SpeakableSpecification` JSON-LD pointing to that id.
-- Sprinkle `AdSlot`s at the prescribed positions.
-- Expand the zero-based-budgeting post to ~1,500 words and add 3–5 outbound links.
+### 5. Convert `sitemap.xml` and `robots.txt`
+They are currently TanStack server routes. They'll keep working under Nitro vercel (each becomes its own serverless function), but for a static, free-tier-friendly result we'll convert them to static files generated at build time via a small `scripts/generate-static.mjs` that runs in `postbuild`. Output → `public/sitemap.xml` and `public/robots.txt`. Then delete the two server-route files. (This also avoids spending Vercel function invocations on bot traffic.)
 
-### Phase 3 — Make the topical map clickable
-- Add a catch-all `/$pillar/$post` route (`src/routes/$pillar.$post.tsx`) that:
-  - Validates the pillar slug; 404s if unknown.
-  - Looks up the post in `pillars.ts`; if found, renders a generic `ClusterPost` stub with title, breadcrumb, "Article in production" notice, link back to the pillar hub, FAQ stub, JSON-LD.
-  - This means every internal link works and Google can discover the URLs.
+### 6. Verify on Vercel
+- Push to GitHub (already done). Vercel will pick up the next commit.
+- In Vercel project settings: **Framework Preset → Other**, **Build Command → `vite build`**, **Output Directory → `.vercel/output`** (matches `vercel.json` above).
+- Add any env vars that `process.env` currently reads (none required for the current frontend-only app — Lovable Cloud isn't enabled).
+- After deploy, test: `/`, `/budgeting`, `/budgeting/zero-based-budgeting`, `/budgeting/some-other-stub` (catch-all), `/sitemap.xml`, `/robots.txt`, hard-refresh on a deep link.
 
-### Phase 4 — Pillar hub depth
-- Add an H2 "Free [Pillar] Tool" section wrapping the existing CTA.
-- Add an inline pillar-specific newsletter band ("Get weekly [pillar] tips in your inbox").
-- Emit `WebPage` + `ItemList` schema enumerating cluster posts (helps Google understand the hub).
+### 7. Roll-back path
+If anything goes sideways, restoring the original `vite.config.ts`, `src/server.ts`, `wrangler.jsonc`, and re-adding the two removed deps puts the project back on Cloudflare/Lovable hosting. I'll keep the diff small and atomic so this is one revert.
 
-### Phase 5 — Tools build-out (one PR each)
-Build to spec, in this order, replacing existing stubs first:
-1. Budget Planner (50/30/20 + custom percentages, monthly income input, downloadable summary).
-2. Savings Goal Calculator (target, starting balance, monthly contribution, optional APY → time-to-goal + chart).
-3. Debt Payoff Calculator (multi-debt list, avalanche vs snowball comparison, payoff date).
-4. Credit Card Payoff Calculator (single-card payoff timeline + interest saved).
-5. Retirement Savings Calculator (current age, retirement age, current balance, monthly contribution, expected return).
-6. Investment Return / Compound Interest Calculator (principal, monthly add, rate, years).
-7. Credit Score Estimator (utilisation, on-time history, account age, mix → FICO range estimate).
-
-Each tool gets the full template (How-to-use, 800-word explainer, FAQ, related tools, `WebApplication` + `FAQPage` schema).
-
-### Phase 6 — Search + polish
-- Lightweight client-side search modal (Cmd+K) over a static JSON index of all titles + URLs. Wire the existing search icon to it. Defer real backend search.
-- Refine pillar tag tones to brief's suggested hex values.
-- Audit Core Web Vitals (image sizes, font preload, layout shift).
-
-### Out of scope (still deferred)
-- Real Lovable Cloud / newsletter backend.
-- Real AdSense / GA4 IDs (slots will be ready, IDs added when accounts exist).
-- Author photos and bios for real people (placeholder until provided).
-
----
-
-## Suggested order to ship
-
-If you want to do this incrementally, ship Phase 1 + Phase 3 + Phase 2 first (1 turn) — that gets the site SEO-complete and fully navigable. Then Phase 4 (1 turn). Then tools in Phase 5, two per turn. Phase 6 last.
-
-Tell me to proceed and I'll start with Phase 1–3 in one batch.
+## Out of scope
+- Custom domain on Vercel (do that in Vercel UI after the build is green).
+- Switching to Edge runtime (we're picking Node serverless for max compatibility).
+- Any changes to app code, routes, or content.

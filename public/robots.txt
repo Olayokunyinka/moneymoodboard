@@ -1,7 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { SITE_URL } from "@/lib/seo";
-
-const body = `# MoneyMoodBoard robots.txt
+# MoneyMoodBoard robots.txt
 # Independent personal-finance editorial. Crawl freely.
 
 User-agent: *
@@ -12,7 +9,6 @@ Disallow: /drafts/
 Disallow: /*?*utm_
 Crawl-delay: 1
 
-# AI / LLM crawlers — explicitly allowed for citation discovery
 User-agent: GPTBot
 Allow: /
 
@@ -61,20 +57,5 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: ${SITE_URL}/sitemap.xml
-Host: ${SITE_URL.replace(/^https?:\/\//, "")}
-`;
-
-export const Route = createFileRoute("/robots.txt")({
-  server: {
-    handlers: {
-      GET: () =>
-        new Response(body, {
-          headers: {
-            "content-type": "text/plain; charset=utf-8",
-            "cache-control": "public, max-age=86400",
-          },
-        }),
-    },
-  },
-});
+Sitemap: https://moneymoodboard.com/sitemap.xml
+Host: moneymoodboard.com
