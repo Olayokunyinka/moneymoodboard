@@ -1,16 +1,7 @@
 // Generates public/sitemap.xml and public/robots.txt at build time.
 // Runs as a prebuild step so the files are picked up as static assets.
-import { writeFileSync, mkdirSync } from "node:fs";
-import { fileURLToPath, pathToFileURL } from "node:url";
-import { dirname, resolve } from "node:path";
-import { tsImport } from "tsx/esm/api";
 
-const here = dirname(fileURLToPath(import.meta.url));
-const projectRoot = resolve(here, "..");
 
-const { pillars } = await tsImport(pathToFileURL(resolve(projectRoot, "src/lib/pillars.ts")).href, import.meta.url);
-const { articleBodies } = await tsImport(pathToFileURL(resolve(projectRoot, "src/lib/articles.ts")).href, import.meta.url);
-const { SITE_URL } = await tsImport(pathToFileURL(resolve(projectRoot, "src/lib/seo.ts")).href, import.meta.url);
 
 const today = new Date().toISOString().slice(0, 10);
 
