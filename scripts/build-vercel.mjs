@@ -5,9 +5,10 @@
 //   .vercel/output/static/         <- static assets (from dist/client)
 //   .vercel/output/functions/ssr.func/   <- Node serverless function for SSR
 //   .vercel/output/config.json     <- routing rules
-import { cpSync, mkdirSync, writeFileSync, existsSync, rmSync, readdirSync, statSync } from "node:fs";
-import { resolve, join, relative } from "node:path";
+import { cpSync, mkdirSync, writeFileSync, existsSync, rmSync, readdirSync, statSync, copyFileSync } from "node:fs";
+import { resolve, join, relative, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { nodeFileTrace } from "@vercel/nft";
 
 const here = fileURLToPath(new URL(".", import.meta.url));
 const root = resolve(here, "..");
@@ -30,6 +31,34 @@ cpSync(resolve(dist, "server"), fnDir, { recursive: true });
 
 // Mark the function bundle as ESM so server.js (which uses import/export) loads correctly.
 writeFileSync(join(fnDir, "package.json"), JSON.stringify({ type: "module" }, null, 2));
+
+// 2b) Trace runtime dependencies of server.js using @vercel/nft and copy them
+//     into the function dir so externalized packages (h3-v2, etc.) resolve at runtime.
+const serverEntry = resolve(fnDir, "server.js");
+const { fileList, warnings } = await nodeFileTrace([serverEntry], {
+  base: root,
+  processCwd: root,
+});
+for (const w of warnings) {
+  if (!String(w.message || w).includes("Cannot find module")) continue;
+  console.warn("[nft]", w.message || w);
+}
+let copied = 0;
+for (const file of fileList) {
+  const abs = resolve(root, file);
+  // Skip files that are already inside the function dir (server build itself)
+  if (abs.startsWith(fnDir + "/") || abs === serverEntry) continue;
+  if (!existsSync(abs)) continue;
+  const dest = resolve(fnDir, file);
+  mkdirSync(dirname(dest), { recursive: true });
+  try {
+    copyFileSync(abs, dest);
+    copied++;
+  } catch (e) {
+    console.warn("[nft] copy failed", file, e.message);
+  }
+}
+console.log(`✓ Traced and copied ${copied} runtime dependency files`);
 
 // 3) Vercel function handler — adapts Node (req,res) ↔ Web fetch.
 const handler = `import { Readable } from "node:stream";
