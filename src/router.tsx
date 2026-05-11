@@ -10,6 +10,13 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    defaultSsr: true,
+    dehydrate: () => ({
+      queryClientState: dehydrate(queryClient),
+    }),
+    hydrate: (dehydrated) => {
+      hydrate(queryClient, dehydrated.queryClientState);
+    },
   });
 
   return router;
