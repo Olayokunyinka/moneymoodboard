@@ -28,6 +28,9 @@ cpSync(resolve(dist, "client"), staticDir, { recursive: true });
 //    relative imports inside server.js still resolve)
 cpSync(resolve(dist, "server"), fnDir, { recursive: true });
 
+// Mark the function bundle as ESM so server.js (which uses import/export) loads correctly.
+writeFileSync(join(fnDir, "package.json"), JSON.stringify({ type: "module" }, null, 2));
+
 // 3) Vercel function handler — adapts Node (req,res) ↔ Web fetch.
 const handler = `import { Readable } from "node:stream";
 import server from "./server.js";
