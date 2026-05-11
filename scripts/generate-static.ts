@@ -1,11 +1,18 @@
 // Generates public/sitemap.xml and public/robots.txt at build time.
-// Runs as a prebuild step so the files are picked up as static assets.
+// Run via tsx so we can import .ts source modules directly.
+import { writeFileSync, mkdirSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
+import { pillars } from "../src/lib/pillars";
+import { articleBodies } from "../src/lib/articles";
+import { SITE_URL } from "../src/lib/seo";
 
-
+const here = dirname(fileURLToPath(import.meta.url));
+const projectRoot = resolve(here, "..");
 
 const today = new Date().toISOString().slice(0, 10);
 
-function escapeXml(s) {
+function escapeXml(s: string): string {
   return s
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -14,10 +21,23 @@ function escapeXml(s) {
     .replace(/'/g, "&apos;");
 }
 
-function buildSitemap() {
-  const urls = [];
-  const add = (path, priority = "0.6", changefreq = "weekly", lastmod = today, image) =>
-    urls.push({ loc: `${SITE_URL}${path}`, lastmod, changefreq, priority, image });
+interface Entry {
+  loc: string;
+  lastmod: string;
+  changefreq: string;
+  priority: string;
+  image?: { loc: string; caption?: string };
+}
+
+function buildSitemap(): string {
+  const urls: Entry[] = [];
+  const add = (
+    path: string,
+    priority = "0.6",
+    changefreq = "weekly",
+    lastmod = today,
+    image?: Entry["image"],
+  ) => urls.push({ loc: `${SITE_URL}${path}`, lastmod, changefreq, priority, image });
 
   add("/", "1.0", "daily");
   add("/tools", "0.9", "weekly");
@@ -71,7 +91,7 @@ function buildSitemap() {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${body}\n</urlset>\n`;
 }
 
-function buildRobots() {
+function buildRobots(): string {
   return `# MoneyMoodBoard robots.txt
 # Independent personal-finance editorial. Crawl freely.
 
