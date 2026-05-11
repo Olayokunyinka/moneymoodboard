@@ -24,7 +24,7 @@ export const Route = createFileRoute("/api/public/newsletter")({
           return Response.json({ error: "Invalid email" }, { status: 400 });
         }
 
-        const BREVO_API_KEY = process.env.BREVO_API_KEY;
+        const BREVO_API_KEY = process.env.BREVO_API_KEY ?? (globalThis as any).BREVO_API_KEY;
         if (!BREVO_API_KEY) {
           console.error("Newsletter: missing BREVO_API_KEY");
           return Response.json(
