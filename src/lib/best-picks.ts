@@ -344,8 +344,8 @@ export const bestRoundups: BestRoundup[] = [
       },
     ],
     internalLinks: [
-      { label: "Cashback vs travel rewards, which to pick", to: "/credit-cards/vs/cashback-vs-travel" },
-      { label: "Snowball vs avalanche debt payoff", to: "/credit-cards/vs/snowball-vs-avalanche" },
+      { label: "Cashback vs travel rewards, which to pick", to: "/credit-cards/vs/cashback-vs-travel-rewards" },
+      { label: "Snowball vs avalanche debt payoff", to: "/debt-taxes-insurance/vs/snowball-vs-avalanche" },
       { label: "Free Credit Card Payoff Calculator", to: "/tools/credit-card-payoff-calculator" },
     ],
     published: "2026-05-12",
@@ -672,7 +672,7 @@ export const bestRoundups: BestRoundup[] = [
       },
     ],
     internalLinks: [
-      { label: "Cashback vs travel rewards, which card type fits you", to: "/credit-cards/vs/cashback-vs-travel" },
+      { label: "Cashback vs travel rewards, which card type fits you", to: "/credit-cards/vs/cashback-vs-travel-rewards" },
       { label: "Best 0% APR balance transfer cards for 2026", to: "/credit-cards/best/zero-apr-balance-transfer-2026" },
       { label: "Free Credit Score Estimator", to: "/tools/credit-score-estimator" },
     ],

@@ -115,3 +115,47 @@ export function ToolCard({
     </Link>
   );
 }
+
+export function ComparisonCard({ cmp }: { cmp: import("@/lib/comparisons").Comparison }) {
+  return (
+    <Link
+      to={`/${cmp.pillar}/vs/${cmp.slug}`}
+      className="group flex flex-col h-full rounded-xl border border-border bg-card p-5 hover:border-primary/50 transition-colors"
+    >
+      <div className="flex items-center gap-2 mb-3">
+        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold bg-violet-100 text-violet-900 dark:bg-violet-900/40 dark:text-violet-100">
+          VS
+        </span>
+      </div>
+      <h3 className="text-base font-semibold leading-snug text-foreground group-hover:text-primary">
+        {cmp.title}
+      </h3>
+      <p className="mt-2 text-sm text-muted-foreground line-clamp-2 flex-1">{cmp.summary}</p>
+      <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+        Read Comparison <ArrowRight className="h-3.5 w-3.5" />
+      </span>
+    </Link>
+  );
+}
+
+export function PersonaCard({ persona }: { persona: import("@/lib/personas").Persona }) {
+  return (
+    <Link
+      to={`/${persona.pillar}/best-for/${persona.slug}`}
+      className="group flex flex-col h-full rounded-xl border border-border bg-card p-5 hover:border-primary/50 transition-colors"
+    >
+      <div className="flex items-center gap-2 mb-3">
+        <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold bg-emerald-100 text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-100">
+          Tailored Advice
+        </span>
+      </div>
+      <h3 className="text-base font-semibold leading-snug text-foreground group-hover:text-primary">
+        {persona.title}
+      </h3>
+      <p className="mt-2 text-sm text-muted-foreground line-clamp-2 flex-1">{persona.profile}</p>
+      <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+        View Playbook <ArrowRight className="h-3.5 w-3.5" />
+      </span>
+    </Link>
+  );
+}

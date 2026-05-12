@@ -122,7 +122,12 @@ function DecisionPageView() {
       {decision.sections.map((s) => (
         <section key={s.heading} className="mt-10">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">{s.heading}</h2>
-          {s.paragraphs.map((p, i) => (<p key={i} className="mt-4 text-base leading-7 text-foreground/85">{p}</p>))}
+          {s.paragraphs?.map((p, i) => (<p key={i} className="mt-4 text-base leading-7 text-foreground/85">{p}</p>))}
+          {s.bullets && (
+            <ul className="mt-4 space-y-2 list-disc pl-6 text-foreground/85 marker:text-primary">
+              {s.bullets.map((b, i) => <li key={i}>{b}</li>)}
+            </ul>
+          )}
         </section>
       ))}
 

@@ -92,7 +92,7 @@ export const personas: Persona[] = [
     internalLinks: [
       { label: "Reverse budgeting for variable income", to: "/budgeting/reverse-budgeting-for-variable-income" },
       { label: "Zero-based vs 50/30/20", to: "/budgeting/vs/zero-based-vs-50-30-20" },
-      { label: "Best for self-employed (retirement)", to: "/retirement/best-for-self-employed" },
+      { label: "Best for self-employed (retirement)", to: "/retirement/best-for/self-employed" },
       { label: "How big should your emergency fund be?", to: "/saving/how-big-should-your-emergency-fund-be" },
       { label: "Budget Planner Tool", to: "/tools/budget-planner" },
     ],
@@ -116,19 +116,30 @@ export const personas: Persona[] = [
       {
         name: "Open one starter card, run a tiny recurring charge, autopay in full",
         rationale:
-          "A secured card (with a refundable deposit) or a no-fee student card from a real bank, not a store card. Run one charge under $20/month and pay automatically from your bank. Your utilization stays under 5%, your payment history is perfect, and you never touch the card otherwise.",
+          "A secured card (with a refundable deposit) or a no-fee student card from a real bank, not a store card. Run one charge under $20/month and pay automatically from your bank. Your utilization stays under 5%, your payment history is perfect, and you never touch the card otherwise. This is the single highest-ROI habit you can build in college, setting you up for prime rates on post-grad car loans and apartments.",
         to: "/credit-cards/how-to-build-credit",
       },
       {
         name: "Avoid every store card pitched at the register",
         rationale:
-          "Store cards have brutal APRs (28–30%), tiny limits, and approval optimised for impulse signups. They wreck utilization (small limit + small balance = high %) and don't help your score the way a real bank card does.",
+          "Store cards have brutal APRs (28–30%), tiny limits, and approval optimised for impulse signups. They wreck utilization (small limit + small balance = high %) and don't help your score the way a real bank card does. Do not accept a 15% discount on jeans today in exchange for a permanently worse credit file.",
       },
       {
         name: "Become an authorized user on a family member's well-managed card",
         rationale:
-          "If a parent has a 10+ year card with perfect history, being added as an authorized user inherits that account's age and history on your report. Three months of this is worth two years of self-built credit.",
+          "If a parent has a 10+ year card with perfect history, being added as an authorized user inherits that account's age and history on your report. Three months of this is worth two years of self-built credit. Ensure the primary cardholder keeps their utilization under 10% and never misses a payment, as their bad habits would also transfer to you.",
       },
+      {
+        name: "Treat student loans like future wage garnishments",
+        rationale:
+          "Borrow exactly what you need for tuition and survival, not a dollar more for lifestyle. Every $10,000 borrowed today often means $100+ a month off your future entry-level paycheck. Consider paying the interest while in school to prevent capitalization.",
+      },
+      {
+        name: "Build a micro emergency fund ($500-$1000) before investing",
+        rationale:
+          "Students face frequent small emergencies (car repairs, textbook costs, broken laptops). A $1000 buffer stops these events from ending up on a 25% APR credit card. Keep this in a High Yield Savings Account so it earns interest while protecting you.",
+        to: "/saving/building-an-emergency-fund-on-a-tight-budget",
+      }
     ],
     pitfalls: [
       "Carrying a balance 'to build credit', utilization matters, balances cost you 24% interest. Pay in full, every time.",
@@ -148,7 +159,7 @@ export const personas: Persona[] = [
     internalLinks: [
       { label: "How credit cards work", to: "/credit-cards/how-credit-cards-work" },
       { label: "Cashback vs travel rewards", to: "/credit-cards/vs/cashback-vs-travel-rewards" },
-      { label: "Best for recent grads (debt)", to: "/debt-taxes-insurance/best-for-recent-grads" },
+      { label: "Best for recent grads (debt)", to: "/debt-taxes-insurance/best-for/recent-grads" },
       { label: "Credit Score Estimator", to: "/tools/credit-score-estimator" },
       { label: "Budgeting pillar", to: "/budgeting" },
     ],
@@ -205,7 +216,7 @@ export const personas: Persona[] = [
     internalLinks: [
       { label: "Index funds vs target-date funds", to: "/investing/vs/index-funds-vs-target-date" },
       { label: "401(k) vs IRA", to: "/retirement/vs/401k-vs-ira" },
-      { label: "Best for self-employed (retirement)", to: "/retirement/best-for-self-employed" },
+      { label: "Best for self-employed (retirement)", to: "/retirement/best-for/self-employed" },
       { label: "Retirement Savings Calculator", to: "/tools/retirement-savings-calculator" },
       { label: "Compound Interest Calculator", to: "/tools/compound-interest-calculator" },
     ],
@@ -262,9 +273,9 @@ export const personas: Persona[] = [
     internalLinks: [
       { label: "401(k) vs IRA", to: "/retirement/vs/401k-vs-ira" },
       { label: "Roth IRA vs Traditional IRA", to: "/retirement/vs/roth-vs-traditional-ira" },
-      { label: "Best for freelancers (budgeting)", to: "/budgeting/best-for-freelancers" },
+      { label: "Best for freelancers (budgeting)", to: "/budgeting/best-for/freelancers" },
       { label: "Retirement Savings Calculator", to: "/tools/retirement-savings-calculator" },
-      { label: "Best for late-starters (investing)", to: "/investing/best-for-late-starters" },
+      { label: "Best for late-starters (investing)", to: "/investing/best-for/late-starters" },
     ],
     published: "2026-05-12",
     updated: "2026-05-12",
@@ -286,26 +297,37 @@ export const personas: Persona[] = [
       {
         name: "Rebuild the emergency fund to 6 months of new household expenses",
         rationale:
-          "Your fixed costs jumped, daycare, insurance, formula, gear. The old 3-month buffer covers maybe 2 of the new months. Recalculate using your post-baby budget, not the pre-baby one. Park it in a high-yield savings account.",
+          "Your fixed costs jumped overnight: daycare, increased health insurance premiums, formula, diapers, and baby gear. The old 3-month buffer covers maybe 2 of the new months. Recalculate using your exact post-baby budget, not the pre-baby one. Park it in a high-yield savings account where it earns 4-5% while remaining instantly accessible.",
         to: "/saving/how-big-should-your-emergency-fund-be",
       },
       {
         name: "Build a 'leave bridge' separate from the emergency fund",
         rationale:
-          "If parental leave is partially paid or unpaid, the gap is predictable and shouldn't deplete the real emergency fund. Save the leave-period shortfall in a separate HYSA or short-term T-bill 6–12 months before the due date. Use it for income gap only; everything else is a real emergency.",
+          "If parental leave is partially paid or unpaid (which is the case for most Americans), the gap is entirely predictable. It should never deplete your real emergency fund. Save the leave-period shortfall in a separate HYSA or short-term T-bill 6–12 months before the due date. Use it strictly for the income gap; everything else is a real emergency.",
         to: "/saving/vs/hysa-vs-money-market",
       },
       {
-        name: "Open a 529 only after the first two are funded",
+        name: "Draft or update your wills and estate plan immediately",
         rationale:
-          "A 529 is great, tax-free growth for qualified education expenses, state-tax deduction in many states, but college is 18 years away. Your emergency reserve is the only thing that prevents a $4k car repair from becoming a credit-card debt. Order matters: emergency fund first, leave bridge second, 529 third.",
+          "If something happens to both parents, state law dictates guardianship if you haven't explicitly named a guardian in a legal will. You also need term life insurance (10-15x income for 20-30 years) to ensure the surviving partner or guardian can actually afford to raise the child and pay off the mortgage without severe financial stress."
+      },
+      {
+        name: "Secure childcare spots before birth and budget the exact monthly hit",
+        rationale:
+          "Daycare waitlists in major cities often exceed 12 months. Do not wait until the baby is born. Furthermore, 'practice' paying for daycare: 3-4 months before birth, automatically transfer the exact estimated daycare cost into savings every month. It proves your budget can handle it and builds your leave bridge simultaneously."
+      },
+      {
+        name: "Open a 529 only after the first four are funded",
+        rationale:
+          "A 529 plan is fantastic: tax-free growth for qualified education expenses, and state-tax deductions in many states. But college is 18 years away. Your emergency reserve is the only thing that prevents a $4,000 car repair from becoming high-interest credit card debt today. Order matters: emergency fund first, leave bridge second, retirement on track, then 529.",
       },
     ],
     pitfalls: [
-      "Cashing out 401(k) to pay off the credit card. Lost match + 10% penalty + tax, the most expensive 'fix' in personal finance.",
-      "Buying whole life insurance 'for the baby' from a salesperson. The baby doesn't need a death benefit; you do (term life, much cheaper).",
-      "Forgetting to update the W-4. A new dependent changes withholding; an extra $200/mo in take-home is hiding in HR.",
-      "Letting the HSA lapse if switching jobs. Roll the HSA, it's the best stealth retirement account you have.",
+      "Cashing out a 401(k) to pay off credit card debt or cover the delivery. Lost employer match + 10% penalty + income tax makes this the most mathematically ruinous 'fix' in personal finance.",
+      "Buying 'whole life insurance' or 'indexed universal life' for the baby from a salesperson. The baby does not need a death benefit; the parents do. Buy term life insurance, which is 10x cheaper.",
+      "Forgetting to update the W-4 form. A new dependent changes your withholding; an extra $150-$300/month in take-home pay is hiding in HR. Claim it immediately.",
+      "Letting the HSA lapse if switching jobs. The HSA is the best stealth retirement account you have (triple-tax advantaged). Roll it over; do not cash it out.",
+      "Assuming a stay-at-home parent doesn't need life insurance. The cost to replace full-time childcare, housekeeping, and home management is easily $50,000+ a year. Insure them.",
     ],
     recommendedTools: [
       { name: "Emergency Fund Calculator", slug: "emergency-fund-calculator" },
@@ -341,27 +363,38 @@ export const personas: Persona[] = [
       "You earn in USD but live abroad, or earn abroad and have U.S. obligations (loans, family, taxes). Your debit card gets declined at random. International wires cost $40 and arrive in three days. A regular checking account no longer fits the life you have.",
     approaches: [
       {
-        name: "Keep one U.S.-domiciled online bank for income, taxes, U.S. bills",
+        name: "Keep one U.S.-domiciled online bank for income, taxes, and U.S. bills",
         rationale:
-          "ACH-friendly, U.S. routing number, FDIC-insured. Use Schwab Bank or Charles Schwab Investor Checking for unlimited worldwide ATM-fee rebates, or a fintech like SoFi for high-yield savings. Direct deposit lands here.",
+          "You still need an ACH-friendly, U.S. routing number that is FDIC-insured. Use Schwab Bank Investor Checking for unlimited worldwide ATM-fee rebates (they actually refund the fees local banks charge you), or a fintech like SoFi for high-yield savings. Direct deposits from U.S. clients or employers must land here.",
         to: "/banking/how-to-choose-a-checking-account",
       },
       {
-        name: "Layer a Wise (or Revolut) multi-currency account",
+        name: "Layer a Wise (or Revolut) multi-currency account as your daily driver",
         rationale:
-          "Hold balances in USD, EUR, GBP and 40+ currencies. Convert at the real mid-market rate plus ~0.4% fee, vastly cheaper than any traditional bank. Spend abroad from the matching currency balance with no FX markup.",
+          "Hold balances in USD, EUR, GBP, and 40+ other currencies. Convert at the real mid-market rate plus a small ~0.4% fee—vastly cheaper than any traditional bank's built-in spread. Use the debit card to spend abroad from the matching currency balance with zero FX markup.",
       },
       {
         name: "Open a local bank account in your country of residence, eventually",
         rationale:
-          "Many local services (utility direct debits, landlord deposits, government refunds) only work with a local IBAN. Open one once you're staying >12 months; before that, Wise is enough.",
+          "Many local services (utility direct debits, landlord deposits, government tax refunds) only work with a local IBAN. Do not attempt to pay a Berlin landlord from a U.S. checking account. Open one once you secure a long-term visa or plan on staying >12 months.",
       },
+      {
+        name: "Acquire a U.S. credit card with absolutely $0 foreign transaction fees",
+        rationale:
+          "The Chase Sapphire Preferred, Capital One Venture, or Capital One SavorOne have no foreign transaction fees. Put every daily expense (groceries, dining, travel) on this card to earn U.S.-level rewards (which are much higher than European or Asian credit card rewards) while paying exactly the spot exchange rate."
+      },
+      {
+        name: "Establish a reliable 2FA method that works globally",
+        rationale:
+          "U.S. banks love sending SMS verification codes to U.S. numbers. If you move abroad and cancel your U.S. plan, you will be locked out. Port your U.S. number to Google Voice or a cheap $15/mo plan with Wi-Fi calling, or switch all bank 2FA to an authenticator app (like Authy/Google Authenticator) before you board the plane."
+      }
     ],
     pitfalls: [
-      "Logging into U.S. banks from foreign IPs without a heads-up, accounts get frozen for fraud risk. Notify them or use a U.S. VPN endpoint.",
-      "Using a U.S. card abroad with 3% FX fees. That's $300/year on $10k of spend, completely avoidable.",
-      "Closing the U.S. credit card while abroad. Your U.S. credit file decays, you may need it for a future mortgage, car loan, or moving back.",
-      "Forgetting FBAR / FATCA. Any non-U.S. account over $10k aggregate triggers FBAR filing requirements; ignore it at your peril.",
+      "Logging into U.S. banks from foreign IPs without a heads-up. Banks will freeze your account for fraud risk. Notify them of your travel dates or use a dedicated IP U.S. VPN endpoint.",
+      "Using a standard U.S. debit card abroad. The 3% FX fee plus $5 out-of-network ATM fees will easily cost you $500+ a year. Switch to Schwab or Wise.",
+      "Closing your U.S. credit cards. Your U.S. credit file will decay and eventually disappear. You may need it for a future U.S. mortgage or if you ever move back. Keep one no-fee card open and buy a coffee with it every 6 months.",
+      "Forgetting FBAR and FATCA requirements. Any non-U.S. financial accounts (including pensions) whose aggregate value exceeds $10,000 at any point in the year trigger mandatory FBAR filing. Ignore this at your peril—the penalties are draconian.",
+      "Assuming 'tax-free' countries mean zero taxes. If you are a U.S. citizen, you are taxed on global income regardless of where you live. You must file every year and actively claim the Foreign Earned Income Exclusion or Foreign Tax Credit."
     ],
     recommendedTools: [
       { name: "Budget Planner", slug: "budget-planner" },
@@ -376,7 +409,7 @@ export const personas: Persona[] = [
       { label: "Online bank vs credit union", to: "/banking/vs/online-bank-vs-credit-union" },
       { label: "Banking pillar", to: "/banking" },
       { label: "HYSA vs Money Market", to: "/saving/vs/hysa-vs-money-market" },
-      { label: "Best for self-employed", to: "/retirement/best-for-self-employed" },
+      { label: "Best for self-employed", to: "/retirement/best-for/self-employed" },
       { label: "Budget Planner", to: "/tools/budget-planner" },
     ],
     published: "2026-05-12",
@@ -399,26 +432,37 @@ export const personas: Persona[] = [
       {
         name: "Build a $1k starter emergency fund before extra debt payments",
         rationale:
-          "Surprise expenses ($600 car repair, $400 ER copay) will happen in the first year. Without a buffer, they go onto a credit card at 24%, and you're now servicing two debts instead of one. Save $1k first, then attack the loans.",
+          "Surprise expenses ($600 car repair, $400 ER copay, a sudden move) will absolutely happen in your first year out of school. Without a cash buffer, those expenses go straight onto a credit card at 24% APR, and you are now servicing two distinct debts instead of one. Save $1k first, then attack the loans.",
         to: "/saving/how-big-should-your-emergency-fund-be",
       },
       {
         name: "Capture the 401(k) match before any extra loan payment",
         rationale:
-          "If your employer matches 4% of salary, that's an instant 100% return on your contribution. No loan is at 100% APR. Match first, then loans, then the rest of the 401(k), in that order.",
+          "If your employer matches 4% of your salary, that is an instant 100% return on your contribution. No student loan charges 100% interest. Contribute exactly enough to get the full match, then route all extra cash flow to the loans, then return to fund the rest of the 401(k).",
         to: "/retirement/vs/401k-vs-ira",
       },
       {
-        name: "Pick a federal student-loan plan deliberately",
+        name: "Pick a federal student-loan plan deliberately (do not auto-default)",
         rationale:
-          "Standard 10-year, graduated, or income-driven (SAVE/PAYE depending on 2026 rules). Income-driven is right if your salary is low vs the loan balance; standard is right if you can comfortably afford it. Auto-default plans never optimise for you. Pick on purpose.",
+          "You have options: Standard 10-year, graduated, or income-driven (SAVE/PAYE). Income-driven is mathematically optimal if your entry-level salary is low compared to your massive loan balance (e.g., $45k salary with $80k in loans). Standard 10-year is right if you can comfortably afford it and want out of debt quickly. Pick on purpose.",
       },
+      {
+        name: "Avoid 'lifestyle creep' during your first three raises",
+        rationale:
+          "Going from earning $0 as a student to earning $55,000 feels like winning the lottery. You will be tempted to finance a new car and upgrade your apartment immediately. Keep living like a college student for just 12-18 more months, and pour the massive margin into eliminating your debt and fully funding your emergency reserve."
+      },
+      {
+        name: "Upgrade to a real bank account and ditch the 'college' checking",
+        rationale:
+          "Many student checking accounts convert to high-fee adult accounts 6-12 months after graduation. Switch to an online bank (like Ally, Capital One, or SoFi) that offers 0% monthly maintenance fees, free ATMs, and a 4%+ APY on savings."
+      }
     ],
     pitfalls: [
-      "Refinancing federal student loans to private before exhausting forgiveness / income-driven options. Once refinanced you can't go back.",
-      "Buying whole-life insurance from a campus recruiter. You almost certainly don't need life insurance yet; if you do, term is 10× cheaper.",
-      "Maxing out a Roth IRA while carrying 24% credit-card debt. Kill the debt first; the math is brutal.",
-      "Ignoring the HSA. If you're on a high-deductible plan, the HSA is the most tax-advantaged account in the U.S., and the only one you can fund regardless of retirement contributions.",
+      "Refinancing federal student loans to a private lender to 'get a lower rate'. You permanently lose access to federal income-driven repayment plans, forbearance options, and all future federal loan forgiveness programs. Once you refinance, you can never go back.",
+      "Buying whole-life insurance from a campus recruiter or 'financial advisor' friend. You almost certainly do not need life insurance yet; if you do, term life is 10× cheaper.",
+      "Maxing out a Roth IRA while carrying 24% credit-card debt. Kill the 24% guaranteed loss before chasing an 8% expected market return. The math is brutal.",
+      "Ignoring the HSA option during open enrollment. If you are young, healthy, and on a high-deductible health plan, the HSA is the most tax-advantaged account in the U.S. (triple-tax free). Max it out and invest it.",
+      "Co-signing an apartment lease or auto loan for a friend. If they miss a payment, your credit score tanks, and you are 100% legally liable for the debt."
     ],
     recommendedTools: [
       { name: "Debt Payoff Calculator", slug: "debt-payoff-calculator" },
@@ -432,8 +476,8 @@ export const personas: Persona[] = [
     internalLinks: [
       { label: "Snowball vs Avalanche", to: "/debt-taxes-insurance/vs/snowball-vs-avalanche" },
       { label: "Debt Payoff Calculator", to: "/tools/debt-payoff-calculator" },
-      { label: "Best for students (credit cards)", to: "/credit-cards/best-for-students" },
-      { label: "Best for freelancers (budgeting)", to: "/budgeting/best-for-freelancers" },
+      { label: "Best for students (credit cards)", to: "/credit-cards/best-for/students" },
+      { label: "Best for freelancers (budgeting)", to: "/budgeting/best-for/freelancers" },
       { label: "401(k) vs IRA", to: "/retirement/vs/401k-vs-ira" },
     ],
     published: "2026-05-12",

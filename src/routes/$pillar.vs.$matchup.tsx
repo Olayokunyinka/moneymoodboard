@@ -131,6 +131,13 @@ function ComparisonPage() {
           {s.paragraphs.map((p, i) => (
             <p key={i} className="mt-4 text-base leading-7 text-foreground/85">{p}</p>
           ))}
+          {s.bullets && s.bullets.length > 0 && (
+            <ul className="mt-4 list-disc space-y-2 pl-5 text-base leading-7 text-foreground/85">
+              {s.bullets.map((b, i) => (
+                <li key={i}>{b}</li>
+              ))}
+            </ul>
+          )}
         </section>
       ))}
 

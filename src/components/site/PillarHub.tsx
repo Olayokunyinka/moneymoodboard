@@ -14,6 +14,9 @@ import { AuthorBox } from "./AuthorBox";
 import { SharperAnswers } from "./SharperAnswers";
 import { intentForPillar, matchIntentForArticle, INTENT_LABELS, INTENT_CHIP_CLASS } from "@/lib/intent-pages";
 import { pillars } from "@/lib/pillars";
+import { comparisons } from "@/lib/comparisons";
+import { personas } from "@/lib/personas";
+import { ComparisonCard, PersonaCard } from "./Cards";
 import { pillarHeroes, pillarHeroAlts, pillarContent } from "@/lib/pillar-extras";
 import { absUrl } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
@@ -29,6 +32,8 @@ function formatDate(iso: string) {
 export function PillarHub({ pillar }: { pillar: Pillar }) {
   const totalGuides = pillar.clusters.reduce((s, c) => s + c.posts.length, 0);
   const others = pillars.filter((p) => p.slug !== pillar.slug).slice(0, 3);
+  const pillarComparisons = comparisons.filter((c) => c.pillar === pillar.slug);
+  const pillarPersonas = personas.filter((p) => p.pillar === pillar.slug);
   const hero = pillarHeroes[pillar.slug];
   const heroAlt = pillarHeroAlts[pillar.slug];
   const content = pillarContent[pillar.slug];
@@ -241,6 +246,36 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
       })}
 
       <SharperAnswers pillarSlug={pillar.slug} pillarShortName={pillar.shortName} />
+
+      {/* Comparisons */}
+      {pillarComparisons.length > 0 && (
+        <section id="head-to-head" className="mt-16 scroll-mt-24">
+          <h2 className="text-2xl font-bold text-foreground">Head-to-Head Comparisons</h2>
+          <p className="mt-2 text-muted-foreground max-w-3xl">
+            See exactly how popular options stack up against each other.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {pillarComparisons.map((cmp) => (
+              <ComparisonCard key={cmp.slug} cmp={cmp} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Personas */}
+      {pillarPersonas.length > 0 && (
+        <section id="tailored-advice" className="mt-16 scroll-mt-24">
+          <h2 className="text-2xl font-bold text-foreground">Tailored Advice For...</h2>
+          <p className="mt-2 text-muted-foreground max-w-3xl">
+            Custom playbooks designed for specific financial situations.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {pillarPersonas.map((persona) => (
+              <PersonaCard key={persona.slug} persona={persona} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* How to get started */}
       <section id="how-to-get-started" className="mt-16 scroll-mt-24">

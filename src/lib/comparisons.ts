@@ -37,8 +37,8 @@ export interface Comparison {
   b: ComparisonOption;
   /** 4–6 rows for the scorecard. */
   criteria: ComparisonCriterion[];
-  /** 2–4 short sections (H2) explaining context. */
-  sections: { heading: string; paragraphs: string[] }[];
+  /** 2–5 short sections (H2) explaining context. */
+  sections: { heading: string; paragraphs: string[]; bullets?: string[] }[];
   /** Persona-based verdict block. */
   bestFor: { persona: string; pick: "a" | "b"; rationale: string }[];
   /** Hero verdict, one paragraph. */
@@ -84,23 +84,44 @@ export const comparisons: Comparison[] = [
       {
         heading: "Why the tax-now vs tax-later math is rarely close",
         paragraphs: [
-          "If your marginal tax bracket in retirement will be the same as it is today and you invest the deduction from a Traditional IRA, the two accounts end up mathematically identical. In practice almost no one reinvests the deduction, which is exactly why most younger savers in the 12% or 22% bracket end up better off in a Roth.",
-          "High earners staring down the Roth income limit have a workaround: contribute non-deductible dollars to a Traditional IRA and convert to Roth in the same year, the backdoor Roth, provided they don't have other pre-tax IRA balances triggering the pro-rata rule.",
+          "If your marginal tax bracket in retirement will be the same as it is today and you invest the deduction from a Traditional IRA, the two accounts end up mathematically identical. However, in practice, almost no one reinvests the deduction. This behavioral gap is exactly why most younger savers in the 12% or 22% bracket end up significantly better off in a Roth.",
+          "High earners staring down the Roth income limit have a workaround: contribute non-deductible dollars to a Traditional IRA and convert to Roth in the same year. This is known as the backdoor Roth strategy, provided they don't have other pre-tax IRA balances triggering the pro-rata rule.",
         ],
+        bullets: [
+          "Roth: Invest $5,000 after-tax now, it grows to $40,000, you keep exactly $40,000.",
+          "Traditional: Invest $5,000 pre-tax now, it grows to $40,000, you pay taxes on the entire $40,000 upon withdrawal."
+        ]
       },
       {
         heading: "The flexibility gap people underrate",
         paragraphs: [
-          "Roth contributions (not earnings) can be withdrawn any time without penalty. That makes a Roth IRA the closest thing to a 'do everything' account in the U.S. system, retirement vehicle, backup emergency reserve, first-home down payment ($10k earnings carve-out), and college fund all at once.",
+          "Roth contributions (not earnings) can be withdrawn any time without penalty. That makes a Roth IRA the closest thing to a 'do everything' account in the U.S. system: retirement vehicle, backup emergency reserve, first-home down payment ($10k earnings carve-out), and college fund all at once.",
           "Traditional IRAs are far more rigid: any withdrawal before 59½ usually costs 10% in penalty plus ordinary-income tax. Used correctly that rigidity is a feature, not a bug, but it's a real cost to optionality.",
         ],
+        bullets: [
+          "Roth contributions can be withdrawn penalty-free and tax-free at any age.",
+          "Traditional IRA early withdrawals incur a 10% penalty plus income tax.",
+          "Both accounts have specific exemptions for first-time homebuyers and higher education expenses."
+        ]
       },
       {
         heading: "When the Traditional IRA still wins",
         paragraphs: [
-          "Three groups should usually pick Traditional: (1) high earners in their peak years who expect a much lower retirement bracket, (2) anyone close to a tax cliff (e.g., losing a child-tax credit or ACA subsidy) where a deduction unlocks real cash, and (3) early retirees planning to use the Roth Conversion Ladder to move money from Traditional to Roth at a lower future bracket.",
+          "There are specific scenarios where the Traditional IRA is the mathematically superior choice.",
         ],
+        bullets: [
+          "High earners in peak earning years who expect a much lower retirement bracket.",
+          "Savers close to a tax cliff (e.g., losing a child-tax credit or ACA subsidy) where a deduction unlocks real cash.",
+          "Early retirees planning to use the Roth Conversion Ladder to move money from Traditional to Roth during low-income gap years."
+        ]
       },
+      {
+        heading: "Required Minimum Distributions (RMDs)",
+        paragraphs: [
+          "The IRS doesn't let pre-tax money grow untouched forever. Traditional IRAs are subject to RMDs starting at age 73 (moving to 75 by 2033), which forces you to withdraw a percentage of your balance every year and pay taxes on it, regardless of whether you need the money.",
+          "Roth IRAs have no RMDs during the owner's lifetime. You can leave the money to compound tax-free indefinitely, making it a vastly superior estate planning tool for heirs who inherit the account."
+        ]
+      }
     ],
     bestFor: [
       { persona: "20s–30s in the 12–22% bracket", pick: "a", rationale: "Decades of tax-free compounding plus contribution-withdrawal flexibility outweighs the lost deduction." },
@@ -161,14 +182,38 @@ export const comparisons: Comparison[] = [
           "The math almost always works out the same way: contribute to the 401(k) just enough to capture the full employer match, then move to an IRA where fees are lower and the investment menu is wider, then come back to the 401(k) to fill the rest of the limit.",
           "Skipping the match is the single most expensive mistake in personal finance. A 50% match on a 6% salary deferral is an instant 50% return on that money, no investment will ever beat it.",
         ],
+        bullets: [
+          "Step 1: 401(k) up to the employer match (free money).",
+          "Step 2: Max out an IRA (better fees, more investment choices).",
+          "Step 3: Return to the 401(k) to max out the $23,500 limit if you have more to save.",
+          "Step 4: Consider a mega-backdoor Roth if your plan allows after-tax contributions."
+        ]
+      },
+      {
+        heading: "Fees: The Silent Killer of Returns",
+        paragraphs: [
+          "401(k) plans often carry administrative fees on top of the expense ratios of the mutual funds inside them. A plan with a 1.5% total fee will eat nearly a third of your potential wealth over a 30-year career.",
+          "IRAs at major brokerages (like Fidelity, Vanguard, or Schwab) charge $0 in administrative fees, and you can buy index funds with expense ratios as low as 0.03% or even 0%."
+        ],
+        bullets: [
+          "Check your 401(k) provider's fee disclosure document (often buried in the plan details).",
+          "If total fees exceed 1%, never contribute a dollar beyond the employer match until your IRA is fully maxed out."
+        ]
       },
       {
         heading: "When the IRA-first rule breaks",
         paragraphs: [
-          "Two situations flip the order. First, a high earner already over the Roth income limit and unable to deduct a Traditional IRA gets less benefit from the IRA, go heavier on the 401(k) for the deduction. Second, a plan with truly bad fees (1.5%+ all-in) makes the IRA the better second dollar even after the match.",
+          "Two situations flip the order. First, a high earner already over the Roth income limit and unable to deduct a Traditional IRA gets less benefit from the IRA, go heavier on the 401(k) for the deduction. Second, if your 401(k) has exceptionally low fees and excellent institutional-class funds, the convenience of payroll deduction might make it the better choice even without a match.",
           "Either way, capture the match first. Nothing else is close.",
         ],
       },
+      {
+        heading: "Early Access and Loans",
+        paragraphs: [
+          "401(k)s offer a unique advantage: you can often take a loan against your balance (up to $50,000 or 50% of your vested balance). While generally discouraged, this provides a safety valve that IRAs lack.",
+          "Furthermore, if you leave your employer in the year you turn 55 or later, the 'Rule of 55' allows you to withdraw from that 401(k) without the standard 10% early withdrawal penalty. IRAs require you to wait until 59½."
+        ]
+      }
     ],
     bestFor: [
       { persona: "Anyone with an employer match", pick: "a", rationale: "Capture the match before touching anything else, period." },
@@ -187,7 +232,7 @@ export const comparisons: Comparison[] = [
       { label: "401(k) basics", to: "/retirement/401k-basics" },
       { label: "Roth IRA vs Traditional IRA", to: "/retirement/vs/roth-vs-traditional-ira" },
       { label: "Retirement Savings Calculator", to: "/tools/retirement-savings-calculator" },
-      { label: "Best for self-employed", to: "/retirement/best-for-self-employed" },
+      { label: "Best for self-employed", to: "/retirement/best-for/self-employed" },
       { label: "Index funds vs target-date funds", to: "/investing/vs/index-funds-vs-target-date" },
     ],
     published: "2026-05-12",
@@ -229,6 +274,21 @@ export const comparisons: Comparison[] = [
           "Mutual funds have to sell holdings to meet redemptions, which generates taxable capital gains the fund distributes to every shareholder, including ones who joined yesterday. ETFs use a creation/redemption mechanism that lets institutional traders swap shares for the underlying basket without selling, so the fund itself almost never realises gains.",
           "For long-term holders in a taxable brokerage account, that mechanical difference can be worth a few tenths of a percent per year, every year, forever. Inside an IRA or 401(k) the difference vanishes because nothing in the account is taxed until withdrawal.",
         ],
+        bullets: [
+          "ETFs shield you from other investors' behavior (you don't pay taxes when someone else sells).",
+          "Mutual fund investors often get hit with unexpected capital gains tax bills at year-end, even if the fund lost value."
+        ]
+      },
+      {
+        heading: "Intraday Trading vs. End-of-Day Pricing",
+        paragraphs: [
+          "ETFs trade on an exchange like individual stocks. You can buy or sell them at 10:00 AM, 1:15 PM, or 3:59 PM, and you get the exact price at that moment.",
+          "Mutual funds only trade once a day. If you place a buy or sell order at 11:00 AM, it won't execute until the market closes at 4:00 PM, and you get the closing Net Asset Value (NAV)."
+        ],
+        bullets: [
+          "ETF: Immediate execution, know your price instantly.",
+          "Mutual Fund: Delayed execution, price determined after the fact."
+        ]
       },
       {
         heading: "Where mutual funds still earn their keep",
@@ -236,6 +296,13 @@ export const comparisons: Comparison[] = [
           "Two scenarios. First, automated dollar-cost averaging at most brokers still works more cleanly with a mutual fund, pick an amount, pick a date, done. Second, several great index funds (especially in 401(k) menus) only exist in mutual-fund form, and avoiding them just to use an ETF is a bad reason.",
         ],
       },
+      {
+        heading: "Minimum Investment Hurdles",
+        paragraphs: [
+          "Mutual funds typically require a minimum initial investment, often ranging from $1,000 to $3,000 (like Vanguard's Admiral Shares). This can be a barrier for new investors.",
+          "ETFs only require you to buy one share (or a fraction of a share, depending on your broker), making them much more accessible for starting small."
+        ]
+      }
     ],
     bestFor: [
       { persona: "Taxable brokerage account", pick: "a", rationale: "Tax efficiency over decades is meaningful and free." },
@@ -296,13 +363,37 @@ export const comparisons: Comparison[] = [
           "The number-one cause of long-term underperformance isn't fund choice, it's behavior: missing rebalances, panic-selling in downturns, drifting into stock-heavy allocations near retirement. Target-date funds solve all three by making the right behavior automatic.",
           "The slightly higher fee (a few basis points) is the cheapest insurance in finance for an investor who would otherwise tinker.",
         ],
+        bullets: [
+          "Automatic rebalancing: Maintains the right mix of stocks and bonds.",
+          "Glide path: Automatically gets more conservative as you approach retirement.",
+          "Behavioral guardrail: Prevents you from trying to time the market."
+        ]
+      },
+      {
+        heading: "The 'Fund of Funds' Mechanics",
+        paragraphs: [
+          "A target-date fund isn't actually a distinct class of investment; it's a wrapper. Inside a Vanguard Target Retirement 2055 fund, you literally just hold four broad index funds: Total US Stock, Total International Stock, Total US Bond, and Total International Bond.",
+          "You are paying the target-date fund manager a small fee to automatically manage the allocation of those underlying index funds for you."
+        ]
       },
       {
         heading: "Why experienced investors graduate to index funds",
         paragraphs: [
           "Two reasons. First, taxable accounts: target-date funds rebalance inside the fund, which creates capital-gains distributions you can't avoid. Pure index funds let you control when gains are realised. Second, factor tilts: investors who want value, small-cap, or higher international weights can't get them inside a one-size-fits-all target-date fund.",
         ],
+        bullets: [
+          "Lower expense ratios: Building your own portfolio of index funds is slightly cheaper.",
+          "Tax efficiency: Better control over capital gains in non-retirement accounts.",
+          "Customization: Ability to tweak allocations beyond a generic glide path."
+        ]
       },
+      {
+        heading: "The Mathematical Difference Over 30 Years",
+        paragraphs: [
+          "A DIY three-fund index portfolio might charge 0.04% in expense ratios. A low-cost target-date fund might charge 0.08%. On a $100,000 balance, that's a difference of $40 per year.",
+          "While $40 compounds over decades, the cost is trivial compared to the cost of a DIY investor forgetting to rebalance or panic-selling during a crash. Only graduate to a DIY index fund portfolio if you are certain your behavior is disciplined."
+        ]
+      }
     ],
     bestFor: [
       { persona: "New investor, 401(k)", pick: "b", rationale: "Pick the fund matching your retirement year, set the contribution percentage, ignore the news." },
@@ -321,7 +412,7 @@ export const comparisons: Comparison[] = [
       { label: "ETF vs mutual fund", to: "/investing/vs/etf-vs-mutual-fund" },
       { label: "Index fund investing", to: "/investing/index-fund-investing" },
       { label: "Retirement Savings Calculator", to: "/tools/retirement-savings-calculator" },
-      { label: "Best for late-starters (40+)", to: "/investing/best-for-late-starters" },
+      { label: "Best for late-starters (40+)", to: "/investing/best-for/late-starters" },
       { label: "401(k) vs IRA", to: "/retirement/vs/401k-vs-ira" },
     ],
     published: "2026-05-12",
@@ -357,19 +448,42 @@ export const comparisons: Comparison[] = [
     ],
     sections: [
       {
-        heading: "The behavioral research is unusually clear",
+        heading: "The Mathematical Case for Avalanche",
         paragraphs: [
-          "A widely cited Northwestern Kellogg study found that snowballers were measurably more likely to finish their debt-payoff plan than avalanchers. The interest premium was small ($1–$3 per $100 of debt), the completion-rate gap was large.",
-          "The math says avalanche. The data says snowball, because finishing matters more than optimizing.",
+          "The debt avalanche method (paying the highest interest rate first) is mathematically superior. Every dollar put toward a 24% credit card saves you more money than a dollar put toward a 6% student loan.",
+          "If you have $20,000 in debt across three cards, the avalanche method will always finish months faster and save hundreds or thousands of dollars in interest compared to any other method."
         ],
+        bullets: [
+          "Minimizes total interest paid over the life of the debt.",
+          "Shortens the absolute time to become debt-free (assuming perfect adherence)."
+        ]
       },
       {
-        heading: "When the math gap is too big to ignore",
+        heading: "The Behavioral Case for Snowball",
         paragraphs: [
-          "If one debt is dramatically higher-rate, a 29% store card next to a 6% student loan, the interest premium of snowball can move from 'small' to 'painful' fast. The hybrid move: kill the smallest debt for the psychological win, then jump to the highest rate for the rest.",
-          "Either way, avoid the middle path of 'paying a little extra on everything'. Both methods only work because the entire snowball or avalanche payment rolls onto the next target after each debt clears.",
+          "The debt snowball method (paying the smallest balance first, regardless of interest rate) ignores math in favor of psychology. By knocking out a small $500 medical bill in month one, you get an immediate dopamine hit and a freed-up minimum payment.",
+          "Harvard Business Review and Northwestern Kellogg studies both found that consumers who use the snowball method are significantly more likely to actually get out of debt. Early 'wins' create the momentum needed to stick to a multi-year budget."
         ],
+        bullets: [
+          "Maximizes psychological momentum and motivation.",
+          "Frees up cash flow faster as individual minimum payments disappear.",
+          "Proven to have higher completion rates in behavioral studies."
+        ]
       },
+      {
+        heading: "When the math difference becomes too big to ignore",
+        paragraphs: [
+          "The snowball method works best when interest rates are similar. If your smallest balance is a 0% medical bill and your largest balance is a 29% payday loan, using the snowball method will cost you a ruinous amount of interest.",
+          "Rule of thumb: If the interest rate gap between your smallest balance and highest-rate balance is larger than 10%, you should strongly consider a hybrid approach (avalanche the predatory rates, snowball the rest)."
+        ]
+      },
+      {
+        heading: "The 'Cash Flow' Snowball Advantage",
+        paragraphs: [
+          "There is one mathematical scenario where snowball wins: emergency cash flow. If you lose your job, having fewer distinct loans means a lower total mandatory minimum payment to survive the month.",
+          "By killing off three small loans quickly, you reduce the sheer number of entities demanding a check from you on the 1st of the month."
+        ]
+      }
     ],
     bestFor: [
       { persona: "Someone who's failed payoff plans before", pick: "a", rationale: "The momentum from the first paid-off card is the whole point." },
@@ -389,7 +503,7 @@ export const comparisons: Comparison[] = [
       { label: "Debt avalanche deep-dive", to: "/debt-taxes-insurance/debt-avalanche-method" },
       { label: "Debt Payoff Calculator", to: "/tools/debt-payoff-calculator" },
       { label: "Credit Card Payoff Calculator", to: "/tools/credit-card-payoff-calculator" },
-      { label: "Best for recent grads", to: "/debt-taxes-insurance/best-for-recent-grads" },
+      { label: "Best for recent grads", to: "/debt-taxes-insurance/best-for/recent-grads" },
     ],
     published: "2026-05-12",
     updated: "2026-05-12",
@@ -425,19 +539,43 @@ export const comparisons: Comparison[] = [
     ],
     sections: [
       {
-        heading: "The honest cashback math",
+        heading: "The Certainty of Cash",
         paragraphs: [
-          "On $40,000 of annual card spend, a 2% flat-cash card returns $800/year, no fee, no learning curve, no expiration. A top travel card can return $1,200–$2,000/year of travel value, but only if you actually take 2+ international trips, redeem through transfer partners, and stomach a $95–$695 annual fee.",
-          "If you'd otherwise have to pay cash for those flights, the travel card wins by a wide margin. If you wouldn't have flown anyway, you're just buying yourself trips you couldn't afford and calling it 'free'.",
+          "Cashback is the ultimate frictionless currency. A 2% flat-rate card yields exactly $0.02 on every dollar spent. There are no blackout dates, no transfer partners, and no point devaluations.",
+          "Because cash can be invested or used to pay down debt, its true value is often higher than a hypothetical luxury flight you didn't actually need to take."
         ],
+        bullets: [
+          "Zero mental overhead: No need to track award charts or transfer partners.",
+          "Universal acceptance: Cash pays the mortgage, buys groceries, and funds the Roth IRA.",
+          "Fixed value: 1 cent is always 1 cent."
+        ]
       },
       {
-        heading: "The portfolio approach beats either alone",
+        heading: "The Outsized Upside of Travel Rewards",
         paragraphs: [
-          "Most optimisers run two cards: a 2% flat-cash card as the daily driver, and one premium travel card for the welcome bonus and category multipliers (3–5x on flights, dining, groceries). You get cash on the long tail of random spend and points on the categories that actually multiply.",
-          "The card spec sheet matters less than your spending pattern. Pull a year of statements before applying, it will tell you whether you actually spend $4k+/yr on travel and dining or whether you've been overpaying for an annual fee.",
+          "A business-class flight to Tokyo might cost $6,000 or 120,000 points. In that scenario, each point is worth 5 cents. Earning 3x points on dining suddenly translates to a 15% return on your restaurant spending.",
+          "Travel rewards systems are built for 'gamers' willing to learn transfer partner mechanics. If you use a portal to buy a domestic economy flight, you'll often get 1.25 cents per point—barely better than cash. The extreme value is exclusively in international premium cabins and luxury hotels."
         ],
+        bullets: [
+          "Potential for 3-5+ cents per point on premium redemptions.",
+          "Access to experiences (first class, luxury suites) you wouldn't pay cash for.",
+          "Sign-up bonuses are often significantly larger than cashback equivalents."
+        ]
       },
+      {
+        heading: "The Annual Fee Break-Even Point",
+        paragraphs: [
+          "High-end travel cards charge $250 to $695 in annual fees. They offset this with travel credits, lounge access, and insurance. However, if you don't organically use those credits, the card is a net loss.",
+          "Cashback setups can be optimized to 2-5% across all categories using cards with exactly $0 in annual fees."
+        ]
+      },
+      {
+        heading: "When to switch teams",
+        paragraphs: [
+          "If your household organically spends more than $5,000 a year on flights and hotels, or if you fly internationally at least once a year, you are leaving thousands of dollars in value on the table by sticking to 2% cashback.",
+          "Conversely, if you take one road trip a year and stay at an Airbnb, travel points will languish in your account while losing value to inflation. Take the cash."
+        ]
+      }
     ],
     bestFor: [
       { persona: "Never travels / hates planning", pick: "a", rationale: "Flat 2% beats every alternative in real life." },
@@ -454,7 +592,7 @@ export const comparisons: Comparison[] = [
     ],
     internalLinks: [
       { label: "How credit cards work", to: "/credit-cards/how-credit-cards-work" },
-      { label: "Best for students", to: "/credit-cards/best-for-students" },
+      { label: "Best for students", to: "/credit-cards/best-for/students" },
       { label: "Credit Card Payoff Calculator", to: "/tools/credit-card-payoff-calculator" },
       { label: "Credit Score Estimator", to: "/tools/credit-score-estimator" },
       { label: "Budget Planner", to: "/tools/budget-planner" },
@@ -493,19 +631,42 @@ export const comparisons: Comparison[] = [
     ],
     sections: [
       {
-        heading: "The check-writing trap",
+        heading: "The Yield Race is Usually a Tie",
         paragraphs: [
-          "An emergency fund that can be tapped with a checkbook on a slow Sunday morning is a feature, not a bug, until the third Sunday in a row, when it's a leak. The HYSA's mild friction (transfer to checking, 1 business day) is a feature for people who notice their balance shrinking.",
-          "If you genuinely need check-writing for one-off large purchases (rent in a non-Zelle building, a contractor deposit), an MMDA is a reasonable trade. Otherwise the HYSA's higher rate is free money.",
+          "A High-Yield Savings Account (HYSA) and a Money Market Account (MMA) at the same online bank will typically pay within 0.10% of each other. Both track the Federal Reserve's benchmark rate.",
+          "Chasing a 0.05% difference on a $20,000 emergency fund yields exactly $10 a year. The rate itself shouldn't be the deciding factor."
         ],
+        bullets: [
+          "Both accounts are FDIC/NCUA insured up to $250,000.",
+          "Both offer variable APYs that fluctuate with the broader economy.",
+          "Both are designed for safe, highly liquid cash storage."
+        ]
       },
       {
-        heading: "Rate is not the whole picture",
+        heading: "The Checkbook and Debit Card Difference",
         paragraphs: [
-          "The top APY on either type of account often comes from an unfamiliar online bank. The headline rate is real, but check: FDIC certificate number, IndexCD/promo expiration, transfer limits (some HYSAs cap at $25k/day), and customer-service reputation.",
-          "A bank one percentage point behind the leader but with a 24/7 phone line and a 50-year history is a fair trade-off for most people's emergency fund.",
+          "The single defining feature of a Money Market Account is that it often comes with a debit card and the ability to write paper checks directly from the account.",
+          "A traditional HYSA requires you to transfer funds to a linked checking account before you can spend the money, a process that can take 1-3 business days if the checking account is at a different institution."
         ],
+        bullets: [
+          "MMA: Direct access via checks/debit (perfect for paying large, infrequent bills like property tax).",
+          "HYSA: Requires a transfer to checking first (adds a layer of friction)."
+        ]
       },
+      {
+        heading: "Friction as a Feature",
+        paragraphs: [
+          "If this account holds your emergency fund, the lack of a debit card on an HYSA is actually a behavioral advantage. It prevents you from impulsively swiping your emergency reserves at a restaurant.",
+          "MMAs are better suited as 'holding tanks' for money you know you will spend soon (e.g., a down payment on a house, quarterly estimated taxes)."
+        ]
+      },
+      {
+        heading: "Minimum Balance Requirements",
+        paragraphs: [
+          "Online HYSAs have largely eliminated minimum balances. You can open an account at Ally or Marcus with $1 and earn the top tier rate.",
+          "MMAs occasionally still tier their interest rates, requiring $5,000 or $10,000 to unlock the advertised APY, and penalizing you with monthly fees if the balance dips."
+        ]
+      }
     ],
     bestFor: [
       { persona: "Building an emergency fund", pick: "a", rationale: "Higher APY, no minimums, just-enough friction to prevent leakage." },
@@ -525,7 +686,7 @@ export const comparisons: Comparison[] = [
       { label: "How big should your emergency fund be?", to: "/saving/how-big-should-your-emergency-fund-be" },
       { label: "CDs vs T-Bills", to: "/saving/vs/cds-vs-t-bills" },
       { label: "Emergency Fund Calculator", to: "/tools/emergency-fund-calculator" },
-      { label: "Best for new parents", to: "/saving/best-for-new-parents" },
+      { label: "Best for new parents", to: "/saving/best-for/new-parents" },
     ],
     published: "2026-05-12",
     updated: "2026-05-12",
@@ -561,18 +722,41 @@ export const comparisons: Comparison[] = [
     ],
     sections: [
       {
-        heading: "Why state tax often decides the question",
+        heading: "The State and Local Tax Advantage",
         paragraphs: [
-          "T-bill interest is exempt from state and local income tax. For a saver in California (9.3% top rate) or New York City (~10.9% combined), that exemption is worth roughly half a percentage point of after-tax yield. A 4.8% T-bill can beat a 5.0% CD after tax.",
-          "For a saver in Texas, Florida, Tennessee or another state with no income tax, the exemption is worth nothing and the higher headline CD rate wins.",
+          "Interest earned from a Certificate of Deposit (CD) is taxed at the federal, state, and local levels. Interest earned from a Treasury Bill (T-Bill) is exempt from state and local income taxes.",
+          "If you live in a high-tax state like California or New York, a 5.0% T-Bill will put significantly more after-tax cash in your pocket than a 5.1% CD."
         ],
+        bullets: [
+          "CD: Taxed at Federal + State + Local levels.",
+          "T-Bill: Taxed at Federal level only."
+        ]
       },
       {
-        heading: "Liquidity is a real edge",
+        heading: "Liquidity and Early Exit Penalties",
         paragraphs: [
-          "A T-bill in a brokerage can be sold any business day at the current price, usually within a few cents of par for shorter maturities. A CD redeemed early forfeits months of interest. For an emergency reserve that you genuinely won't touch, the difference is academic. For 'maybe-emergency' cash, the T-bill's liquidity matters.",
+          "If you break a 12-month CD in month 9, the bank will charge an early withdrawal penalty, typically 3-6 months of interest. You are locked in.",
+          "T-Bills can be sold on the secondary market before maturity without a direct penalty. However, if interest rates have risen since you bought the T-Bill, you will sell it at a slight discount to its face value. (Note: Buying T-Bills directly from TreasuryDirect makes secondary selling cumbersome; use a brokerage for liquidity)."
         ],
+        bullets: [
+          "CDs guarantee your principal but penalize early exit.",
+          "T-Bills offer secondary market liquidity but expose you to minor interest-rate risk if sold early."
+        ]
       },
+      {
+        heading: "Convenience and User Experience",
+        paragraphs: [
+          "Opening a CD at your existing bank takes three clicks. The interface is intuitive, and the interest simply deposits into the account.",
+          "Buying a T-Bill means either navigating the notoriously antiquated TreasuryDirect.gov website, or using a brokerage platform and understanding how to buy at a 'discount' and receive the 'par value' at maturity."
+        ]
+      },
+      {
+        heading: "The Yield Curve Environment",
+        paragraphs: [
+          "Banks use CDs to secure deposits for their loan portfolios, meaning they occasionally run 'promotions' that beat the equivalent Treasury rate. However, T-Bills generally reflect the purest risk-free rate in the market.",
+          "Always calculate the 'Tax-Equivalent Yield' before choosing a CD over a T-Bill in a state with income tax."
+        ]
+      }
     ],
     bestFor: [
       { persona: "High-tax-state saver (CA, NY, NJ)", pick: "b", rationale: "State-tax exemption pushes after-tax yield ahead of comparable CDs." },
@@ -591,7 +775,7 @@ export const comparisons: Comparison[] = [
       { label: "HYSA vs Money Market", to: "/saving/vs/hysa-vs-money-market" },
       { label: "How big should your emergency fund be?", to: "/saving/how-big-should-your-emergency-fund-be" },
       { label: "Saving pillar", to: "/saving" },
-      { label: "Best for new parents", to: "/saving/best-for-new-parents" },
+      { label: "Best for new parents", to: "/saving/best-for/new-parents" },
       { label: "Compound Interest Calculator", to: "/tools/compound-interest-calculator" },
     ],
     published: "2026-05-12",
@@ -628,18 +812,43 @@ export const comparisons: Comparison[] = [
     ],
     sections: [
       {
-        heading: "The hybrid most long-term budgeters actually run",
+        heading: "The Strict Discipline of Zero-Based",
         paragraphs: [
-          "Pure 50/30/20 surfaces the question 'why are my wants 38% this year?' but doesn't answer it. Pure zero-based answers everything but burns out anyone whose life isn't on rails.",
-          "Most veteran budgeters use a hybrid: 50/30/20 as the annual sanity check, zero-based for the months where something is clearly off (new job, new baby, big move). The framework chosen on January 1st is less important than the act of looking.",
+          "Zero-based budgeting (made famous by YNAB) requires you to assign exactly every dollar of income to a specific category until your 'to be budgeted' amount is $0. If you earn $4,000, you give $4,000 specific jobs.",
+          "This method is highly tactical and forces you to confront trade-offs. If you overspend on dining out, you must actively move money out of your vacation fund to cover it."
         ],
+        bullets: [
+          "High visibility: You know exactly where every dollar is going.",
+          "Proactive: You assign jobs to money before you spend it.",
+          "High maintenance: Requires frequent check-ins and categorizing transactions."
+        ]
       },
       {
-        heading: "Where 50/30/20 quietly fails",
+        heading: "The High-Level Guardrails of 50/30/20",
         paragraphs: [
-          "The rule was written for households with one steady salary and predictable bills. It struggles in two cases: variable income (freelancers, tipped workers) and high-cost-of-living areas where rent alone clears 40% of take-home. In both cases, the buckets need adjusting, or you switch to zero-based.",
+          "The 50/30/20 rule (popularized by Elizabeth Warren) splits your after-tax income into three massive buckets: 50% for Needs, 30% for Wants, and 20% for Savings/Debt Payoff.",
+          "It doesn't care if your 'Wants' bucket was spent entirely on concert tickets or evenly divided between restaurants and video games. As long as you hit the 20% savings target and keep needs under 50%, you succeed."
         ],
+        bullets: [
+          "Low maintenance: Just check three macro percentages.",
+          "Flexible: Doesn't force guilt over specific purchases.",
+          "Lacks granularity: Can fail if you don't actually know what constitutes a 'Need'."
+        ]
       },
+      {
+        heading: "When 50/30/20 breaks down",
+        paragraphs: [
+          "In high-cost-of-living areas, keeping housing, transportation, and groceries under 50% of after-tax income is virtually impossible for an entry-level worker. A strict adherence might make you feel like you are failing.",
+          "Conversely, for very high earners, spending 30% of income on 'Wants' is wildly irresponsible and leads to lifestyle inflation. 50/30/20 is best viewed as a starting template for median incomes, not a rigid law."
+        ]
+      },
+      {
+        heading: "Graduating from Zero-Based",
+        paragraphs: [
+          "Many successful savers start with Zero-Based budgeting to stop the bleeding and learn their true habits. After a few years, their savings become automated and their spending naturally regulates.",
+          "At that point, moving to an automated 'pay yourself first' system (a loose variant of 50/30/20) frees up hours of mental bandwidth."
+        ]
+      }
     ],
     bestFor: [
       { persona: "First-time budgeter", pick: "b", rationale: "Friction kills habits; 50/30/20 is the lowest-friction system that still works." },
@@ -657,7 +866,7 @@ export const comparisons: Comparison[] = [
     internalLinks: [
       { label: "Zero-based budgeting explained", to: "/budgeting/zero-based-budgeting" },
       { label: "The 50/30/20 rule", to: "/budgeting/the-50-30-20-rule-a-beginners-guide" },
-      { label: "Best for freelancers", to: "/budgeting/best-for-freelancers" },
+      { label: "Best for freelancers", to: "/budgeting/best-for/freelancers" },
       { label: "Budget Planner Tool", to: "/tools/budget-planner" },
       { label: "Snowball vs Avalanche", to: "/debt-taxes-insurance/vs/snowball-vs-avalanche" },
     ],
@@ -695,18 +904,41 @@ export const comparisons: Comparison[] = [
     ],
     sections: [
       {
-        heading: "The two-account setup most savers actually run",
+        heading: "The Yield and Fee Gap",
         paragraphs: [
-          "An online bank for high-yield savings + cashback debit/checking, a local credit union for car loans and personal service. Both are free, both insured, both deliver something the other can't.",
-          "Trying to consolidate to one account at one institution is usually a small downgrade, either you lose 1–2% on savings or 1–2% on loans, depending on which side you collapse to.",
+          "Online banks (like Ally, SoFi, or Capital One) don't have to pay for marble lobbies, tellers, or localized marketing. They pass those savings on via drastically higher yields on savings accounts and a near-total absence of overdraft or maintenance fees.",
+          "While Credit Unions are non-profits, their savings rates rarely match the aggressive APYs offered by national online banks."
         ],
+        bullets: [
+          "Online Bank: 4-5% APY on savings, zero maintenance fees.",
+          "Credit Union: 0.1-1% APY on savings, very low fees."
+        ]
       },
       {
-        heading: "How to qualify for a credit union",
+        heading: "The Lending and Relationship Advantage",
         paragraphs: [
-          "Membership rules vary: some are employer- or geography-based, some are open to anyone in a partner association. National-charter credit unions like Alliant, Pentagon Federal and Navy Federal accept members from most of the country with a tiny one-time donation or affiliation.",
+          "Credit Unions excel when you need to borrow money. Because they are member-owned, their auto loan and mortgage rates are often significantly lower than commercial banks.",
+          "Furthermore, if you have a complex financial situation or a bruised credit score, a Credit Union loan officer can look at your holistic profile and make a human decision. An online bank's algorithm will simply auto-reject you."
         ],
+        bullets: [
+          "Credit Union: Superior rates on auto loans, personal loans, and mortgages.",
+          "Online Bank: Highly automated, rigid lending criteria."
+        ]
       },
+      {
+        heading: "Physical Cash and Cashier's Checks",
+        paragraphs: [
+          "If you are a bartender, server, or run a cash-heavy small business, an online bank is a nightmare. Depositing physical cash into an online bank often involves buying money orders or using sketch third-party retail networks.",
+          "Credit unions offer physical branches, easy cash deposits, notary services, and immediate cashier's checks for buying a car or closing on a house."
+        ]
+      },
+      {
+        heading: "The Ultimate Setup: Use Both",
+        paragraphs: [
+          "There is no rule saying you must be monogamous with your banking. The optimal setup for many is an Online Bank for the bulk of their emergency fund and daily checking (maximizing yield and app experience), coupled with a local Credit Union account.",
+          "The Credit Union account acts as a portal for cash deposits, notary needs, and future auto loans."
+        ]
+      }
     ],
     bestFor: [
       { persona: "Yield-maximizing saver", pick: "a", rationale: "Online banks own the high-yield savings game." },
@@ -725,7 +957,7 @@ export const comparisons: Comparison[] = [
       { label: "How to choose a checking account", to: "/banking/how-to-choose-a-checking-account" },
       { label: "Banking pillar", to: "/banking" },
       { label: "HYSA vs Money Market", to: "/saving/vs/hysa-vs-money-market" },
-      { label: "Best for expats", to: "/banking/best-for-expats" },
+      { label: "Best for expats", to: "/banking/best-for/expats" },
       { label: "Budget Planner", to: "/tools/budget-planner" },
     ],
     published: "2026-05-12",

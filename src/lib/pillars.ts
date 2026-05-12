@@ -148,6 +148,7 @@ export const pillars: Pillar[] = [
         name: "Building & Repairing Credit",
         intro: "From thin file to 800+, the moves that actually move the needle.",
         posts: [
+          p("How Credit Cards Work", "Billing cycles, grace periods, statement balances, minimum payments, rewards, and the math that turns a 30-day free loan into a 24% APR trap.", 11, "Definition", "how-credit-cards-work"),
           p("How Credit Scores Are Calculated", "FICO and VantageScore break a three-digit number into five weighted factors. Here's what each one is worth and how to influence it.", 8, "Definition"),
           p("Building Credit From Zero", "Secured cards, credit-builder loans, becoming an authorized user, the four routes to a real credit history when you have none.", 7, "Guide"),
           p("How to Repair Bad Credit", "A 12-month plan to take a sub-600 score to the 700s, including which collections to dispute first and which to leave alone.", 10, "Guide"),
@@ -205,8 +206,10 @@ export const pillars: Pillar[] = [
         intro: "The foundational vocabulary every investor needs.",
         posts: [
           p("What Is an Index Fund?", "A single fund that owns hundreds of companies, charges almost nothing, and beats most professional stock-pickers. The cornerstone of modern investing.", 7, "Definition"),
+          p("What Is an ETF?", "Exchange-traded funds explained from first principles, intraday pricing, creation and redemption, expense ratios, taxes, and the broad-market ETFs worth owning in 2026.", 10, "Definition", "what-is-an-etf"),
           p("Stocks vs Bonds vs Funds", "Three asset types in 600 words. What each one is, how it earns money, and where it fits in a portfolio at any age.", 6, "Comparison"),
           p("Dollar-Cost Averaging Explained", "Invest the same amount every month, regardless of price. The unsexy strategy that quietly beats lump-sum timing for most real-world investors.", 6, "Definition"),
+          p("What Is Dollar-Cost Averaging?", "The plain-English definition: what DCA is, how the formula works, what it does and doesn't protect against, and how to set it up at any major brokerage in under 10 minutes.", 9, "Definition", "what-is-dollar-cost-averaging"),
           p("Compound Interest, Visualised", "The same $200 a month becomes $300,000 or $1.2 million depending on when you start. The chart that makes 20-year-olds open a brokerage.", 6, "Guide"),
           p("Risk Tolerance vs Risk Capacity", "What you feel vs what your finances can actually absorb, and why mixing them up wrecks portfolios in the first market drop.", 7, "Definition"),
         ],
@@ -225,6 +228,7 @@ export const pillars: Pillar[] = [
         name: "Building a Portfolio",
         intro: "Three-fund portfolios, target dates, and the lazy way to win.",
         posts: [
+          p("Index Fund Investing: A Complete Strategy", "Beyond 'buy VTI', the full strategy of building, contributing to and rebalancing an index-fund portfolio for 30+ years, including tax-loss harvesting and behavioral guardrails.", 12, "Guide", "index-fund-investing"),
           p("The Three-Fund Portfolio", "US stocks, international stocks, total-bond market. The portfolio Vanguard's founder recommended to his own kids, and why it still works.", 8, "Guide"),
           p("Target-Date Funds Explained", "One fund that re-balances itself as you age toward retirement. The trade-offs hidden inside its 0.10% expense ratio.", 6, "Definition"),
           p("Bogleheads Approach in Plain English", "Low fees, broad diversification, do less. The philosophy behind the most evidence-backed investing community on the internet.", 7, "Guide"),
@@ -260,7 +264,10 @@ export const pillars: Pillar[] = [
         name: "Retirement Accounts",
         intro: "Pick the right tax-advantaged buckets before you pick funds.",
         posts: [
+          p("401(k) Basics", "The plain-English starter guide: contribution limits 2026, employer match math, vesting schedules, traditional vs Roth 401(k), and rollover paths when you change jobs.", 11, "Definition", "401k-basics"),
           p("401(k) Explained", "Payroll-deducted, employer-matched, tax-deferred. The most powerful retirement account most workers under-use by 80%.", 8, "Definition"),
+          p("Roth IRA Explained", "Eligibility, MAGI phase-outs, the 5-year rule, qualified vs non-qualified distributions, and the contribution limits and gotchas every Roth holder needs to know in 2026.", 11, "Definition", "roth-ira-explained"),
+          p("Traditional IRA Explained", "Deduction rules with and without a workplace plan, RMDs, taxes on withdrawals, and how a Traditional IRA fits alongside (or replaces) a 401(k) in a real household plan.", 10, "Definition", "traditional-ira-explained"),
           p("Roth IRA vs Traditional IRA", "The single decision that can be worth $200,000 over a career. A clear-eyed walkthrough, including the rules most people miss.", 8, "Comparison", "roth-vs-traditional-ira"),
           p("HSA as a Stealth Retirement Account", "Triple tax-advantaged, never taxed if used for medical bills in retirement. The account high-income earners max before their IRA.", 8, "Guide"),
           p("Backdoor Roth IRA", "The legal workaround for high earners locked out of direct Roth contributions. Step-by-step, including the pro-rata rule that trips most people up.", 9, "Guide"),
@@ -325,6 +332,7 @@ export const pillars: Pillar[] = [
         name: "High-Yield Savings",
         intro: "Make your cash earn its keep without lockups or risk.",
         posts: [
+          p("What Is a High-Yield Savings Account?", "The full plain-English definition: APY mechanics, FDIC insurance, withdrawal rules, fees, and how a HYSA differs from money market accounts and CDs in 2026.", 10, "Definition", "what-is-a-high-yield-savings-account"),
           p("Best High-Yield Savings Accounts", "Six FDIC-insured online banks paying 4%+ APY in 2026, with no minimums and no monthly fees. Including the one with the best app.", 7, "List"),
           p("HYSA vs Money Market vs CDs", "Three flavors of safe cash, three different trade-offs between yield and access. The right one depends on when you'll need the money.", 7, "Comparison"),
           p("Are Online Banks Safe?", "FDIC insurance, ACH speed, customer service horror stories. What 'safe' actually means and how to vet a bank in five minutes.", 6, "Definition"),
@@ -368,6 +376,7 @@ export const pillars: Pillar[] = [
         name: "Checking Accounts",
         intro: "Find an account that pays you, not one that fines you.",
         posts: [
+          p("How to Choose a Checking Account", "The 8-point checklist: fee structure, ATM network, overdraft policy, mobile UX, joint vs individual, switching cost, online vs brick-and-mortar, and the questions to ask before opening anything.", 11, "Guide", "how-to-choose-a-checking-account"),
           p("Best Free Checking Accounts", "Seven truly fee-free checking accounts in 2026, no minimums, no maintenance fees, free ATM networks, and one that pays you to switch.", 8, "List"),
           p("How to Switch Banks Without Headaches", "A two-week switch plan that catches every auto-pay and direct deposit before closing the old account. The checklist banks don't give you.", 7, "Guide"),
           p("Online Banks vs Traditional Banks", "Higher rates and better apps vs branches and cash deposits. What you actually trade by going fully online, and the hybrid setup most people end up with.", 7, "Comparison"),
