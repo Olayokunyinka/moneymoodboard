@@ -12,7 +12,7 @@ import { KeyStatistics } from "./KeyStatistics";
 import { AdSlot } from "./AdSlot";
 import { AuthorBox } from "./AuthorBox";
 import { SharperAnswers } from "./SharperAnswers";
-import { intentForPillar } from "@/lib/intent-pages";
+import { intentForPillar, matchIntentForArticle, INTENT_LABELS, INTENT_CHIP_CLASS } from "@/lib/intent-pages";
 import { pillars } from "@/lib/pillars";
 import { pillarHeroes, pillarHeroAlts, pillarContent } from "@/lib/pillar-extras";
 import { absUrl } from "@/lib/seo";
@@ -46,11 +46,11 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
     `Key ${pillar.shortName} Statistics`,
     ...(content.deepDive?.map((d) => d.heading) ?? []),
     ...pillar.clusters.map((c) => c.name),
+    ...(sharper.all.length ? [`Sharper ${pillar.shortName} Answers`] : []),
     "How to Get Started",
     ...(pillar.relatedTools.length > 0 ? [`Free ${pillar.shortName} Tools`] : []),
     `${pillar.shortName} Glossary`,
     "Frequently Asked Questions",
-    ...(sharper.all.length ? [`Sharper ${pillar.shortName} Answers`] : []),
     "More Money Topics",
   ];
 
@@ -204,17 +204,43 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
       <div id="all-guides" className="scroll-mt-24" />
 
       {/* Cluster sections */}
-      {pillar.clusters.map((cluster) => (
-        <section key={cluster.name} id={slugify(cluster.name)} className="mt-16 scroll-mt-24">
-          <h2 className="text-2xl font-bold text-foreground">{cluster.name}</h2>
-          <p className="mt-2 text-muted-foreground max-w-3xl">{cluster.intro}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {cluster.posts.map((post) => (
-              <ArticleCard key={post.slug} pillarSlug={pillar.slug} post={post} />
-            ))}
-          </div>
-        </section>
-      ))}
+      {pillar.clusters.map((cluster) => {
+        const clusterSeed = `${cluster.name} ${cluster.posts.map((p) => p.title).join(" ")}`;
+        const clusterIntent = matchIntentForArticle(pillar.slug, cluster.name, clusterSeed, 2);
+        return (
+          <section key={cluster.name} id={slugify(cluster.name)} className="mt-16 scroll-mt-24">
+            <h2 className="text-2xl font-bold text-foreground">{cluster.name}</h2>
+            <p className="mt-2 text-muted-foreground max-w-3xl">{cluster.intro}</p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {cluster.posts.map((post) => (
+                <ArticleCard key={post.slug} pillarSlug={pillar.slug} post={post} />
+              ))}
+            </div>
+            {clusterIntent.length > 0 ? (
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {clusterIntent.map((e) => (
+                  <li key={e.to}>
+                    <Link
+                      to={e.to}
+                      className="group inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-sm text-foreground/85 hover:border-primary/40 hover:text-primary"
+                    >
+                      <span
+                        className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${INTENT_CHIP_CLASS[e.cls]}`}
+                      >
+                        {INTENT_LABELS[e.cls]}
+                      </span>
+                      <span className="hover:underline">{e.label}</span>
+                      <ArrowRight className="h-3 w-3 text-primary transition-transform group-hover:translate-x-0.5" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </section>
+        );
+      })}
+
+      <SharperAnswers pillarSlug={pillar.slug} pillarShortName={pillar.shortName} />
 
       {/* How to get started */}
       <section id="how-to-get-started" className="mt-16 scroll-mt-24">
@@ -300,8 +326,6 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
       </section>
 
       <AuthorBox />
-
-      <SharperAnswers pillarSlug={pillar.slug} pillarShortName={pillar.shortName} />
 
       {/* Related pillars */}
       <section id="more-money-topics" className="mt-16 scroll-mt-24">

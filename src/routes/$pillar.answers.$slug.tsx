@@ -3,6 +3,7 @@ import { ArrowRight, Calendar, CalendarCheck, ExternalLink } from "lucide-react"
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { JsonLd } from "@/components/site/JsonLd";
 import { AuthorBox } from "@/components/site/AuthorBox";
+import { RelatedIntent } from "@/components/site/RelatedIntent";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { getAnswerPage, type AnswerPage } from "@/lib/answers";
 import { getPillarView, type PillarView, type PillarSlug } from "@/lib/pillars";
@@ -135,6 +136,14 @@ function AnswerPageView() {
           ))}
         </ul>
       </section>
+
+      <RelatedIntent
+        pillarSlug={pillar.slug}
+        pillarShortName={pillar.shortName}
+        pillarHubTo={`/${pillar.slug}`}
+        currentTo={path}
+        seedText={`${answer.slug} ${answer.question}`}
+      />
 
       <nav aria-label="Keep reading" className="mt-12 rounded-2xl border border-border bg-card p-5 md:p-6">
         <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Keep reading</p>

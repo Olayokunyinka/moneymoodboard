@@ -3,6 +3,7 @@ import { ArrowRight, Calendar, CalendarCheck, Check, X } from "lucide-react";
 import { Breadcrumbs } from "@/components/site/Breadcrumbs";
 import { JsonLd } from "@/components/site/JsonLd";
 import { AuthorBox } from "@/components/site/AuthorBox";
+import { RelatedIntent } from "@/components/site/RelatedIntent";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { getBestRoundup, type BestRoundup } from "@/lib/best-picks";
 import { getPillarView, type PillarView, type PillarSlug } from "@/lib/pillars";
@@ -131,6 +132,14 @@ function BestRoundupPage() {
           {s.paragraphs.map((p, i) => (<p key={i} className="mt-4 text-base leading-7 text-foreground/85">{p}</p>))}
         </section>
       ))}
+
+      <RelatedIntent
+        pillarSlug={pillar.slug}
+        pillarShortName={pillar.shortName}
+        pillarHubTo={`/${pillar.slug}`}
+        currentTo={path}
+        seedText={`${roundup.slug} ${roundup.title}`}
+      />
 
       <nav aria-label="Keep reading" className="mt-12 rounded-2xl border border-border bg-card p-5 md:p-6">
         <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Keep reading</p>
