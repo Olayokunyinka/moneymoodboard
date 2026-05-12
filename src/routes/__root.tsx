@@ -184,7 +184,6 @@ function RootComponent() {
               "Insurance",
             ],
             areaServed: { "@type": "Country", name: "United States" },
-            inLanguage: "en-US",
             founder: {
               "@type": "Person",
               "@id": `${SITE_URL}/about/yinka-olayokun#person`,
