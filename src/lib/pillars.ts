@@ -151,6 +151,7 @@ export const pillars: Pillar[] = [
           p("How Credit Cards Work", "Billing cycles, grace periods, statement balances, minimum payments, rewards, and the math that turns a 30-day free loan into a 24% APR trap.", 11, "Definition", "how-credit-cards-work"),
           p("How Credit Scores Are Calculated", "FICO and VantageScore break a three-digit number into five weighted factors. Here's what each one is worth and how to influence it.", 8, "Definition"),
           p("Building Credit From Zero", "Secured cards, credit-builder loans, becoming an authorized user, the four routes to a real credit history when you have none.", 7, "Guide"),
+          p("How to Build Credit", "Understanding utilization ratios, the impact of credit age, limit increases, and statement balance timing to push your score over 750.", 9, "Guide", "how-to-build-credit"),
           p("How to Repair Bad Credit", "A 12-month plan to take a sub-600 score to the 700s, including which collections to dispute first and which to leave alone.", 10, "Guide"),
           p("Credit Utilization Explained", "Why your score drops the day after you swipe your card, and the simple trick that keeps utilization low without spending less.", 6, "Definition"),
           p("Authorized User Strategy", "The legitimate way to inherit a parent's or partner's credit age. When it helps, when it hurts, and how to do it right.", 6, "Guide"),
@@ -428,6 +429,8 @@ export const pillars: Pillar[] = [
         intro: "The math, the psychology, and the order of operations.",
         posts: [
           p("Avalanche vs Snowball Method", "Highest APR first vs smallest balance first. The numbers favor one, behavior favors the other. How to choose without losing the year.", 7, "Comparison", "avalanche-vs-snowball"),
+          p("Debt Snowball Method", "The psychology of quick wins. A step-by-step setup guide for killing debt smallest to largest, and why behavior beats math.", 8, "Guide", "debt-snowball-method"),
+          p("Debt Avalanche Method", "The mathematical superiority of attacking the highest APR first. How to audit your interest rates and execute the avalanche.", 8, "Guide", "debt-avalanche-method"),
           p("Should You Refinance Your Loans?", "Student loans, auto loans, mortgages, when refi saves real money and when it just resets the clock. A decision framework, not a sales pitch.", 8, "Guide"),
           p("Debt Consolidation Explained", "Combine multiple debts into one payment at a lower rate. The three legitimate routes, and the three traps that look like consolidation but aren't.", 7, "Definition"),
           p("When Bankruptcy Makes Sense", "Chapter 7 vs Chapter 13, what stays and what goes, and the math on whether 7 years of damaged credit beats 20 years of payments.", 9, "Guide"),

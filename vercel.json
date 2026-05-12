@@ -1,5 +1,12 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
+  ],
+  "redirects": [
+    {
+      "source": "/budgeting/the-50-30-20-rule-a-beginners-guide",
+      "destination": "/budgeting/the-50-30-20-rule-a-beginner-s-guide",
+      "permanent": true
+    }
   ]
 }

@@ -10914,6 +10914,262 @@ export const articleBodies: Record<string, ArticleBody> = {
       { label: "Retirement Savings Calculator", to: "/tools/retirement-savings-calculator" },
     ],
   },
+  
+  "debt-taxes-insurance/debt-snowball-method": {
+    summary: "The debt snowball method focuses on psychology rather than math. You list all your debts from smallest balance to largest balance, regardless of interest rate. You pay minimums on everything, and throw every extra dollar at the smallest balance until it's gone, creating a quick win that keeps you motivated.",
+    published: "2026-05-12",
+    updated: "2026-05-12",
+    featuredImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80",
+    featuredImageAlt: "Small snowball rolling down a hill picking up momentum",
+    sections: [
+      {
+        heading: "How the Debt Snowball Method Works",
+        paragraphs: [
+          "When you're drowning in multiple debts—credit cards, personal loans, maybe a medical bill—the sheer number of monthly payments can be overwhelming. The debt snowball method ignores interest rates and attacks the smallest balance first.",
+          "By knocking out a small balance quickly, you permanently eliminate one monthly payment. That 'freed up' minimum payment is then rolled into your payment on the next smallest debt, like a snowball rolling down a hill gathering mass and momentum."
+        ],
+        orderedList: [
+          "List all your debts in order from smallest balance to largest balance. Ignore the interest rates entirely.",
+          "Make the minimum payment on every debt on the list.",
+          "Throw every single extra dollar you can find (from budgeting, side hustles, or selling things) at the smallest debt until it is completely paid off.",
+          "Once the first debt is gone, take the money you were paying on it (the minimum plus your extra cash) and add it to the minimum payment of the second-smallest debt.",
+          "Repeat until you are completely debt-free."
+        ],
+        callout: {
+          title: "The core philosophy",
+          body: "Personal finance is 80% behavior and 20% head knowledge. If we were doing math, we wouldn't have credit card debt in the first place. The snowball method gives you the quick wins required to change your behavior permanently."
+        }
+      },
+      {
+        heading: "Why Psychology Beats Math in Debt Payoff",
+        paragraphs: [
+          "Critics of the snowball method correctly point out that paying off a $500 medical bill at 0% interest before a $10,000 credit card at 24% interest costs you more money in the long run. Mathematically, they are right.",
+          "However, human beings are not spreadsheets. Studies have repeatedly shown that consumers who see tangible progress—eliminating entire accounts quickly—are significantly more likely to stick with their debt payoff plan. If you attack the $10,000 card first, it might take 18 months before you close an account, leading to fatigue and giving up."
+        ]
+      },
+      {
+        heading: "A Real-World Example",
+        paragraphs: [
+          "Imagine you have three debts:"
+        ],
+        bullets: [
+          "Medical Bill: $400 balance ($50 minimum payment)",
+          "Credit Card: $2,500 balance ($100 minimum payment)",
+          "Car Loan: $10,000 balance ($300 minimum payment)"
+        ],
+        subSections: [
+          {
+            heading: "Month 1-2",
+            paragraphs: [
+              "In the snowball method, you pay the $100 and $300 minimums, and you throw everything else at the $400 medical bill. Let's say you have $150 extra per month. You pay $200 total toward the medical bill, eliminating it in two months."
+            ]
+          },
+          {
+            heading: "Month 3 and Beyond",
+            paragraphs: [
+              "In month three, you take that $200 and add it to the credit card's $100 minimum. You are now paying $300 per month on the credit card. When that's paid off, you take the $300 and add it to the car loan, attacking it with $600 per month."
+            ]
+          }
+        ]
+      },
+      {
+        heading: "When the Debt Snowball Method Fails",
+        paragraphs: [
+          "The snowball method is less ideal when you have a massive, toxic-interest debt (like a payday loan at 300% APR) mixed with standard consumer debt. In extreme cases of predatory lending, you must kill the highest-interest debt first just to survive.",
+          "Additionally, the snowball method only works if you stop adding to your balances. You must stop using the credit cards while you are paying them off, or the snowball never actually builds momentum."
+        ]
+      }
+    ],
+    keyStats: [
+      { text: "Consumers who close smaller accounts first are more likely to completely eliminate their debt.", source: "Harvard Business Review", url: "https://hbr.org/" },
+      { text: "The average American household carries over $7,000 in revolving credit card debt.", source: "Federal Reserve", url: "https://fred.stlouisfed.org/" }
+    ],
+    faqs: [
+      { q: "Should I include my mortgage in the debt snowball?", a: "No. The debt snowball is for consumer debt (credit cards, cars, student loans, medical bills). Mortgages are typically tackled much later in your financial journey." },
+      { q: "What if two debts have the exact same balance?", a: "If the balances are identical, break the tie by attacking the one with the higher interest rate first." }
+    ],
+    toolCta: {
+      name: "Debt Payoff Calculator",
+      slug: "debt-payoff-calculator",
+      copy: "Plug your balances into our free calculator to see exactly how many months the snowball method will take to make you debt-free."
+    },
+    intent: "informational",
+    keyTakeaways: [
+      "The debt snowball method ranks debts from smallest balance to largest, ignoring interest rates.",
+      "By eliminating small debts quickly, you gain the psychological momentum needed to stick with a long-term payoff plan.",
+      "The freed-up minimum payments from closed accounts are rolled into the next debt, accelerating your payoff speed.",
+      "While it costs slightly more in interest than the avalanche method, it has a much higher completion rate."
+    ],
+    internalLinks: [
+      { label: "Debt Avalanche Method", to: "/debt-taxes-insurance/debt-avalanche-method" },
+      { label: "Snowball vs Avalanche comparison", to: "/debt-taxes-insurance/vs/snowball-vs-avalanche" },
+      { label: "Zero-based budgeting", to: "/budgeting/zero-based-budgeting" },
+      { label: "Debt Payoff Calculator", to: "/tools/debt-payoff-calculator" }
+    ]
+  },
+
+  "debt-taxes-insurance/debt-avalanche-method": {
+    summary: "The debt avalanche method is the mathematically optimal way to pay off debt. You rank your debts from highest interest rate to lowest interest rate, paying minimums on everything while throwing all extra cash at the debt costing you the most in interest. This saves you the maximum amount of money.",
+    published: "2026-05-12",
+    updated: "2026-05-12",
+    featuredImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+    featuredImageAlt: "A steep mountain slope representing the high interest rates tackled in the avalanche method",
+    sections: [
+      {
+        heading: "How the Debt Avalanche Method Works",
+        paragraphs: [
+          "The debt avalanche method ignores the total balance of your debts and focuses entirely on the Annual Percentage Rate (APR). By attacking the highest interest rate first, you minimize the amount of money the bank extracts from you while you get out of debt.",
+          "This method requires discipline because your highest-interest debt might also be your largest balance, meaning you might grind for months or years without the psychological satisfaction of closing an account."
+        ],
+        orderedList: [
+          "List all your debts in order from highest interest rate (APR) to lowest interest rate. Ignore the total balances.",
+          "Make the minimum payment on every debt on the list.",
+          "Throw every single extra dollar you can find at the debt with the highest interest rate until it is completely paid off.",
+          "Once that first debt is gone, take the money you were paying on it and apply it to the debt with the second-highest interest rate.",
+          "Repeat until all debts are paid."
+        ],
+        callout: {
+          title: "The undeniable math",
+          body: "Every dollar you put toward a 25% APR credit card instead of a 5% car loan is an instant, guaranteed 20% return on your money. No investment in the world offers a guaranteed 20% return."
+        }
+      },
+      {
+        heading: "Why the Avalanche Beats the Snowball (Mathematically)",
+        paragraphs: [
+          "If you have $10,000 on a credit card at 24% and $2,000 on a medical bill at 0%, the snowball method tells you to pay the medical bill first. During the months it takes to clear the medical bill, the credit card generates hundreds of dollars in new interest.",
+          "The avalanche method stops the bleeding immediately. By attacking the 24% card, you reduce the principal generating that massive interest charge, saving you money every single day and shortening your overall time in debt."
+        ]
+      },
+      {
+        heading: "How to Audit Your Interest Rates",
+        paragraphs: [
+          "To execute the avalanche method, you need perfectly accurate APRs. Don't guess."
+        ],
+        bullets: [
+          "Check your most recent credit card statements. The APR is legally required to be clearly stated, usually near the end of the PDF.",
+          "Look for penalty APRs. If you missed a payment, your rate might have spiked to 29.99%.",
+          "Check the expiration date on any 0% promotional balances. A 0% balance today might jump to 24% next month, which drastically changes its position on your avalanche list."
+        ]
+      },
+      {
+        heading: "Negotiating Lower Rates While Avalanching",
+        paragraphs: [
+          "You can accelerate the avalanche method by attacking the interest rates directly. Call your credit card issuers and ask for a lower rate. Say: 'I've been a customer for X years, but my APR is too high and I am considering transferring my balance. Can you lower my rate?'",
+          "Even a 3% reduction on a large balance saves you significant money and speeds up the avalanche."
+        ]
+      }
+    ],
+    keyStats: [
+      { text: "Credit card interest rates hit an all-time average high of over 22% in recent years.", source: "Federal Reserve", url: "https://fred.stlouisfed.org/" },
+      { text: "The avalanche method can save thousands of dollars and months of time compared to the snowball method for users with high-interest credit card debt.", source: "MoneyMoodBoard Analysis", url: "/debt-taxes-insurance/vs/snowball-vs-avalanche" }
+    ],
+    faqs: [
+      { q: "What if I lose motivation using the avalanche method?", a: "If you find yourself giving up because closing an account is taking too long, switch to the debt snowball method. A suboptimal plan you stick to is infinitely better than a perfect plan you quit." },
+      { q: "Should I include my mortgage in the avalanche?", a: "No. Your mortgage is likely your lowest interest rate anyway, but the avalanche should be reserved for consumer debt (cards, cars, personal loans)." }
+    ],
+    toolCta: {
+      name: "Debt Payoff Calculator",
+      slug: "debt-payoff-calculator",
+      copy: "See the math for yourself. Our calculator shows you exactly how much money and time the avalanche method saves you compared to the snowball method."
+    },
+    intent: "informational",
+    keyTakeaways: [
+      "The debt avalanche method ranks debts from highest interest rate to lowest interest rate.",
+      "It minimizes the amount of interest you pay to the bank, saving you money and shortening your overall payoff timeline.",
+      "It requires more discipline than the snowball method because you might not see an account hit zero for a long time.",
+      "Always verify your current APRs by checking your statements before building your avalanche list."
+    ],
+    internalLinks: [
+      { label: "Debt Snowball Method", to: "/debt-taxes-insurance/debt-snowball-method" },
+      { label: "Snowball vs Avalanche comparison", to: "/debt-taxes-insurance/vs/snowball-vs-avalanche" },
+      { label: "Should you refinance your loans?", to: "/debt-taxes-insurance/should-you-refinance-your-loans" },
+      { label: "Debt Payoff Calculator", to: "/tools/debt-payoff-calculator" }
+    ]
+  },
+
+  "credit-cards/how-to-build-credit": {
+    summary: "Building credit is an active process of demonstrating to lenders that you can borrow money and pay it back predictably. To push your score over 750, you need to manage your utilization ratio, never miss a payment, age your accounts, and strategically request credit limit increases.",
+    published: "2026-05-12",
+    updated: "2026-05-12",
+    featuredImage: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80",
+    featuredImageAlt: "A person reviewing a credit score chart on a tablet",
+    sections: [
+      {
+        heading: "The Five Pillars of a Credit Score",
+        paragraphs: [
+          "To build credit, you have to know what the scoring models (like FICO and VantageScore) are actually measuring. Your score is derived from five specific factors:"
+        ],
+        bullets: [
+          "Payment History (35%): Do you pay your bills on time? A single 30-day late payment can tank a good score by 100 points.",
+          "Credit Utilization (30%): How much of your available credit are you using? (Keep it under 10%, or under 30% at maximum).",
+          "Length of Credit History (15%): How old are your accounts? Older is better.",
+          "Credit Mix (10%): Do you have a mix of revolving credit (cards) and installment loans (auto, student, mortgage)?",
+          "New Credit (10%): How many new accounts have you opened recently? Too many hard inquiries signal financial distress."
+        ],
+        callout: {
+          title: "The golden rule",
+          body: "You never have to pay a penny in interest to build a perfect credit score. The myth that you should 'carry a balance' is entirely false. Pay your statement balance in full every month."
+        }
+      },
+      {
+        heading: "Mastering Credit Utilization",
+        paragraphs: [
+          "Credit utilization is the second most important factor, but unlike payment history, it has no memory. Your utilization is calculated based on what is reported to the bureaus *right now*. If you pay down a maxed-out card, your score will rebound as soon as the new balance is reported.",
+          "A major secret to a high score is statement balance timing. Credit card companies report your balance to the bureaus on your statement closing date, not your due date. If you use your card heavily for rewards but pay it off before the statement closes, the bureaus see a 0% utilization, which maximizes your score."
+        ]
+      },
+      {
+        heading: "How to Get Credit Limit Increases",
+        paragraphs: [
+          "One of the fastest ways to lower your utilization ratio (and thus increase your score) is to have more available credit. If you owe $1,000 on a card with a $2,000 limit, your utilization is 50%. If the bank raises your limit to $10,000, your utilization instantly drops to 10%.",
+          "Most major issuers let you request a credit limit increase online. Before you click the button, search online to see if your issuer does a 'soft pull' or a 'hard pull' for limit increases. Soft pulls do not affect your score. Hard pulls do."
+        ]
+      },
+      {
+        heading: "Handling Mistakes and Collections",
+        paragraphs: [
+          "If you have missed payments or collections on your report, building credit requires triage."
+        ],
+        bullets: [
+          "Recent late payments: If you are normally on time but missed one payment by a few days, call the issuer and ask for a 'goodwill deletion.' Many banks will erase a single late payment if you ask nicely.",
+          "Collections: Paying off a collection account does not automatically remove it from your report (though newer scoring models ignore paid collections). You can try a 'pay for delete' negotiation, where you agree to pay the debt only if they agree in writing to remove the tradeline from the bureaus.",
+          "Time heals: The impact of negative marks fades over time and they fall off your report entirely after seven years."
+        ]
+      },
+      {
+        heading: "The Power of Patience",
+        paragraphs: [
+          "You cannot build an 800 credit score in six months. Length of credit history accounts for 15% of your score, and it is the one factor you cannot hack. Keep your oldest credit card open forever (even if you only use it for a $5 subscription once a month) to anchor your average age of accounts."
+        ]
+      }
+    ],
+    keyStats: [
+      { text: "A FICO score of 760 or above generally qualifies you for the best interest rates on any loan.", source: "FICO", url: "https://www.fico.com/" },
+      { text: "Payment history and amounts owed (utilization) make up 65% of your total credit score.", source: "myFICO", url: "https://www.myfico.com/credit-education/whats-in-your-credit-score" }
+    ],
+    faqs: [
+      { q: "Does checking my own credit score lower it?", a: "No. Checking your own score is a 'soft inquiry' and has zero impact on your credit." },
+      { q: "Should I close credit cards I don't use?", a: "Usually no. Closing a card reduces your total available credit, which drives up your utilization ratio. It also eventually lowers your average age of accounts. If the card has no annual fee, throw it in a drawer and leave it open." }
+    ],
+    toolCta: {
+      name: "Credit Score Estimator",
+      slug: "credit-score-estimator",
+      copy: "Answer a few quick questions to estimate your current score range without a hard pull."
+    },
+    intent: "informational",
+    keyTakeaways: [
+      "Payment history (35%) and credit utilization (30%) are the massive levers that control your credit score.",
+      "Never carry a balance to build credit. Paying in full by the due date gives you all the positive history and costs zero interest.",
+      "Lower your utilization by paying down balances before the statement closing date, or by requesting soft-pull limit increases.",
+      "Keep your oldest credit card open forever to protect your average age of accounts."
+    ],
+    internalLinks: [
+      { label: "Building credit from zero", to: "/credit-cards/building-credit-from-zero" },
+      { label: "How credit scores are calculated", to: "/credit-cards/how-credit-scores-are-calculated" },
+      { label: "Credit utilization explained", to: "/credit-cards/credit-utilization-explained" },
+      { label: "Best cards for bad credit", to: "/credit-cards/best-cards-for-bad-credit" }
+    ]
+  }
 
 };
 

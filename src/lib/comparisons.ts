@@ -865,7 +865,7 @@ export const comparisons: Comparison[] = [
     ],
     internalLinks: [
       { label: "Zero-based budgeting explained", to: "/budgeting/zero-based-budgeting" },
-      { label: "The 50/30/20 rule", to: "/budgeting/the-50-30-20-rule-a-beginners-guide" },
+      { label: "The 50/30/20 rule", to: "/budgeting/the-50-30-20-rule-a-beginner-s-guide" },
       { label: "Best for freelancers", to: "/budgeting/best-for/freelancers" },
       { label: "Budget Planner Tool", to: "/tools/budget-planner" },
       { label: "Snowball vs Avalanche", to: "/debt-taxes-insurance/vs/snowball-vs-avalanche" },
