@@ -143,40 +143,26 @@ function AboutPage() {
           {
             "@context": "https://schema.org",
             "@type": "AboutPage",
+            "@id": "https://moneymoodboard.com/about#page",
             name: "About MoneyMoodBoard",
             url: "https://moneymoodboard.com/about",
             description:
               "Meet the founder, our mission, editorial standards, and how we make money.",
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "MoneyMoodBoard",
-            url: "https://moneymoodboard.com",
-            logo: "https://moneymoodboard.com/og-default.jpg",
-            email: "hello@moneymoodboard.com",
-            contactPoint: {
-              "@type": "ContactPoint",
-              email: "hello@moneymoodboard.com",
-              contactType: "editorial",
-              availableLanguage: ["English"],
-            },
-            founder: {
-              "@type": "Person",
-              name: "Yinka Olayokun",
-              jobTitle: "Founder & Editor",
-            },
+            isPartOf: { "@id": "https://moneymoodboard.com/#website" },
+            about: { "@id": "https://moneymoodboard.com/#organization" },
+            mainEntity: { "@id": "https://moneymoodboard.com/about/yinka-olayokun#person" },
           },
           {
             "@context": "https://schema.org",
             "@type": "Person",
+            "@id": "https://moneymoodboard.com/about/yinka-olayokun#person",
             name: "Yinka Olayokun",
             jobTitle: "Founder & Editor",
             image: absUrl(yinkaPhoto),
-            worksFor: { "@type": "Organization", name: "MoneyMoodBoard" },
+            url: "https://moneymoodboard.com/about/yinka-olayokun",
+            worksFor: { "@id": "https://moneymoodboard.com/#organization" },
             description:
               "Digital strategist, financial-literacy nerd, and the founder of MoneyMoodBoard.",
-            sameAs: [],
           },
         ]}
       />

@@ -161,7 +161,7 @@ function RootComponent() {
         data={[
           {
             "@context": "https://schema.org",
-            "@type": "Organization",
+            "@type": "NewsMediaOrganization",
             "@id": `${SITE_URL}/#organization`,
             name: "MoneyMoodBoard",
             alternateName: "MMB",
@@ -169,8 +169,6 @@ function RootComponent() {
             logo: {
               "@type": "ImageObject",
               url: `${SITE_URL}/logo.png`,
-              width: 512,
-              height: 512,
             },
             description:
               "Independent personal-finance publication for U.S. earners, plain-English guides on budgeting, credit, saving, investing, retirement, banking and debt, paired with free no-signup calculators.",
