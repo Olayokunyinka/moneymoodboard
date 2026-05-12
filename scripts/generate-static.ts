@@ -7,6 +7,10 @@ import { pillars } from "../src/lib/pillars";
 import { articleBodies } from "../src/lib/articles";
 import { comparisons } from "../src/lib/comparisons";
 import { personas } from "../src/lib/personas";
+import { bestRoundups } from "../src/lib/best-picks";
+import { answerPages } from "../src/lib/answers";
+import { rulesPages } from "../src/lib/rules";
+import { decisionPages } from "../src/lib/decisions";
 import { SITE_URL } from "../src/lib/seo";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -103,6 +107,18 @@ for (const cmp of comparisons) {
 }
 for (const ps of personas) {
   articlesEntries.push(mk(`/${ps.pillar}/best-for/${ps.slug}`, "0.6", "monthly"));
+}
+for (const r of bestRoundups) {
+  articlesEntries.push(mk(`/${r.pillar}/best/${r.slug}`, "0.8", "monthly", r.updated));
+}
+for (const a of answerPages) {
+  articlesEntries.push(mk(`/${a.pillar}/answers/${a.slug}`, "0.75", "monthly", a.updated));
+}
+for (const r of rulesPages) {
+  articlesEntries.push(mk(`/${r.pillar}/rules/${r.slug}`, "0.8", "monthly", r.updated));
+}
+for (const d of decisionPages) {
+  articlesEntries.push(mk(`/${d.pillar}/decide/${d.slug}`, "0.7", "monthly", d.updated));
 }
 
 function buildIndex(children: string[]): string {

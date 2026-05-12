@@ -11,6 +11,8 @@ import { TableOfContents, tocSlug } from "./TableOfContents";
 import { KeyStatistics } from "./KeyStatistics";
 import { AdSlot } from "./AdSlot";
 import { AuthorBox } from "./AuthorBox";
+import { SharperAnswers } from "./SharperAnswers";
+import { intentForPillar } from "@/lib/intent-pages";
 import { pillars } from "@/lib/pillars";
 import { pillarHeroes, pillarHeroAlts, pillarContent } from "@/lib/pillar-extras";
 import { absUrl } from "@/lib/seo";
@@ -36,6 +38,8 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
   const datePublishedIso = content.published ?? "2026-04-01";
   const dateModifiedIso = content.updated ?? "2026-05-10";
 
+  const sharper = intentForPillar(pillar.slug);
+
   const tocSections = [
     `What Is ${pillar.shortName}?`,
     `Why ${pillar.shortName} Matters in 2026`,
@@ -46,6 +50,7 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
     ...(pillar.relatedTools.length > 0 ? [`Free ${pillar.shortName} Tools`] : []),
     `${pillar.shortName} Glossary`,
     "Frequently Asked Questions",
+    ...(sharper.all.length ? [`Sharper ${pillar.shortName} Answers`] : []),
     "More Money Topics",
   ];
 
@@ -295,6 +300,8 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
       </section>
 
       <AuthorBox />
+
+      <SharperAnswers pillarSlug={pillar.slug} pillarShortName={pillar.shortName} />
 
       {/* Related pillars */}
       <section id="more-money-topics" className="mt-16 scroll-mt-24">

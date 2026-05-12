@@ -42,7 +42,11 @@ import { Route as AboutYinkaOlayokunRouteImport } from './routes/about.yinka-ola
 import { Route as PillarPostRouteImport } from './routes/$pillar.$post'
 import { Route as ApiPublicNewsletterRouteImport } from './routes/api/public/newsletter'
 import { Route as PillarVsMatchupRouteImport } from './routes/$pillar.vs.$matchup'
+import { Route as PillarRulesSlugRouteImport } from './routes/$pillar.rules.$slug'
+import { Route as PillarDecideSlugRouteImport } from './routes/$pillar.decide.$slug'
+import { Route as PillarBestSlugRouteImport } from './routes/$pillar.best.$slug'
 import { Route as PillarBestForPersonaRouteImport } from './routes/$pillar.best-for.$persona'
+import { Route as PillarAnswersSlugRouteImport } from './routes/$pillar.answers.$slug'
 import { Route as ApiPublicNewsletterCronRouteImport } from './routes/api/public/newsletter.cron'
 
 const TopicsRoute = TopicsRouteImport.update({
@@ -217,9 +221,29 @@ const PillarVsMatchupRoute = PillarVsMatchupRouteImport.update({
   path: '/$pillar/vs/$matchup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PillarRulesSlugRoute = PillarRulesSlugRouteImport.update({
+  id: '/$pillar/rules/$slug',
+  path: '/$pillar/rules/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PillarDecideSlugRoute = PillarDecideSlugRouteImport.update({
+  id: '/$pillar/decide/$slug',
+  path: '/$pillar/decide/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PillarBestSlugRoute = PillarBestSlugRouteImport.update({
+  id: '/$pillar/best/$slug',
+  path: '/$pillar/best/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PillarBestForPersonaRoute = PillarBestForPersonaRouteImport.update({
   id: '/$pillar/best-for/$persona',
   path: '/$pillar/best-for/$persona',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PillarAnswersSlugRoute = PillarAnswersSlugRouteImport.update({
+  id: '/$pillar/answers/$slug',
+  path: '/$pillar/answers/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicNewsletterCronRoute = ApiPublicNewsletterCronRouteImport.update({
@@ -260,7 +284,11 @@ export interface FileRoutesByFullPath {
   '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
   '/about/': typeof AboutIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/$pillar/answers/$slug': typeof PillarAnswersSlugRoute
   '/$pillar/best-for/$persona': typeof PillarBestForPersonaRoute
+  '/$pillar/best/$slug': typeof PillarBestSlugRoute
+  '/$pillar/decide/$slug': typeof PillarDecideSlugRoute
+  '/$pillar/rules/$slug': typeof PillarRulesSlugRoute
   '/$pillar/vs/$matchup': typeof PillarVsMatchupRoute
   '/api/public/newsletter': typeof ApiPublicNewsletterRouteWithChildren
   '/api/public/newsletter/cron': typeof ApiPublicNewsletterCronRoute
@@ -297,7 +325,11 @@ export interface FileRoutesByTo {
   '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
   '/about': typeof AboutIndexRoute
   '/tools': typeof ToolsIndexRoute
+  '/$pillar/answers/$slug': typeof PillarAnswersSlugRoute
   '/$pillar/best-for/$persona': typeof PillarBestForPersonaRoute
+  '/$pillar/best/$slug': typeof PillarBestSlugRoute
+  '/$pillar/decide/$slug': typeof PillarDecideSlugRoute
+  '/$pillar/rules/$slug': typeof PillarRulesSlugRoute
   '/$pillar/vs/$matchup': typeof PillarVsMatchupRoute
   '/api/public/newsletter': typeof ApiPublicNewsletterRouteWithChildren
   '/api/public/newsletter/cron': typeof ApiPublicNewsletterCronRoute
@@ -335,7 +367,11 @@ export interface FileRoutesById {
   '/tools/savings-goal-calculator': typeof ToolsSavingsGoalCalculatorRoute
   '/about/': typeof AboutIndexRoute
   '/tools/': typeof ToolsIndexRoute
+  '/$pillar/answers/$slug': typeof PillarAnswersSlugRoute
   '/$pillar/best-for/$persona': typeof PillarBestForPersonaRoute
+  '/$pillar/best/$slug': typeof PillarBestSlugRoute
+  '/$pillar/decide/$slug': typeof PillarDecideSlugRoute
+  '/$pillar/rules/$slug': typeof PillarRulesSlugRoute
   '/$pillar/vs/$matchup': typeof PillarVsMatchupRoute
   '/api/public/newsletter': typeof ApiPublicNewsletterRouteWithChildren
   '/api/public/newsletter/cron': typeof ApiPublicNewsletterCronRoute
@@ -374,7 +410,11 @@ export interface FileRouteTypes {
     | '/tools/savings-goal-calculator'
     | '/about/'
     | '/tools/'
+    | '/$pillar/answers/$slug'
     | '/$pillar/best-for/$persona'
+    | '/$pillar/best/$slug'
+    | '/$pillar/decide/$slug'
+    | '/$pillar/rules/$slug'
     | '/$pillar/vs/$matchup'
     | '/api/public/newsletter'
     | '/api/public/newsletter/cron'
@@ -411,7 +451,11 @@ export interface FileRouteTypes {
     | '/tools/savings-goal-calculator'
     | '/about'
     | '/tools'
+    | '/$pillar/answers/$slug'
     | '/$pillar/best-for/$persona'
+    | '/$pillar/best/$slug'
+    | '/$pillar/decide/$slug'
+    | '/$pillar/rules/$slug'
     | '/$pillar/vs/$matchup'
     | '/api/public/newsletter'
     | '/api/public/newsletter/cron'
@@ -448,7 +492,11 @@ export interface FileRouteTypes {
     | '/tools/savings-goal-calculator'
     | '/about/'
     | '/tools/'
+    | '/$pillar/answers/$slug'
     | '/$pillar/best-for/$persona'
+    | '/$pillar/best/$slug'
+    | '/$pillar/decide/$slug'
+    | '/$pillar/rules/$slug'
     | '/$pillar/vs/$matchup'
     | '/api/public/newsletter'
     | '/api/public/newsletter/cron'
@@ -486,7 +534,11 @@ export interface RootRouteChildren {
   ToolsSavingsGoalCalculatorRoute: typeof ToolsSavingsGoalCalculatorRoute
   AboutIndexRoute: typeof AboutIndexRoute
   ToolsIndexRoute: typeof ToolsIndexRoute
+  PillarAnswersSlugRoute: typeof PillarAnswersSlugRoute
   PillarBestForPersonaRoute: typeof PillarBestForPersonaRoute
+  PillarBestSlugRoute: typeof PillarBestSlugRoute
+  PillarDecideSlugRoute: typeof PillarDecideSlugRoute
+  PillarRulesSlugRoute: typeof PillarRulesSlugRoute
   PillarVsMatchupRoute: typeof PillarVsMatchupRoute
   ApiPublicNewsletterRoute: typeof ApiPublicNewsletterRouteWithChildren
 }
@@ -724,11 +776,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PillarVsMatchupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$pillar/rules/$slug': {
+      id: '/$pillar/rules/$slug'
+      path: '/$pillar/rules/$slug'
+      fullPath: '/$pillar/rules/$slug'
+      preLoaderRoute: typeof PillarRulesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$pillar/decide/$slug': {
+      id: '/$pillar/decide/$slug'
+      path: '/$pillar/decide/$slug'
+      fullPath: '/$pillar/decide/$slug'
+      preLoaderRoute: typeof PillarDecideSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$pillar/best/$slug': {
+      id: '/$pillar/best/$slug'
+      path: '/$pillar/best/$slug'
+      fullPath: '/$pillar/best/$slug'
+      preLoaderRoute: typeof PillarBestSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/$pillar/best-for/$persona': {
       id: '/$pillar/best-for/$persona'
       path: '/$pillar/best-for/$persona'
       fullPath: '/$pillar/best-for/$persona'
       preLoaderRoute: typeof PillarBestForPersonaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$pillar/answers/$slug': {
+      id: '/$pillar/answers/$slug'
+      path: '/$pillar/answers/$slug'
+      fullPath: '/$pillar/answers/$slug'
+      preLoaderRoute: typeof PillarAnswersSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/newsletter/cron': {
@@ -784,7 +864,11 @@ const rootRouteChildren: RootRouteChildren = {
   ToolsSavingsGoalCalculatorRoute: ToolsSavingsGoalCalculatorRoute,
   AboutIndexRoute: AboutIndexRoute,
   ToolsIndexRoute: ToolsIndexRoute,
+  PillarAnswersSlugRoute: PillarAnswersSlugRoute,
   PillarBestForPersonaRoute: PillarBestForPersonaRoute,
+  PillarBestSlugRoute: PillarBestSlugRoute,
+  PillarDecideSlugRoute: PillarDecideSlugRoute,
+  PillarRulesSlugRoute: PillarRulesSlugRoute,
   PillarVsMatchupRoute: PillarVsMatchupRoute,
   ApiPublicNewsletterRoute: ApiPublicNewsletterRouteWithChildren,
 }

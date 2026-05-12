@@ -1,6 +1,9 @@
 import { pillars } from "./pillars";
 import { articleBodies } from "./articles";
-
+import { bestRoundups } from "./best-picks";
+import { answerPages } from "./answers";
+import { rulesPages } from "./rules";
+import { decisionPages } from "./decisions";
 export type SearchEntry = {
   title: string;
   url: string;
@@ -58,8 +61,16 @@ function buildPillarEntries(): SearchEntry[] {
   return out;
 }
 
+const INTENT_PAGES: SearchEntry[] = [
+  ...bestRoundups.map((r) => ({ title: r.title, url: `/${r.pillar}/best/${r.slug}`, group: "Articles" as const, description: r.metaDescription })),
+  ...answerPages.map((a) => ({ title: a.question, url: `/${a.pillar}/answers/${a.slug}`, group: "Articles" as const, description: a.metaDescription })),
+  ...rulesPages.map((r) => ({ title: r.title, url: `/${r.pillar}/rules/${r.slug}`, group: "Articles" as const, description: r.metaDescription })),
+  ...decisionPages.map((d) => ({ title: d.title, url: `/${d.pillar}/decide/${d.slug}`, group: "Articles" as const, description: d.metaDescription })),
+];
+
 export const SEARCH_INDEX: SearchEntry[] = [
   ...TOOLS,
   ...buildPillarEntries(),
+  ...INTENT_PAGES,
   ...STATIC_PAGES,
 ];

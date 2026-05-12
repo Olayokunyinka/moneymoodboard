@@ -29,6 +29,21 @@ export function SiteHeader() {
               {p.navLabel}
             </Link>
           ))}
+          <Link
+            to="/topics"
+            hash="sharper-answers"
+            className="rounded-md px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:text-primary hover:bg-primary-soft"
+            activeProps={{ className: "text-primary bg-primary-soft" }}
+          >
+            Answers
+          </Link>
+          <Link
+            to="/tools"
+            className="rounded-md px-3 py-2 text-sm font-medium text-foreground/75 transition-colors hover:text-primary hover:bg-primary-soft"
+            activeProps={{ className: "text-primary bg-primary-soft" }}
+          >
+            Tools
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -80,6 +95,14 @@ export function SiteHeader() {
                     {p.navLabel}
                   </Link>
                 ))}
+                <Link
+                  to="/topics"
+                  hash="sharper-answers"
+                  onClick={() => setOpen(false)}
+                  className="rounded-md px-3 py-2.5 text-base font-medium text-foreground/85 hover:bg-primary-soft hover:text-primary"
+                >
+                  Answers
+                </Link>
                 <Link
                   to="/tools"
                   onClick={() => setOpen(false)}

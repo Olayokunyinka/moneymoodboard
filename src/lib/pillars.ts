@@ -463,6 +463,24 @@ export const getPillar = (slug: PillarSlug): Pillar => {
   return pillar;
 };
 
+/**
+ * Serializable subset of a Pillar safe to return from a route loader.
+ * Excludes `icon` (a React forwardRef component) which would crash
+ * TanStack Start's dehydrate step with a Seroval error.
+ */
+export type PillarView = Omit<Pillar, "icon">;
+
+export const getPillarView = (slug: PillarSlug): PillarView => {
+  const { icon: _icon, ...rest } = getPillar(slug);
+  return rest;
+};
+
+export type PostViewResult = {
+  pillar: PillarView;
+  post: ClusterPost;
+  clusterName: string;
+};
+
 export const findPost = (
   pillarSlug: string,
   postSlug: string,
@@ -474,6 +492,16 @@ export const findPost = (
     if (post) return { pillar, post, clusterName: cluster.name };
   }
   return null;
+};
+
+export const findPostView = (
+  pillarSlug: string,
+  postSlug: string,
+): PostViewResult | null => {
+  const found = findPost(pillarSlug, postSlug);
+  if (!found) return null;
+  const { icon: _icon, ...pillar } = found.pillar;
+  return { pillar, post: found.post, clusterName: found.clusterName };
 };
 
 export const getAllPosts = (): { pillar: Pillar; post: ClusterPost }[] =>

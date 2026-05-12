@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { AuthorBox } from "@/components/site/AuthorBox";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { getComparison, type Comparison } from "@/lib/comparisons";
-import { getPillar, type Pillar } from "@/lib/pillars";
+import { getPillarView, type PillarView } from "@/lib/pillars";
 import { absUrl, canonical, ogImage , hreflangLinks } from "@/lib/seo";
 import { pillarHeroes } from "@/lib/pillar-extras";
 
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/$pillar/vs/$matchup")({
   loader: ({ params }) => {
     const cmp = getComparison(params.pillar, params.matchup);
     if (!cmp) throw notFound();
-    const pillar = getPillar(cmp.pillar);
+    const pillar = getPillarView(cmp.pillar);
     return { cmp, pillar };
   },
   head: ({ loaderData }) => {
@@ -51,7 +51,7 @@ function fmtDate(iso: string) {
 }
 
 function ComparisonPage() {
-  const { cmp, pillar } = Route.useLoaderData() as { cmp: Comparison; pillar: Pillar };
+  const { cmp, pillar } = Route.useLoaderData() as { cmp: Comparison; pillar: PillarView };
   const path = `/${cmp.pillar}/vs/${cmp.slug}`;
   const reviewer = "Yinka Olayokun";
 

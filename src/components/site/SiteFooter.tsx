@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/logo.png";
 import { pillars } from "@/lib/pillars";
+import { ALL_INTENT_ENTRIES } from "@/lib/intent-pages";
 
 export function SiteFooter() {
   const tools = [
@@ -14,10 +15,15 @@ export function SiteFooter() {
     { name: "Compound Interest Calculator", slug: "compound-interest-calculator" },
   ];
 
+  // Pick a balanced sample (2 best, 2 answers, 2 rules, 2 decide) from real data only.
+  const pick = (cls: "best" | "answers" | "rules" | "decide", n: number) =>
+    ALL_INTENT_ENTRIES.filter((e) => e.cls === cls).slice(0, n);
+  const sharper = [...pick("best", 2), ...pick("rules", 3), ...pick("answers", 2), ...pick("decide", 1)];
+
   return (
     <footer className="mt-24 border-t border-border bg-secondary/40">
       <div className="mx-auto max-w-7xl px-4 md:px-6 py-12">
-        <div className="grid gap-10 md:grid-cols-5">
+        <div className="grid gap-10 md:grid-cols-6">
           <div className="md:col-span-2">
             <img src={logo} alt="MoneyMoodBoard" className="h-10 w-auto" />
             <p className="mt-4 text-sm text-muted-foreground max-w-sm">
@@ -51,6 +57,24 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-foreground">Answers &amp; Picks</h3>
+            <ul className="mt-3 space-y-2 text-sm">
+              {sharper.map((s) => (
+                <li key={s.to}>
+                  <Link to={s.to} className="text-muted-foreground hover:text-primary">
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/topics" hash="sharper-answers" className="font-medium text-primary hover:underline">
+                  All sharper answers →
+                </Link>
+              </li>
             </ul>
           </div>
 

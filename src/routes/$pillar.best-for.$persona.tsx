@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { AuthorBox } from "@/components/site/AuthorBox";
 import { NewsletterCTA } from "@/components/site/NewsletterCTA";
 import { getPersona, type Persona } from "@/lib/personas";
-import { getPillar, type Pillar } from "@/lib/pillars";
+import { getPillarView, type PillarView } from "@/lib/pillars";
 import { absUrl, canonical, ogImage , hreflangLinks } from "@/lib/seo";
 import { pillarHeroes } from "@/lib/pillar-extras";
 
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/$pillar/best-for/$persona")({
   loader: ({ params }) => {
     const persona = getPersona(params.pillar, params.persona);
     if (!persona) throw notFound();
-    const pillar = getPillar(persona.pillar);
+    const pillar = getPillarView(persona.pillar);
     return { persona, pillar };
   },
   head: ({ loaderData }) => {
@@ -51,7 +51,7 @@ function fmtDate(iso: string) {
 }
 
 function PersonaPage() {
-  const { persona, pillar } = Route.useLoaderData() as { persona: Persona; pillar: Pillar };
+  const { persona, pillar } = Route.useLoaderData() as { persona: Persona; pillar: PillarView };
   const path = `/${persona.pillar}/best-for/${persona.slug}`;
   const reviewer = "Yinka Olayokun";
 

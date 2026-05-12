@@ -1,4 +1,4 @@
-import type { Pillar, ClusterPost } from "./pillars";
+import type { PillarView, ClusterPost } from "./pillars";
 import type { ArticleBody } from "./articles";
 
 export interface PaaItem {
@@ -15,7 +15,7 @@ export interface PaaItem {
  * Guaranteed to return ≥6 entries when the article has siblings.
  */
 export function buildPaa(
-  pillar: Pillar,
+  pillar: PillarView,
   post: ClusterPost,
   body: ArticleBody | undefined,
   options: { limit?: number } = {},

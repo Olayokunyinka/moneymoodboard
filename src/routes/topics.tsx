@@ -5,6 +5,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { JsonLd } from "@/components/site/JsonLd";
 import { pillars } from "@/lib/pillars";
 import { entities } from "@/lib/entities";
+import { intentForPillar, INTENT_LABELS, INTENT_CHIP_CLASS, type IntentClass } from "@/lib/intent-pages";
 import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
 const TITLE = "Topical Map — Every Money Topic on MoneyMoodBoard";
@@ -114,6 +115,41 @@ function TopicsPage() {
                 </ul>
               </div>
             ) : null}
+
+            {(() => {
+              const sharper = intentForPillar(pillar.slug);
+              if (!sharper.all.length) return null;
+              const groups: { cls: IntentClass; items: typeof sharper.all }[] = [
+                { cls: "best", items: sharper.best },
+                { cls: "answers", items: sharper.answers },
+                { cls: "rules", items: sharper.rules },
+                { cls: "decide", items: sharper.decide },
+              ];
+              return (
+                <div className="mt-5 border-t border-border pt-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Sharper coverage
+                  </p>
+                  <ul className="mt-2 space-y-1.5">
+                    {groups.flatMap((g) =>
+                      g.items.map((e) => (
+                        <li key={e.to}>
+                          <Link
+                            to={e.to}
+                            className="inline-flex items-baseline gap-2 text-sm text-foreground/85 hover:text-primary hover:underline"
+                          >
+                            <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold ${INTENT_CHIP_CLASS[g.cls]}`}>
+                              {INTENT_LABELS[g.cls]}
+                            </span>
+                            <span>{e.label}</span>
+                          </Link>
+                        </li>
+                      )),
+                    )}
+                  </ul>
+                </div>
+              );
+            })()}
           </article>
         ))}
       </section>

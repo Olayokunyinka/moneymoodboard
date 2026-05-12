@@ -10,7 +10,8 @@ import { KeyStatistics } from "@/components/site/KeyStatistics";
 import { AdSlot } from "@/components/site/AdSlot";
 import { TableOfContents, tocSlug } from "@/components/site/TableOfContents";
 import { RelatedReads } from "@/components/site/RelatedReads";
-import { findPost, type ClusterPost, type Pillar } from "@/lib/pillars";
+import { GoDeeper } from "@/components/site/GoDeeper";
+import { findPostView, type ClusterPost, type PillarView } from "@/lib/pillars";
 import { getArticleBody, type ArticleBody } from "@/lib/articles";
 import { pillarHeroes, pillarHeroAlts } from "@/lib/pillar-extras";
 import { absUrl, canonical, ogImage, toAbsUrl, hreflangLinks, localHeroFor } from "@/lib/seo";
@@ -19,7 +20,7 @@ import { buildPaa } from "@/lib/paa";
 
 export const Route = createFileRoute("/$pillar/$post")({
   loader: ({ params }) => {
-    const found = findPost(params.pillar, params.post);
+    const found = findPostView(params.pillar, params.post);
     if (!found) throw notFound();
     const body = getArticleBody(found.pillar.slug, found.post.slug);
     return { ...found, body };
@@ -86,7 +87,7 @@ function formatDate(iso: string) {
 
 function ClusterPostPage() {
   const { pillar, post, body } = Route.useLoaderData() as {
-    pillar: Pillar;
+    pillar: PillarView;
     post: ClusterPost;
     body: ArticleBody | undefined;
   };
@@ -474,6 +475,8 @@ function ClusterPostPage() {
       </section>
 
       <AuthorBox />
+
+      <GoDeeper pillarSlug={pillar.slug} articleSlug={post.slug} articleTitle={post.title} />
 
       <AdSlot location="matched-content" />
       <RelatedReads
