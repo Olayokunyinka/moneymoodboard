@@ -17,7 +17,7 @@ export function PillarNewsletterBand({ pillarShortName }: { pillarShortName: str
             Get weekly {pillarShortName.toLowerCase()} tips in your inbox
           </h2>
           <p className="mt-2 text-muted-foreground max-w-xl">
-            One short, actionable {pillarShortName.toLowerCase()} email every Sunday. No spam, no fluff — unsubscribe anytime.
+            One short, actionable {pillarShortName.toLowerCase()} email every Sunday. No spam, no fluff, unsubscribe anytime.
           </p>
         </div>
         <NewsletterCTA variant="compact" />

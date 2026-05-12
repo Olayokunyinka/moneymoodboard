@@ -1,5 +1,5 @@
 // Auto-assembles a NewsletterDraft from the latest entries in articleBodies.
-// Pure logic — safe to import on server. No env access here.
+// Pure logic, safe to import on server. No env access here.
 import { articleBodies, type ArticleBody } from "@/lib/articles";
 import { findPost, type PillarSlug } from "@/lib/pillars";
 import type { NewsletterDraft, NewsletterMore } from "./types";
@@ -46,7 +46,7 @@ export function listArticlesNewestFirst(now: Date = new Date()): ResolvedArticle
 }
 
 function pickTip(body: ArticleBody): { title: string; body: string } | null {
-  // Prefer first key takeaway — it's already a self-contained sentence.
+  // Prefer first key takeaway, it's already a self-contained sentence.
   if (body.keyTakeaways && body.keyTakeaways.length > 0) {
     return { title: "Try this this week", body: body.keyTakeaways[0] };
   }
@@ -66,10 +66,10 @@ function pickTip(body: ArticleBody): { title: string; body: string } | null {
 }
 
 const TOOL_DESCRIPTIONS: Record<string, string> = {
-  "budget-planner": "Build a zero-based budget in five minutes — no spreadsheet required.",
+  "budget-planner": "Build a zero-based budget in five minutes, no spreadsheet required.",
   "compound-interest-calculator": "See how a small monthly contribution turns into something serious over time.",
   "credit-card-payoff-calculator": "Compare avalanche vs snowball and find your real payoff date.",
-  "credit-score-estimator": "Estimate your FICO range from five inputs — no hard pull.",
+  "credit-score-estimator": "Estimate your FICO range from five inputs, no hard pull.",
   "debt-payoff-calculator": "Order your debts and see exactly when each one disappears.",
   "emergency-fund-calculator": "Right-size your emergency fund based on your real monthly floor.",
   "retirement-savings-calculator": "Project your nest egg with realistic returns and inflation.",
@@ -113,7 +113,7 @@ function pickTool(hero: ResolvedArticle): NewsletterDraft["tool"] {
 }
 
 function buildSubject(hero: ResolvedArticle): string {
-  const t = hero.title.replace(/\s*[—–-]\s*.+$/, "").trim();
+  const t = hero.title.replace(/\s*[, –-]\s*.+$/, "").trim();
   return `This week: ${t}`;
 }
 

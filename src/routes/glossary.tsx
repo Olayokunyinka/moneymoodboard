@@ -7,9 +7,9 @@ import { entities, entitySlug } from "@/lib/entities";
 import { pillars } from "@/lib/pillars";
 import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
-const TITLE = "Personal Finance Glossary — Plain-English Definitions | MoneyMoodBoard";
+const TITLE = "Personal Finance Glossary, Plain-English Definitions | MoneyMoodBoard";
 const DESC =
-  "An A–Z glossary of personal-finance terms — APR, FICO, Roth IRA, HYSA, FDIC and more — defined in plain English with links to the guides that cover each topic in depth.";
+  "An A–Z glossary of personal-finance terms, APR, FICO, Roth IRA, HYSA, FDIC and more, defined in plain English with links to the guides that cover each topic in depth.";
 
 export const Route = createFileRoute("/glossary")({
   head: () => ({

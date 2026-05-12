@@ -17,9 +17,9 @@ const TITLE = "Compound Interest Calculator";
 export const Route = createFileRoute("/tools/compound-interest-calculator")({
   head: () => ({
     meta: [
-      { title: `${TITLE} — Free Investment Tool | MoneyMoodBoard` },
+      { title: `${TITLE}, Free Investment Tool | MoneyMoodBoard` },
       { name: "description", content: "See exactly how much your investments will grow with compound interest. Add monthly contributions and see year-by-year growth. Free, no signup." },
-      { property: "og:title", content: `${TITLE} — Free Investment Tool | MoneyMoodBoard` },
+      { property: "og:title", content: `${TITLE}, Free Investment Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Project your investment growth with compound interest, contributions, and inflation." },
     ],
     links: [canonical("/tools/compound-interest-calculator"), ...hreflangLinks("/tools/compound-interest-calculator")],
@@ -86,7 +86,7 @@ function CompoundInterestCalculator() {
         </span>
         <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">{TITLE}</h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-          See how your money grows when interest earns interest — and what your future balance is really worth.
+          See how your money grows when interest earns interest, and what your future balance is really worth.
         </p>
       </header>
 
@@ -160,7 +160,7 @@ function CompoundInterestCalculator() {
 
             <div className="mt-auto pt-6 flex items-start gap-2 text-xs text-muted-foreground">
               <ShieldCheck className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-              <p>Calculations stay in your browser — nothing is sent or saved.</p>
+              <p>Calculations stay in your browser, nothing is sent or saved.</p>
             </div>
           </div>
         </div>
@@ -188,7 +188,7 @@ function CompoundInterestCalculator() {
       <section className="mt-12 max-w-3xl">
         <h2 className="text-2xl font-bold">How to Use This Calculator</h2>
         <ol className="mt-4 list-decimal pl-5 space-y-2 text-foreground/85">
-          <li><span className="font-semibold">Enter your starting balance.</span> Use the current value of the account you're projecting — IRA, brokerage, savings.</li>
+          <li><span className="font-semibold">Enter your starting balance.</span> Use the current value of the account you're projecting, IRA, brokerage, savings.</li>
           <li><span className="font-semibold">Set a realistic monthly contribution.</span> One you can sustain through bad months, not your best-case number.</li>
           <li><span className="font-semibold">Pick a return rate that matches the asset.</span> 6–7% for diversified stocks, 1–2% for bonds, ~5% for high-yield savings today.</li>
           <li><span className="font-semibold">Read both the future value and the today's-dollars number.</span> The second one is the truth about purchasing power.</li>
@@ -203,13 +203,13 @@ function CompoundInterestCalculator() {
           serious wealth. The mechanics are simple: every period, your
           previous earnings get added to the principal and start earning
           their own interest. Over a decade or two, that snowball gets
-          large enough to outpace your contributions entirely — your money
+          large enough to outpace your contributions entirely, your money
           starts doing more work than you do.
         </p>
         <h3 className="text-xl font-semibold">Why time matters more than the amount</h3>
         <p>
           A 25-year-old who invests $300/month for 10 years and then stops
-          will out-earn a 35-year-old who invests $300/month for 30 years —
+          will out-earn a 35-year-old who invests $300/month for 30 years .
           if both earn 7%. The first contributed $36,000 and ends with
           ~$540,000 by age 65. The second contributed $108,000 and ends
           with ~$367,000. The early starter wins despite contributing a
@@ -218,7 +218,7 @@ function CompoundInterestCalculator() {
         <h3 className="text-xl font-semibold">Nominal vs real returns</h3>
         <p>
           A 7% nominal return with 3% inflation is a 4% real return. Always
-          plan in real terms — otherwise you'll project a $1M balance and
+          plan in real terms, otherwise you'll project a $1M balance and
           discover it buys what $500K buys today. The toggle in this
           calculator does that math for you.
         </p>
@@ -228,7 +228,7 @@ function CompoundInterestCalculator() {
           Bonds have averaged ~5% nominal and ~2% real. Cash and savings
           accounts usually lose to inflation. A balanced 70/30 portfolio
           can reasonably plan on 6% real. Don't use 10% in real-dollar
-          plans — you'll undersave and underestimate the work needed.
+          plans, you'll undersave and underestimate the work needed.
         </p>
         <h3 className="text-xl font-semibold">The two levers you control</h3>
         <p>

@@ -50,7 +50,7 @@ export function buildPaa(
     );
   }
 
-  // 3. Intent / entity templates — at least 4 useful PAA-style Qs
+  // 3. Intent / entity templates, at least 4 useful PAA-style Qs
   const templates: PaaItem[] = [
     {
       q: `What is ${post.title.replace(/[?.!]$/, "")} in simple terms?`,
@@ -58,7 +58,7 @@ export function buildPaa(
     },
     {
       q: `Is ${titleLc.includes("how") ? post.title : `learning about ${post.title.toLowerCase()}`} worth it for beginners?`,
-      a: `Yes — ${pillar.name.toLowerCase()} concepts like this one are foundational for anyone building financial confidence. Our complete ${pillar.name} pillar walks through every related topic, in order.`,
+      a: `Yes, ${pillar.name.toLowerCase()} concepts like this one are foundational for anyone building financial confidence. Our complete ${pillar.name} pillar walks through every related topic, in order.`,
     },
     {
       q: `How long does it take to apply ${post.title.toLowerCase()}?`,
@@ -70,7 +70,7 @@ export function buildPaa(
     },
     {
       q: `Who is this guide written for?`,
-      a: `${pillar.shortName} readers at any level — first-time earners, freelancers, and anyone who wants plain-English answers without sales pitches. The guide is reviewed by our founding editor, Yinka Olayokun.`,
+      a: `${pillar.shortName} readers at any level, first-time earners, freelancers, and anyone who wants plain-English answers without sales pitches. The guide is reviewed by our founding editor, Yinka Olayokun.`,
     },
   ];
   for (const t of templates) {

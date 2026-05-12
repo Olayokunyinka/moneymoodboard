@@ -58,10 +58,44 @@ function escapeSvg(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+function wrapTitle(text: string, maxCharsPerLine: number, maxLines: number): string[] {
+  const words = text.trim().split(/\s+/);
+  const lines: string[] = [];
+  let cur = "";
+  let i = 0;
+  for (; i < words.length; i++) {
+    const w = words[i];
+    const next = cur ? `${cur} ${w}` : w;
+    if (next.length <= maxCharsPerLine) {
+      cur = next;
+    } else {
+      if (cur) lines.push(cur);
+      if (lines.length >= maxLines) break;
+      cur = w;
+    }
+  }
+  if (cur && lines.length < maxLines) {
+    lines.push(cur);
+    i = words.length;
+  }
+  if (i < words.length && lines.length === maxLines) {
+    let last = lines[maxLines - 1];
+    if (last.length > maxCharsPerLine - 1) last = last.slice(0, maxCharsPerLine - 1);
+    lines[maxLines - 1] = last.replace(/[\s,;:.\-]+$/, "") + "…";
+  }
+  return lines;
+}
+
 async function ogCard(pillarLabel: string, title: string, dest: string) {
-  if (existsSync(dest)) return;
-  const safeTitle = escapeSvg(title.slice(0, 110));
   const safePillar = escapeSvg(pillarLabel.toUpperCase());
+  const lines = wrapTitle(title, 22, 4).map(escapeSvg);
+  const fontSize = 64;
+  const lineHeight = Math.round(fontSize * 1.1);
+  const blockHeight = lines.length * lineHeight;
+  const startY = Math.round(315 - blockHeight / 2 + fontSize * 0.85);
+  const tspans = lines
+    .map((l, idx) => `<tspan x="60" dy="${idx === 0 ? 0 : lineHeight}">${l}</tspan>`)
+    .join("");
   const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
@@ -73,11 +107,7 @@ async function ogCard(pillarLabel: string, title: string, dest: string) {
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="60" y="60" width="200" height="36" rx="18" fill="#22d3ee" opacity="0.18"/>
   <text x="78" y="86" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#22d3ee" letter-spacing="2">${safePillar}</text>
-  <foreignObject x="60" y="140" width="1080" height="360">
-    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Inter,system-ui,sans-serif;font-size:62px;font-weight:800;line-height:1.1;color:#f8fafc;">
-      ${safeTitle}
-    </div>
-  </foreignObject>
+  <text x="60" y="${startY}" font-family="Inter, system-ui, sans-serif" font-size="${fontSize}" font-weight="800" fill="#f8fafc">${tspans}</text>
   <text x="60" y="570" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="700" fill="#94a3b8">MoneyMoodBoard</text>
   <circle cx="1140" cy="555" r="18" fill="#22d3ee"/>
 </svg>`;

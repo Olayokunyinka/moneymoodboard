@@ -22,7 +22,7 @@ export const Route = createFileRoute("/disclaimer")({
 });
 
 const SECTIONS = [
-  "Educational content only — not advice",
+  "Educational content only, not advice",
   "Sources and methodology",
   "Advertising and affiliate disclosure",
   "Sponsored content",
@@ -38,22 +38,22 @@ function DisclaimerPage() {
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Disclaimer" }]} />
       <PageHero
         title="Editorial Disclaimer"
-        intro={`MoneyMoodBoard exists to make personal finance easier to understand. This page explains the limits of what our content can — and cannot — do for you, plus how we research, fund and correct our work. Last updated: ${LAST_UPDATED}.`}
+        intro={`MoneyMoodBoard exists to make personal finance easier to understand. This page explains the limits of what our content can, and cannot, do for you, plus how we research, fund and correct our work. Last updated: ${LAST_UPDATED}.`}
       />
 
       <TableOfContents sections={SECTIONS} />
 
       <div className="mt-10 space-y-10 text-foreground/85 leading-relaxed">
         <section id="educational-content-only-not-advice" className="scroll-mt-24">
-          <h2 className="text-2xl font-bold text-foreground">Educational content only — not advice</h2>
+          <h2 className="text-2xl font-bold text-foreground">Educational content only, not advice</h2>
           <p className="mt-3">All articles, calculators and other content on MoneyMoodBoard are provided for general educational purposes only. They are <strong>not</strong> financial, investment, tax, accounting, legal or insurance advice, and they do not take your personal circumstances, objectives, risk tolerance or jurisdiction into account.</p>
           <p className="mt-3">MoneyMoodBoard is not a registered investment adviser, broker-dealer, certified financial planner, tax preparer, accountant, attorney or insurance broker, and we do not act as a fiduciary to you. Before acting on anything you read here, consult a qualified, appropriately licensed professional in your jurisdiction.</p>
         </section>
 
         <section id="sources-and-methodology" className="scroll-mt-24">
           <h2 className="text-2xl font-bold text-foreground">Sources and methodology</h2>
-          <p className="mt-3">We research every guide against primary sources first — for example regulators (SEC, CFPB, FCA, ESMA), official statistics (Federal Reserve, Bureau of Labor Statistics, Office for National Statistics), the IRS and HMRC, and peer-reviewed academic research. Where we cite a statistic, we link to the underlying source so you can verify it.</p>
-          <p className="mt-3">Calculator outputs are deterministic projections based on the inputs you provide and assumptions stated on each tool page. They are illustrative, not predictive — actual results depend on real-world variables we cannot model.</p>
+          <p className="mt-3">We research every guide against primary sources first, for example regulators (SEC, CFPB, FCA, ESMA), official statistics (Federal Reserve, Bureau of Labor Statistics, Office for National Statistics), the IRS and HMRC, and peer-reviewed academic research. Where we cite a statistic, we link to the underlying source so you can verify it.</p>
+          <p className="mt-3">Calculator outputs are deterministic projections based on the inputs you provide and assumptions stated on each tool page. They are illustrative, not predictive, actual results depend on real-world variables we cannot model.</p>
         </section>
 
         <section id="advertising-and-affiliate-disclosure" className="scroll-mt-24">

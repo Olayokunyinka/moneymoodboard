@@ -18,9 +18,9 @@ const TITLE = "Credit Card Payoff Calculator";
 export const Route = createFileRoute("/tools/credit-card-payoff-calculator")({
   head: () => ({
     meta: [
-      { title: `${TITLE} — Free Tool | MoneyMoodBoard` },
+      { title: `${TITLE}, Free Tool | MoneyMoodBoard` },
       { name: "description", content: "See exactly how long it'll take to pay off your credit card and how much interest you'll save by paying more than the minimum. Free, no signup." },
-      { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
+      { property: "og:title", content: `${TITLE}, Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Find your real credit-card payoff date and the interest you'll save." },
     ],
     links: [canonical("/tools/credit-card-payoff-calculator"), ...hreflangLinks("/tools/credit-card-payoff-calculator")],
@@ -95,7 +95,7 @@ function CreditCardPayoffCalculator() {
         </span>
         <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">{TITLE}</h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-          See your real payoff date — and how much interest you save by sending more than the minimum.
+          See your real payoff date, and how much interest you save by sending more than the minimum.
         </p>
       </header>
 
@@ -180,11 +180,11 @@ function CreditCardPayoffCalculator() {
                 <dl className="mt-6 space-y-3 text-sm">
                   <div className="flex justify-between">
                     <dt className="text-muted-foreground">Total interest paid</dt>
-                    <dd className="font-semibold">{isFinite(result.chosen.interest) ? fmt(result.chosen.interest) : "—"}</dd>
+                    <dd className="font-semibold">{isFinite(result.chosen.interest) ? fmt(result.chosen.interest) : ", "}</dd>
                   </div>
                   <div className="flex justify-between">
                     <dt className="text-muted-foreground">Total paid</dt>
-                    <dd className="font-semibold">{isFinite(result.chosen.total) ? fmt(result.chosen.total) : "—"}</dd>
+                    <dd className="font-semibold">{isFinite(result.chosen.total) ? fmt(result.chosen.total) : ", "}</dd>
                   </div>
                   <div className="flex justify-between">
                     <dt className="text-muted-foreground">If you only paid the minimum</dt>
@@ -197,7 +197,7 @@ function CreditCardPayoffCalculator() {
                 <div className="mt-6 rounded-lg bg-background/60 p-4">
                   <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Interest saved vs minimums</p>
                   <p className="mt-1 text-2xl font-bold text-primary">
-                    {isFinite(result.interestSaved) ? fmt(result.interestSaved) : "—"}
+                    {isFinite(result.interestSaved) ? fmt(result.interestSaved) : ", "}
                   </p>
                 </div>
               </>
@@ -205,7 +205,7 @@ function CreditCardPayoffCalculator() {
 
             <div className="mt-auto pt-6 flex items-start gap-2 text-xs text-muted-foreground">
               <ShieldCheck className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-              <p>Calculations stay in your browser — nothing is sent or saved.</p>
+              <p>Calculations stay in your browser, nothing is sent or saved.</p>
             </div>
           </div>
         </div>
@@ -217,7 +217,7 @@ function CreditCardPayoffCalculator() {
         <ol className="mt-4 list-decimal pl-5 space-y-2 text-foreground/85">
           <li><span className="font-semibold">Enter your current balance and APR.</span> Both are on the front page of your most recent statement.</li>
           <li><span className="font-semibold">Pick a plan style.</span> Either commit to a fixed monthly amount, or work backward from the date you want to be free.</li>
-          <li><span className="font-semibold">Compare against the minimum.</span> The "interest saved" line is the real story — and the reason to pay above the minimum every month.</li>
+          <li><span className="font-semibold">Compare against the minimum.</span> The "interest saved" line is the real story, and the reason to pay above the minimum every month.</li>
           <li><span className="font-semibold">Stop charging the card.</span> Even the perfect payoff plan fails if new spending keeps adding to the balance.</li>
         </ol>
       </section>
@@ -228,7 +228,7 @@ function CreditCardPayoffCalculator() {
         <p>
           Credit cards are the most expensive consumer debt most households
           carry. The average US APR sits in the low-20s, compounding daily.
-          That means a balance you don't pay down doesn't just sit there —
+          That means a balance you don't pay down doesn't just sit there .
           it grows faster than almost any investment, and it grows against
           you. The good news is that the math is symmetric: the same
           compounding that punishes you when you pay only the minimum
@@ -238,7 +238,7 @@ function CreditCardPayoffCalculator() {
         <p>
           Card issuers usually set the minimum at the larger of $25 or
           1–3% of the balance. On a $5,000 balance at 22% APR with a 2%
-          minimum, the first month's minimum is $100 — but $92 of it goes
+          minimum, the first month's minimum is $100, but $92 of it goes
           to interest. You pay down $8 of principal. As the balance shrinks,
           so does the minimum, dragging the payoff out for decades and
           piling on more than the original balance in interest.
@@ -247,7 +247,7 @@ function CreditCardPayoffCalculator() {
         <p>
           The single most powerful move is to lock in a fixed monthly
           payment that doesn't shrink as the balance does. Pick the largest
-          amount you can sustain — even $50 above the current minimum —
+          amount you can sustain, even $50 above the current minimum .
           and pay that exact amount every month until the card is at zero.
           Watch the months and interest collapse on the calculator above.
         </p>
@@ -263,7 +263,7 @@ function CreditCardPayoffCalculator() {
         <h3 className="text-xl font-semibold">When a personal loan makes sense</h3>
         <p>
           Personal loans for credit-card consolidation typically run 8–15%
-          for good credit — far below the 20%+ on cards. They're a good
+          for good credit, far below the 20%+ on cards. They're a good
           fit when you have multiple high-rate cards and want one fixed
           payment with a clear end date. They only work if you treat the
           paid-off cards as if they don't exist.

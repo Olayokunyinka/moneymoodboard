@@ -19,9 +19,9 @@ const TITLE = "Emergency Fund Calculator";
 export const Route = createFileRoute("/tools/emergency-fund-calculator")({
   head: () => ({
     meta: [
-      { title: `${TITLE} — Free Tool | MoneyMoodBoard` },
+      { title: `${TITLE}, Free Tool | MoneyMoodBoard` },
       { name: "description", content: "Calculate exactly how much you should keep in your emergency fund based on your expenses and job stability. Free, no signup." },
-      { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
+      { property: "og:title", content: `${TITLE}, Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Calculate exactly how much you should keep in your emergency fund based on your expenses and job stability." },
     ],
     links: [canonical("/tools/emergency-fund-calculator"), ...hreflangLinks("/tools/emergency-fund-calculator")],
@@ -65,7 +65,7 @@ function EmergencyFundCalculator() {
         </span>
         <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">{TITLE}</h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-          Find out exactly how much you should keep in your safety net — and how long it'll take to get there.
+          Find out exactly how much you should keep in your safety net, and how long it'll take to get there.
         </p>
       </header>
 
@@ -205,7 +205,7 @@ function EmergencyFundCalculator() {
 
             <div className="mt-auto pt-6 flex items-start gap-2 text-xs text-muted-foreground">
               <ShieldCheck className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-              <p>Calculations stay in your browser — nothing is sent or saved.</p>
+              <p>Calculations stay in your browser, nothing is sent or saved.</p>
             </div>
           </div>
         </div>
@@ -216,7 +216,7 @@ function EmergencyFundCalculator() {
         <h2 className="text-2xl font-bold">How to Use This Calculator</h2>
         <ol className="mt-4 list-decimal pl-5 space-y-2 text-foreground/85">
           <li><span className="font-semibold">Estimate essential monthly expenses.</span> Add up only the spending you couldn't cut quickly: housing, utilities, groceries, insurance, minimum debt payments, transportation.</li>
-          <li><span className="font-semibold">Enter what you've already saved.</span> Only count cash earmarked for emergencies — not investments or money you've assigned to other goals.</li>
+          <li><span className="font-semibold">Enter what you've already saved.</span> Only count cash earmarked for emergencies, not investments or money you've assigned to other goals.</li>
           <li><span className="font-semibold">Pick your employment situation.</span> The calculator will suggest a coverage target. Adjust the slider if your situation is different.</li>
           <li><span className="font-semibold">Set a monthly contribution.</span> See how long it'll take to fully fund your safety net.</li>
         </ol>
@@ -227,7 +227,7 @@ function EmergencyFundCalculator() {
         <h2 className="text-2xl font-bold">What Is an Emergency Fund and How Much Do You Need?</h2>
         <p>
           An emergency fund is a pool of cash you set aside specifically to
-          cover unexpected, urgent expenses — a job loss, a medical bill, a
+          cover unexpected, urgent expenses, a job loss, a medical bill, a
           broken appliance, a car repair. It is the single most important
           piece of personal finance infrastructure, and it is the prerequisite
           to almost everything else: aggressive debt payoff, investing,
@@ -253,7 +253,7 @@ function EmergencyFundCalculator() {
         <h3 className="text-xl font-semibold">When to use it (and when not to)</h3>
         <p>
           An emergency fund is for genuine emergencies: events that are
-          unexpected, urgent, and necessary. A holiday is not an emergency —
+          unexpected, urgent, and necessary. A holiday is not an emergency .
           that's a sinking fund. A new phone because yours is two years old
           is not an emergency. Replacing a phone you actually need to do your
           job, today, is. The discipline matters: every time you spend the
@@ -263,11 +263,11 @@ function EmergencyFundCalculator() {
         <h3 className="text-xl font-semibold">Building it from zero</h3>
         <p>
           If you're starting from $0, don't try to cover six months of
-          expenses on day one — that target will feel impossible and you'll
+          expenses on day one, that target will feel impossible and you'll
           quit. Aim for $1,000 first. Then one month. Then three. Each
           milestone unlocks dramatically more financial peace of mind than
           the dollar amount suggests. Set up an automatic transfer the day
-          you get paid, even if it's only $25 — automation beats willpower.
+          you get paid, even if it's only $25, automation beats willpower.
         </p>
         <p>
           Once your fund is full, leave it alone. Resist the urge to invest

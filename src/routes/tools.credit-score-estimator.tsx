@@ -17,10 +17,10 @@ const TITLE = "Credit Score Estimator";
 export const Route = createFileRoute("/tools/credit-score-estimator")({
   head: () => ({
     meta: [
-      { title: `${TITLE} — Free FICO Estimate | MoneyMoodBoard` },
-      { name: "description", content: "Estimate your FICO credit score from a few quick inputs — payment history, utilization, account age, and credit mix. Free, no signup, no credit pull." },
-      { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
-      { property: "og:description", content: "Estimate your credit score from five quick inputs — no signup, no credit pull." },
+      { title: `${TITLE}, Free FICO Estimate | MoneyMoodBoard` },
+      { name: "description", content: "Estimate your FICO credit score from a few quick inputs, payment history, utilization, account age, and credit mix. Free, no signup, no credit pull." },
+      { property: "og:title", content: `${TITLE}, Free Tool | MoneyMoodBoard` },
+      { property: "og:description", content: "Estimate your credit score from five quick inputs, no signup, no credit pull." },
     ],
     links: [canonical("/tools/credit-score-estimator"), ...hreflangLinks("/tools/credit-score-estimator")],
   }),
@@ -35,10 +35,10 @@ function CreditScoreEstimator() {
   const faqs = tc.faqs;
   // Five FICO factors with their official weights
   const [payment, setPayment] = useState<Onesc>(4); // 35%
-  const [utilization, setUtilization] = useState<number>(20); // 30% — lower is better
+  const [utilization, setUtilization] = useState<number>(20); // 30%, lower is better
   const [historyYears, setHistoryYears] = useState<number>(7); // 15%
   const [creditMix, setCreditMix] = useState<Onesc>(2); // 10%
-  const [newCredit, setNewCredit] = useState<Onesc>(3); // 10% — fewer recent inquiries is better
+  const [newCredit, setNewCredit] = useState<Onesc>(3); // 10%, fewer recent inquiries is better
 
   const result = useMemo(() => {
     // Each component normalized to 0..1, then weighted
@@ -99,7 +99,7 @@ function CreditScoreEstimator() {
         </span>
         <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">{TITLE}</h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-          A directional FICO estimate from five quick inputs — built on the official FICO factor weights.
+          A directional FICO estimate from five quick inputs, built on the official FICO factor weights.
         </p>
       </header>
 
@@ -181,7 +181,7 @@ function CreditScoreEstimator() {
 
             <div className="mt-auto pt-6 flex items-start gap-2 text-xs text-muted-foreground">
               <ShieldCheck className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-              <p>Calculations stay in your browser — nothing is sent or saved.</p>
+              <p>Calculations stay in your browser, nothing is sent or saved.</p>
             </div>
           </div>
         </div>
@@ -193,7 +193,7 @@ function CreditScoreEstimator() {
         <ol className="mt-4 list-decimal pl-5 space-y-2 text-foreground/85">
           <li><span className="font-semibold">Be honest about payment history.</span> Even one late payment in the last two years matters more than most people realise.</li>
           <li><span className="font-semibold">Calculate utilization carefully.</span> Add up the balances on every credit card, then divide by the sum of every credit limit.</li>
-          <li><span className="font-semibold">Use the average age of your accounts.</span> Closing your oldest card drops this number — a common mistake.</li>
+          <li><span className="font-semibold">Use the average age of your accounts.</span> Closing your oldest card drops this number, a common mistake.</li>
           <li><span className="font-semibold">Count new accounts in the last 12 months.</span> Each hard pull and each new account temporarily dings your score.</li>
         </ol>
       </section>
@@ -206,7 +206,7 @@ function CreditScoreEstimator() {
           that lenders use to predict how likely you are to repay borrowed
           money. It is built from five components, each with a fixed weight,
           published openly by FICO. Most of the personal-finance internet
-          misses one of those weights — usually because they're guessing,
+          misses one of those weights, usually because they're guessing,
           not reading the source.
         </p>
         <h3 className="text-xl font-semibold">Payment history (35%)</h3>
@@ -224,14 +224,14 @@ function CreditScoreEstimator() {
           $3,000 balance, your utilization is 30%. Below 30% is fine, below
           10% is ideal, and 0% is very slightly worse than 1–9% (the
           algorithm wants to see you using credit, just responsibly). This
-          is the one factor you can change in 30 days — pay down balances
+          is the one factor you can change in 30 days, pay down balances
           before the statement closes, not before the due date.
         </p>
         <h3 className="text-xl font-semibold">Length of credit history (15%)</h3>
         <p>
           The average age of your accounts matters, and it can only go up
           with patience. The most common self-inflicted mistake is closing
-          your oldest credit card because you don't use it — that drops your
+          your oldest credit card because you don't use it, that drops your
           average age and shrinks your total available credit (raising
           utilization). Keep old no-fee cards open and put a small recurring
           subscription on them.
@@ -239,7 +239,7 @@ function CreditScoreEstimator() {
         <h3 className="text-xl font-semibold">Credit mix (10%) and new credit (10%)</h3>
         <p>
           Lenders like to see that you can responsibly handle different
-          types of credit — revolving (cards) and installment (auto loans,
+          types of credit, revolving (cards) and installment (auto loans,
           mortgages, student loans). You don't need to take out a loan for
           the sake of mix, but if you have one it helps. New credit is the
           flip side: opening multiple accounts in a short window tells the

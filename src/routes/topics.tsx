@@ -8,7 +8,7 @@ import { entities } from "@/lib/entities";
 import { intentForPillar, INTENT_LABELS, INTENT_CHIP_CLASS, type IntentClass } from "@/lib/intent-pages";
 import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
-const TITLE = "Topical Map — Every Money Topic on MoneyMoodBoard";
+const TITLE = "Topical Map, Every Money Topic on MoneyMoodBoard";
 const DESC =
   "The complete topical map of MoneyMoodBoard: 7 pillars, every cluster, every guide. A hub-and-spoke index of personal-finance topics, designed for quick navigation and complete topical coverage.";
 
@@ -44,7 +44,7 @@ function TopicsPage() {
           </span>
         }
         title="Every money topic, in one place"
-        intro={`A complete hub-and-spoke index of MoneyMoodBoard. ${pillars.length} pillars, ${totalGuides} guides, one ${entities.length}-entry glossary — built so any reader (or crawler) can map our topical coverage in a single screen.`}
+        intro={`A complete hub-and-spoke index of MoneyMoodBoard. ${pillars.length} pillars, ${totalGuides} guides, one ${entities.length}-entry glossary, built so any reader (or crawler) can map our topical coverage in a single screen.`}
       />
 
       <section className="mt-10 grid gap-6 md:grid-cols-2">
@@ -189,7 +189,7 @@ function TopicsPage() {
               Free newsletter →
             </Link>
             <p className="mt-1 text-sm text-muted-foreground">
-              One short email a week — no upsell, no spam.
+              One short email a week, no upsell, no spam.
             </p>
           </li>
         </ul>

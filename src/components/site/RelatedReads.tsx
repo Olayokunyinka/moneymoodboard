@@ -3,7 +3,7 @@ import type { ClusterPost, PillarSlug } from "@/lib/pillars";
 
 /**
  * Bottom-of-post "Related reads" grid. Mirrors the AdSense matched-content
- * unit slot — increases pages-per-session.
+ * unit slot, increases pages-per-session.
  */
 export function RelatedReads({
   posts,

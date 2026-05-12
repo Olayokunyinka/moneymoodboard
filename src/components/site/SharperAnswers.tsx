@@ -50,7 +50,7 @@ export function SharperAnswers({ pillarSlug, pillarShortName }: { pillarSlug: Pi
     <section id="sharper-answers" className="mt-16 scroll-mt-24">
       <h2 className="text-2xl font-bold text-foreground">Sharper {pillarShortName} Answers</h2>
       <p className="mt-2 max-w-3xl text-muted-foreground">
-        Direct answers, current rules, ranked picks, and decision shortcuts — built for the questions readers actually ask.
+        Direct answers, current rules, ranked picks, and decision shortcuts, built for the questions readers actually ask.
       </p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <Block cls="best" items={grouped.best} />

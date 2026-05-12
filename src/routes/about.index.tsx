@@ -10,9 +10,9 @@ export const Route = createFileRoute("/about/")({
   head: () => ({
     meta: [
       { title: "About MoneyMoodBoard | Smarter Money Decisions for Real Life" },
-      { name: "description", content: "Meet the founder, our mission, editorial standards, and how we make money — plain-English personal finance, no jargon, no judgment." },
+      { name: "description", content: "Meet the founder, our mission, editorial standards, and how we make money, plain-English personal finance, no jargon, no judgment." },
       { property: "og:title", content: "About MoneyMoodBoard" },
-      { property: "og:description", content: "Smarter money decisions for your real life — built by founder Yinka Olayokun." },
+      { property: "og:description", content: "Smarter money decisions for your real life, built by founder Yinka Olayokun." },
     ],
     links: [canonical("/about"), ...hreflangLinks("/about")],
   }),
@@ -25,14 +25,14 @@ function AboutPage() {
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "About" }]} />
       <PageHero
         title="Smarter money moves, one decision at a time"
-        intro="Whether you're rebuilding credit, side-hustling to survive, or trying to escape debt without shame — this is your judgment-free money zone."
+        intro="Whether you're rebuilding credit, side-hustling to survive, or trying to escape debt without shame, this is your judgment-free money zone."
       />
 
       <section className="mt-10 space-y-6 text-foreground/85">
         <h2 className="text-2xl font-bold">Our mission</h2>
         <p>
           At MoneyMoodBoard, we believe financial freedom isn't about being
-          rich — it's about feeling safe, in control, and confident with money.
+          rich, it's about feeling safe, in control, and confident with money.
           We started this platform to answer the <em>real</em> questions
           20-somethings and early earners actually face: Why did my credit drop
           after I paid off a loan? How do I save when I barely make enough? Is
@@ -51,7 +51,7 @@ function AboutPage() {
           <li>People sick of jargon and tired of being talked down to</li>
         </ul>
 
-        <h2 className="text-2xl font-bold">Meet the founder — Yinka Olayokun</h2>
+        <h2 className="text-2xl font-bold">Meet the founder, Yinka Olayokun</h2>
         <div className="rounded-2xl border border-border bg-card p-6 md:p-7">
           <div className="flex items-start gap-4">
             <img
@@ -74,7 +74,7 @@ function AboutPage() {
         </div>
         <p>
           Hi, I'm Yinka. I started this platform because I got tired of reading
-          generic money advice that didn't apply to people like me — people
+          generic money advice that didn't apply to people like me, people
           living real life, managing inconsistent income, debt, and goals.
         </p>
         <p className="font-medium text-foreground">I believe:</p>
@@ -82,20 +82,20 @@ function AboutPage() {
           <li>You can build credit <em>without carrying debt</em>.</li>
           <li>Budgeting shouldn't feel like punishment.</li>
           <li>
-            Everyone deserves judgment-free money guidance — especially Black,
+            Everyone deserves judgment-free money guidance, especially Black,
             Brown, immigrant, and underserved communities.
           </li>
         </ul>
         <p>
           If you've ever asked, <em>"Why is nobody explaining this in plain
-          English?"</em> — this space is for you.
+          English?"</em>, this space is for you.
         </p>
 
         <h2 className="text-2xl font-bold">Why "Money Mood Board"?</h2>
         <p>
           A mood board inspires vision, clarity, and identity. We created one
-          for your money life. Money is deeply emotional — fear, freedom,
-          shame, joy — and we're here to help you make financial decisions that{" "}
+          for your money life. Money is deeply emotional, fear, freedom,
+          shame, joy, and we're here to help you make financial decisions that{" "}
           <em>feel better</em> and <em>build power.</em>
         </p>
 

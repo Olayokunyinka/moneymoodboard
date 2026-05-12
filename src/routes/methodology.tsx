@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { AuthorBox } from "@/components/site/AuthorBox";
 import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
-const TITLE = "Methodology — How MoneyMoodBoard Calculates & Scores";
+const TITLE = "Methodology, How MoneyMoodBoard Calculates & Scores";
 const DESC =
   "The formulas, assumptions and scorecards behind every MoneyMoodBoard calculator and comparison. Reproducible, source-linked, and reviewed quarterly.";
 const PATH = "/methodology";
@@ -32,7 +32,7 @@ function Page() {
       <PageHero
         eyebrow={<span className="text-xs font-medium uppercase tracking-wide text-primary">Editorial standards</span>}
         title="Methodology"
-        intro="This is how we calculate the numbers and score the comparisons you see across MoneyMoodBoard. Every assumption is documented so any reader can reproduce — or challenge — the result."
+        intro="This is how we calculate the numbers and score the comparisons you see across MoneyMoodBoard. Every assumption is documented so any reader can reproduce, or challenge, the result."
       />
 
       <article className="mt-8 space-y-8 text-foreground/85 leading-7">
@@ -54,7 +54,7 @@ function Page() {
         <section>
           <h2 className="text-2xl font-bold text-foreground">Comparison scorecards</h2>
           <p className="mt-3">
-            Head-to-head pages (e.g. <Link to="/retirement/vs/roth-vs-traditional-ira" className="text-primary hover:underline">Roth vs Traditional IRA</Link>) use a 4–6 row criteria grid. Each row resolves to <em>A wins</em>, <em>B wins</em>, or <em>tie</em>, and the overall verdict is the weighted sum — weighting documented per article.
+            Head-to-head pages (e.g. <Link to="/retirement/vs/roth-vs-traditional-ira" className="text-primary hover:underline">Roth vs Traditional IRA</Link>) use a 4–6 row criteria grid. Each row resolves to <em>A wins</em>, <em>B wins</em>, or <em>tie</em>, and the overall verdict is the weighted sum, weighting documented per article.
           </p>
         </section>
         <section>

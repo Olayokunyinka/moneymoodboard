@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { AuthorBox } from "@/components/site/AuthorBox";
 import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
-const TITLE = "Fact-Checking Policy — Sourcing & Verification at MoneyMoodBoard";
+const TITLE = "Fact-Checking Policy, Sourcing & Verification at MoneyMoodBoard";
 const DESC =
   "Our verification standards: primary sources only, four-eyes review, dated re-checks, and how we handle changing rules and rates in U.S. personal finance.";
 const PATH = "/fact-checking-policy";
@@ -40,7 +40,7 @@ function Page() {
           <h2 className="text-2xl font-bold text-foreground">Primary sources only</h2>
           <p className="mt-3">
             For any number, rule, or limit, the source must be the regulator, statute, agency,
-            or issuer that publishes it — IRS, SEC, FDIC, NCUA, CFPB, Federal Reserve, Treasury,
+            or issuer that publishes it, IRS, SEC, FDIC, NCUA, CFPB, Federal Reserve, Treasury,
             BLS, or the issuing financial institution. Secondary aggregators are never the citation of record.
           </p>
         </section>

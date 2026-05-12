@@ -13,7 +13,7 @@ export interface ComparisonCriterion {
   a: string;
   /** What option B looks like on this dimension. */
   b: string;
-  /** "a" | "b" | "tie" — drives the at-a-glance scorecard. */
+  /** "a" | "b" | "tie", drives the at-a-glance scorecard. */
   winner: "a" | "b" | "tie";
 }
 
@@ -21,7 +21,7 @@ export interface ComparisonOption {
   name: string;
   /** One-sentence definition for screen readers + glossary. */
   oneLiner: string;
-  /** Wikidata / Wikipedia URLs — fed into ItemList schema. */
+  /** Wikidata / Wikipedia URLs, fed into ItemList schema. */
   sameAs?: string[];
 }
 
@@ -31,7 +31,7 @@ export interface Comparison {
   title: string; // H1
   metaTitle: string; // <title>
   metaDescription: string;
-  /** Quick answer — appears under H1. */
+  /** Quick answer, appears under H1. */
   summary: string;
   a: ComparisonOption;
   b: ComparisonOption;
@@ -41,10 +41,10 @@ export interface Comparison {
   sections: { heading: string; paragraphs: string[] }[];
   /** Persona-based verdict block. */
   bestFor: { persona: string; pick: "a" | "b"; rationale: string }[];
-  /** Hero verdict — one paragraph. */
+  /** Hero verdict, one paragraph. */
   verdict: string;
   faqs: { q: string; a: string }[];
-  /** Curated internal links — must include both source guides + ≥1 cross-pillar. */
+  /** Curated internal links, must include both source guides + ≥1 cross-pillar. */
   internalLinks: { label: string; to: string }[];
   /** ISO dates. */
   published: string;
@@ -59,7 +59,7 @@ export const comparisons: Comparison[] = [
     title: "Roth IRA vs Traditional IRA: Which One Wins in 2026?",
     metaTitle: "Roth IRA vs Traditional IRA (2026): Full Comparison | MoneyMoodBoard",
     metaDescription:
-      "Roth vs Traditional IRA compared on tax treatment, income limits, withdrawals, RMDs and estate planning — with the right pick for each life stage.",
+      "Roth vs Traditional IRA compared on tax treatment, income limits, withdrawals, RMDs and estate planning, with the right pick for each life stage.",
     summary:
       "A Roth IRA is funded with after-tax dollars and grows tax-free forever; a Traditional IRA gets you an upfront tax deduction but the IRS taxes everything you pull out in retirement. The right answer almost always comes down to one question: will your tax bracket be higher or lower in retirement than it is today?",
     a: {
@@ -85,13 +85,13 @@ export const comparisons: Comparison[] = [
         heading: "Why the tax-now vs tax-later math is rarely close",
         paragraphs: [
           "If your marginal tax bracket in retirement will be the same as it is today and you invest the deduction from a Traditional IRA, the two accounts end up mathematically identical. In practice almost no one reinvests the deduction, which is exactly why most younger savers in the 12% or 22% bracket end up better off in a Roth.",
-          "High earners staring down the Roth income limit have a workaround: contribute non-deductible dollars to a Traditional IRA and convert to Roth in the same year — the backdoor Roth — provided they don't have other pre-tax IRA balances triggering the pro-rata rule.",
+          "High earners staring down the Roth income limit have a workaround: contribute non-deductible dollars to a Traditional IRA and convert to Roth in the same year, the backdoor Roth, provided they don't have other pre-tax IRA balances triggering the pro-rata rule.",
         ],
       },
       {
         heading: "The flexibility gap people underrate",
         paragraphs: [
-          "Roth contributions (not earnings) can be withdrawn any time without penalty. That makes a Roth IRA the closest thing to a 'do everything' account in the U.S. system — retirement vehicle, backup emergency reserve, first-home down payment ($10k earnings carve-out), and college fund all at once.",
+          "Roth contributions (not earnings) can be withdrawn any time without penalty. That makes a Roth IRA the closest thing to a 'do everything' account in the U.S. system, retirement vehicle, backup emergency reserve, first-home down payment ($10k earnings carve-out), and college fund all at once.",
           "Traditional IRAs are far more rigid: any withdrawal before 59½ usually costs 10% in penalty plus ordinary-income tax. Used correctly that rigidity is a feature, not a bug, but it's a real cost to optionality.",
         ],
       },
@@ -112,7 +112,7 @@ export const comparisons: Comparison[] = [
       "If you can't predict your retirement bracket with confidence, default to Roth in your 20s and 30s, default to Traditional in your peak earning years, and revisit every time your tax bracket changes. For most readers in 2026, the Roth wins.",
     faqs: [
       { q: "Can I contribute to both in the same year?", a: "Yes, but the combined contribution can't exceed $7,000 ($8,000 if 50+) across all IRAs. Most people split based on the math above." },
-      { q: "Is a Roth conversion worth it?", a: "Often yes in a low-income year — sabbatical, gap year, early retirement before Social Security. Pay tax at today's lower bracket and lock in tax-free growth forever." },
+      { q: "Is a Roth conversion worth it?", a: "Often yes in a low-income year, sabbatical, gap year, early retirement before Social Security. Pay tax at today's lower bracket and lock in tax-free growth forever." },
       { q: "What about a Roth 401(k)?", a: "Same Roth treatment, much higher 2026 limit ($23,500 base). If your employer offers Roth 401(k) and you'd pick Roth, use it first." },
     ],
     internalLinks: [
@@ -133,9 +133,9 @@ export const comparisons: Comparison[] = [
     title: "401(k) vs IRA: Where Should Your Next Retirement Dollar Go?",
     metaTitle: "401(k) vs IRA (2026): Which One Should You Fund First? | MoneyMoodBoard",
     metaDescription:
-      "401(k) vs IRA on contribution limits, employer match, fees, investment menu and withdrawal rules — and the funding order that beats both in isolation.",
+      "401(k) vs IRA on contribution limits, employer match, fees, investment menu and withdrawal rules, and the funding order that beats both in isolation.",
     summary:
-      "A 401(k) is offered through your employer with much higher contribution limits and (usually) a free employer match; an IRA is opened on your own with a far better investment menu and lower fees. Most workers should use both — match first, then IRA, then back to the 401(k).",
+      "A 401(k) is offered through your employer with much higher contribution limits and (usually) a free employer match; an IRA is opened on your own with a far better investment menu and lower fees. Most workers should use both, match first, then IRA, then back to the 401(k).",
     a: {
       name: "401(k)",
       oneLiner: "Employer-sponsored retirement plan funded by payroll deferrals with optional company match.",
@@ -148,9 +148,9 @@ export const comparisons: Comparison[] = [
     },
     criteria: [
       { name: "2026 contribution limit", a: "$23,500 employee ($31,000 if 50+).", b: "$7,000 ($8,000 if 50+).", winner: "a" },
-      { name: "Employer match", a: "Common — typically 3–6% of salary, free money.", b: "None.", winner: "a" },
+      { name: "Employer match", a: "Common, typically 3–6% of salary, free money.", b: "None.", winner: "a" },
       { name: "Investment menu", a: "Restricted to plan-sponsor lineup; fees vary widely.", b: "Almost every public stock, ETF and mutual fund.", winner: "b" },
-      { name: "Fees", a: "Plan-admin + fund expense — can exceed 1%/yr in bad plans.", b: "$0 at major brokerages; ETFs from 0.03%.", winner: "b" },
+      { name: "Fees", a: "Plan-admin + fund expense, can exceed 1%/yr in bad plans.", b: "$0 at major brokerages; ETFs from 0.03%.", winner: "b" },
       { name: "Roth option", a: "Roth 401(k) increasingly common, with the same high limit.", b: "Roth IRA available, subject to income limits.", winner: "tie" },
       { name: "Early-access flexibility", a: "Plan loans + Rule of 55 carve-out.", b: "Roth contributions withdrawable anytime; SEPP for Traditional.", winner: "tie" },
     ],
@@ -159,29 +159,29 @@ export const comparisons: Comparison[] = [
         heading: "The funding order that beats either in isolation",
         paragraphs: [
           "The math almost always works out the same way: contribute to the 401(k) just enough to capture the full employer match, then move to an IRA where fees are lower and the investment menu is wider, then come back to the 401(k) to fill the rest of the limit.",
-          "Skipping the match is the single most expensive mistake in personal finance. A 50% match on a 6% salary deferral is an instant 50% return on that money — no investment will ever beat it.",
+          "Skipping the match is the single most expensive mistake in personal finance. A 50% match on a 6% salary deferral is an instant 50% return on that money, no investment will ever beat it.",
         ],
       },
       {
         heading: "When the IRA-first rule breaks",
         paragraphs: [
-          "Two situations flip the order. First, a high earner already over the Roth income limit and unable to deduct a Traditional IRA gets less benefit from the IRA — go heavier on the 401(k) for the deduction. Second, a plan with truly bad fees (1.5%+ all-in) makes the IRA the better second dollar even after the match.",
+          "Two situations flip the order. First, a high earner already over the Roth income limit and unable to deduct a Traditional IRA gets less benefit from the IRA, go heavier on the 401(k) for the deduction. Second, a plan with truly bad fees (1.5%+ all-in) makes the IRA the better second dollar even after the match.",
           "Either way, capture the match first. Nothing else is close.",
         ],
       },
     ],
     bestFor: [
-      { persona: "Anyone with an employer match", pick: "a", rationale: "Capture the match before touching anything else — period." },
+      { persona: "Anyone with an employer match", pick: "a", rationale: "Capture the match before touching anything else, period." },
       { persona: "Self-employed / no employer plan", pick: "b", rationale: "Solo 401(k) or SEP-IRA is the better play; if neither, stack a Roth IRA + taxable." },
       { persona: "High earner above Roth limits", pick: "a", rationale: "401(k) deduction lowers AGI which may restore other benefits; backdoor Roth handles the IRA side." },
       { persona: "Bad 401(k) plan (>1% fees)", pick: "b", rationale: "Match first, then IRA, only top up the 401(k) if you have nothing else." },
     ],
     verdict:
-      "It's not 401(k) vs IRA — it's 401(k) match, then IRA, then more 401(k). Treating them as either/or leaves the most valuable dollar (the match) on the table.",
+      "It's not 401(k) vs IRA, it's 401(k) match, then IRA, then more 401(k). Treating them as either/or leaves the most valuable dollar (the match) on the table.",
     faqs: [
-      { q: "What if I leave my job?", a: "Rolling the 401(k) to an IRA is usually the right call — same tax treatment, dramatically better investment menu, lower fees. Skip the rollover only if you're under 55 and need Rule of 55 access." },
-      { q: "Can I contribute to both in one year?", a: "Yes, the limits are separate. A 50-year-old can put $31,000 in a 401(k) and $8,000 in an IRA in 2026 — $39,000 total." },
-      { q: "Should I use a Roth or Traditional 401(k)?", a: "Same logic as Roth vs Traditional IRA — bracket-now vs bracket-later. The contribution limit is identical for either flavor of 401(k)." },
+      { q: "What if I leave my job?", a: "Rolling the 401(k) to an IRA is usually the right call, same tax treatment, dramatically better investment menu, lower fees. Skip the rollover only if you're under 55 and need Rule of 55 access." },
+      { q: "Can I contribute to both in one year?", a: "Yes, the limits are separate. A 50-year-old can put $31,000 in a 401(k) and $8,000 in an IRA in 2026, $39,000 total." },
+      { q: "Should I use a Roth or Traditional 401(k)?", a: "Same logic as Roth vs Traditional IRA, bracket-now vs bracket-later. The contribution limit is identical for either flavor of 401(k)." },
     ],
     internalLinks: [
       { label: "401(k) basics", to: "/retirement/401k-basics" },
@@ -203,10 +203,10 @@ export const comparisons: Comparison[] = [
     metaDescription:
       "ETF vs mutual fund compared on fees, tax efficiency, minimums, trading mechanics and where each one still makes sense in 2026.",
     summary:
-      "An ETF and a mutual fund can hold the exact same basket of stocks — the differences are in how you buy them, how the IRS taxes them, and how much they cost to own. For a taxable brokerage account, the ETF almost always wins. Inside a 401(k) or IRA, it's usually a tie.",
+      "An ETF and a mutual fund can hold the exact same basket of stocks, the differences are in how you buy them, how the IRS taxes them, and how much they cost to own. For a taxable brokerage account, the ETF almost always wins. Inside a 401(k) or IRA, it's usually a tie.",
     a: {
       name: "ETF",
-      oneLiner: "Exchange-traded fund — a basket of securities that trades like a stock during market hours.",
+      oneLiner: "Exchange-traded fund, a basket of securities that trades like a stock during market hours.",
       sameAs: ["https://en.wikipedia.org/wiki/Exchange-traded_fund", "https://www.wikidata.org/wiki/Q639634"],
     },
     b: {
@@ -218,7 +218,7 @@ export const comparisons: Comparison[] = [
       { name: "Expense ratio (typical)", a: "Index ETFs 0.03–0.10%.", b: "Index mutual funds 0.04–0.20%; active 0.5–1.5%.", winner: "a" },
       { name: "Tax efficiency in taxable account", a: "In-kind creation/redemption avoids most capital-gains distributions.", b: "Forced distributions to all holders, even new ones.", winner: "a" },
       { name: "Minimum investment", a: "One share (often <$100); fractional at most brokers.", b: "$1k–$3k minimums; some $0 with auto-invest.", winner: "a" },
-      { name: "Automatic recurring investment", a: "Limited — requires fractional support.", b: "Built-in everywhere; the original 'set and forget'.", winner: "b" },
+      { name: "Automatic recurring investment", a: "Limited, requires fractional support.", b: "Built-in everywhere; the original 'set and forget'.", winner: "b" },
       { name: "Intraday trading", a: "Yes, any time the market is open.", b: "Once a day at 4pm NAV.", winner: "a" },
       { name: "Inside 401(k)", a: "Often not on the menu.", b: "Dominant choice in plan lineups.", winner: "b" },
     ],
@@ -226,29 +226,29 @@ export const comparisons: Comparison[] = [
       {
         heading: "Why ETFs are quietly more tax-efficient",
         paragraphs: [
-          "Mutual funds have to sell holdings to meet redemptions, which generates taxable capital gains the fund distributes to every shareholder — including ones who joined yesterday. ETFs use a creation/redemption mechanism that lets institutional traders swap shares for the underlying basket without selling, so the fund itself almost never realises gains.",
+          "Mutual funds have to sell holdings to meet redemptions, which generates taxable capital gains the fund distributes to every shareholder, including ones who joined yesterday. ETFs use a creation/redemption mechanism that lets institutional traders swap shares for the underlying basket without selling, so the fund itself almost never realises gains.",
           "For long-term holders in a taxable brokerage account, that mechanical difference can be worth a few tenths of a percent per year, every year, forever. Inside an IRA or 401(k) the difference vanishes because nothing in the account is taxed until withdrawal.",
         ],
       },
       {
         heading: "Where mutual funds still earn their keep",
         paragraphs: [
-          "Two scenarios. First, automated dollar-cost averaging at most brokers still works more cleanly with a mutual fund — pick an amount, pick a date, done. Second, several great index funds (especially in 401(k) menus) only exist in mutual-fund form, and avoiding them just to use an ETF is a bad reason.",
+          "Two scenarios. First, automated dollar-cost averaging at most brokers still works more cleanly with a mutual fund, pick an amount, pick a date, done. Second, several great index funds (especially in 401(k) menus) only exist in mutual-fund form, and avoiding them just to use an ETF is a bad reason.",
         ],
       },
     ],
     bestFor: [
       { persona: "Taxable brokerage account", pick: "a", rationale: "Tax efficiency over decades is meaningful and free." },
-      { persona: "Inside a 401(k)/IRA", pick: "b", rationale: "Use whatever your plan offers — tax wrapper makes the choice neutral." },
+      { persona: "Inside a 401(k)/IRA", pick: "b", rationale: "Use whatever your plan offers, tax wrapper makes the choice neutral." },
       { persona: "Beginner with $50–$500/mo recurring", pick: "b", rationale: "Auto-invest into a target-date or index mutual fund is the cleanest setup." },
       { persona: "Active rebalancer", pick: "a", rationale: "Intraday liquidity plus tax efficiency on the rebalance." },
     ],
     verdict:
-      "Default to ETFs in a taxable account, mutual funds in a workplace retirement plan, and don't lose sleep over the choice — the strategy (broad-index, low-cost, hold forever) matters 100× more than the wrapper.",
+      "Default to ETFs in a taxable account, mutual funds in a workplace retirement plan, and don't lose sleep over the choice, the strategy (broad-index, low-cost, hold forever) matters 100× more than the wrapper.",
     faqs: [
       { q: "Are ETFs riskier than mutual funds?", a: "No. An S&P 500 ETF and an S&P 500 mutual fund own essentially the same stocks; the daily price moves identically. Riskier holdings (leveraged, single-country, themes) exist in both wrappers." },
       { q: "Do I pay commission to trade ETFs?", a: "Major U.S. brokers eliminated ETF commissions in 2019. You pay the bid/ask spread, which is pennies on a major index ETF." },
-      { q: "What about index funds — are those different?", a: "An index fund is a strategy, not a wrapper. The same index strategy comes in both ETF and mutual-fund form (e.g., Vanguard's VOO is the ETF, VFIAX is the mutual fund)." },
+      { q: "What about index funds, are those different?", a: "An index fund is a strategy, not a wrapper. The same index strategy comes in both ETF and mutual-fund form (e.g., Vanguard's VOO is the ETF, VFIAX is the mutual fund)." },
     ],
     internalLinks: [
       { label: "Index funds vs target-date", to: "/investing/vs/index-funds-vs-target-date" },
@@ -270,7 +270,7 @@ export const comparisons: Comparison[] = [
     metaDescription:
       "Index funds vs target-date funds compared on fees, rebalancing, glidepath and the right pick for hands-off vs hands-on investors.",
     summary:
-      "An index fund tracks a single market — usually the whole U.S. or world stock market — and never changes. A target-date fund holds a mix of index funds and automatically shifts from stocks to bonds as your retirement year approaches. Target-date is one decision; index is two or three.",
+      "An index fund tracks a single market, usually the whole U.S. or world stock market, and never changes. A target-date fund holds a mix of index funds and automatically shifts from stocks to bonds as your retirement year approaches. Target-date is one decision; index is two or three.",
     a: {
       name: "Index Fund",
       oneLiner: "A fund that mechanically tracks a market index like the S&P 500 or total world market.",
@@ -287,13 +287,13 @@ export const comparisons: Comparison[] = [
       { name: "Rebalancing", a: "You set a calendar reminder.", b: "Automatic, daily, free.", winner: "b" },
       { name: "Glidepath (de-risking)", a: "You shift to bonds manually as you age.", b: "Built-in; runs for decades after retirement.", winner: "b" },
       { name: "Customization", a: "Total control of allocation, factor tilts, international weight.", b: "Take it or leave it.", winner: "a" },
-      { name: "Tax efficiency in taxable account", a: "Better — pure stock index funds throw off less in gains/dividends.", b: "Worse — automatic rebalancing creates taxable events.", winner: "a" },
+      { name: "Tax efficiency in taxable account", a: "Better, pure stock index funds throw off less in gains/dividends.", b: "Worse, automatic rebalancing creates taxable events.", winner: "a" },
     ],
     sections: [
       {
         heading: "Why most new investors should start with a target-date fund",
         paragraphs: [
-          "The number-one cause of long-term underperformance isn't fund choice — it's behavior: missing rebalances, panic-selling in downturns, drifting into stock-heavy allocations near retirement. Target-date funds solve all three by making the right behavior automatic.",
+          "The number-one cause of long-term underperformance isn't fund choice, it's behavior: missing rebalances, panic-selling in downturns, drifting into stock-heavy allocations near retirement. Target-date funds solve all three by making the right behavior automatic.",
           "The slightly higher fee (a few basis points) is the cheapest insurance in finance for an investor who would otherwise tinker.",
         ],
       },
@@ -308,13 +308,13 @@ export const comparisons: Comparison[] = [
       { persona: "New investor, 401(k)", pick: "b", rationale: "Pick the fund matching your retirement year, set the contribution percentage, ignore the news." },
       { persona: "Taxable brokerage saver", pick: "a", rationale: "Avoid forced capital-gains distributions; control rebalancing year-end." },
       { persona: "Three-fund-portfolio fan (Bogleheads)", pick: "a", rationale: "U.S. total market + international + bonds gives identical exposure at lower fees." },
-      { persona: "Tinkerer with no system", pick: "b", rationale: "Automation beats intention — let the fund do the job you keep skipping." },
+      { persona: "Tinkerer with no system", pick: "b", rationale: "Automation beats intention, let the fund do the job you keep skipping." },
     ],
     verdict:
       "If you're going to leave it alone for 30 years and would otherwise drift or panic, the target-date fund is the better choice even at a slightly higher fee. If you're disciplined and especially if you're in a taxable account, the three-fund index portfolio wins on fees and control.",
     faqs: [
-      { q: "Can I hold both?", a: "Yes — many investors use a target-date fund inside their 401(k) and a three-fund index portfolio in their IRA / taxable brokerage." },
-      { q: "What does the 'glidepath' actually do?", a: "It gradually moves the fund from ~90% stocks in your 20s to ~30–50% stocks at retirement. Different fund families use different paths — Vanguard ends near 30% stocks, Fidelity nearer 50%." },
+      { q: "Can I hold both?", a: "Yes, many investors use a target-date fund inside their 401(k) and a three-fund index portfolio in their IRA / taxable brokerage." },
+      { q: "What does the 'glidepath' actually do?", a: "It gradually moves the fund from ~90% stocks in your 20s to ~30–50% stocks at retirement. Different fund families use different paths, Vanguard ends near 30% stocks, Fidelity nearer 50%." },
       { q: "Is the target year a hard deadline?", a: "No. The fund keeps glidepath-rebalancing for 5–25 years after the target date. Picking a date 5 years past your real retirement gives a slightly higher stock weight if you want it." },
     ],
     internalLinks: [
@@ -349,8 +349,8 @@ export const comparisons: Comparison[] = [
       sameAs: ["https://en.wikipedia.org/wiki/Debt-snowball_method#Avalanche_method"],
     },
     criteria: [
-      { name: "Math optimality", a: "Suboptimal — costs more interest.", b: "Optimal — minimum total interest.", winner: "b" },
-      { name: "Motivation / completion rate", a: "Higher — fast first wins reinforce the habit.", b: "Lower — first win can take many months.", winner: "a" },
+      { name: "Math optimality", a: "Suboptimal, costs more interest.", b: "Optimal, minimum total interest.", winner: "b" },
+      { name: "Motivation / completion rate", a: "Higher, fast first wins reinforce the habit.", b: "Lower, first win can take many months.", winner: "a" },
       { name: "Total interest paid", a: "Slightly higher (often <$1k difference on average household debt).", b: "Lowest possible.", winner: "b" },
       { name: "Setup complexity", a: "Sort debts by balance ascending. Done.", b: "Sort by APR descending. Done.", winner: "tie" },
       { name: "Best with mixed-rate, mixed-size debts", a: "Wins when there's at least one tiny balance to knock out.", b: "Wins when one debt is dramatically higher-rate.", winner: "tie" },
@@ -366,7 +366,7 @@ export const comparisons: Comparison[] = [
       {
         heading: "When the math gap is too big to ignore",
         paragraphs: [
-          "If one debt is dramatically higher-rate — a 29% store card next to a 6% student loan — the interest premium of snowball can move from 'small' to 'painful' fast. The hybrid move: kill the smallest debt for the psychological win, then jump to the highest rate for the rest.",
+          "If one debt is dramatically higher-rate, a 29% store card next to a 6% student loan, the interest premium of snowball can move from 'small' to 'painful' fast. The hybrid move: kill the smallest debt for the psychological win, then jump to the highest rate for the rest.",
           "Either way, avoid the middle path of 'paying a little extra on everything'. Both methods only work because the entire snowball or avalanche payment rolls onto the next target after each debt clears.",
         ],
       },
@@ -380,7 +380,7 @@ export const comparisons: Comparison[] = [
     verdict:
       "Pick snowball unless you have either (a) one dominant high-rate debt that makes the methods nearly identical, or (b) zero history of giving up on a payoff plan. Finishing the plan is worth far more than the few hundred dollars of extra interest.",
     faqs: [
-      { q: "What if my debts are all the same interest rate?", a: "The methods collapse — pay smallest first because it's faster mental closure." },
+      { q: "What if my debts are all the same interest rate?", a: "The methods collapse, pay smallest first because it's faster mental closure." },
       { q: "Should I keep the credit cards open after payoff?", a: "Yes, to preserve credit utilization and average age of account, unless they carry an annual fee with no benefit." },
       { q: "What about a consolidation loan?", a: "Useful if it lowers your weighted-average APR and you won't run the cards back up. Otherwise it's a delaying tactic." },
     ],
@@ -404,7 +404,7 @@ export const comparisons: Comparison[] = [
     metaDescription:
       "Cashback vs travel-rewards cards compared on flexibility, point value, annual fees, and the spending patterns that make each one worth it.",
     summary:
-      "Cashback is simple, flexible, and gets the same value every time — usually 1.5–2% back. Travel rewards can be worth 2–5¢ per point if you're willing to learn airline transfer partners, but they expire, devalue, and are useless for non-travelers. The right answer depends on whether you actually fly.",
+      "Cashback is simple, flexible, and gets the same value every time, usually 1.5–2% back. Travel rewards can be worth 2–5¢ per point if you're willing to learn airline transfer partners, but they expire, devalue, and are useless for non-travelers. The right answer depends on whether you actually fly.",
     a: {
       name: "Cashback Card",
       oneLiner: "A credit card that returns a fixed percent of purchases as statement credit or deposit.",
@@ -417,9 +417,9 @@ export const comparisons: Comparison[] = [
     },
     criteria: [
       { name: "Best-case redemption value", a: "Fixed at ~2¢ on most flat-rate cards.", b: "2–5¢/point on premium transfer redemptions.", winner: "b" },
-      { name: "Worst-case redemption value", a: "Still 2¢ — every dollar of spend.", b: "≤1¢ if you cash out points.", winner: "a" },
+      { name: "Worst-case redemption value", a: "Still 2¢, every dollar of spend.", b: "≤1¢ if you cash out points.", winner: "a" },
       { name: "Annual fee floor", a: "$0 cards earn 1.5–2%.", b: "Top transfer cards run $95–$695.", winner: "a" },
-      { name: "Learning curve", a: "None.", b: "Steep — partners, devaluations, award-search tools.", winner: "a" },
+      { name: "Learning curve", a: "None.", b: "Steep, partners, devaluations, award-search tools.", winner: "a" },
       { name: "Welcome-bonus value", a: "$200–$300 typical.", b: "$750–$1,500 in travel value common.", winner: "b" },
       { name: "Useless if you don't travel", a: "No.", b: "Mostly yes.", winner: "a" },
     ],
@@ -427,7 +427,7 @@ export const comparisons: Comparison[] = [
       {
         heading: "The honest cashback math",
         paragraphs: [
-          "On $40,000 of annual card spend, a 2% flat-cash card returns $800/year, no fee, no learning curve, no expiration. A top travel card can return $1,200–$2,000/year of travel value — but only if you actually take 2+ international trips, redeem through transfer partners, and stomach a $95–$695 annual fee.",
+          "On $40,000 of annual card spend, a 2% flat-cash card returns $800/year, no fee, no learning curve, no expiration. A top travel card can return $1,200–$2,000/year of travel value, but only if you actually take 2+ international trips, redeem through transfer partners, and stomach a $95–$695 annual fee.",
           "If you'd otherwise have to pay cash for those flights, the travel card wins by a wide margin. If you wouldn't have flown anyway, you're just buying yourself trips you couldn't afford and calling it 'free'.",
         ],
       },
@@ -435,7 +435,7 @@ export const comparisons: Comparison[] = [
         heading: "The portfolio approach beats either alone",
         paragraphs: [
           "Most optimisers run two cards: a 2% flat-cash card as the daily driver, and one premium travel card for the welcome bonus and category multipliers (3–5x on flights, dining, groceries). You get cash on the long tail of random spend and points on the categories that actually multiply.",
-          "The card spec sheet matters less than your spending pattern. Pull a year of statements before applying — it will tell you whether you actually spend $4k+/yr on travel and dining or whether you've been overpaying for an annual fee.",
+          "The card spec sheet matters less than your spending pattern. Pull a year of statements before applying, it will tell you whether you actually spend $4k+/yr on travel and dining or whether you've been overpaying for an annual fee.",
         ],
       },
     ],
@@ -489,13 +489,13 @@ export const comparisons: Comparison[] = [
       { name: "Check-writing", a: "Usually no.", b: "Usually limited (3–6/month).", winner: "b" },
       { name: "Debit card", a: "Sometimes.", b: "Often.", winner: "b" },
       { name: "Minimum balance", a: "Usually $0.", b: "Often $1k–$10k for top rate.", winner: "a" },
-      { name: "Best home for an emergency fund", a: "Yes — higher rate, no minimum.", b: "Workable if you need the check feature.", winner: "a" },
+      { name: "Best home for an emergency fund", a: "Yes, higher rate, no minimum.", b: "Workable if you need the check feature.", winner: "a" },
     ],
     sections: [
       {
         heading: "The check-writing trap",
         paragraphs: [
-          "An emergency fund that can be tapped with a checkbook on a slow Sunday morning is a feature, not a bug — until the third Sunday in a row, when it's a leak. The HYSA's mild friction (transfer to checking, 1 business day) is a feature for people who notice their balance shrinking.",
+          "An emergency fund that can be tapped with a checkbook on a slow Sunday morning is a feature, not a bug, until the third Sunday in a row, when it's a leak. The HYSA's mild friction (transfer to checking, 1 business day) is a feature for people who notice their balance shrinking.",
           "If you genuinely need check-writing for one-off large purchases (rent in a non-Zelle building, a contractor deposit), an MMDA is a reasonable trade. Otherwise the HYSA's higher rate is free money.",
         ],
       },
@@ -514,11 +514,11 @@ export const comparisons: Comparison[] = [
       { persona: "Anyone with <$10k saved", pick: "a", rationale: "MMDA minimums often disqualify smaller balances from the top rate." },
     ],
     verdict:
-      "Default to the HYSA. Choose the money market only if you genuinely need the checkbook or debit card — and then make sure the rate gap is small enough to be worth it.",
+      "Default to the HYSA. Choose the money market only if you genuinely need the checkbook or debit card, and then make sure the rate gap is small enough to be worth it.",
     faqs: [
-      { q: "Are these the same as a money market fund?", a: "No. A money market deposit account is FDIC-insured. A money market mutual fund is an investment product, not insured, held at a brokerage. The names are confusingly similar — always check 'FDIC' before parking emergency money." },
-      { q: "How often do rates change?", a: "Both rates float with the federal funds rate and can change daily — banks raise them slowly and cut them quickly. Recheck every 6 months." },
-      { q: "Should I split between accounts?", a: "If you're above $250k at one bank, yes — to stay FDIC-insured. Below that, splitting accounts adds friction without yield benefit." },
+      { q: "Are these the same as a money market fund?", a: "No. A money market deposit account is FDIC-insured. A money market mutual fund is an investment product, not insured, held at a brokerage. The names are confusingly similar, always check 'FDIC' before parking emergency money." },
+      { q: "How often do rates change?", a: "Both rates float with the federal funds rate and can change daily, banks raise them slowly and cut them quickly. Recheck every 6 months." },
+      { q: "Should I split between accounts?", a: "If you're above $250k at one bank, yes, to stay FDIC-insured. Below that, splitting accounts adds friction without yield benefit." },
     ],
     internalLinks: [
       { label: "What is a high-yield savings account?", to: "/saving/what-is-a-high-yield-savings-account" },
@@ -554,7 +554,7 @@ export const comparisons: Comparison[] = [
     criteria: [
       { name: "Quoted yield (2026 typical)", a: "4.5–5.25% on 12-month CDs.", b: "4.7–5.3% on 6-month T-bills.", winner: "tie" },
       { name: "State / local tax", a: "Fully taxable.", b: "Exempt from state and local income tax.", winner: "b" },
-      { name: "Default risk", a: "FDIC-insured to $250k.", b: "Backed by U.S. Treasury — the benchmark for risk-free.", winner: "b" },
+      { name: "Default risk", a: "FDIC-insured to $250k.", b: "Backed by U.S. Treasury, the benchmark for risk-free.", winner: "b" },
       { name: "Early withdrawal", a: "Penalty of 3–12 months interest.", b: "Sell on the secondary market at the current price.", winner: "b" },
       { name: "Minimums", a: "$500–$1,000 typical.", b: "$100 minimum on TreasuryDirect; $1,000 in brokerage.", winner: "tie" },
       { name: "Reinvestment hassle", a: "Bank rolls automatically (often at a worse rate).", b: "Manual roll, or buy a ladder.", winner: "a" },
@@ -570,7 +570,7 @@ export const comparisons: Comparison[] = [
       {
         heading: "Liquidity is a real edge",
         paragraphs: [
-          "A T-bill in a brokerage can be sold any business day at the current price — usually within a few cents of par for shorter maturities. A CD redeemed early forfeits months of interest. For an emergency reserve that you genuinely won't touch, the difference is academic. For 'maybe-emergency' cash, the T-bill's liquidity matters.",
+          "A T-bill in a brokerage can be sold any business day at the current price, usually within a few cents of par for shorter maturities. A CD redeemed early forfeits months of interest. For an emergency reserve that you genuinely won't touch, the difference is academic. For 'maybe-emergency' cash, the T-bill's liquidity matters.",
         ],
       },
     ],
@@ -583,9 +583,9 @@ export const comparisons: Comparison[] = [
     verdict:
       "T-bills win for high-tax-state savers and for anyone wanting genuine liquidity. CDs win for set-and-forget savers in no-income-tax states. Both are dramatically better than letting cash sit at 0.01% in a big-bank savings account.",
     faqs: [
-      { q: "What about brokered CDs?", a: "Same FDIC insurance as bank CDs, but trade like a security on a brokerage — you can sell early at market price instead of taking the early-withdrawal penalty. Often the right middle ground." },
+      { q: "What about brokered CDs?", a: "Same FDIC insurance as bank CDs, but trade like a security on a brokerage, you can sell early at market price instead of taking the early-withdrawal penalty. Often the right middle ground." },
       { q: "How do I build a T-bill ladder?", a: "Buy equal amounts at 4-week, 8-week, 13-week and 26-week maturities. As each matures, buy another 26-week. You get a steady cash flow and average rate exposure." },
-      { q: "Are T-bills risky if rates rise?", a: "Short-term T-bills (≤6 months) move minimally in price. The longer the maturity, the more rate risk — same as any bond." },
+      { q: "Are T-bills risky if rates rise?", a: "Short-term T-bills (≤6 months) move minimally in price. The longer the maturity, the more rate risk, same as any bond." },
     ],
     internalLinks: [
       { label: "HYSA vs Money Market", to: "/saving/vs/hysa-vs-money-market" },
@@ -621,8 +621,8 @@ export const comparisons: Comparison[] = [
     criteria: [
       { name: "Setup time / month", a: "30–60 minutes.", b: "5–10 minutes.", winner: "b" },
       { name: "Granularity", a: "Every category, every month.", b: "Three buckets, period.", winner: "a" },
-      { name: "Visibility of leaks", a: "High — every category shows up.", b: "Low — leaks hide inside 'wants'.", winner: "a" },
-      { name: "Works for variable income", a: "Yes — rebuild monthly.", b: "Roughly — average income.", winner: "a" },
+      { name: "Visibility of leaks", a: "High, every category shows up.", b: "Low, leaks hide inside 'wants'.", winner: "a" },
+      { name: "Works for variable income", a: "Yes, rebuild monthly.", b: "Roughly, average income.", winner: "a" },
       { name: "Burnout risk", a: "Real if life gets busy.", b: "Low.", winner: "b" },
       { name: "Beginner friendliness", a: "Steep.", b: "Trivial.", winner: "b" },
     ],
@@ -637,21 +637,21 @@ export const comparisons: Comparison[] = [
       {
         heading: "Where 50/30/20 quietly fails",
         paragraphs: [
-          "The rule was written for households with one steady salary and predictable bills. It struggles in two cases: variable income (freelancers, tipped workers) and high-cost-of-living areas where rent alone clears 40% of take-home. In both cases, the buckets need adjusting — or you switch to zero-based.",
+          "The rule was written for households with one steady salary and predictable bills. It struggles in two cases: variable income (freelancers, tipped workers) and high-cost-of-living areas where rent alone clears 40% of take-home. In both cases, the buckets need adjusting, or you switch to zero-based.",
         ],
       },
     ],
     bestFor: [
       { persona: "First-time budgeter", pick: "b", rationale: "Friction kills habits; 50/30/20 is the lowest-friction system that still works." },
-      { persona: "Variable income / freelancer", pick: "a", rationale: "Build the budget from your actual income each month — averages lie." },
+      { persona: "Variable income / freelancer", pick: "a", rationale: "Build the budget from your actual income each month, averages lie." },
       { persona: "Couple with shared finances", pick: "a", rationale: "Category-level visibility prevents the 'where did our money go?' arguments." },
       { persona: "Already in good shape, wants light maintenance", pick: "b", rationale: "Quarterly checkpoint is enough when leaks are small." },
     ],
     verdict:
-      "Start with 50/30/20 to build the habit, graduate to zero-based when you want surgical control. Switching back when life simplifies is fine — the budget is a tool, not a religion.",
+      "Start with 50/30/20 to build the habit, graduate to zero-based when you want surgical control. Switching back when life simplifies is fine, the budget is a tool, not a religion.",
     faqs: [
-      { q: "Can I do both in the same year?", a: "Yes — zero-based the months that need it, 50/30/20 the rest. Pick one as the annual check-in." },
-      { q: "What about pay-yourself-first?", a: "Pay-yourself-first is the savings automation that pairs with either framework — it's not a competitor." },
+      { q: "Can I do both in the same year?", a: "Yes, zero-based the months that need it, 50/30/20 the rest. Pick one as the annual check-in." },
+      { q: "What about pay-yourself-first?", a: "Pay-yourself-first is the savings automation that pairs with either framework, it's not a competitor." },
       { q: "Which app supports which?", a: "YNAB is built for zero-based. Monarch and Copilot work for either. Mint-style apps lean 50/30/20 because they auto-categorize." },
     ],
     internalLinks: [
@@ -698,7 +698,7 @@ export const comparisons: Comparison[] = [
         heading: "The two-account setup most savers actually run",
         paragraphs: [
           "An online bank for high-yield savings + cashback debit/checking, a local credit union for car loans and personal service. Both are free, both insured, both deliver something the other can't.",
-          "Trying to consolidate to one account at one institution is usually a small downgrade — either you lose 1–2% on savings or 1–2% on loans, depending on which side you collapse to.",
+          "Trying to consolidate to one account at one institution is usually a small downgrade, either you lose 1–2% on savings or 1–2% on loans, depending on which side you collapse to.",
         ],
       },
       {
@@ -715,10 +715,10 @@ export const comparisons: Comparison[] = [
       { persona: "Cashback-checking + HYSA stack", pick: "a", rationale: "Many online banks combo a no-fee checking with a 4–5% HYSA." },
     ],
     verdict:
-      "It's not online bank vs credit union — it's pick one of each. Use the online bank for savings and everyday checking, the credit union for loans and the rare branch errand.",
+      "It's not online bank vs credit union, it's pick one of each. Use the online bank for savings and everyday checking, the credit union for loans and the rare branch errand.",
     faqs: [
       { q: "What about big national banks (Chase, Wells, BofA)?", a: "Convenient if you need branches everywhere, but their savings rates are typically 50–100× lower than online banks. The convenience tax is real." },
-      { q: "Is NCUA insurance as safe as FDIC?", a: "Functionally yes — same $250k limit, both U.S. government backing. Credit unions in NCUA-insured status have a strong record." },
+      { q: "Is NCUA insurance as safe as FDIC?", a: "Functionally yes, same $250k limit, both U.S. government backing. Credit unions in NCUA-insured status have a strong record." },
       { q: "Can I direct-deposit to multiple accounts?", a: "Most employers allow splits. Send 80–90% to the online bank, route the loan payments to the credit union to capture relationship rate discounts." },
     ],
     internalLinks: [

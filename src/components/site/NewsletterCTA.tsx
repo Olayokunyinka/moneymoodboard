@@ -59,7 +59,7 @@ export function NewsletterCTA({
     const isAlready = submitted.kind === "already";
     const title = isAlready ? "You're already on the list." : "You're subscribed!";
     const body = isAlready
-      ? `${submitted.email} is already saved — no action needed.`
+      ? `${submitted.email} is already saved, no action needed.`
       : `We've saved ${submitted.email}. Look out for your first email this Sunday.`;
 
     if (variant === "compact") {

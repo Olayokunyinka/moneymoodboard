@@ -23,7 +23,7 @@ function ContactPage() {
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Contact" }]} />
       <PageHero
         title="Contact us"
-        intro="Editorial questions, corrections, tips, and partnership enquiries — we read everything that lands in the inbox."
+        intro="Editorial questions, corrections, tips, and partnership enquiries, we read everything that lands in the inbox."
       />
       <div className="mt-8 grid gap-4 sm:grid-cols-2 max-w-2xl">
         {[

@@ -4,7 +4,7 @@ import yinkaPhoto from "@/assets/yinka-olayokun.jpg";
 
 export function AuthorBox({
   author = "Yinka Olayokun",
-  bio = "Founder of MoneyMoodBoard. Digital strategist and financial-literacy nerd writing plain-English money guides for people managing real life — variable income, debt, and big goals.",
+  bio = "Founder of MoneyMoodBoard. Digital strategist and financial-literacy nerd writing plain-English money guides for people managing real life, variable income, debt, and big goals.",
   avatarSrc = yinkaPhoto,
 }: {
   author?: string;

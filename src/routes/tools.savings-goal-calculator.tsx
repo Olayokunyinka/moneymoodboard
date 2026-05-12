@@ -18,9 +18,9 @@ const TITLE = "Savings Goal Calculator";
 export const Route = createFileRoute("/tools/savings-goal-calculator")({
   head: () => ({
     meta: [
-      { title: `${TITLE} — Free Tool | MoneyMoodBoard` },
-      { name: "description", content: "Find out exactly how long it'll take to reach your savings goal — or how much you need to save each month to get there. Includes interest. Free, no signup." },
-      { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
+      { title: `${TITLE}, Free Tool | MoneyMoodBoard` },
+      { name: "description", content: "Find out exactly how long it'll take to reach your savings goal, or how much you need to save each month to get there. Includes interest. Free, no signup." },
+      { property: "og:title", content: `${TITLE}, Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "See exactly how long your goal will take, with or without interest." },
     ],
     links: [canonical("/tools/savings-goal-calculator"), ...hreflangLinks("/tools/savings-goal-calculator")],
@@ -77,7 +77,7 @@ function SavingsGoalCalculator() {
         </span>
         <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight">{TITLE}</h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-          See exactly how long your goal will take — and how much interest does the heavy lifting.
+          See exactly how long your goal will take, and how much interest does the heavy lifting.
         </p>
       </header>
 
@@ -125,7 +125,7 @@ function SavingsGoalCalculator() {
             <p className="text-sm font-semibold uppercase tracking-wide text-primary">Time to your goal</p>
             <p className="mt-2 text-4xl md:text-5xl font-bold text-foreground">
               {!isFinite(result.months)
-                ? "—"
+                ? ", "
                 : result.months === 0
                 ? "Already there"
                 : years > 0
@@ -146,17 +146,17 @@ function SavingsGoalCalculator() {
             <dl className="mt-6 space-y-3 text-sm">
               <div className="flex justify-between">
                 <dt className="text-muted-foreground">You'll contribute</dt>
-                <dd className="font-semibold">{isFinite(result.months) ? fmt(result.totalContribs) : "—"}</dd>
+                <dd className="font-semibold">{isFinite(result.months) ? fmt(result.totalContribs) : ", "}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="text-muted-foreground">Interest earned</dt>
-                <dd className="font-semibold">{isFinite(result.months) ? fmt(result.interestEarned) : "—"}</dd>
+                <dd className="font-semibold">{isFinite(result.months) ? fmt(result.interestEarned) : ", "}</dd>
               </div>
             </dl>
 
             <div className="mt-auto pt-6 flex items-start gap-2 text-xs text-muted-foreground">
               <ShieldCheck className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-              <p>Calculations stay in your browser — nothing is sent or saved.</p>
+              <p>Calculations stay in your browser, nothing is sent or saved.</p>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@ function SavingsGoalCalculator() {
         <h2 className="text-2xl font-bold">How to Use This Calculator</h2>
         <ol className="mt-4 list-decimal pl-5 space-y-2 text-foreground/85">
           <li><span className="font-semibold">Set your goal amount.</span> Be specific: a down payment, a wedding, a sabbatical, an emergency fund target.</li>
-          <li><span className="font-semibold">Enter what you've already saved</span> toward this specific goal — not your total cash.</li>
+          <li><span className="font-semibold">Enter what you've already saved</span> toward this specific goal, not your total cash.</li>
           <li><span className="font-semibold">Pick a sustainable monthly contribution.</span> The number you'll actually hit every month, not the optimistic number.</li>
           <li><span className="font-semibold">Set a realistic interest rate.</span> 4–5% APY for a high-yield savings account; 0% if you're just stuffing cash.</li>
         </ol>
@@ -210,7 +210,7 @@ function SavingsGoalCalculator() {
         <h3 className="text-xl font-semibold">Let interest do its share</h3>
         <p>
           On a 36-month goal earning 4.5% APY, interest will cover about 6–7%
-          of the total. That's not life-changing, but it's free money — there
+          of the total. That's not life-changing, but it's free money, there
           is no reason to leave a multi-thousand-dollar balance in a 0.01%
           account when a 4.5% account is one click away. Just make sure the
           bank is FDIC-insured.

@@ -106,7 +106,7 @@
   --input: oklch(0.9 0.01 230);
   --ring: oklch(0.55 0.07 195);
 
-  /* Pillar tag colors — calibrated to brief hexes (#D6EAF8, #FADBD8, #D5E8D4,
+  /* Pillar tag colors, calibrated to brief hexes (#D6EAF8, #FADBD8, #D5E8D4,
      #FDEBD0, #D1F2EB, #E8DAEF, #F9EBEA). Foreground darkened for AA contrast. */
   --pillar-budgeting: oklch(0.93 0.03 240);   /* #D6EAF8 */
   --pillar-budgeting-fg: oklch(0.36 0.11 245);

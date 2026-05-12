@@ -32,7 +32,11 @@ export const Route = createFileRoute("/$pillar/$post")({
     const title = `${post.title} | MoneyMoodBoard`;
     const desc = (body?.summary ?? post.excerpt).slice(0, 158);
     const assets = localHeroFor(pillar.slug, post.slug);
-    const ogImg = assets.card;
+    // Prefer the real hero photo (1600×896); the gradient card is only a fallback.
+    const ogImg = assets.jpg1600 ?? assets.card;
+    const ogDims = ogImg === assets.card
+      ? { width: 1200, height: 630 }
+      : { width: 1600, height: 896 };
     return {
       meta: [
         { title },
@@ -48,7 +52,7 @@ export const Route = createFileRoute("/$pillar/$post")({
               { property: "article:author", content: "Yinka Olayokun" },
             ]
           : []),
-        ...ogImage(ogImg),
+        ...ogImage(ogImg, ogDims),
       ],
       links: [
         canonical(path),
@@ -230,7 +234,7 @@ function ClusterPostPage() {
             </p>
           </section>
 
-          {/* Key takeaways — optimised for AI Overview / LLM citation */}
+          {/* Key takeaways, optimised for AI Overview / LLM citation */}
           {body.keyTakeaways?.length ? (
             <section
               id="key-takeaways"
@@ -373,7 +377,7 @@ function ClusterPostPage() {
             </Link>
           ) : null}
 
-          {/* Curated internal links — strengthens topic graph */}
+          {/* Curated internal links, strengthens topic graph */}
           {body.internalLinks?.length ? (
             <nav
               aria-label="Keep reading"
@@ -407,7 +411,7 @@ function ClusterPostPage() {
             </p>
             <p className="mt-2 text-foreground/85">
               Our editorial team is finalising this guide. In the meantime,
-              browse the rest of the {pillar.name} pillar — every published
+              browse the rest of the {pillar.name} pillar, every published
               guide is reviewed against primary sources for accuracy.
             </p>
             <div className="mt-4">
@@ -436,7 +440,7 @@ function ClusterPostPage() {
 
       <AdSlot location="before-faq" />
 
-      {/* People also ask — entity & sibling-derived */}
+      {/* People also ask, entity & sibling-derived */}
       {paaItems.length ? (
         <section className="mt-12">
           <h2 className="text-2xl font-bold">People also ask</h2>

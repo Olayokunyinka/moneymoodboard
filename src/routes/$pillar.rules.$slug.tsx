@@ -126,7 +126,7 @@ function RulesPageView() {
               <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline inline-flex items-center gap-1">
                 {s.name} <ExternalLink className="h-3 w-3" />
               </a>
-              <span className="text-muted-foreground"> — {s.publisher}. Verified {fmtDate(s.verifiedOn)}.</span>
+              <span className="text-muted-foreground">, {s.publisher}. Verified {fmtDate(s.verifiedOn)}.</span>
             </li>
           ))}
         </ul>

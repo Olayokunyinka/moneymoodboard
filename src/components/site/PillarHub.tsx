@@ -108,7 +108,7 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
         <p className="mt-4 text-foreground/85 text-lg leading-relaxed">{pillar.whatIs}</p>
       </section>
 
-      {/* Key takeaways — optimised for AI Overview / LLM citation */}
+      {/* Key takeaways, optimised for AI Overview / LLM citation */}
       {content.keyTakeaways?.length ? (
         <section
           id="key-takeaways"
@@ -244,7 +244,7 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
             Free {pillar.shortName} Tool{pillar.relatedTools.length > 1 ? "s" : ""}
           </h2>
           <p className="mt-2 text-muted-foreground max-w-2xl">
-            Skip the spreadsheet — get an answer in under a minute.
+            Skip the spreadsheet, get an answer in under a minute.
           </p>
           <div className="mt-5 rounded-2xl bg-accent p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-5">
             <p className="text-accent-foreground/90 font-medium">
@@ -270,7 +270,7 @@ export function PillarHub({ pillar }: { pillar: Pillar }) {
       >
         <h2 className="text-2xl font-bold text-foreground">{pillar.shortName} Glossary</h2>
         <p className="mt-2 text-muted-foreground max-w-3xl">
-          The terms you'll meet across this pillar — defined in plain English.
+          The terms you'll meet across this pillar, defined in plain English.
         </p>
         <dl className="mt-6 grid gap-4 sm:grid-cols-2">
           {content.glossary.map((g) => (

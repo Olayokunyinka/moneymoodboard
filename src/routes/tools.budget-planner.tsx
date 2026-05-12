@@ -17,9 +17,9 @@ const TITLE = "Budget Planner";
 export const Route = createFileRoute("/tools/budget-planner")({
   head: () => ({
     meta: [
-      { title: `${TITLE} — Free 50/30/20 Tool | MoneyMoodBoard` },
-      { name: "description", content: "Plan your monthly budget with the 50/30/20 rule — or your own custom split. Drop in your income and see exactly where every dollar should go. Free, no signup." },
-      { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
+      { title: `${TITLE}, Free 50/30/20 Tool | MoneyMoodBoard` },
+      { name: "description", content: "Plan your monthly budget with the 50/30/20 rule, or your own custom split. Drop in your income and see exactly where every dollar should go. Free, no signup." },
+      { property: "og:title", content: `${TITLE}, Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Drop in your income and split it the smart way with the 50/30/20 rule." },
     ],
     links: [canonical("/tools/budget-planner"), ...hreflangLinks("/tools/budget-planner")],
@@ -157,7 +157,7 @@ function BudgetPlanner() {
 
             <div className="mt-auto pt-6 flex items-start gap-2 text-xs text-muted-foreground">
               <ShieldCheck className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-              <p>Calculations stay in your browser — nothing is sent or saved.</p>
+              <p>Calculations stay in your browser, nothing is sent or saved.</p>
             </div>
           </div>
         </div>
@@ -169,7 +169,7 @@ function BudgetPlanner() {
         <ol className="mt-4 list-decimal pl-5 space-y-2 text-foreground/85">
           <li><span className="font-semibold">Enter your take-home income.</span> The amount that lands in your bank account each month after taxes and benefits.</li>
           <li><span className="font-semibold">Start with the 50/30/20 default.</span> It's the most evidence-backed split for the average household.</li>
-          <li><span className="font-semibold">Adjust the sliders.</span> If your housing costs eat more than half your income, push needs higher and squeeze wants — but keep savings at 20% if you can.</li>
+          <li><span className="font-semibold">Adjust the sliders.</span> If your housing costs eat more than half your income, push needs higher and squeeze wants, but keep savings at 20% if you can.</li>
           <li><span className="font-semibold">Use the dollar amounts as monthly targets.</span> Set up automatic transfers on payday so the savings number happens before you can spend it.</li>
         </ol>
       </section>
@@ -198,7 +198,7 @@ function BudgetPlanner() {
         <p>
           Wants are everything that makes life more enjoyable but isn't essential:
           restaurants, streaming subscriptions, hobbies, vacations, the upgraded
-          phone, premium gym memberships. Wants aren't bad — a budget that
+          phone, premium gym memberships. Wants aren't bad, a budget that
           eliminates them is one you'll quit by month two. The 30% bucket is
           permission to spend on what you love, guilt-free, because you've
           already covered needs and savings.
@@ -217,7 +217,7 @@ function BudgetPlanner() {
         <p>
           High cost-of-living cities make 50% on needs almost impossible without
           roommates or a long commute. In that case, push needs to 60–65% and
-          squeeze wants to 15–20% — but try to protect savings at 20% if you
+          squeeze wants to 15–20%, but try to protect savings at 20% if you
           can. The opposite is also true: if your needs are well under 50%, raise
           savings instead of inflating wants. Lifestyle creep is the silent
           killer of every high earner's wealth.

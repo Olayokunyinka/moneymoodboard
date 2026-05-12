@@ -1,7 +1,7 @@
 import type { PillarSlug } from "./pillars";
 
 /**
- * Class B — Numeric / Question-with-direct-answer pages at /<pillar>/answers/<slug>.
+ * Class B, Numeric / Question-with-direct-answer pages at /<pillar>/answers/<slug>.
  * Designed to win AI Overviews and featured snippets: a 50–80 word boxed answer
  * up top, then methodology, examples, and a sources block.
  */
@@ -20,7 +20,7 @@ export interface AnswerPage {
   question: string;
   metaTitle: string;
   metaDescription: string;
-  /** 50–80 word direct answer — copy/pasted into FAQ + speakable schema. */
+  /** 50–80 word direct answer, copy/pasted into FAQ + speakable schema. */
   shortAnswer: string;
   /** Optional table for ranges, scenarios, brackets. */
   table?: {
@@ -64,7 +64,7 @@ export const answerPages: AnswerPage[] = [
         heading: "The math",
         paragraphs: [
           "The formula is the compound-interest equation: FV = PV × (1 + r)^n, where PV is your $100,000 starting balance, r is your annual return, and n is the number of years (30). Plug in 7% and you get $100,000 × (1.07)^30 = $761,225.",
-          "These numbers assume no additional contributions, no withdrawals, and all dividends reinvested. They also assume an annual compounding cadence — daily or monthly compounding shifts the answer by less than 1% over 30 years.",
+          "These numbers assume no additional contributions, no withdrawals, and all dividends reinvested. They also assume an annual compounding cadence, daily or monthly compounding shifts the answer by less than 1% over 30 years.",
         ],
       },
       {
@@ -82,7 +82,7 @@ export const answerPages: AnswerPage[] = [
       },
       {
         q: "Is 7% a realistic return?",
-        a: "Yes — but only as a 30-year average. The S&P 500's real return since 1928 is roughly 7%. Individual 10-year stretches can deliver anywhere from -3% to +15% annualized. The 30-year horizon is what brings the variance down.",
+        a: "Yes, but only as a 30-year average. The S&P 500's real return since 1928 is roughly 7%. Individual 10-year stretches can deliver anywhere from -3% to +15% annualized. The 30-year horizon is what brings the variance down.",
       },
       {
         q: "Should I keep $100k all in stocks for 30 years?",
@@ -117,9 +117,9 @@ export const answerPages: AnswerPage[] = [
     question: "How much do you need to retire at 55?",
     metaTitle: "How Much Do You Need to Retire at 55? (2026 Math) | MoneyMoodBoard",
     metaDescription:
-      "The portfolio size, ACA bridge math, and Rule of 55 / 72(t) access strategies for retiring at 55 — with three spending scenarios and the early-withdrawal rules that flip them.",
+      "The portfolio size, ACA bridge math, and Rule of 55 / 72(t) access strategies for retiring at 55, with three spending scenarios and the early-withdrawal rules that flip them.",
     shortAnswer:
-      "To retire at 55, most U.S. households need a portfolio of roughly 28–33× their planned annual spending — meaningfully more than the classic 25× rule because the money has to last 35–40 years and bridge to age 59½ (penalty-free 401(k)/IRA access) and 65 (Medicare). For a $60,000-a-year lifestyle, that's roughly $1.7M to $2.0M, plus a separate plan for ACA health insurance and either a Rule-of-55 401(k) or a 72(t) SEPP to avoid the 10% early-withdrawal penalty.",
+      "To retire at 55, most U.S. households need a portfolio of roughly 28–33× their planned annual spending, meaningfully more than the classic 25× rule because the money has to last 35–40 years and bridge to age 59½ (penalty-free 401(k)/IRA access) and 65 (Medicare). For a $60,000-a-year lifestyle, that's roughly $1.7M to $2.0M, plus a separate plan for ACA health insurance and either a Rule-of-55 401(k) or a 72(t) SEPP to avoid the 10% early-withdrawal penalty.",
     table: {
       caption: "Portfolio needed to retire at 55, by spending level",
       columns: ["Annual spending", "30× target (conservative)", "Implied withdrawal year 1"],
@@ -142,7 +142,7 @@ export const answerPages: AnswerPage[] = [
       {
         heading: "How to access money before 59½ without the 10% penalty",
         paragraphs: [
-          "Three paths exist. The Rule of 55 lets you take penalty-free distributions from the 401(k) of the employer you separated from in or after the year you turned 55 (does not apply to old 401(k)s rolled into IRAs). A 72(t) SEPP (Substantially Equal Periodic Payments) lets you take a calculated stream from any IRA penalty-free, but the schedule must run at least 5 years or until 59½ — whichever is longer — without changes. A taxable brokerage account avoids the question entirely: capital gains and qualified dividends are taxed but never penalized regardless of age.",
+          "Three paths exist. The Rule of 55 lets you take penalty-free distributions from the 401(k) of the employer you separated from in or after the year you turned 55 (does not apply to old 401(k)s rolled into IRAs). A 72(t) SEPP (Substantially Equal Periodic Payments) lets you take a calculated stream from any IRA penalty-free, but the schedule must run at least 5 years or until 59½, whichever is longer, without changes. A taxable brokerage account avoids the question entirely: capital gains and qualified dividends are taxed but never penalized regardless of age.",
           "Most early retirees combine: Rule of 55 from the most recent 401(k), a taxable brokerage for flexibility, and a Roth IRA for tax-free withdrawals of contributions (always penalty-free) and earnings (after 59½ and 5 years).",
         ],
       },
@@ -160,7 +160,7 @@ export const answerPages: AnswerPage[] = [
       },
       {
         q: "How does Social Security factor in?",
-        a: "Social Security can begin at 62, with the full amount at your full retirement age (66–67) and the maximum at 70. Most retire-at-55 plans assume Social Security starts at 67–70 and treat it as upside that reduces required portfolio withdrawals later — not as core income.",
+        a: "Social Security can begin at 62, with the full amount at your full retirement age (66–67) and the maximum at 70. Most retire-at-55 plans assume Social Security starts at 67–70 and treat it as upside that reduces required portfolio withdrawals later, not as core income.",
       },
       {
         q: "What's the biggest mistake people make retiring at 55?",
@@ -169,13 +169,13 @@ export const answerPages: AnswerPage[] = [
     ],
     sources: [
       {
-        name: "IRS Retirement Topics — Exceptions to Tax on Early Distributions (Rule of 55, 72(t))",
+        name: "IRS Retirement Topics, Exceptions to Tax on Early Distributions (Rule of 55, 72(t))",
         url: "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions",
         publisher: "Internal Revenue Service",
         verifiedOn: "2026-05-10",
       },
       {
-        name: "Healthcare.gov — Premium Tax Credit",
+        name: "Healthcare.gov, Premium Tax Credit",
         url: "https://www.healthcare.gov/glossary/premium-tax-credit/",
         publisher: "U.S. Centers for Medicare & Medicaid Services",
         verifiedOn: "2026-05-10",

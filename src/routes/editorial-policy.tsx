@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { AuthorBox } from "@/components/site/AuthorBox";
 import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
-const TITLE = "Editorial Policy — How MoneyMoodBoard Writes & Reviews Guides";
+const TITLE = "Editorial Policy, How MoneyMoodBoard Writes & Reviews Guides";
 const DESC =
   "How MoneyMoodBoard plans, writes, fact-checks, edits and updates personal-finance guides. Our independence standards, sources, and conflict-of-interest rules.";
 const PATH = "/editorial-policy";
@@ -32,7 +32,7 @@ function Page() {
       <PageHero
         eyebrow={<span className="text-xs font-medium uppercase tracking-wide text-primary">Editorial standards</span>}
         title="Editorial Policy"
-        intro="Every guide on MoneyMoodBoard is planned, researched, written, fact-checked, edited and reviewed by people — not generative templates. This page documents the policy our editorial team is held to."
+        intro="Every guide on MoneyMoodBoard is planned, researched, written, fact-checked, edited and reviewed by people, not generative templates. This page documents the policy our editorial team is held to."
       />
 
       <article className="prose-style mt-8 space-y-8 text-foreground/85 leading-7">
@@ -55,7 +55,7 @@ function Page() {
             <li>First draft authored by a named contributor.</li>
             <li>Fact-check pass against primary sources (see our <Link to="/fact-checking-policy" className="text-primary hover:underline">fact-checking policy</Link>).</li>
             <li>Editorial review by Yinka Olayokun, Founder &amp; Editor.</li>
-            <li>Quarterly re-review — every guide ships with a "Reviewed by / Reviewed on" stamp.</li>
+            <li>Quarterly re-review, every guide ships with a "Reviewed by / Reviewed on" stamp.</li>
           </ol>
         </section>
         <section>

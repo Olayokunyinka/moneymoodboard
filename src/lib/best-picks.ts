@@ -1,7 +1,7 @@
 import type { PillarSlug } from "./pillars";
 
 /**
- * Class A — Transactional "Best X for Y" pages at /<pillar>/best/<slug>.
+ * Class A, Transactional "Best X for Y" pages at /<pillar>/best/<slug>.
  * Distinct from pillar-level "Best …" list articles by being sharper:
  * narrowed by balance size, user type, year, or use case. Affiliate-friendly.
  */
@@ -47,20 +47,20 @@ export const bestRoundups: BestRoundup[] = [
     title: "Best High-Yield Savings Accounts for 2026",
     metaTitle: "Best High-Yield Savings Accounts 2026 | MoneyMoodBoard",
     metaDescription:
-      "The high-yield savings accounts paying the highest APYs in 2026, ranked by APY, fees, minimums and FDIC coverage — no affiliate spin.",
+      "The high-yield savings accounts paying the highest APYs in 2026, ranked by APY, fees, minimums and FDIC coverage, no affiliate spin.",
     shortAnswer:
       "In 2026 the top high-yield savings accounts pay between 4.25% and 4.75% APY with no monthly fees and no minimum balance. The single best pick for most people is an online-only HYSA at a well-known FDIC-insured bank: same federal protection as a brick-and-mortar account, roughly 10× the interest.",
     criteria: [
       "Posted APY (and how long it has stayed above the national average)",
       "Monthly fees and minimum balance to earn the headline rate",
-      "FDIC or NCUA insurance — every account on this list is federally insured",
+      "FDIC or NCUA insurance, every account on this list is federally insured",
       "Transfer speed in and out of an external checking account",
       "App and customer-service quality (we read 12 months of reviews)",
     ],
     picks: [
       {
         rank: 1,
-        name: "Editor's pick — see live rates",
+        name: "Editor's pick, see live rates",
         bestFor: "Most savers with $1k–$100k",
         oneLiner: "Top APY for 2026 with zero fees, zero minimums, and a clean mobile app.",
         facts: ["APY: rate-table updated weekly", "Monthly fee: $0", "Minimum: $0", "FDIC-insured up to $250k"],
@@ -79,18 +79,18 @@ export const bestRoundups: BestRoundup[] = [
       {
         heading: "What changed for 2026",
         paragraphs: [
-          "The Federal Reserve's late-2025 rate trajectory pulled headline APYs down roughly 50 basis points from their 2024 peaks, but the gap between the national-average savings rate (still hovering around 0.45%) and the top HYSAs has actually widened — making the upgrade from a traditional bank more valuable than ever.",
+          "The Federal Reserve's late-2025 rate trajectory pulled headline APYs down roughly 50 basis points from their 2024 peaks, but the gap between the national-average savings rate (still hovering around 0.45%) and the top HYSAs has actually widened, making the upgrade from a traditional bank more valuable than ever.",
         ],
       },
     ],
     faqs: [
       {
         q: "Are online HYSAs safe?",
-        a: "Yes. Every account on this list is insured by the FDIC (or NCUA for credit unions) up to $250,000 per depositor, per institution, per ownership category — the same protection a Bank of America or Chase savings account carries.",
+        a: "Yes. Every account on this list is insured by the FDIC (or NCUA for credit unions) up to $250,000 per depositor, per institution, per ownership category, the same protection a Bank of America or Chase savings account carries.",
       },
       {
         q: "How often do HYSA rates change?",
-        a: "Variable APYs can change at any time, but the banks on this list change rates within a few weeks of any Fed move — not overnight. Expect 2–4 rate adjustments per year in a normal cycle.",
+        a: "Variable APYs can change at any time, but the banks on this list change rates within a few weeks of any Fed move, not overnight. Expect 2–4 rate adjustments per year in a normal cycle.",
       },
       {
         q: "Should I split money across multiple HYSAs?",
@@ -111,14 +111,14 @@ export const bestRoundups: BestRoundup[] = [
     title: "Best Savings Accounts for Large Balances ($100k+) in 2026",
     metaTitle: "Best Savings Accounts for $100k+ Balances (2026)",
     metaDescription:
-      "How to park six- and seven-figure balances safely without losing FDIC coverage — the HYSAs, cash-management accounts, and sweep programs we'd actually use.",
+      "How to park six- and seven-figure balances safely without losing FDIC coverage, the HYSAs, cash-management accounts, and sweep programs we'd actually use.",
     shortAnswer:
-      "For balances above $100,000 the right setup isn't a single account — it's a cash-management or sweep account that automatically spreads deposits across multiple FDIC-insured partner banks, lifting coverage from $250,000 to several million while still paying near-top APY. For balances under $250,000, a standard top-tier HYSA is simpler and pays the same rate.",
+      "For balances above $100,000 the right setup isn't a single account, it's a cash-management or sweep account that automatically spreads deposits across multiple FDIC-insured partner banks, lifting coverage from $250,000 to several million while still paying near-top APY. For balances under $250,000, a standard top-tier HYSA is simpler and pays the same rate.",
     criteria: [
       "Posted APY on balances above $100,000 (some banks cap the top rate at lower tiers)",
-      "Effective FDIC coverage — sweep programs should disclose the partner-bank network",
+      "Effective FDIC coverage, sweep programs should disclose the partner-bank network",
       "Withdrawal speed for large transfers (ACH, wire, same-day)",
-      "Fees on large outbound wires (often $25–$35 — meaningful at this balance)",
+      "Fees on large outbound wires (often $25–$35, meaningful at this balance)",
       "How the bank prices balances above $1M (some drop the APY by 50+ bps)",
     ],
     picks: [
@@ -129,13 +129,13 @@ export const bestRoundups: BestRoundup[] = [
         oneLiner: "Automatically spreads deposits across 10–20 partner banks for multi-million-dollar FDIC coverage at a single login.",
         facts: ["Effective FDIC coverage: $2M–$5M typical", "APY: tracks top HYSA tier", "Monthly fee: $0", "Same-day ACH out, free wires above $250k common"],
         pros: ["No manual account-opening across multiple banks", "Coverage scales as balance grows", "Daily liquidity"],
-        cons: ["Partner-bank list can change — re-check quarterly", "Some programs cap APY above $1M"],
+        cons: ["Partner-bank list can change, re-check quarterly", "Some programs cap APY above $1M"],
       },
       {
         rank: 2,
         name: "Top-tier online HYSA",
         bestFor: "Single household, balance under $250k",
-        oneLiner: "Same APY as our overall pick — once you're under the FDIC limit, simpler is better.",
+        oneLiner: "Same APY as our overall pick, once you're under the FDIC limit, simpler is better.",
         facts: ["APY: top of the market", "Monthly fee: $0", "FDIC: $250k per depositor per bank", "1–2 business day ACH"],
         pros: ["No paperwork to track partner-bank exposure", "Familiar single-bank statements for taxes"],
         cons: ["Coverage caps at $250k per ownership category", "Manual splitting required above the cap"],
@@ -144,7 +144,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 3,
         name: "Treasury-only money market fund",
         bestFor: "State-tax savers in CA/NY/MA",
-        oneLiner: "Not FDIC-insured but backed by U.S. Treasuries — and interest is exempt from state income tax.",
+        oneLiner: "Not FDIC-insured but backed by U.S. Treasuries, and interest is exempt from state income tax.",
         facts: ["Yield: tracks 4-week T-Bill", "Expense ratio: 0.10–0.30%", "Backed by Treasuries (not FDIC)", "Same-day liquidity at most brokers"],
         pros: ["State-tax-free interest is a 30–50 bps real boost in high-tax states", "No FDIC ceiling"],
         cons: ["Not FDIC-insured (Treasury risk only, but technically distinct)", "Yield resets weekly"],
@@ -155,7 +155,7 @@ export const bestRoundups: BestRoundup[] = [
         heading: "Why $100k changes the math",
         paragraphs: [
           "Under $250,000, FDIC coverage is automatic at any insured bank. Above $250,000 at a single bank, the excess is uninsured. Most large-balance savers solve this in one of three ways: split across multiple banks manually, use a sweep program that does it for you, or move to U.S. Treasuries via a money market fund.",
-          "The decision usually hinges on whether you'd rather optimize for simplicity (sweep), state-tax efficiency (Treasury MMF), or absolute top APY (manual splitting). At today's rates the spread between options is under 30 bps — small enough that your tax bracket usually decides.",
+          "The decision usually hinges on whether you'd rather optimize for simplicity (sweep), state-tax efficiency (Treasury MMF), or absolute top APY (manual splitting). At today's rates the spread between options is under 30 bps, small enough that your tax bracket usually decides.",
         ],
       },
       {
@@ -168,7 +168,7 @@ export const bestRoundups: BestRoundup[] = [
     faqs: [
       {
         q: "Is a sweep program as safe as a regular HYSA?",
-        a: "Each underlying deposit is held at an FDIC-insured partner bank up to $250,000. The sweep program is the bookkeeping layer — your money is at the partner banks, not at the brokerage. Always download the partner-bank list and confirm no single bank holds more than $250k of your money.",
+        a: "Each underlying deposit is held at an FDIC-insured partner bank up to $250,000. The sweep program is the bookkeeping layer, your money is at the partner banks, not at the brokerage. Always download the partner-bank list and confirm no single bank holds more than $250k of your money.",
       },
       {
         q: "What about IntraFi / ICS / CDARS?",
@@ -176,7 +176,7 @@ export const bestRoundups: BestRoundup[] = [
       },
       {
         q: "Does the FDIC limit apply per account or per person?",
-        a: "Per depositor, per insured bank, per ownership category. A joint account counts as $250k per co-owner — so a married couple has $500k of coverage at one bank under a single joint account.",
+        a: "Per depositor, per insured bank, per ownership category. A joint account counts as $250k per co-owner, so a married couple has $500k of coverage at one bank under a single joint account.",
       },
     ],
     internalLinks: [
@@ -193,14 +193,14 @@ export const bestRoundups: BestRoundup[] = [
     title: "Best No-Fee Checking Accounts for 2026",
     metaTitle: "Best No-Fee Checking Accounts 2026 | MoneyMoodBoard",
     metaDescription:
-      "Checking accounts with no monthly fees, no minimum balance, free ATM access, and early-direct-deposit features — ranked for everyday use in 2026.",
+      "Checking accounts with no monthly fees, no minimum balance, free ATM access, and early-direct-deposit features, ranked for everyday use in 2026.",
     shortAnswer:
-      "The best no-fee checking accounts in 2026 charge $0 monthly, require no minimum balance, refund or waive ATM fees nationwide, and post direct deposits up to two days early. The top picks are online-only accounts at FDIC-insured banks — the same federal protection as a brick-and-mortar checking account with none of the maintenance fees.",
+      "The best no-fee checking accounts in 2026 charge $0 monthly, require no minimum balance, refund or waive ATM fees nationwide, and post direct deposits up to two days early. The top picks are online-only accounts at FDIC-insured banks, the same federal protection as a brick-and-mortar checking account with none of the maintenance fees.",
     criteria: [
       "$0 monthly maintenance fee with no balance, deposit, or direct-deposit requirement",
       "Free or reimbursed ATM access (in-network or network-agnostic refunds)",
       "Early direct deposit (1–2 business days ahead of the scheduled date)",
-      "No overdraft fees — either prohibited by policy or capped at $0",
+      "No overdraft fees, either prohibited by policy or capped at $0",
       "FDIC insurance and a usable mobile app",
     ],
     picks: [
@@ -226,7 +226,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 3,
         name: "Cash-management account at a brokerage",
         bestFor: "Investors who want one login",
-        oneLiner: "Acts like checking — debit card, ACH, bill pay — but earns interest on idle cash.",
+        oneLiner: "Acts like checking, debit card, ACH, bill pay, but earns interest on idle cash.",
         facts: ["Monthly fee: $0", "Interest on balance: 0.5–4% APY", "ATM: worldwide rebates", "FDIC via sweep"],
         pros: ["Idle cash earns interest", "One statement for cash + investments"],
         cons: ["No cash deposits", "Fewer customer-service channels than a bank"],
@@ -236,21 +236,21 @@ export const bestRoundups: BestRoundup[] = [
       {
         heading: "Why fees on checking are almost never worth it",
         paragraphs: [
-          "The average monthly maintenance fee on a 'free with conditions' checking account is $14.31 (Bankrate, 2025). That's $171 a year — more than the interest a typical American earns on their entire savings balance. A truly no-fee account costs nothing, full stop.",
+          "The average monthly maintenance fee on a 'free with conditions' checking account is $14.31 (Bankrate, 2025). That's $171 a year, more than the interest a typical American earns on their entire savings balance. A truly no-fee account costs nothing, full stop.",
           "Banks justify the fee with branch access and bundled features, but the no-fee accounts on this list match or exceed those features (ATM reimbursement, fraud protection, FDIC insurance) without the recurring charge.",
         ],
       },
       {
         heading: "What to watch for in 2026",
         paragraphs: [
-          "Several banks have begun reintroducing 'minimum direct deposit' requirements to qualify for $0 fees. Read the disclosure carefully — if the headline 'no fee' depends on $500/month in deposits, it's a conditional account, not a true no-fee one.",
+          "Several banks have begun reintroducing 'minimum direct deposit' requirements to qualify for $0 fees. Read the disclosure carefully, if the headline 'no fee' depends on $500/month in deposits, it's a conditional account, not a true no-fee one.",
         ],
       },
     ],
     faqs: [
       {
         q: "Are online-only checking accounts safe?",
-        a: "Yes — every account on this list is FDIC-insured up to $250,000 (or NCUA for credit unions), the same federal protection as Chase or Bank of America.",
+        a: "Yes, every account on this list is FDIC-insured up to $250,000 (or NCUA for credit unions), the same federal protection as Chase or Bank of America.",
       },
       {
         q: "Can I deposit cash to an online checking account?",
@@ -258,11 +258,11 @@ export const bestRoundups: BestRoundup[] = [
       },
       {
         q: "Does early direct deposit really arrive early?",
-        a: "Yes — banks release ACH-credit files up to two business days before the payer's scheduled date. Early-deposit banks pass that timing through to you; traditional banks hold it until the scheduled date.",
+        a: "Yes, banks release ACH-credit files up to two business days before the payer's scheduled date. Early-deposit banks pass that timing through to you; traditional banks hold it until the scheduled date.",
       },
     ],
     internalLinks: [
-      { label: "Online bank vs credit union — which to choose", to: "/banking/vs/online-bank-vs-credit-union" },
+      { label: "Online bank vs credit union, which to choose", to: "/banking/vs/online-bank-vs-credit-union" },
       { label: "What is a high-yield savings account?", to: "/saving/what-is-a-high-yield-savings-account" },
       { label: "Free Budget Planner", to: "/tools/budget-planner" },
     ],
@@ -277,20 +277,20 @@ export const bestRoundups: BestRoundup[] = [
     metaDescription:
       "The longest 0% APR balance-transfer offers available in 2026, ranked by intro length, transfer fee, and how the rate behaves after the promo window closes.",
     shortAnswer:
-      "The best 0% APR balance transfer cards in 2026 offer 18 to 21 months of zero interest on transferred debt, charge a 3–5% transfer fee, and require good credit (FICO 690+). The single highest-leverage move is using the full intro window to pay the principal down to zero — anything still owed when the promo ends reverts to a 19–29% variable APR.",
+      "The best 0% APR balance transfer cards in 2026 offer 18 to 21 months of zero interest on transferred debt, charge a 3–5% transfer fee, and require good credit (FICO 690+). The single highest-leverage move is using the full intro window to pay the principal down to zero, anything still owed when the promo ends reverts to a 19–29% variable APR.",
     criteria: [
       "Length of 0% intro APR on balance transfers (months)",
       "Balance-transfer fee (typically 3% or 5%)",
       "Whether new purchases also get a 0% intro window",
       "Required credit score to qualify (most need 690+)",
-      "Go-to APR after the intro period — the cost of any leftover balance",
+      "Go-to APR after the intro period, the cost of any leftover balance",
     ],
     picks: [
       {
         rank: 1,
         name: "21-month intro APR card",
         bestFor: "Largest balances, longest payoff window",
-        oneLiner: "Longest 0% window on the market — buys time to pay down without paying interest.",
+        oneLiner: "Longest 0% window on the market, buys time to pay down without paying interest.",
         facts: ["0% APR: 21 months on transfers", "Transfer fee: 3% (first 4 months), 5% after", "FICO required: 690+", "Go-to APR: 18.49–28.99% variable"],
         pros: ["21 months is the longest available", "No annual fee", "Free FICO score monitoring"],
         cons: ["No ongoing rewards", "5% fee after the first 4 months"],
@@ -299,7 +299,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 2,
         name: "18-month transfer + 0% purchases",
         bestFor: "Big upcoming purchase + existing debt",
-        oneLiner: "Shorter window but the 0% applies to new purchases too — useful for a single large planned expense.",
+        oneLiner: "Shorter window but the 0% applies to new purchases too, useful for a single large planned expense.",
         facts: ["0% APR: 18 months transfers & purchases", "Transfer fee: 3% or $5 (greater)", "FICO required: 670+", "Go-to APR: 19.49–29.49% variable"],
         pros: ["Same 0% on new spending", "Lower credit-score threshold"],
         cons: ["3 months shorter than rank 1", "No rewards on spend"],
@@ -308,7 +308,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 3,
         name: "No-fee transfer card",
         bestFor: "Small balances under $3,000",
-        oneLiner: "Skips the transfer fee entirely — math wins for small balances where the fee outweighs the interest saved.",
+        oneLiner: "Skips the transfer fee entirely, math wins for small balances where the fee outweighs the interest saved.",
         facts: ["0% APR: 12 months transfers", "Transfer fee: $0", "FICO required: 700+", "Go-to APR: 17.99–27.99% variable"],
         pros: ["No upfront cost to transfer", "Decent rewards (1.5% cashback)"],
         cons: ["Only 12 months of 0% APR", "Limited availability"],
@@ -318,7 +318,7 @@ export const bestRoundups: BestRoundup[] = [
       {
         heading: "When a balance transfer actually saves money",
         paragraphs: [
-          "A 21-month 0% transfer with a 3% fee is cheaper than a 22% APR debt as long as you pay it off in under 21 months. On a $5,000 balance, the 3% fee costs $150 — versus roughly $1,100 in interest over the same period at 22%.",
+          "A 21-month 0% transfer with a 3% fee is cheaper than a 22% APR debt as long as you pay it off in under 21 months. On a $5,000 balance, the 3% fee costs $150, versus roughly $1,100 in interest over the same period at 22%.",
           "The trap is treating the freed-up cash flow as bonus spending money. The math only works if you keep the original monthly payment going to the new card.",
         ],
       },
@@ -336,15 +336,15 @@ export const bestRoundups: BestRoundup[] = [
       },
       {
         q: "Can I transfer between cards from the same issuer?",
-        a: "No — almost every issuer prohibits intra-bank transfers. The new card has to be at a different bank than the debt you're moving.",
+        a: "No, almost every issuer prohibits intra-bank transfers. The new card has to be at a different bank than the debt you're moving.",
       },
       {
         q: "What happens if I don't pay it all off before the intro ends?",
-        a: "The remaining balance starts accruing interest at the go-to APR (19–29% range). Importantly, the interest is not retroactive on a true 0% offer — only deferred-interest promotions backdate, and those are rare on transfer cards.",
+        a: "The remaining balance starts accruing interest at the go-to APR (19–29% range). Importantly, the interest is not retroactive on a true 0% offer, only deferred-interest promotions backdate, and those are rare on transfer cards.",
       },
     ],
     internalLinks: [
-      { label: "Cashback vs travel rewards — which to pick", to: "/credit-cards/vs/cashback-vs-travel" },
+      { label: "Cashback vs travel rewards, which to pick", to: "/credit-cards/vs/cashback-vs-travel" },
       { label: "Snowball vs avalanche debt payoff", to: "/credit-cards/vs/snowball-vs-avalanche" },
       { label: "Free Credit Card Payoff Calculator", to: "/tools/credit-card-payoff-calculator" },
     ],
@@ -359,7 +359,7 @@ export const bestRoundups: BestRoundup[] = [
     metaDescription:
       "The brokerages with the best mix of $0 commissions, low-cost index funds, and Roth-friendly conversion tools for 2026 retirement investors.",
     shortAnswer:
-      "The best Roth IRA brokers in 2026 charge $0 to open and maintain the account, $0 commissions on stocks and ETFs, and offer total-market index funds with expense ratios under 0.05%. For most savers, the brokerage that already holds your taxable account is the right pick — the marginal feature differences are tiny compared to the cost of not contributing.",
+      "The best Roth IRA brokers in 2026 charge $0 to open and maintain the account, $0 commissions on stocks and ETFs, and offer total-market index funds with expense ratios under 0.05%. For most savers, the brokerage that already holds your taxable account is the right pick, the marginal feature differences are tiny compared to the cost of not contributing.",
     criteria: [
       "Account-opening minimum and ongoing fees (should be $0)",
       "Commission-free stock and ETF trading",
@@ -381,7 +381,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 2,
         name: "Modern broker with fractional shares",
         bestFor: "New investors starting with under $100/month",
-        oneLiner: "Fractional shares mean every dollar gets invested — no cash drag from odd-lot amounts.",
+        oneLiner: "Fractional shares mean every dollar gets invested, no cash drag from odd-lot amounts.",
         facts: ["Account minimum: $0", "Stock/ETF commission: $0", "Fractional shares: $1 minimum", "Backdoor conversion: supported"],
         pros: ["Best mobile app in the category", "Fractional shares on all ETFs", "Same-day customer support"],
         cons: ["In-house mutual funds slightly more expensive (still under 0.10%)", "Smaller library of niche funds"],
@@ -390,7 +390,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 3,
         name: "Robo-advisor with Roth wrapper",
         bestFor: "Investors who want zero decisions",
-        oneLiner: "Automated rebalancing and tax-aware allocation inside a Roth — at a 0.25% advisory fee.",
+        oneLiner: "Automated rebalancing and tax-aware allocation inside a Roth, at a 0.25% advisory fee.",
         facts: ["Account minimum: $0–$500", "Advisory fee: 0.25%/year", "Underlying ETF ER: 0.06–0.10%", "Roth conversion: not automated"],
         pros: ["No allocation decisions to make", "Automatic rebalancing", "Goal-based dashboards"],
         cons: ["0.25% advisory fee compounds over 30 years", "Less flexibility for self-directed picks"],
@@ -414,7 +414,7 @@ export const bestRoundups: BestRoundup[] = [
     faqs: [
       {
         q: "Can I have a Roth IRA at multiple brokers?",
-        a: "Yes — there's no limit on the number of Roth IRAs, only on the combined contribution amount ($7,000 in 2026, $8,000 if 50+). Most people keep one Roth at one broker to simplify recordkeeping.",
+        a: "Yes, there's no limit on the number of Roth IRAs, only on the combined contribution amount ($7,000 in 2026, $8,000 if 50+). Most people keep one Roth at one broker to simplify recordkeeping.",
       },
       {
         q: "Is a Roth at a robo-advisor 'worth' the 0.25% fee?",
@@ -422,11 +422,11 @@ export const bestRoundups: BestRoundup[] = [
       },
       {
         q: "Should I roll my old 401(k) into the new Roth?",
-        a: "A traditional 401(k) rolled into a Roth IRA is a taxable conversion — the converted amount is added to that year's taxable income. Only worth it in low-income years or if you have cash outside the account to pay the tax bill.",
+        a: "A traditional 401(k) rolled into a Roth IRA is a taxable conversion, the converted amount is added to that year's taxable income. Only worth it in low-income years or if you have cash outside the account to pay the tax bill.",
       },
     ],
     internalLinks: [
-      { label: "Roth vs Traditional IRA — which to choose", to: "/retirement/vs/roth-vs-traditional-ira" },
+      { label: "Roth vs Traditional IRA, which to choose", to: "/retirement/vs/roth-vs-traditional-ira" },
       { label: "IRA contribution limits for 2026", to: "/retirement/rules/ira-contribution-limits-2026" },
       { label: "Free Compound Interest Calculator", to: "/tools/compound-interest-calculator" },
     ],
@@ -441,7 +441,7 @@ export const bestRoundups: BestRoundup[] = [
     metaDescription:
       "Automated investing platforms ranked by advisory fee, underlying-fund cost, tax-loss harvesting quality, and how well their allocations actually match your goals.",
     shortAnswer:
-      "The best robo-advisors in 2026 charge 0.15% to 0.25% in annual advisory fees, use low-cost index ETFs (0.05–0.10% expense ratios), and add automatic tax-loss harvesting on taxable accounts. For investors with $50,000 or less, the all-in cost difference between top picks is under $50/year — the right answer is usually whichever app you'll actually open every month.",
+      "The best robo-advisors in 2026 charge 0.15% to 0.25% in annual advisory fees, use low-cost index ETFs (0.05–0.10% expense ratios), and add automatic tax-loss harvesting on taxable accounts. For investors with $50,000 or less, the all-in cost difference between top picks is under $50/year, the right answer is usually whichever app you'll actually open every month.",
     criteria: [
       "Advisory fee (% of assets per year)",
       "Underlying ETF expense ratios in the default portfolio",
@@ -463,7 +463,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 2,
         name: "Beginner-friendly robo",
         bestFor: "First-time investors",
-        oneLiner: "Best onboarding flow in the category — turns 'I have no idea what I'm doing' into a working portfolio in 10 minutes.",
+        oneLiner: "Best onboarding flow in the category, turns 'I have no idea what I'm doing' into a working portfolio in 10 minutes.",
         facts: ["Advisory fee: 0.25%", "ETF ER: 0.08% blended", "TLH: at $40k balance", "Minimum: $0"],
         pros: ["Best mobile UX", "Built-in cash-management account", "Clear goal projections"],
         cons: ["0.10% more expensive than rank 1", "TLH gated by balance"],
@@ -482,7 +482,7 @@ export const bestRoundups: BestRoundup[] = [
       {
         heading: "When a robo beats DIY",
         paragraphs: [
-          "A three-fund index portfolio you build yourself at a $0-commission broker has an all-in cost of roughly 0.05%. A top robo runs 0.20% all-in. On $100,000 over 30 years, that's about $60,000 of forgone return — meaningful but not enormous.",
+          "A three-fund index portfolio you build yourself at a $0-commission broker has an all-in cost of roughly 0.05%. A top robo runs 0.20% all-in. On $100,000 over 30 years, that's about $60,000 of forgone return, meaningful but not enormous.",
           "The robo wins when its automation prevents a behavioral mistake (panic-selling in a drawdown, neglecting rebalancing) that would cost more than 0.15%. For disciplined DIY investors the math favors doing it yourself; for everyone else the robo earns its fee in saved bad decisions.",
         ],
       },
@@ -504,12 +504,12 @@ export const bestRoundups: BestRoundup[] = [
       },
       {
         q: "Is a robo riskier than a target-date fund?",
-        a: "No — both hold diversified index portfolios. The robo lets you customize allocation and adds TLH; a target-date fund is simpler but doesn't harvest losses. Choose the robo if you'll use the customization, the target-date fund if you won't.",
+        a: "No, both hold diversified index portfolios. The robo lets you customize allocation and adds TLH; a target-date fund is simpler but doesn't harvest losses. Choose the robo if you'll use the customization, the target-date fund if you won't.",
       },
     ],
     internalLinks: [
       { label: "Index funds vs target-date funds", to: "/investing/vs/index-funds-vs-target-date" },
-      { label: "ETF vs mutual fund — which to buy", to: "/investing/vs/etf-vs-mutual-fund" },
+      { label: "ETF vs mutual fund, which to buy", to: "/investing/vs/etf-vs-mutual-fund" },
       { label: "Free Compound Interest Calculator", to: "/tools/compound-interest-calculator" },
     ],
     published: "2026-05-12",
@@ -521,12 +521,12 @@ export const bestRoundups: BestRoundup[] = [
     title: "Best Business Checking Accounts for Freelancers in 2026",
     metaTitle: "Best Business Checking for Freelancers (2026) | MoneyMoodBoard",
     metaDescription:
-      "Business checking accounts built for sole proprietors and 1099 freelancers — no monthly fees, no minimums, fast ACH, and clean bookkeeping integrations.",
+      "Business checking accounts built for sole proprietors and 1099 freelancers, no monthly fees, no minimums, fast ACH, and clean bookkeeping integrations.",
     shortAnswer:
-      "The best business checking accounts for freelancers in 2026 cost $0 a month, accept sole-proprietor signups with just an SSN (no EIN required), include free ACH and bill pay, and integrate with QuickBooks or Wave. Opening a separate business account is the single cleanest way to keep Schedule C deductible from personal spending — even if your business is just you.",
+      "The best business checking accounts for freelancers in 2026 cost $0 a month, accept sole-proprietor signups with just an SSN (no EIN required), include free ACH and bill pay, and integrate with QuickBooks or Wave. Opening a separate business account is the single cleanest way to keep Schedule C deductible from personal spending, even if your business is just you.",
     criteria: [
       "$0 monthly fee with no minimum balance or transaction count",
-      "Sole-proprietor friendly — accepts SSN, no EIN required",
+      "Sole-proprietor friendly, accepts SSN, no EIN required",
       "Free outgoing ACH and bill pay (wires often $15–$25)",
       "Native integration with QuickBooks, Wave, or Xero",
       "FDIC insurance and a debit card with no foreign transaction fees",
@@ -545,7 +545,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 2,
         name: "Bank-grade small-business checking",
         bestFor: "Freelancers nearing $250k+ revenue",
-        oneLiner: "Higher transaction limits and same-day wires for clients who pay by wire — still $0 monthly with direct deposit.",
+        oneLiner: "Higher transaction limits and same-day wires for clients who pay by wire, still $0 monthly with direct deposit.",
         facts: ["Monthly fee: $0 with $1,500 balance or direct deposit", "Free incoming wires", "QuickBooks sync", "FDIC-insured"],
         pros: ["Branch access in 30+ states", "Higher daily ACH ceilings"],
         cons: ["Outgoing wires $15+", "Requires EIN for LLCs"],
@@ -565,7 +565,7 @@ export const bestRoundups: BestRoundup[] = [
         heading: "Why freelancers need a separate account",
         paragraphs: [
           "The IRS doesn't require a business account for sole proprietors, but commingling personal and business spending is the #1 reason Schedule C audits expand into personal records. A separate account creates a clean transaction trail that limits an audit to the business side.",
-          "Even if you operate as a sole prop with no LLC, an online business checking account opened in your name with your SSN is functionally a personal-grade account with business labels — no extra cost, much cleaner books.",
+          "Even if you operate as a sole prop with no LLC, an online business checking account opened in your name with your SSN is functionally a personal-grade account with business labels, no extra cost, much cleaner books.",
         ],
       },
       {
@@ -582,16 +582,16 @@ export const bestRoundups: BestRoundup[] = [
       },
       {
         q: "Will using a business account help me at tax time?",
-        a: "Yes — it's the easiest way to populate Schedule C. Most accounts on this list export categorized transactions directly to QuickBooks or Wave, eliminating the year-end shoebox.",
+        a: "Yes, it's the easiest way to populate Schedule C. Most accounts on this list export categorized transactions directly to QuickBooks or Wave, eliminating the year-end shoebox.",
       },
       {
         q: "Are business deposits FDIC-insured the same as personal?",
-        a: "Yes — $250,000 per business entity, per insured bank. A sole prop account counts under your personal FDIC limit at the same bank, so confirm coverage if you also hold a personal account there.",
+        a: "Yes, $250,000 per business entity, per insured bank. A sole prop account counts under your personal FDIC limit at the same bank, so confirm coverage if you also hold a personal account there.",
       },
     ],
     internalLinks: [
       { label: "Best no-fee checking accounts for 2026", to: "/banking/best/checking-accounts-no-fees" },
-      { label: "Online bank vs credit union — which to choose", to: "/banking/vs/online-bank-vs-credit-union" },
+      { label: "Online bank vs credit union, which to choose", to: "/banking/vs/online-bank-vs-credit-union" },
       { label: "Free Budget Planner", to: "/tools/budget-planner" },
     ],
     published: "2026-05-12",
@@ -603,12 +603,12 @@ export const bestRoundups: BestRoundup[] = [
     title: "Best Credit Cards for No Credit History in 2026",
     metaTitle: "Best Credit Cards for No Credit History (2026)",
     metaDescription:
-      "Starter credit cards for people with no credit file — secured cards, alt-data approvals, and student-friendly options that build a FICO score from scratch.",
+      "Starter credit cards for people with no credit file, secured cards, alt-data approvals, and student-friendly options that build a FICO score from scratch.",
     shortAnswer:
       "The best credit cards for someone with no credit history in 2026 are either a secured card backed by a refundable deposit (typically $200) or an alt-data card that approves applicants based on bank-account cash flow instead of FICO. Both report to all three credit bureaus, and the first FICO score appears after about six months of on-time payments.",
     criteria: [
       "Reports to all three major bureaus (Experian, Equifax, TransUnion)",
-      "No annual fee — building credit shouldn't cost money",
+      "No annual fee, building credit shouldn't cost money",
       "Low or refundable security deposit (or no deposit for alt-data cards)",
       "Auto-graduation to an unsecured card after 6–12 months of on-time payments",
       "Soft-pull pre-qualification to avoid a hard inquiry on a denial",
@@ -620,14 +620,14 @@ export const bestRoundups: BestRoundup[] = [
         bestFor: "Anyone with a $200 deposit and no credit file",
         oneLiner: "Deposit-as-credit-limit, reports to all three bureaus, graduates to unsecured after 6–12 months.",
         facts: ["Annual fee: $0", "Deposit: $200 (fully refundable)", "Reports to: Experian, Equifax, TransUnion", "Graduation: auto-review at month 6"],
-        pros: ["Easiest approval — deposit is the underwriting", "Fully refundable on graduation or close", "Reports across all three bureaus"],
+        pros: ["Easiest approval, deposit is the underwriting", "Fully refundable on graduation or close", "Reports across all three bureaus"],
         cons: ["Ties up cash equal to the credit limit", "APR is high if you carry a balance"],
       },
       {
         rank: 2,
         name: "Alt-data unsecured starter card",
         bestFor: "Applicants with steady direct deposit but no FICO",
-        oneLiner: "Approves based on 60+ days of bank-account cash flow — no deposit, no co-signer.",
+        oneLiner: "Approves based on 60+ days of bank-account cash flow, no deposit, no co-signer.",
         facts: ["Annual fee: $0", "Deposit: $0", "Initial credit limit: $300–$1,000", "Reports to all three bureaus"],
         pros: ["No deposit required", "Real credit limit, not deposit-backed", "Quick mobile-only approval"],
         cons: ["Requires a linked checking account with steady inflow", "Available only in select states"],
@@ -636,7 +636,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 3,
         name: "Student starter card",
         bestFor: "Enrolled college students",
-        oneLiner: "Designed for thin-file students — light cashback rewards while you build the score.",
+        oneLiner: "Designed for thin-file students, light cashback rewards while you build the score.",
         facts: ["Annual fee: $0", "Cashback: 1–5%", "Requires student-status verification", "Reports to all three bureaus"],
         pros: ["Earns rewards while building credit", "Lower bar than general unsecured cards"],
         cons: ["Must be enrolled to apply", "Lower limits than secured cards"],
@@ -644,7 +644,7 @@ export const bestRoundups: BestRoundup[] = [
     ],
     body: [
       {
-        heading: "Secured vs alt-data — which is better for you?",
+        heading: "Secured vs alt-data, which is better for you?",
         paragraphs: [
           "A secured card is the safer underwriting bet because the deposit IS the credit limit. If you have $200 sitting in checking, you're approved. An alt-data card can give you an unsecured limit immediately, but only if your bank-account history shows steady deposits and no overdrafts in the last 60 days.",
           "Both routes produce a FICO score after about six months. The secured card has the higher approval rate; the alt-data card preserves your cash. Most starters pick whichever they qualify for first.",
@@ -664,7 +664,7 @@ export const bestRoundups: BestRoundup[] = [
       },
       {
         q: "Will applying hurt my credit?",
-        a: "Yes — every application creates a hard inquiry that can lower a thin-file score by 5–10 points temporarily. Use soft-pull pre-qualification first to avoid wasted inquiries on a likely denial.",
+        a: "Yes, every application creates a hard inquiry that can lower a thin-file score by 5–10 points temporarily. Use soft-pull pre-qualification first to avoid wasted inquiries on a likely denial.",
       },
       {
         q: "Can I get a regular card without a co-signer?",
@@ -672,7 +672,7 @@ export const bestRoundups: BestRoundup[] = [
       },
     ],
     internalLinks: [
-      { label: "Cashback vs travel rewards — which card type fits you", to: "/credit-cards/vs/cashback-vs-travel" },
+      { label: "Cashback vs travel rewards, which card type fits you", to: "/credit-cards/vs/cashback-vs-travel" },
       { label: "Best 0% APR balance transfer cards for 2026", to: "/credit-cards/best/zero-apr-balance-transfer-2026" },
       { label: "Free Credit Score Estimator", to: "/tools/credit-score-estimator" },
     ],
@@ -685,12 +685,12 @@ export const bestRoundups: BestRoundup[] = [
     title: "Best Brokerage Accounts for Beginners in 2026",
     metaTitle: "Best Brokerage Accounts for Beginners (2026)",
     metaDescription:
-      "Taxable brokerage accounts for first-time investors — $0 minimums, $0 commissions, fractional shares, and an education hub that doesn't push high-fee products.",
+      "Taxable brokerage accounts for first-time investors, $0 minimums, $0 commissions, fractional shares, and an education hub that doesn't push high-fee products.",
     shortAnswer:
-      "The best brokerage accounts for beginners in 2026 charge $0 commissions, accept $0 to open, and let you buy fractional shares of any major ETF or stock with as little as $1. The single most important pick criterion isn't the broker — it's whether the account is a taxable brokerage (this list) or a Roth IRA (separate guide). Open the Roth first if you haven't already; this list is for money that comes after.",
+      "The best brokerage accounts for beginners in 2026 charge $0 commissions, accept $0 to open, and let you buy fractional shares of any major ETF or stock with as little as $1. The single most important pick criterion isn't the broker, it's whether the account is a taxable brokerage (this list) or a Roth IRA (separate guide). Open the Roth first if you haven't already; this list is for money that comes after.",
     criteria: [
       "$0 minimum to open and $0 commissions on stocks and ETFs",
-      "Fractional shares — lets you buy $50 of an S&P 500 ETF that trades at $500/share",
+      "Fractional shares, lets you buy $50 of an S&P 500 ETF that trades at $500/share",
       "Education hub that explains index funds before pushing options or crypto",
       "Clean mobile UX without gamification (no confetti, no leaderboards)",
       "Auto-investing into a recurring weekly or monthly contribution",
@@ -700,7 +700,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 1,
         name: "Big-three discount broker",
         bestFor: "Long-term beginners who want one account for life",
-        oneLiner: "$0 commissions, fractional ETFs, deep education library, and the same broker most retirees use — you'll never outgrow it.",
+        oneLiner: "$0 commissions, fractional ETFs, deep education library, and the same broker most retirees use, you'll never outgrow it.",
         facts: ["Minimum to open: $0", "Commissions: $0 stocks/ETFs", "Fractional shares: yes, $1 minimum", "Auto-invest: weekly/monthly"],
         pros: ["Same platform serves $0 and $5M accounts", "No payment-for-order-flow on stocks", "Strong education hub"],
         cons: ["App is functional, not flashy", "Some advanced trading tools live in a separate platform"],
@@ -742,7 +742,7 @@ export const bestRoundups: BestRoundup[] = [
     faqs: [
       {
         q: "Is a taxable brokerage worse than a Roth IRA?",
-        a: "For most savers, yes — the Roth shelters growth from tax. The exception is when you've already maxed the Roth ($7,000 in 2026) or need access to the money before age 59½ without penalty.",
+        a: "For most savers, yes, the Roth shelters growth from tax. The exception is when you've already maxed the Roth ($7,000 in 2026) or need access to the money before age 59½ without penalty.",
       },
       {
         q: "Do I owe tax on a brokerage account every year?",
@@ -750,12 +750,12 @@ export const bestRoundups: BestRoundup[] = [
       },
       {
         q: "Can I link my brokerage to my checking account?",
-        a: "Yes — every broker on this list supports ACH transfers from a linked checking account, usually settling in 1–3 business days.",
+        a: "Yes, every broker on this list supports ACH transfers from a linked checking account, usually settling in 1–3 business days.",
       },
     ],
     internalLinks: [
       { label: "Best Roth IRA brokers for 2026", to: "/investing/best/roth-ira-brokers-2026" },
-      { label: "ETF vs mutual fund — which to buy", to: "/investing/vs/etf-vs-mutual-fund" },
+      { label: "ETF vs mutual fund, which to buy", to: "/investing/vs/etf-vs-mutual-fund" },
       { label: "Free Compound Interest Calculator", to: "/tools/compound-interest-calculator" },
     ],
     published: "2026-05-12",
@@ -767,7 +767,7 @@ export const bestRoundups: BestRoundup[] = [
     title: "Best Solo 401(k) Providers for 2026",
     metaTitle: "Best Solo 401(k) Providers 2026 | MoneyMoodBoard",
     metaDescription:
-      "Solo 401(k) providers ranked for self-employed savers who want Roth, mega-backdoor, and loan features — without the $1,500/year custodial bill.",
+      "Solo 401(k) providers ranked for self-employed savers who want Roth, mega-backdoor, and loan features, without the $1,500/year custodial bill.",
     shortAnswer:
       "The best Solo 401(k) providers for 2026 charge $0 in setup and annual fees, support Roth contributions, and (for high savers) allow after-tax contributions for the mega-backdoor Roth. The single biggest tradeoff is between free brokerage-hosted plans (no fees, limited features) and prototype-document plans like Solo401k.com (modest fees, every feature including loans and rollovers in).",
     criteria: [
@@ -782,7 +782,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 1,
         name: "Free brokerage-hosted Solo 401(k)",
         bestFor: "Sole props who don't need loans or after-tax contributions",
-        oneLiner: "$0 setup, $0 annual fee, full pre-tax and Roth — covers 80% of what most self-employed savers need.",
+        oneLiner: "$0 setup, $0 annual fee, full pre-tax and Roth, covers 80% of what most self-employed savers need.",
         facts: ["Setup: $0", "Annual fee: $0", "Roth: yes", "Loans: no", "Mega-backdoor: no"],
         pros: ["Zero ongoing cost", "Same brokerage as your other accounts", "Roth Solo 401(k) included"],
         cons: ["No after-tax contributions (no mega-backdoor)", "No participant loans", "No rollover-in for some providers"],
@@ -810,21 +810,21 @@ export const bestRoundups: BestRoundup[] = [
       {
         heading: "Why a Solo 401(k) beats a SEP-IRA",
         paragraphs: [
-          "Both let self-employed savers shelter large amounts of income, but the Solo 401(k) lets you make the $24,000 employee deferral on top of the 25%-of-net-earnings employer contribution — a SEP-IRA only allows the employer side. For most one-person businesses, the Solo 401(k) shelters more income at the same revenue.",
+          "Both let self-employed savers shelter large amounts of income, but the Solo 401(k) lets you make the $24,000 employee deferral on top of the 25%-of-net-earnings employer contribution, a SEP-IRA only allows the employer side. For most one-person businesses, the Solo 401(k) shelters more income at the same revenue.",
           "The Solo 401(k) also offers Roth contributions and (with the right provider) the mega-backdoor route to $71,000 of total annual contributions. SEP-IRAs do neither.",
         ],
       },
       {
         heading: "What changed for 2026",
         paragraphs: [
-          "SECURE 2.0 finalized rules now allow employer Solo 401(k) contributions to be made as Roth — every provider on this list will support Roth-employer contributions by mid-2026. Previously only the employee side could be Roth.",
+          "SECURE 2.0 finalized rules now allow employer Solo 401(k) contributions to be made as Roth, every provider on this list will support Roth-employer contributions by mid-2026. Previously only the employee side could be Roth.",
         ],
       },
     ],
     faqs: [
       {
         q: "Can I have a Solo 401(k) and a regular 401(k) at a W-2 job?",
-        a: "Yes — but the $24,000 employee deferral is shared across all 401(k) plans you participate in. The employer-side limit is per-plan, so the Solo 401(k) is still useful for sheltering self-employment income on top of W-2 deferrals.",
+        a: "Yes, but the $24,000 employee deferral is shared across all 401(k) plans you participate in. The employer-side limit is per-plan, so the Solo 401(k) is still useful for sheltering self-employment income on top of W-2 deferrals.",
       },
       {
         q: "What happens when I hire my first employee?",
@@ -849,9 +849,9 @@ export const bestRoundups: BestRoundup[] = [
     title: "Best Tax Software for the 2026 Filing Season",
     metaTitle: "Best Tax Software for 2026 Filing | MoneyMoodBoard",
     metaDescription:
-      "Tax software ranked for 1040 filers, freelancers with Schedule C, and investors with capital gains — by accuracy, true price after upsells, and audit support.",
+      "Tax software ranked for 1040 filers, freelancers with Schedule C, and investors with capital gains, by accuracy, true price after upsells, and audit support.",
     shortAnswer:
-      "The best tax software for the 2026 filing season is the IRS Direct File program for simple W-2 returns (free, federal-only) and a paid commercial filer for anyone with a Schedule C, capital gains, or rental income. The single most expensive mistake filers make is starting on a 'free' tier that upgrades to $89+ when it sees a 1099 — start with software that's transparent about which forms cost extra.",
+      "The best tax software for the 2026 filing season is the IRS Direct File program for simple W-2 returns (free, federal-only) and a paid commercial filer for anyone with a Schedule C, capital gains, or rental income. The single most expensive mistake filers make is starting on a 'free' tier that upgrades to $89+ when it sees a 1099, start with software that's transparent about which forms cost extra.",
     criteria: [
       "True all-in price after the upsells you actually need",
       "Schedule C, K-1, and capital-gains support without a forced upgrade",
@@ -864,10 +864,10 @@ export const bestRoundups: BestRoundup[] = [
         rank: 1,
         name: "IRS Direct File",
         bestFor: "W-2 employees with simple returns",
-        oneLiner: "Free, government-run, federal-only filing for W-2 income with the standard deduction — no upsells.",
+        oneLiner: "Free, government-run, federal-only filing for W-2 income with the standard deduction, no upsells.",
         facts: ["Federal: $0", "State: not included (use state portal)", "Eligibility: 25 states + DC for 2026", "No third-party data sharing"],
         pros: ["Genuinely free, no upsell", "Built and maintained by the IRS"],
-        cons: ["Federal only — file state separately", "Limited to common forms (no Schedule C, no rentals)"],
+        cons: ["Federal only, file state separately", "Limited to common forms (no Schedule C, no rentals)"],
       },
       {
         rank: 2,
@@ -882,7 +882,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 3,
         name: "Investor-focused tax software",
         bestFor: "Active investors with capital gains and crypto",
-        oneLiner: "Best-in-class import for brokerage 1099-B and crypto exchanges — handles thousands of trades cleanly.",
+        oneLiner: "Best-in-class import for brokerage 1099-B and crypto exchanges, handles thousands of trades cleanly.",
         facts: ["Federal: $69–$129", "State: $40–$50", "1099-B import: yes", "Crypto: 200+ exchanges"],
         pros: ["Clean treatment of cost basis on transferred lots", "Crypto-tax import is the strongest in the category"],
         cons: ["Schedule C support is fine but not best-in-class", "State filing not always bundled"],
@@ -892,8 +892,8 @@ export const bestRoundups: BestRoundup[] = [
       {
         heading: "What 'free' actually means",
         paragraphs: [
-          "Most 'free' commercial tax software is genuinely free only for W-2 income with the standard deduction. The moment you add a 1099-NEC, capital gains, or itemized deductions, the software upgrades you to a paid tier — usually $89 federal plus a state add-on.",
-          "If your return is genuinely simple, IRS Direct File is the cleanest free option (federal only) — no upsell exists because the IRS doesn't sell anything. For complex returns, just price out the paid tier you'll need before starting.",
+          "Most 'free' commercial tax software is genuinely free only for W-2 income with the standard deduction. The moment you add a 1099-NEC, capital gains, or itemized deductions, the software upgrades you to a paid tier, usually $89 federal plus a state add-on.",
+          "If your return is genuinely simple, IRS Direct File is the cleanest free option (federal only), no upsell exists because the IRS doesn't sell anything. For complex returns, just price out the paid tier you'll need before starting.",
         ],
       },
       {
@@ -906,7 +906,7 @@ export const bestRoundups: BestRoundup[] = [
     faqs: [
       {
         q: "Is paid tax software more accurate than free?",
-        a: "No — both follow the same IRS forms. The advantage of paid software is form coverage (Schedule C, K-1, rentals) and import quality, not arithmetic accuracy.",
+        a: "No, both follow the same IRS forms. The advantage of paid software is form coverage (Schedule C, K-1, rentals) and import quality, not arithmetic accuracy.",
       },
       {
         q: "Should I pay extra for audit defense?",
@@ -914,7 +914,7 @@ export const bestRoundups: BestRoundup[] = [
       },
       {
         q: "Can I switch software between years?",
-        a: "Yes — every major filer imports prior-year returns from competitors. Switching usually saves money if your previous filer raised prices.",
+        a: "Yes, every major filer imports prior-year returns from competitors. Switching usually saves money if your previous filer raised prices.",
       },
     ],
     internalLinks: [
@@ -931,15 +931,15 @@ export const bestRoundups: BestRoundup[] = [
     title: "Best Term Life Insurance Companies for 2026",
     metaTitle: "Best Term Life Insurance Companies (2026)",
     metaDescription:
-      "Term life insurance ranked for healthy applicants, parents, and applicants over 50 — by AM Best rating, conversion options, and the actual underwriting timeline.",
+      "Term life insurance ranked for healthy applicants, parents, and applicants over 50, by AM Best rating, conversion options, and the actual underwriting timeline.",
     shortAnswer:
-      "The best term life insurance companies in 2026 carry an AM Best rating of A or better, offer 10- to 30-year level-term policies, and convert to permanent without new underwriting. For a healthy 35-year-old non-smoker, a 20-year, $500,000 policy costs roughly $20–$30 per month. The single biggest pricing lever is honest answers on the application — misrepresentation voids claims.",
+      "The best term life insurance companies in 2026 carry an AM Best rating of A or better, offer 10- to 30-year level-term policies, and convert to permanent without new underwriting. For a healthy 35-year-old non-smoker, a 20-year, $500,000 policy costs roughly $20–$30 per month. The single biggest pricing lever is honest answers on the application, misrepresentation voids claims.",
     criteria: [
       "AM Best financial-strength rating of A or higher",
       "Level term lengths from 10 to 30 years (some up to 40)",
       "Conversion option to permanent insurance without new medical underwriting",
       "Accelerated underwriting available (no medical exam) for healthy applicants",
-      "Same monthly premium for the full term — no graded increases",
+      "Same monthly premium for the full term, no graded increases",
     ],
     picks: [
       {
@@ -955,7 +955,7 @@ export const bestRoundups: BestRoundup[] = [
         rank: 2,
         name: "Accelerated-underwriting carrier",
         bestFor: "Time-strapped applicants who'll pay slightly more for speed",
-        oneLiner: "No medical exam for healthy applicants under 50 — approval in 24–72 hours with same A-rated coverage.",
+        oneLiner: "No medical exam for healthy applicants under 50, approval in 24–72 hours with same A-rated coverage.",
         facts: ["AM Best: A", "Term lengths: 10/15/20/25/30 years", "Underwriting: 1–3 days, no exam", "Conversion: partial term"],
         pros: ["No medical exam for most healthy applicants", "Decision in days, not weeks"],
         cons: ["Premiums 5–15% higher than fully-underwritten", "Conversion option only in first 10 years"],
@@ -975,7 +975,7 @@ export const bestRoundups: BestRoundup[] = [
         heading: "How much coverage do you actually need?",
         paragraphs: [
           "The standard rule of thumb is 10–12× your annual income, plus enough to pay off the mortgage and fund any college costs. For a household earning $80,000 with a $300,000 mortgage and two young kids, a $1M, 20-year level term policy is a common starting point.",
-          "Coverage isn't the same as wealth — term life replaces income for the years your dependents need it. Once kids are independent and the mortgage is paid, most households self-insure and let the term expire.",
+          "Coverage isn't the same as wealth, term life replaces income for the years your dependents need it. Once kids are independent and the mortgage is paid, most households self-insure and let the term expire.",
         ],
       },
       {
@@ -988,15 +988,15 @@ export const bestRoundups: BestRoundup[] = [
     faqs: [
       {
         q: "Is term life cheaper than whole life?",
-        a: "Yes — term life is 5–10× cheaper than whole life for the same death benefit at the same age. The tradeoff is term coverage ends when the term does; whole life lasts until death.",
+        a: "Yes, term life is 5–10× cheaper than whole life for the same death benefit at the same age. The tradeoff is term coverage ends when the term does; whole life lasts until death.",
       },
       {
         q: "Should I bundle term life with my home insurance?",
-        a: "No — bundling rarely produces a better rate on life insurance specifically. Shop term life separately from a top-rated carrier; bundle home and auto if convenient.",
+        a: "No, bundling rarely produces a better rate on life insurance specifically. Shop term life separately from a top-rated carrier; bundle home and auto if convenient.",
       },
       {
         q: "What if my health changes during the term?",
-        a: "Your premium is locked for the full term regardless of health changes. That's the main reason to lock a longer term while you're healthy — re-applying later at higher rates is the worst-case scenario.",
+        a: "Your premium is locked for the full term regardless of health changes. That's the main reason to lock a longer term while you're healthy, re-applying later at higher rates is the worst-case scenario.",
       },
     ],
     internalLinks: [

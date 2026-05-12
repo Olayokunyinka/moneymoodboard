@@ -1,6 +1,6 @@
 /**
  * "In This Guide" table of contents.
- * Pass an array of H2 section labels — each is rendered as an anchor link
+ * Pass an array of H2 section labels, each is rendered as an anchor link
  * to the matching `#slug` (slugified label). Pair with `scroll-mt-20` on the
  * H2 wrappers in the article.
  */

@@ -12,7 +12,7 @@ export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
       { title: "Privacy Policy | MoneyMoodBoard" },
-      { name: "description", content: "How MoneyMoodBoard collects, uses, shares and protects your personal information — including your rights under CCPA/CPRA, UK GDPR and EU GDPR." },
+      { name: "description", content: "How MoneyMoodBoard collects, uses, shares and protects your personal information, including your rights under CCPA/CPRA, UK GDPR and EU GDPR." },
       { property: "og:title", content: "Privacy Policy | MoneyMoodBoard" },
       { property: "og:description", content: "Full privacy notice covering data collection, cookies, advertising, international transfers and your rights." },
     ],
@@ -32,8 +32,8 @@ const SECTIONS = [
   "International data transfers",
   "Data retention",
   "Security",
-  "Your rights — United States (CCPA/CPRA)",
-  "Your rights — EU/UK (GDPR)",
+  "Your rights, United States (CCPA/CPRA)",
+  "Your rights, EU/UK (GDPR)",
   "Children's privacy",
   "Do Not Track and Global Privacy Control",
   "Changes to this policy",
@@ -68,10 +68,10 @@ function PrivacyPage() {
           <h2 className="text-2xl font-bold text-foreground">Information we collect</h2>
           <p className="mt-3">We collect the following categories of personal information:</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
-            <li><strong>Information you provide directly</strong> — your email address when you subscribe to our newsletter, and any details you include when you contact us by email.</li>
-            <li><strong>Automatically collected data</strong> — IP address, device type, browser, operating system, referring URL, pages viewed, time on page, and approximate location (city/country) from server logs and analytics scripts.</li>
-            <li><strong>Cookies and similar technologies</strong> — small files placed in your browser for essential site functions, analytics, and advertising. See "Cookies and tracking technologies" below.</li>
-            <li><strong>Advertising identifiers</strong> — third-party advertising networks may set cookies or use mobile advertising IDs to serve interest-based ads.</li>
+            <li><strong>Information you provide directly</strong>, your email address when you subscribe to our newsletter, and any details you include when you contact us by email.</li>
+            <li><strong>Automatically collected data</strong>, IP address, device type, browser, operating system, referring URL, pages viewed, time on page, and approximate location (city/country) from server logs and analytics scripts.</li>
+            <li><strong>Cookies and similar technologies</strong>, small files placed in your browser for essential site functions, analytics, and advertising. See "Cookies and tracking technologies" below.</li>
+            <li><strong>Advertising identifiers</strong>, third-party advertising networks may set cookies or use mobile advertising IDs to serve interest-based ads.</li>
           </ul>
           <p className="mt-3">We do not knowingly collect government identifiers, financial account numbers, biometric data, precise geolocation, or health information.</p>
         </section>
@@ -85,16 +85,16 @@ function PrivacyPage() {
             <li>To serve and measure advertising, including, where lawful, interest-based advertising.</li>
             <li>To comply with legal obligations and enforce our Terms of Use.</li>
           </ul>
-          <p className="mt-3">We do not sell your personal information for money. Some sharing with advertising partners may qualify as a "sale" or "share" under California law — see your CCPA/CPRA rights below.</p>
+          <p className="mt-3">We do not sell your personal information for money. Some sharing with advertising partners may qualify as a "sale" or "share" under California law, see your CCPA/CPRA rights below.</p>
         </section>
 
         <section id="legal-bases-eu-uk-gdpr" className="scroll-mt-24">
           <h2 className="text-2xl font-bold text-foreground">Legal bases (EU/UK GDPR)</h2>
           <p className="mt-3">Where the UK GDPR or EU GDPR applies, we rely on the following lawful bases under Article 6:</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
-            <li><strong>Consent</strong> — for non-essential cookies, advertising personalisation, and newsletter sign-up. You can withdraw consent at any time.</li>
-            <li><strong>Legitimate interests</strong> — to operate, secure and improve the site, and to measure aggregate audience metrics, where these interests are not overridden by your rights.</li>
-            <li><strong>Legal obligation</strong> — to retain records and respond to lawful requests from regulators or courts.</li>
+            <li><strong>Consent</strong>, for non-essential cookies, advertising personalisation, and newsletter sign-up. You can withdraw consent at any time.</li>
+            <li><strong>Legitimate interests</strong>, to operate, secure and improve the site, and to measure aggregate audience metrics, where these interests are not overridden by your rights.</li>
+            <li><strong>Legal obligation</strong>, to retain records and respond to lawful requests from regulators or courts.</li>
           </ul>
         </section>
 
@@ -102,9 +102,9 @@ function PrivacyPage() {
           <h2 className="text-2xl font-bold text-foreground">Cookies and tracking technologies</h2>
           <p className="mt-3">We use three categories of cookies and similar technologies:</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
-            <li><strong>Strictly necessary</strong> — required for core functionality such as page navigation, security, and remembering your cookie preferences. These do not require consent.</li>
-            <li><strong>Analytics</strong> — help us understand how readers find and use our content (for example, Google Analytics). Aggregated, not used to identify you.</li>
-            <li><strong>Advertising</strong> — set by ad networks (such as Google AdSense) to deliver and measure ads, and where you've consented, to personalise them.</li>
+            <li><strong>Strictly necessary</strong>, required for core functionality such as page navigation, security, and remembering your cookie preferences. These do not require consent.</li>
+            <li><strong>Analytics</strong>, help us understand how readers find and use our content (for example, Google Analytics). Aggregated, not used to identify you.</li>
+            <li><strong>Advertising</strong>, set by ad networks (such as Google AdSense) to deliver and measure ads, and where you've consented, to personalise them.</li>
           </ul>
           <p className="mt-3">You can control cookies through your browser settings, refuse non-essential cookies via our consent banner where shown, and opt out of personalised advertising through industry tools such as the <a href="https://optout.aboutads.info/" className="text-primary hover:underline">DAA</a>, <a href="https://optout.networkadvertising.org/" className="text-primary hover:underline">NAI</a>, or <a href="https://www.youronlinechoices.eu/" className="text-primary hover:underline">YourOnlineChoices</a> (EU).</p>
         </section>
@@ -113,10 +113,10 @@ function PrivacyPage() {
           <h2 className="text-2xl font-bold text-foreground">Advertising and analytics partners</h2>
           <p className="mt-3">We work with third parties whose privacy practices we encourage you to review:</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
-            <li><strong>Google AdSense</strong> — display advertising and ad measurement (<a href="https://policies.google.com/technologies/ads" className="text-primary hover:underline">policy</a>).</li>
-            <li><strong>Google Analytics</strong> — audience measurement with IP-anonymisation enabled (<a href="https://policies.google.com/privacy" className="text-primary hover:underline">policy</a>).</li>
-            <li><strong>Supabase</strong> — hosts our newsletter database and form submissions (<a href="https://supabase.com/privacy" className="text-primary hover:underline">policy</a>).</li>
-            <li><strong>Email service provider</strong> — sends our newsletter and operational email.</li>
+            <li><strong>Google AdSense</strong>, display advertising and ad measurement (<a href="https://policies.google.com/technologies/ads" className="text-primary hover:underline">policy</a>).</li>
+            <li><strong>Google Analytics</strong>, audience measurement with IP-anonymisation enabled (<a href="https://policies.google.com/privacy" className="text-primary hover:underline">policy</a>).</li>
+            <li><strong>Supabase</strong>, hosts our newsletter database and form submissions (<a href="https://supabase.com/privacy" className="text-primary hover:underline">policy</a>).</li>
+            <li><strong>Email service provider</strong>, sends our newsletter and operational email.</li>
           </ul>
         </section>
 
@@ -141,7 +141,7 @@ function PrivacyPage() {
         </section>
 
         <section id="your-rights-united-states-ccpa-cpra" className="scroll-mt-24">
-          <h2 className="text-2xl font-bold text-foreground">Your rights — United States (CCPA/CPRA)</h2>
+          <h2 className="text-2xl font-bold text-foreground">Your rights, United States (CCPA/CPRA)</h2>
           <p className="mt-3">If you are a California resident, the California Consumer Privacy Act, as amended by the CPRA, gives you the right to:</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li>Know what personal information we have collected about you and how we use it.</li>
@@ -157,7 +157,7 @@ function PrivacyPage() {
         </section>
 
         <section id="your-rights-eu-uk-gdpr" className="scroll-mt-24">
-          <h2 className="text-2xl font-bold text-foreground">Your rights — EU/UK (GDPR)</h2>
+          <h2 className="text-2xl font-bold text-foreground">Your rights, EU/UK (GDPR)</h2>
           <p className="mt-3">If you are in the United Kingdom or the European Economic Area, you have the right to:</p>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li>Access the personal data we hold about you (Art. 15).</li>
@@ -167,7 +167,7 @@ function PrivacyPage() {
             <li>Receive your data in a portable format (Art. 20).</li>
             <li>Object to processing based on legitimate interests, including profiling (Art. 21).</li>
             <li>Withdraw consent at any time, without affecting prior lawful processing.</li>
-            <li>Lodge a complaint with your supervisory authority — the <a href="https://ico.org.uk/" className="text-primary hover:underline">UK Information Commissioner's Office (ICO)</a> in the UK, or your national data protection authority in the EU.</li>
+            <li>Lodge a complaint with your supervisory authority, the <a href="https://ico.org.uk/" className="text-primary hover:underline">UK Information Commissioner's Office (ICO)</a> in the UK, or your national data protection authority in the EU.</li>
           </ul>
         </section>
 

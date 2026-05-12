@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MoneyMoodBoard — Personal Finance Guides, Tools & Tips" },
+      { title: "MoneyMoodBoard, Personal Finance Guides, Tools & Tips" },
       {
         name: "description",
         content:
@@ -173,7 +173,7 @@ function RootComponent() {
               height: 512,
             },
             description:
-              "Independent personal-finance publication for U.S. earners — plain-English guides on budgeting, credit, saving, investing, retirement, banking and debt, paired with free no-signup calculators.",
+              "Independent personal-finance publication for U.S. earners, plain-English guides on budgeting, credit, saving, investing, retirement, banking and debt, paired with free no-signup calculators.",
             knowsAbout: [
               "Budgeting",
               "Credit cards",

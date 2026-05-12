@@ -1,4 +1,4 @@
-// Hex equivalents of the pillar tokens — needed because email clients can't
+// Hex equivalents of the pillar tokens, needed because email clients can't
 // resolve oklch() or CSS variables. Keep these in sync with src/styles.css.
 import type { PillarSlug } from "@/lib/pillars";
 

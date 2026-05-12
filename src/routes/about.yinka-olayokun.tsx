@@ -31,9 +31,9 @@ const latestByYinka: LatestEntry[] = Object.keys(articleBodies)
   .sort((a, b) => (a.published < b.published ? 1 : -1))
   .slice(0, 9);
 
-const TITLE = "Yinka Olayokun — Founder & Editor at MoneyMoodBoard";
+const TITLE = "Yinka Olayokun, Founder & Editor at MoneyMoodBoard";
 const DESC =
-  "Meet Yinka Olayokun — digital strategist, financial-literacy advocate, and founder of MoneyMoodBoard. Editorial bio, expertise, and how to reach her.";
+  "Meet Yinka Olayokun, digital strategist, financial-literacy advocate, and founder of MoneyMoodBoard. Editorial bio, expertise, and how to reach her.";
 
 export const Route = createFileRoute("/about/yinka-olayokun")({
   head: () => ({
@@ -69,7 +69,7 @@ function AuthorPage() {
           </span>
         }
         title="Yinka Olayokun"
-        intro="Founder of MoneyMoodBoard. Digital strategist, financial-literacy advocate, and the editor behind every guide on this site — written for people managing real life: variable income, debt, credit repair, and big goals."
+        intro="Founder of MoneyMoodBoard. Digital strategist, financial-literacy advocate, and the editor behind every guide on this site, written for people managing real life: variable income, debt, credit repair, and big goals."
       />
 
       <section className="mt-8 flex flex-col gap-6 rounded-2xl border border-border bg-card p-6 md:flex-row md:items-center md:p-8">
@@ -130,8 +130,8 @@ function AuthorPage() {
         </p>
         <p>
           MoneyMoodBoard is her answer. Every guide on the site is researched
-          against primary sources — the Federal Reserve, the IRS, the Bureau of
-          Labor Statistics, the CFPB, FDIC, and peer-reviewed academic work —
+          against primary sources, the Federal Reserve, the IRS, the Bureau of
+          Labor Statistics, the CFPB, FDIC, and peer-reviewed academic work .
           then rewritten in language a tired 25-year-old can read after a long
           shift and actually use.
         </p>
@@ -140,9 +140,9 @@ function AuthorPage() {
         <ul className="list-disc space-y-1.5 pl-5">
           <li>Credit building and credit repair (especially thin-file and post-collections)</li>
           <li>Budgeting on variable income for freelancers and tipped workers</li>
-          <li>Debt payoff strategy — avalanche, snowball, balance transfers, consolidation</li>
+          <li>Debt payoff strategy, avalanche, snowball, balance transfers, consolidation</li>
           <li>First-time investing in index funds, Roth IRAs and 401(k) matches</li>
-          <li>Banking optimisation — moving away from high-fee national banks</li>
+          <li>Banking optimisation, moving away from high-fee national banks</li>
           <li>Money & mental health, financial trauma, judgment-free guidance</li>
         </ul>
 

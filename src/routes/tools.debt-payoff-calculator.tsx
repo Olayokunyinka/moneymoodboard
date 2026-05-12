@@ -17,9 +17,9 @@ const TITLE = "Debt Payoff Calculator";
 export const Route = createFileRoute("/tools/debt-payoff-calculator")({
   head: () => ({
     meta: [
-      { title: `${TITLE} — Avalanche vs Snowball | MoneyMoodBoard` },
+      { title: `${TITLE}, Avalanche vs Snowball | MoneyMoodBoard` },
       { name: "description", content: "Compare the avalanche and snowball methods to see which debt payoff strategy gets you out fastest. Free, no signup." },
-      { property: "og:title", content: `${TITLE} — Avalanche vs Snowball | MoneyMoodBoard` },
+      { property: "og:title", content: `${TITLE}, Avalanche vs Snowball | MoneyMoodBoard` },
       { property: "og:description", content: "Compare avalanche vs snowball debt payoff methods side-by-side and see your real payoff date." },
     ],
     links: [canonical("/tools/debt-payoff-calculator"), ...hreflangLinks("/tools/debt-payoff-calculator")],
@@ -161,8 +161,8 @@ function DebtPayoffCalculator() {
             <Label>Strategy</Label>
             <RadioGroup value={method} onValueChange={(v) => setMethod(v as Method)} className="mt-2 grid gap-2">
               {[
-                { v: "avalanche", label: "Avalanche — highest APR first (saves most money)" },
-                { v: "snowball", label: "Snowball — smallest balance first (fastest wins)" },
+                { v: "avalanche", label: "Avalanche, highest APR first (saves most money)" },
+                { v: "snowball", label: "Snowball, smallest balance first (fastest wins)" },
               ].map((o) => (
                 <label key={o.v} htmlFor={`m-${o.v}`} className="flex items-center gap-3 rounded-lg border border-border p-3 cursor-pointer hover:bg-muted/50">
                   <RadioGroupItem id={`m-${o.v}`} value={o.v} />
@@ -204,7 +204,7 @@ function DebtPayoffCalculator() {
 
         <div className="mt-6 flex items-start gap-2 text-xs text-muted-foreground">
           <ShieldCheck className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-          <p>Calculations stay in your browser — nothing is sent or saved.</p>
+          <p>Calculations stay in your browser, nothing is sent or saved.</p>
         </div>
       </section>
 
@@ -225,7 +225,7 @@ function DebtPayoffCalculator() {
         <p>
           Almost every debt payoff plan reduces to one decision: in what order
           do you attack your debts? Both major methods say the same thing
-          about minimum payments — always pay them on every account, every
+          about minimum payments, always pay them on every account, every
           month. The difference is where the extra money goes.
         </p>
         <h3 className="text-xl font-semibold">The avalanche method</h3>
@@ -242,7 +242,7 @@ function DebtPayoffCalculator() {
         <h3 className="text-xl font-semibold">The snowball method</h3>
         <p>
           The snowball method ignores APR and targets the smallest balance
-          first. The trade-off is real — you'll pay slightly more interest —
+          first. The trade-off is real, you'll pay slightly more interest .
           but the psychological win of fully eliminating an entire account in
           a month or two is powerful. A 2012 Northwestern Kellogg study
           found that people using the snowball method were more likely to
@@ -271,7 +271,7 @@ function DebtPayoffCalculator() {
         <p>
           The strategy you'll actually complete beats the optimal strategy
           you abandon in month four. Pick the one that makes you want to
-          check the calculator every payday — that's the one that pays you
+          check the calculator every payday, that's the one that pays you
           back the most.
         </p>
       </article>

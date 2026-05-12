@@ -7,8 +7,8 @@ import type { PillarSlug } from "./pillars";
  *  - canonical name (used as the auto-link target text and glossary term)
  *  - aliases (alternate spellings/abbreviations used in body copy)
  *  - short, plain-English definition (rendered on /glossary)
- *  - pillar (primary topical home — drives nav grouping)
- *  - sameAs (Wikipedia + Wikidata canonical URLs — knowledge-graph trust signal)
+ *  - pillar (primary topical home, drives nav grouping)
+ *  - sameAs (Wikipedia + Wikidata canonical URLs, knowledge-graph trust signal)
  *
  * This registry powers:
  *  1. Site-wide /glossary page with DefinedTermSet schema.
@@ -24,7 +24,7 @@ export interface Entity {
   definition: string;
   /** Primary topical home. */
   pillar: PillarSlug;
-  /** Authoritative external IDs — minimum: Wikipedia + Wikidata. */
+  /** Authoritative external IDs, minimum: Wikipedia + Wikidata. */
   sameAs: string[];
 }
 
@@ -82,7 +82,7 @@ export const entities: Entity[] = [
   {
     name: "Credit utilization",
     aliases: ["utilization ratio", "credit utilisation"],
-    definition: "The percentage of your available revolving credit that you are currently using — a major input to FICO and VantageScore.",
+    definition: "The percentage of your available revolving credit that you are currently using, a major input to FICO and VantageScore.",
     pillar: "credit-cards",
     sameAs: ["https://en.wikipedia.org/wiki/Credit_score_in_the_United_States#Credit_utilization", "https://www.wikidata.org/wiki/Q5184792"],
   },
@@ -101,7 +101,7 @@ export const entities: Entity[] = [
   },
   {
     name: "Balance transfer",
-    definition: "Moving credit-card debt from one card to another — usually to a card with a 0% promotional APR — to reduce interest cost.",
+    definition: "Moving credit-card debt from one card to another, usually to a card with a 0% promotional APR, to reduce interest cost.",
     pillar: "credit-cards",
     sameAs: ["https://en.wikipedia.org/wiki/Balance_transfer", "https://www.wikidata.org/wiki/Q4850872"],
   },
@@ -212,7 +212,7 @@ export const entities: Entity[] = [
   },
   {
     name: "Emergency fund",
-    definition: "A reserve of cash kept in a liquid account to cover unexpected expenses or income loss — typically 3 to 6 months of essential outgoings.",
+    definition: "A reserve of cash kept in a liquid account to cover unexpected expenses or income loss, typically 3 to 6 months of essential outgoings.",
     pillar: "saving",
     sameAs: ["https://en.wikipedia.org/wiki/Emergency_fund", "https://www.wikidata.org/wiki/Q5371580"],
   },

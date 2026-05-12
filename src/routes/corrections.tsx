@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { AuthorBox } from "@/components/site/AuthorBox";
 import { absUrl, canonical , hreflangLinks } from "@/lib/seo";
 
-const TITLE = "Corrections Policy — Reporting Errors on MoneyMoodBoard";
+const TITLE = "Corrections Policy, Reporting Errors on MoneyMoodBoard";
 const DESC =
   "How MoneyMoodBoard handles material errors: what we update, what we disclose, and how to flag a correction. Plus our actionable-feedback policy.";
 const PATH = "/corrections";
@@ -51,7 +51,7 @@ function Page() {
         <section>
           <h2 className="text-2xl font-bold text-foreground">How we publish corrections</h2>
           <p className="mt-3">
-            The article is updated with the corrected information, the "Updated" date is refreshed, and — for material changes — a short editor's note describes what was fixed and why. We do not silently overwrite previously published numbers.
+            The article is updated with the corrected information, the "Updated" date is refreshed, and, for material changes, a short editor's note describes what was fixed and why. We do not silently overwrite previously published numbers.
           </p>
         </section>
         <section>

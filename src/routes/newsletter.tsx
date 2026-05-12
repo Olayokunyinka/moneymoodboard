@@ -9,9 +9,9 @@ export const Route = createFileRoute("/newsletter")({
   head: () => ({
     meta: [
       { title: "Free Weekly Newsletter | MoneyMoodBoard" },
-      { name: "description", content: "Practical money tips, new guides and tool launches — delivered weekly. Free." },
+      { name: "description", content: "Practical money tips, new guides and tool launches, delivered weekly. Free." },
       { property: "og:title", content: "Free Weekly Newsletter | MoneyMoodBoard" },
-      { property: "og:description", content: "Practical money tips, new guides and tool launches — delivered weekly. Free." },
+      { property: "og:description", content: "Practical money tips, new guides and tool launches, delivered weekly. Free." },
     ],
     links: [canonical("/newsletter"), ...hreflangLinks("/newsletter")],
   }),

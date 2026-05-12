@@ -17,9 +17,9 @@ const TITLE = "Retirement Savings Calculator";
 export const Route = createFileRoute("/tools/retirement-savings-calculator")({
   head: () => ({
     meta: [
-      { title: `${TITLE} — Free Tool | MoneyMoodBoard` },
+      { title: `${TITLE}, Free Tool | MoneyMoodBoard` },
       { name: "description", content: "Project your retirement nest egg, see if you're on track, and find out how much you need to save monthly to retire comfortably. Free, no signup." },
-      { property: "og:title", content: `${TITLE} — Free Tool | MoneyMoodBoard` },
+      { property: "og:title", content: `${TITLE}, Free Tool | MoneyMoodBoard` },
       { property: "og:description", content: "Project your retirement nest egg and find your monthly savings target." },
     ],
     links: [canonical("/tools/retirement-savings-calculator"), ...hreflangLinks("/tools/retirement-savings-calculator")],
@@ -186,7 +186,7 @@ function RetirementSavingsCalculator() {
 
             <div className="mt-auto pt-6 flex items-start gap-2 text-xs text-muted-foreground">
               <ShieldCheck className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-              <p>Calculations stay in your browser — nothing is sent or saved.</p>
+              <p>Calculations stay in your browser, nothing is sent or saved.</p>
             </div>
           </div>
         </div>
@@ -196,9 +196,9 @@ function RetirementSavingsCalculator() {
       <section className="mt-12 max-w-3xl">
         <h2 className="text-2xl font-bold">How to Use This Calculator</h2>
         <ol className="mt-4 list-decimal pl-5 space-y-2 text-foreground/85">
-          <li><span className="font-semibold">Enter your ages.</span> Be honest about your retirement age — pulling it forward by even three years dramatically raises the required savings rate.</li>
+          <li><span className="font-semibold">Enter your ages.</span> Be honest about your retirement age, pulling it forward by even three years dramatically raises the required savings rate.</li>
           <li><span className="font-semibold">Add up current retirement savings.</span> Combine 401(k), IRA, Roth, and any brokerage money you've earmarked for retirement.</li>
-          <li><span className="font-semibold">Enter monthly contributions.</span> Include the employer match — that's part of your savings rate.</li>
+          <li><span className="font-semibold">Enter monthly contributions.</span> Include the employer match, that's part of your savings rate.</li>
           <li><span className="font-semibold">Tune your assumptions.</span> 7% real return, 80% income replacement, and a 4% withdrawal rate are widely used defaults; adjust if you have a different plan.</li>
         </ol>
       </section>
@@ -236,14 +236,14 @@ function RetirementSavingsCalculator() {
         <p>
           Compound returns reward early savers in a way that feels almost
           unfair. A 25-year-old saving $300/month at 7% real returns reaches
-          $1M by 65. A 35-year-old has to save nearly $700/month — more than
-          double — to hit the same target. If you have time, use it. If you
+          $1M by 65. A 35-year-old has to save nearly $700/month, more than
+          double, to hit the same target. If you have time, use it. If you
           don't, increase your savings rate aggressively and use catch-up
           contributions starting at 50.
         </p>
         <h3 className="text-xl font-semibold">Account order matters</h3>
         <p>
-          Always capture the full employer 401(k) match first — it's an
+          Always capture the full employer 401(k) match first, it's an
           instant 50–100% return that no investment can beat. Then knock
           out high-interest debt. Then a Roth IRA if you qualify, for
           tax-free growth. Then back to the 401(k) up to the annual

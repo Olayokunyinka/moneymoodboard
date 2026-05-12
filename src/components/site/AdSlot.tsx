@@ -1,5 +1,5 @@
 /**
- * AdSlot — placeholder container for AdSense ad units.
+ * AdSlot, placeholder container for AdSense ad units.
  * Renders nothing visible in production unless VITE_SHOW_AD_SLOTS is on.
  * Keeps consistent spacing in the article so insertion order is stable.
  */

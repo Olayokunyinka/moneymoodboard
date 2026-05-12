@@ -12,16 +12,30 @@ export const canonical = (path: string) => ({
   href: absUrl(path),
 });
 
-/** og:image meta tag pair (image + secure_url + width/height) */
-export const ogImage = (path: string) => [
-  { property: "og:image", content: toAbsUrl(path) },
-  { property: "og:image:width", content: "1200" },
-  { property: "og:image:height", content: "630" },
-  { name: "twitter:image", content: toAbsUrl(path) },
-];
+/** og:image meta tag set. Pass dims when known so crawlers don't have to fetch
+ *  the image to size it; omit dims to let crawlers auto-measure. */
+export const ogImage = (
+  path: string,
+  dims?: { width: number; height: number },
+) => {
+  const url = toAbsUrl(path);
+  const tags: Array<Record<string, string>> = [
+    { property: "og:image", content: url },
+    { property: "og:image:secure_url", content: url },
+    { name: "twitter:image", content: url },
+    { name: "twitter:card", content: "summary_large_image" },
+  ];
+  if (dims) {
+    tags.splice(1, 0,
+      { property: "og:image:width", content: String(dims.width) },
+      { property: "og:image:height", content: String(dims.height) },
+    );
+  }
+  return tags;
+};
 
 /**
- * hreflang link tags for TanStack head().links — English + x-default fallback.
+ * hreflang link tags for TanStack head().links, English + x-default fallback.
  * Currently the site only ships en content; when a non-English locale is
  * added, extend this with the localized URLs.
  */

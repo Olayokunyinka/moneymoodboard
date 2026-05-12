@@ -70,7 +70,7 @@ function TermsPage() {
 
         <section id="intellectual-property" className="scroll-mt-24">
           <h2 className="text-2xl font-bold text-foreground">Intellectual property</h2>
-          <p className="mt-3">All content on the site — including text, graphics, logos, code, and the "MoneyMoodBoard" name and brand — is owned by MoneyMoodBoard or its licensors and is protected by copyright, trade-mark and other intellectual property laws.</p>
+          <p className="mt-3">All content on the site, including text, graphics, logos, code, and the "MoneyMoodBoard" name and brand, is owned by MoneyMoodBoard or its licensors and is protected by copyright, trade-mark and other intellectual property laws.</p>
           <p className="mt-3">You may share short excerpts of our articles with clear attribution and a link back to the source page. You may not republish full articles, host them under another brand, or use our content to train or fine-tune machine-learning models without our prior written permission. Reproducing our calculators or tool outputs commercially is prohibited.</p>
         </section>
 
